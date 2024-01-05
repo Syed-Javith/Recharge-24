@@ -44,11 +44,14 @@ const LoginForm: FC<LoginFormProps> = ({}) => {
 
       console.log("This is payload\n", payload);
       const { data } = await axios.post(
-        "http://154.49.243.165:4003/authenticate/login/",
-        payload
+        "https://api.rechargefest.in/authenticate/login/",
+        payload,
+        { withCredentials: true }
       );
-      // const { data } = await axios.get(
-      //   "http://154.49.243.165:4003/authenticate/profile/"
+      // const { data } = await axios.post(
+      //   "http://154.49.243.165:4003/authenticate/login/",
+      //   payload,
+      //   { withCredentials: true }
       // );
       // const {data} = await axios.get('http://154.49.243.165:4003/event');
       console.log(data);
