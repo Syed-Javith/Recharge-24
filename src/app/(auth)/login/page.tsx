@@ -11,10 +11,6 @@ const page: FC<pageProps> = async ({}) => {
     <div className="flex justify-center">
       <div className="max-w-[400px]">
         <LoginForm />
-        {/* <Profile /> */}
-        {session && session.email}
-        {session && session.first_name}
-        {session && session.last_name}
       </div>
     </div>
   );

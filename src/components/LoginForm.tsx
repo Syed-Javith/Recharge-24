@@ -54,6 +54,7 @@ const LoginForm: FC<LoginFormProps> = ({}) => {
       console.log("This is the error: \n", err);
     },
     onSuccess: () => {
+      router.refresh();
       router.push("/");
     },
   });

@@ -9,7 +9,7 @@ interface UserJwtPayload extends JWTPayload {
   exp: number;
   first_name: string;
   last_name: string;
-  email: string;
+  id: string;
 }
 
 export const getAuthSession = async () => {

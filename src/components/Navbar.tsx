@@ -22,8 +22,8 @@ const Navbar: FC<NavbarProps> = async ({}) => {
           //   <UserAccountNav user={session.user} />
           <p>{session.first_name + session.last_name}</p>
         ) : (
-          <Link href="/sign-in" className={buttonVariants()}>
-            Sign In
+          <Link href="/login" className={buttonVariants()}>
+            Log In
           </Link>
         )}
       </div>
