@@ -17,7 +17,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { getCookie, setCookie } from "cookies-next";
+import { useRouter } from "next/navigation";
 
 interface LoginFormProps {}
 
@@ -31,6 +31,8 @@ const loginFormSchema = z.object({
 });
 
 const LoginForm: FC<LoginFormProps> = ({}) => {
+  const router = useRouter();
+
   const loginForm = useForm<z.infer<typeof loginFormSchema>>({
     resolver: zodResolver(loginFormSchema),
   });
@@ -41,24 +43,18 @@ const LoginForm: FC<LoginFormProps> = ({}) => {
         email,
         password,
       };
-
       console.log("This is payload\n", payload);
       const { data } = await axios.post(
-        "https://api.rechargefest.in/authenticate/login/",
+        "http://localhost:8000/authenticate/login/",
         payload,
         { withCredentials: true }
       );
-      // const { data } = await axios.post(
-      //   "http://154.49.243.165:4003/authenticate/login/",
-      //   payload,
-      //   { withCredentials: true }
-      // );
-      // const {data} = await axios.get('http://154.49.243.165:4003/event');
-      console.log(data);
-      // console.log(profiledata);
     },
     onError: (err) => {
       console.log("This is the error: \n", err);
+    },
+    onSuccess: () => {
+      router.push("/");
     },
   });
   return (

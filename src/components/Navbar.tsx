@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { FC } from "react";
 import { buttonVariants } from "./ui/Button";
+import { getAuthSession } from "@/lib/auth";
 
 interface NavbarProps {}
 
-const Navbar: FC<NavbarProps> = ({}) => {
-  const session = { user: "Hello" };
+const Navbar: FC<NavbarProps> = async ({}) => {
+  const session = await getAuthSession();
   return (
     <div className="sticky top-0 inset-0 h-fit bg-zinc-100 border-b border-zinc-300 z-[10] py-2 ">
       <div className="container max-w-7xl h-full mx-auto flex items-center justify-between gap-2">
@@ -17,9 +18,9 @@ const Navbar: FC<NavbarProps> = ({}) => {
           </p>
         </Link>
 
-        {session?.user ? (
+        {session && session.email ? (
           //   <UserAccountNav user={session.user} />
-          <p>Logged In</p>
+          <p>{session.first_name + session.last_name}</p>
         ) : (
           <Link href="/sign-in" className={buttonVariants()}>
             Sign In
