@@ -1,8 +1,8 @@
-import { ProShow } from "@/types/models";
+  import { ProShow } from "@/types/models";
 import axios from "axios";
 
 const page = async ({}) => {
-  const res = await axios.get("http://localhost:8000/proshow/proshows/", {
+  const res = await axios.get("https://api.rechargefest.in/proshow/proshows/", {
     withCredentials: true,
   });
   const proshows: ProShow[] = res.data;

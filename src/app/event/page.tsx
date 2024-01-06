@@ -3,7 +3,7 @@ import axios from "axios";
 
 const page = async ({}) => {
   // const res = await axios.get("https://api.rechargefest.in/event/events/");
-  const res = await axios.get("http://localhost:8000/event/events/");
+  const res = await axios.get("http://127.0.0.1:8000/event/events/");
   const events: EventSchema[] = res.data;
   console.log(events);
   return (
