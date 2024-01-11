@@ -15,7 +15,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/Form";
+} from "./ui/Form";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 
