@@ -1,18 +1,18 @@
 export type EventSchema = {
-  name: string, // Event Name
-  category: Category,
-  short_description?: string, // Short description
-  description?: string, // Description
-  image?: string, // Image
-  registration_count?: string, // Registration count
-  is_registered?: string, // Is registered
-}
+  name: string; // Event Name
+  category: Category;
+  short_description?: string; // Short description
+  description?: string; // Description
+  image?: string; // Image
+  registration_count?: string; // Registration count
+  is_registered?: string; // Is registered
+};
 
 export type Category = {
-  id: number, // ID
-  category_name: string, // Category name
-  image?: string, // Image
-}
+  id: number; // ID
+  category_name: string; // Category name
+  image?: string; // Image
+};
 
 type ProShow = {
   id: number;
@@ -30,4 +30,18 @@ type ProShow = {
   premium: boolean;
   is_registered: string;
   readOnly: true;
+};
+
+type UserProfileSchema = {
+  email: string;
+  first_name: string;
+  last_name?: string;
+  profile_photo: string | null;
+  mobile_number?: string | null;
+  department?: string | null;
+  college?: string | null;
+  year?: number | null;
+  qr_code?: string | null;
+  proshow_registrations:  {proshow : ProShow}[] ;
+  event_registrations: any;
 };

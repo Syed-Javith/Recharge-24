@@ -1,10 +1,8 @@
-import { JWTPayload, jwtVerify, SignJWT } from "jose";
-import { nanoid } from "nanoid";
-import { NextRequest, NextResponse } from "next/server";
+import { JWTPayload, jwtVerify } from "jose";
 import { getAccessJwtSecretKey } from "./utils";
 import { cookies } from "next/headers";
 
-interface UserJwtPayload extends JWTPayload {
+export interface UserJwtPayload extends JWTPayload {
   iat: number;
   exp: number;
   first_name: string;

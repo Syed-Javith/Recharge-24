@@ -2,6 +2,7 @@ import Link from "next/link";
 import { FC } from "react";
 import { buttonVariants } from "./ui/Button";
 import { getAuthSession } from "@/lib/auth";
+import UserAccountNav from "./UserAccountNav";
 
 interface NavbarProps {}
 
@@ -18,9 +19,8 @@ const Navbar: FC<NavbarProps> = async ({}) => {
           </p>
         </Link>
 
-        {session && session.email ? (
-          //   <UserAccountNav user={session.user} />
-          <p>{session.first_name + session.last_name}</p>
+        {session ? (
+            <UserAccountNav user={session} />
         ) : (
           <Link href="/login" className={buttonVariants()}>
             Log In

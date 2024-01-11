@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import axios from "axios";
 import { Input } from "./ui/Input";
 import { Button } from "./ui/Button";
 import { Loader2 } from "lucide-react";
@@ -16,8 +15,9 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
+} from "@/components/ui/Form";
 import { useRouter } from "next/navigation";
+import axios from "axios";
 
 interface LoginFormProps {}
 
@@ -44,16 +44,27 @@ const LoginForm: FC<LoginFormProps> = ({}) => {
         password,
       };
       console.log("This is payload\n", payload);
-      const { data } = await axios.post(
-        "http://localhost:8000/authenticate/login/",
+
+      const res = await axios.post(
+        "https://api.rechargefest.in/authenticate/login/",
         payload,
         { withCredentials: true }
       );
+      // const res = await fetch("https://api.rechargefest.in/authenticate/login/", {
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   credentials: "include",
+      //   body: JSON.stringify(payload),
+      //   method: "POST",
+      // });
+      return res;
     },
     onError: (err) => {
       console.log("This is the error: \n", err);
     },
-    onSuccess: () => {
+    onSuccess: (res) => {
+      console.log(res);
       router.refresh();
       router.push("/");
     },
