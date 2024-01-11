@@ -10,9 +10,12 @@ import { cookies } from "next/headers";
 
 const page = async ({}) => {
   try {
-    const res = await fetch("https://api.rechargefest.in/authenticate/profile/", {
-      headers: { Cookie: cookies().toString() },
-    });
+    const res = await fetch(
+      "https://api.rechargefest.in/authenticate/profile/",
+      {
+        headers: { Cookie: cookies().toString() },
+      }
+    );
     const profile: UserProfileSchema = await res.json();
     console.log(profile);
     return (
@@ -36,7 +39,7 @@ const page = async ({}) => {
             </CardContent>
             <CardDescription>{profile.event_registrations}</CardDescription>
             <CardDescription className="max-w-[150px]">
-              <img src={profile.qr_code ? profile.qr_code : "abc.png"} />
+              <img src={profile.qr_code && profile.qr_code} alt="Unique user id" />
             </CardDescription>
           </Card>
         </div>

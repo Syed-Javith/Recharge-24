@@ -50,14 +50,6 @@ const LoginForm: FC<LoginFormProps> = ({}) => {
         payload,
         { withCredentials: true }
       );
-      // const res = await fetch("https://api.rechargefest.in/authenticate/login/", {
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   credentials: "include",
-      //   body: JSON.stringify(payload),
-      //   method: "POST",
-      // });
       return res;
     },
     onError: (err) => {

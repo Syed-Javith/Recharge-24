@@ -41,7 +41,7 @@ type UserProfileSchema = {
   department?: string | null;
   college?: string | null;
   year?: number | null;
-  qr_code?: string | null;
+  qr_code?: string | undefined;
   proshow_registrations:  {proshow : ProShow}[] ;
   event_registrations: any;
 };
