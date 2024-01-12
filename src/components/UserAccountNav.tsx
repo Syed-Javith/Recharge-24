@@ -23,7 +23,7 @@ const UserAccountNav: FC<UserAccountNavProps> = ({ user }) => {
 
   const router = useRouter();
   const logoutHandler = async () => {
-    await axios("https://api.rechargefest.in/authenticate/logout/", {
+    await axios("http://localhost:8000/authenticate/logout/", {
       withCredentials: true,
       method: "post",
     });
@@ -31,8 +31,8 @@ const UserAccountNav: FC<UserAccountNavProps> = ({ user }) => {
     toast("Success", {
       description: "You were logged out successfully.",
     });
-    router.refresh();
     router.push("/login");
+    router.refresh();
   };
   return (
     <DropdownMenu>
