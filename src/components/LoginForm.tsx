@@ -46,7 +46,7 @@ const LoginForm: FC<LoginFormProps> = ({}) => {
       console.log("This is payload\n", payload);
 
       const res = await axios.post(
-        "http://localhost:8000/authenticate/login/",
+        "https://api.rechargefest.in/authenticate/login/",
         payload,
         { withCredentials: true }
       );
