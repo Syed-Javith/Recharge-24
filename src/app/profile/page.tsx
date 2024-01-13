@@ -5,17 +5,13 @@ import {
   CardTitle,
 } from "@/components/ui/Card";
 import { UserProfileSchema } from "@/types/models";
-import axios from "axios";
 import { cookies } from "next/headers";
 
 const page = async ({}) => {
   try {
-    const res = await fetch(
-      "https://api.rechargefest.in/authenticate/profile/",
-      {
-        headers: { Cookie: cookies().toString() },
-      }
-    );
+    const res = await fetch("https://api.rechargefest.in/authenticate/profile/", {
+      headers: { Cookie: cookies().toString() },
+    });
     const profile: UserProfileSchema = await res.json();
     console.log(profile);
     return (
@@ -37,9 +33,22 @@ const page = async ({}) => {
                 ))}
               </div>
             </CardContent>
-            <CardDescription>{profile.event_registrations}</CardDescription>
+            {/* <CardContent>{profile.event_registrations}</CardContent> */}
+            <CardContent>
+              <div>
+                <div className="font-bold">Registered Proshows</div>
+                {profile.event_registrations.map((event_registration) => (
+                  <p key={event_registration.id}>
+                    {JSON.stringify(event_registration.name)}
+                  </p>
+                ))}
+              </div>
+            </CardContent>
             <CardDescription className="max-w-[150px]">
-              <img src={profile.qr_code && profile.qr_code} alt="Unique user id" />
+              <img
+                src={profile.qr_code && profile.qr_code}
+                alt="Unique user id"
+              />
             </CardDescription>
           </Card>
         </div>
