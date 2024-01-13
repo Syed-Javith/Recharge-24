@@ -33,7 +33,6 @@ const page = async ({}) => {
                 ))}
               </div>
             </CardContent>
-            {/* <CardContent>{profile.event_registrations}</CardContent> */}
             <CardContent>
               <div>
                 <div className="font-bold">Registered Proshows</div>

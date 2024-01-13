@@ -9,9 +9,13 @@ import { Loader2 } from "lucide-react";
 
 interface BuyProShowButtonProps {
   proshowid: number;
+  disabled: boolean;
 }
 
-const BuyProShowButton: FC<BuyProShowButtonProps> = ({ proshowid }) => {
+const BuyProShowButton: FC<BuyProShowButtonProps> = ({
+  proshowid,
+  disabled,
+}) => {
   const router = useRouter();
   const { mutate: buyProshow, isPending } = useMutation({
     mutationFn: async ({ proshowid }: { proshowid: number }) => {
@@ -49,23 +53,26 @@ const BuyProShowButton: FC<BuyProShowButtonProps> = ({ proshowid }) => {
     onSuccess: (data) => {
       const { payment_link } = data;
       console.log(payment_link);
-      
+
       toast(`Please complete your Proshow purchase`, {
         action: {
           label: "Pay now",
           onClick() {
-            window.location.href = payment_link;;
+            window.location.href = payment_link;
           },
         },
-        duration: 100 * 1000
+        duration: 100 * 1000,
       });
       router.refresh();
     },
   });
 
   return (
-    <Button onClick={() => buyProshow({ proshowid })} disabled={isPending}>
-      BuyProShowButton
+    <Button
+      onClick={() => buyProshow({ proshowid })}
+      disabled={isPending || disabled}
+    >
+      {disabled ? "Already bought this ProShow" : "Buy ProShow" }
       {isPending && <Loader2 className="animate-spin" />}
     </Button>
   );

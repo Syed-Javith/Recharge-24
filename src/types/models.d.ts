@@ -6,7 +6,7 @@ export type EventSchema = {
   description?: string; // Description
   image?: string; // Image
   registration_count?: string; // Registration count
-  is_registered?: string; // Is registered
+  is_registered: boolean; // Is registered
 };
 
 export type Category = {
@@ -29,7 +29,7 @@ type ProShow = {
   discount_amount: number;
   combo: boolean;
   premium: boolean;
-  is_registered: string;
+  is_registered: boolean;
   readOnly: true;
 };
 

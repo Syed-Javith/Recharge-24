@@ -29,7 +29,7 @@ const page = async ({}) => {
               <CardDescription>{proshow.description}</CardDescription>
               <CardDescription>Price: {proshow.amount}</CardDescription>
               <CardFooter>
-                <BuyProShowButton proshowid={proshow.id} />
+                <BuyProShowButton disabled={proshow.is_registered} proshowid={proshow.id} />
               </CardFooter>
             </Card>
           ))}
