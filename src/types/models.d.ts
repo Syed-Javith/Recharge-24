@@ -1,4 +1,5 @@
 export type EventSchema = {
+  id: number;
   name: string; // Event Name
   category: Category;
   short_description?: string; // Short description
@@ -42,6 +43,6 @@ type UserProfileSchema = {
   college?: string | null;
   year?: number | null;
   qr_code?: string | undefined;
-  proshow_registrations:  {proshow : ProShow}[] ;
-  event_registrations: any;
+  proshow_registrations: { proshow: ProShow }[];
+  event_registrations: EventSchema[];
 };
