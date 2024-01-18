@@ -17,8 +17,10 @@ import {
   FormMessage,
 } from "./ui/Form";
 import { useRouter } from "next/navigation";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { CSRBaseUrl } from "@/lib/utils";
+import { toast } from "sonner";
+import { NextResponse } from "next/server";
 
 interface LoginFormProps {}
 
@@ -55,7 +57,12 @@ const LoginForm: FC<LoginFormProps> = ({}) => {
       return res;
     },
     onError: (err) => {
-      console.log("This is the error: \n", err);
+      console.log("This is the error", err);
+      if (err instanceof AxiosError) {
+        toast(err.response?.data.detail);
+      } else {
+        toast("Some error occurred. Please try again later.");
+      }
     },
     onSuccess: (res) => {
       console.log(res);
