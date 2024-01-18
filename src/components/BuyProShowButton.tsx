@@ -1,6 +1,6 @@
 "use client";
 import { FC } from "react";
-import { Button } from "./ui/Button";
+import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";

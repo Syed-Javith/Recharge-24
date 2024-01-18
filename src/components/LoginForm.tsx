@@ -5,7 +5,7 @@ import { useMutation } from "@tanstack/react-query";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Input } from "./ui/Input";
-import { Button } from "./ui/Button";
+import { Button } from "./ui/button";
 import { Loader2 } from "lucide-react";
 import {
   Form,

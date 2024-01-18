@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { FC } from "react";
-import { buttonVariants } from "./ui/Button";
+import { buttonVariants } from "./ui/button";
 import { getAuthSession } from "@/lib/auth";
 import UserAccountNav from "./UserAccountNav";
 
