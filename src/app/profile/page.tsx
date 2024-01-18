@@ -1,61 +1,14 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardTitle,
-} from "@/components/ui/Card";
-import { UserProfileSchema } from "@/types/models";
-import { cookies } from "next/headers";
+import Profile from "@/components/Profile";
+import { FC } from "react";
 
-const page = async ({}) => {
-  try {
-    const res = await fetch("https://api.rechargefest.in/authenticate/profile/", {
-      headers: { Cookie: cookies().toString() },
-    });
-    const profile: UserProfileSchema = await res.json();
-    console.log(profile);
-    return (
-      <div>
-        <h1>Your Profile</h1>
-        <div>
-          <Card className="max-w-xl" key={profile.email}>
-            <CardTitle>
-              {profile.first_name + " " + profile.last_name}
-            </CardTitle>
-            <CardDescription>{profile.mobile_number}</CardDescription>
-            <CardContent>
-              <div>
-                <div className="font-bold">Registered Proshows</div>
-                {profile.proshow_registrations.map((proshow_registration) => (
-                  <p key={proshow_registration.proshow.id}>
-                    {JSON.stringify(proshow_registration.proshow.name)}
-                  </p>
-                ))}
-              </div>
-            </CardContent>
-            <CardContent>
-              <div>
-                <div className="font-bold">Registered Proshows</div>
-                {profile.event_registrations.map((event_registration) => (
-                  <p key={event_registration.id}>
-                    {JSON.stringify(event_registration.name)}
-                  </p>
-                ))}
-              </div>
-            </CardContent>
-            <CardDescription className="max-w-[150px]">
-              <img
-                src={profile.qr_code && profile.qr_code}
-                alt="Unique user id"
-              />
-            </CardDescription>
-          </Card>
-        </div>
-      </div>
-    );
-  } catch (error) {
-    console.error("Error fetching proshows:", error);
-  }
+interface pageProps {}
+
+const page: FC<pageProps> = ({}) => {
+  return (
+    <div>
+      <Profile />
+    </div>
+  );
 };
 
 export default page;

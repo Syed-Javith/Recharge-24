@@ -18,6 +18,7 @@ import {
 } from "./ui/Form";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import { CSRBaseUrl } from "@/lib/utils";
 
 interface LoginFormProps {}
 
@@ -35,6 +36,7 @@ const LoginForm: FC<LoginFormProps> = ({}) => {
 
   const loginForm = useForm<z.infer<typeof loginFormSchema>>({
     resolver: zodResolver(loginFormSchema),
+    defaultValues: { email: "", password: "" },
   });
 
   const { mutate: loginUser, isPending } = useMutation({
@@ -46,7 +48,7 @@ const LoginForm: FC<LoginFormProps> = ({}) => {
       console.log("This is payload\n", payload);
 
       const res = await axios.post(
-        "https://api.rechargefest.in/authenticate/login/",
+        CSRBaseUrl + "authenticate/login/",
         payload,
         { withCredentials: true }
       );
@@ -76,7 +78,11 @@ const LoginForm: FC<LoginFormProps> = ({}) => {
               <FormItem>
                 <FormLabel>Email</FormLabel>
                 <FormControl>
-                  <Input placeholder="user@example.com" {...field} />
+                  <Input
+                    type="email"
+                    placeholder="user@example.com"
+                    {...field}
+                  />
                 </FormControl>
                 <FormDescription>Ensure your email is verified</FormDescription>
                 <FormMessage />
@@ -90,7 +96,7 @@ const LoginForm: FC<LoginFormProps> = ({}) => {
               <FormItem>
                 <FormLabel>Password</FormLabel>
                 <FormControl>
-                  <Input placeholder="password" {...field} />
+                  <Input type="password" placeholder="password" {...field} />
                 </FormControl>
                 <FormDescription>Check the caps lock</FormDescription>
                 <FormMessage />

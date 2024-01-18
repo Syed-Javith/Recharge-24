@@ -4,10 +4,11 @@ import {
   CardContent,
   CardDescription,
 } from "@/components/ui/Card";
+import { SSRBaseUrl } from "@/lib/utils";
 import { EventSchema } from "@/types/models";
 
 const page = async ({}) => {
-  const res = await fetch("https://api.rechargefest.in/event/events/");
+  const res = await fetch(SSRBaseUrl + "event/events/");
   const events: EventSchema[] = await res.json();
   return (
     <div>

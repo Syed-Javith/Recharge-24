@@ -6,6 +6,7 @@ import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 import axios from "axios";
 import { Loader2 } from "lucide-react";
+import { CSRBaseUrl } from "@/lib/utils";
 
 interface BuyProShowButtonProps {
   proshowid: number;
@@ -23,7 +24,7 @@ const BuyProShowButton: FC<BuyProShowButtonProps> = ({
         const payload: { proshow_id: number } = { proshow_id: proshowid };
         console.log(payload);
         const { data } = await axios.post(
-          "https://api.rechargefest.in/proshow/proshow-register/",
+          CSRBaseUrl + "proshow/proshow-register/",
           payload,
           {
             withCredentials: true,
@@ -72,7 +73,7 @@ const BuyProShowButton: FC<BuyProShowButtonProps> = ({
       onClick={() => buyProshow({ proshowid })}
       disabled={isPending || disabled}
     >
-      {disabled ? "Already bought this ProShow" : "Buy ProShow" }
+      {disabled ? "Already bought this ProShow" : "Buy ProShow"}
       {isPending && <Loader2 className="animate-spin" />}
     </Button>
   );
