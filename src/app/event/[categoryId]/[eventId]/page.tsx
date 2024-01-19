@@ -4,7 +4,7 @@ import { FC } from "react";
 import EventDetails from "../../../../components/EventDetails";
 interface pageProps {
     params: {
-        eventId: string;
+        eventId: number;
     };
 }
 

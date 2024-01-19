@@ -14,7 +14,7 @@ export type EventDetailSchema = {
   incharges: string;
   registration_count: number;
   is_registered: string; 
-  event_registration: string; 
+  event_registration: array; 
   name: string;
   short_description: string | null;
   description:	string | null;
