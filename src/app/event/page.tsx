@@ -7,7 +7,7 @@ import {
 import { EventSchema } from "@/types/models";
 
 const page = async ({}) => {
-  const res = await fetch("https://api.rechargefest.in/event/events/");
+  const res = await fetch("http://127.0.0.1:8000/event/events/");
   const events: EventSchema[] = await res.json();
   return (
     <div>

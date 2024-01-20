@@ -9,7 +9,7 @@ import { cookies } from "next/headers";
 
 const page = async ({}) => {
   try {
-    const res = await fetch("https://api.rechargefest.in/authenticate/profile/", {
+    const res = await fetch("http://127.0.0.1:8000/authenticate/profile/", {
       headers: { Cookie: cookies().toString() },
     });
     const profile: UserProfileSchema = await res.json();

@@ -12,7 +12,7 @@ import { cookies } from "next/headers";
 
 const page = async ({}) => {
   try {
-    const res = await fetch("https://api.rechargefest.in/proshow/proshows/", {
+    const res = await fetch("http://127.0.0.1:8000/proshow/proshows/", {
       headers: { Cookie: cookies().toString() },
     });
 

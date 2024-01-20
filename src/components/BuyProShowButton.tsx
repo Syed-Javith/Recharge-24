@@ -23,7 +23,7 @@ const BuyProShowButton: FC<BuyProShowButtonProps> = ({
         const payload: { proshow_id: number } = { proshow_id: proshowid };
         console.log(payload);
         const { data } = await axios.post(
-          "https://api.rechargefest.in/proshow/proshow-register/",
+          "http://localhost:8000/proshow/proshow-register/",
           payload,
           {
             withCredentials: true,
