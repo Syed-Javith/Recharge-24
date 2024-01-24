@@ -31,6 +31,7 @@ const Verify:FC = () => {
     onError: (err) => {
       console.log(err)
       if(err instanceof AxiosError) {
+        console.log(err.response?.data);
         toast(err.response?.data.detail);
       }
       else {
