@@ -6,7 +6,7 @@ const page: FC<pageProps> = async ({}) => {
   const session = await getAuthSession();
   return (
     <div className="flex justify-center">
-      <div className="max-w-[400px]">
+      <div className="max-w-[550px] my-4">
         <RegisterForm/>
       </div>
       </div>

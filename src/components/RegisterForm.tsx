@@ -1,12 +1,12 @@
 "use client";
-import { FC } from "react";
+import { FC, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Input } from "./ui/Input";
 import { Button } from "./ui/Button";
-import { Loader2 } from "lucide-react";
+import { EyeIcon, Loader2 } from "lucide-react";
 import {
   Form,
   FormControl,
@@ -22,7 +22,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from "@/components/ui/select";
 import { useRouter } from "next/navigation";
 import axios, { AxiosError } from "axios";
 import { CSRBaseUrl } from "@/lib/utils";
@@ -33,27 +33,44 @@ interface RegisterFormProps {}
 
 type registerFormPayload = z.infer<typeof registerFormSchema>;
 
-const registerFormSchema = z.object({
-  email: z.string().email({ message: "Your email is not of correct format." }).min(1).max(254),
-  password: z.string().min(1).max(128),
-  confirm_password: z.string().min(1).max(128),
-  first_name: z.string().min(1),
-  last_name: z.string().min(1),
-  mobile_number: z.string().min(1),
-  department: z.string().min(1).max(255),
-  college: z.string().min(1),
-  year : z.number().min(1)
-}).refine((data) => data.password === data.confirm_password , { message : "password mismatch." , path : ["confirm_password"] } );
+const passwordRegex = new RegExp("^(?=.*[a-zA-Z]{6,})[a-zA-Z0-9]*$");
+const phoneNumberRegex = new RegExp("^([0-9]{10,})$");
+
+const registerFormSchema = z
+  .object({
+    email: z
+      .string()
+      .email({ message: "Your email is not of correct format." })
+      .min(1)
+      .max(254),
+    password: z.string().min(6).max(128).regex(passwordRegex, {
+      message: "The Password must contain minimum 6 Alphabets",
+    }),
+    confirm_password: z.string().min(1).max(128),
+    first_name: z.string().min(1),
+    last_name: z.string().min(1),
+    mobile_number: z.string().length(10).regex(phoneNumberRegex, {
+      message: "Phone number must contain only numerals",
+    }),
+    department: z.string().min(1).max(255),
+    college: z.string().min(1),
+    year: z.number().min(1),
+  })
+  .refine((data) => data.password === data.confirm_password, {
+    message: "Password mismatch.",
+    path: ["confirm_password"],
+  });
 
 const RegisterForm: FC<RegisterFormProps> = ({}) => {
   const router = useRouter();
+  const [passwordVisible , setPasswordVisible] = useState(false)
 
   const registerForm = useForm<z.infer<typeof registerFormSchema>>({
     resolver: zodResolver(registerFormSchema),
     defaultValues: {
       email: "",
       password: "",
-      confirm_password : "",
+      confirm_password: "",
       first_name: "",
       last_name: "",
       mobile_number: "",
@@ -81,7 +98,7 @@ const RegisterForm: FC<RegisterFormProps> = ({}) => {
         throw err;
       }
     },
-    onError: (err : any) => {
+    onError: (err: any) => {
       console.log("This is the error", err);
       if (err) {
         toast(err?.response?.data?.detail);
@@ -89,13 +106,12 @@ const RegisterForm: FC<RegisterFormProps> = ({}) => {
         toast("Some error occurred. Please try again later.");
       }
     },
-    onSuccess: (res : any) => {
+    onSuccess: (res: any) => {
       console.log(res);
       router.push("/");
       router.refresh();
     },
   });
-
 
   return (
     <div>
@@ -112,7 +128,11 @@ const RegisterForm: FC<RegisterFormProps> = ({}) => {
               <FormItem>
                 <FormLabel>Email</FormLabel>
                 <FormControl>
-                  <Input type="email" placeholder="user@example.com" {...field} />
+                  <Input
+                    type="email"
+                    placeholder="user@example.com"
+                    {...field}
+                  />
                 </FormControl>
                 <FormDescription>Ensure your email is verified</FormDescription>
                 <FormMessage />
@@ -126,20 +146,26 @@ const RegisterForm: FC<RegisterFormProps> = ({}) => {
               <FormItem>
                 <FormLabel>Password</FormLabel>
                 <FormControl>
-                  <Input type="password" placeholder="password" {...field} />
-                </FormControl>
-                <FormMessage />
+                 <div className="flex flex-row gap-4">
+                 <Input type={ passwordVisible ? "text" : "password" } placeholder="password" {...field} />
+                  <Button type="button" onClick={()=> setPasswordVisible(!passwordVisible)}> <EyeIcon size={20}/> </Button>
+                 </div>
+                </FormControl>   
               </FormItem>
             )}
           />
-           <FormField
+          <FormField
             control={registerForm.control}
             name="confirm_password"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Confirm Password</FormLabel>
                 <FormControl>
-                  <Input type="password" placeholder="confirm password" {...field} />
+                  <Input
+                    type="password"
+                    placeholder="confirm password"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -216,21 +242,28 @@ const RegisterForm: FC<RegisterFormProps> = ({}) => {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Year</FormLabel>
-                <Select onValueChange={(value) => field.onChange(parseInt(value, 10))} defaultValue={field.value.toString()}>
-                <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select a year" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                    <SelectItem value={"1"} >I</SelectItem>
+                <Select
+                  onValueChange={(value) => field.onChange(parseInt(value, 10))}
+                  defaultValue={field.value.toString()}
+                >
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select a year" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value={"1"}>I</SelectItem>
                     <SelectItem value={"2"}>II</SelectItem>
                     <SelectItem value={"3"}>III</SelectItem>
                     <SelectItem value={"4"}>IV</SelectItem>
-                    <SelectItem value={"11"}>11<sup>th</sup></SelectItem>
-                    <SelectItem value={"12"}>12<sup>th</sup></SelectItem>
-                </SelectContent>
-              </Select>
+                    <SelectItem value={"11"}>
+                      11<sup>th</sup>
+                    </SelectItem>
+                    <SelectItem value={"12"}>
+                      12<sup>th</sup>
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
                 <FormDescription>Enter your academic year</FormDescription>
                 <FormMessage />
               </FormItem>
