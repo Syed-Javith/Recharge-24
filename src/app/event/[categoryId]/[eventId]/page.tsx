@@ -1,7 +1,11 @@
 
 import { getAuthSession } from "@/lib/auth";
 import { FC } from "react";
-import EventDetails from "../../../../components/EventDetails";
+import EventDetails from "@/components/events/EventDetails";
+import { SSRBaseUrl } from "@/lib/utils";
+import { cookies } from "next/headers";
+import axios from "axios";
+
 interface pageProps {
     params: {
         eventId: number;
@@ -10,11 +14,15 @@ interface pageProps {
 
 const page: FC<pageProps> = async ({params}:pageProps) => {
   const session = await getAuthSession();
-  return (
-    <div>
-        <EventDetails session={session} eventId={params.eventId}/>
-    </div>
-  );
+  const {data:event} = await axios.get(SSRBaseUrl+ `event/event/${params.eventId}`, {
+    headers: { Cookie: cookies().toString() },
+  })
+    return (
+      <div>
+        <EventDetails session={session} event={event}/>
+      </div>
+    );
+
 };
 
 export default page;
