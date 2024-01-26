@@ -28,6 +28,7 @@ import axios, { AxiosError } from "axios";
 import { CSRBaseUrl } from "@/lib/utils";
 import { toast } from "sonner";
 import { NextResponse } from "next/server";
+import Link from "next/link";
 
 interface RegisterFormProps {}
 
@@ -80,7 +81,7 @@ const RegisterForm: FC<RegisterFormProps> = ({}) => {
     },
   });
 
-  const { mutate: loginUser, isPending } = useMutation({
+  const { mutate: registerUser, isPending } = useMutation({
     mutationFn: async (data: registerFormPayload) => {
       const payload: registerFormPayload = { ...data };
       console.log("This is payload\n", payload);
@@ -118,7 +119,7 @@ const RegisterForm: FC<RegisterFormProps> = ({}) => {
       <Form {...registerForm}>
         <form
           onSubmit={registerForm.handleSubmit((e) => {
-            loginUser(e);
+            registerUser(e);
           })}
         >
           <FormField
@@ -274,6 +275,7 @@ const RegisterForm: FC<RegisterFormProps> = ({}) => {
           </Button>
         </form>
       </Form>
+      <Link href={'/resend-verification-email'} >Didn't Receive mail? resend again</Link>
     </div>
   );
 };

@@ -23,10 +23,13 @@ import { Loader2 } from "lucide-react";
 
 interface ForgotPasswordFormProps {}
 
+const passwordRegex = new RegExp("^(?=.*[a-zA-Z]{6,})[a-zA-Z0-9]*$");
 const forgotPasswordSchema = z
   .object({
     email: z.string().email({ message: "Provide valid mail address" }),
-    password: z.string().min(6).max(128),
+    password: z.string().min(6).max(128).regex(passwordRegex , {
+      message : "Password should contain minimum 6 Alphabets"
+    }),
     confirm_password: z.string().min(6).max(128),
   })
   .refine((data) => data.confirm_password === data.password, {
@@ -37,6 +40,7 @@ const forgotPasswordSchema = z
 type forgotPasswordPayload = z.infer<typeof forgotPasswordSchema>;
 
 const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({}) => {
+
   const forgotPasswordForm = useForm<z.infer<typeof forgotPasswordSchema>>({
     resolver: zodResolver(forgotPasswordSchema),
     defaultValues: { email: "", password: "", confirm_password: "" },
@@ -120,6 +124,7 @@ const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({}) => {
                     {...field}
                   />
                 </FormControl>
+                <FormDescription>Password must have a minimum length of 6</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
