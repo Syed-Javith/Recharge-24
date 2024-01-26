@@ -73,13 +73,14 @@ const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({}) => {
     onError: (err) => {
       console.log("Something went wrong \n", err);
       if (err instanceof AxiosError) {
-        toast(err.response?.data.detail);
+        toast.error(err.response?.data.detail ?? 'Invalid Request');
       } else {
-        toast("Some error occurred. Please try again later.");
+        toast.error("Some error occurred. Please try again later.");
       }
     },
     onSuccess: (res) => {
       console.log(res);
+      toast.success('Password changed successfully')
       router.push("/");
       router.refresh();
     },

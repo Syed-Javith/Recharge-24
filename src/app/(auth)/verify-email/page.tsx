@@ -22,16 +22,18 @@ const Verify:FC = () => {
 
   const {mutate: verify, isPending} = useMutation({
     mutationFn : async ( details : VerificationDetails) => {
-      await axios.get(CSRBaseUrl + 'authenticate/verify/', {
-        params : details,
-      }); 
-
-      
+        const res = await axios.get(
+          CSRBaseUrl + 'authenticate/verify/', {
+            params : details,
+          },
+          { withCredentials: true }
+        ); 
+        return res;
     },
     onError: (err) => {
       console.log(err)
       if(err instanceof AxiosError) {
-        toast(err.response?.data.detail);
+        toast(err.response?.data.detail ?? 'Invalid Request');
       }
       else {
         toast("Some error occured. Please try again");
@@ -39,18 +41,20 @@ const Verify:FC = () => {
     },
     onSuccess: (res : any) => {
       console.log(res);
-      router.push("/");
+      router.push("/"); 
       router.refresh();
     },
   });
 
   useEffect(() => {
-    
     const verificationDetails : VerificationDetails = {
       email : searchParams.get('email') as string,
       token : searchParams.get('token') as string,
     }
-    verify(verificationDetails);
+    console.log(typeof window)
+    if (typeof window !== 'undefined') {
+      verify(verificationDetails);
+    }
   }, [])
   
 

@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Input } from "../ui/Input";
 import { Button } from "../ui/Button";
-import { EyeIcon, Loader2 } from "lucide-react";
+import { EyeIcon, Loader2, MailCheck } from "lucide-react";
 import {
   Form,
   FormControl,
@@ -26,7 +26,7 @@ import {
 import { useRouter } from "next/navigation";
 import axios, { AxiosError } from "axios";
 import { CSRBaseUrl } from "@/lib/utils";
-import { toast } from "sonner";
+import { toast, Toaster } from "sonner";
 import { NextResponse } from "next/server";
 import Link from "next/link";
 
@@ -53,7 +53,7 @@ const registerFormSchema = z
     mobile_number: z.string().length(10).regex(phoneNumberRegex, {
       message: "Phone number must contain only numerals",
     }),
-    department: z.string().min(1).max(255),
+    // department: z.string().min(1).max(255),
     college: z.string().min(1),
     year: z.number().min(1),
   })
@@ -65,6 +65,8 @@ const registerFormSchema = z
 const RegisterForm: FC<RegisterFormProps> = ({}) => {
   const router = useRouter();
   const [passwordVisible , setPasswordVisible] = useState(false)
+  const [confirmPasswordVisible , setConfirmPasswordVisible] = useState(false)
+  const [mailSent, setMailSent] = useState(false)
 
   const registerForm = useForm<z.infer<typeof registerFormSchema>>({
     resolver: zodResolver(registerFormSchema),
@@ -75,7 +77,7 @@ const RegisterForm: FC<RegisterFormProps> = ({}) => {
       first_name: "",
       last_name: "",
       mobile_number: "",
-      department: "",
+      // department: "",
       college: "",
       year: 1,
     },
@@ -100,21 +102,26 @@ const RegisterForm: FC<RegisterFormProps> = ({}) => {
       }
     },
     onError: (err: any) => {
-      console.log("This is the error", err);
+     
       if (err) {
-        toast(err?.response?.data?.detail);
+        toast.error(err?.response?.data?.detail ?? "Email already exists");
       } else {
-        toast("Some error occurred. Please try again later.");
+        toast.error("Some error occurred. Please try again later.");
       }
     },
     onSuccess: (res: any) => {
-      console.log(res);
-      router.push("/");
-      router.refresh();
+      setMailSent(true)
     },
   });
 
   return (
+
+    (mailSent) ? 
+      <div className="flex flex-col justify-center items-center">
+        <MailCheck size={40}/>
+        <h3> Verification mail has been sent to your registered mail.</h3>
+      </div>
+    :
     <div>
       <Form {...registerForm}>
         <form
@@ -162,11 +169,14 @@ const RegisterForm: FC<RegisterFormProps> = ({}) => {
               <FormItem>
                 <FormLabel>Confirm Password</FormLabel>
                 <FormControl>
-                  <Input
-                    type="password"
-                    placeholder="confirm password"
-                    {...field}
-                  />
+                  <div className="flex flex-row gap-4">
+                    <Input
+                      type={ passwordVisible ? "text" : "password" }
+                      placeholder="confirm password"
+                      {...field}
+                      />
+                    <Button type="button" onClick={() => setConfirmPasswordVisible(!confirmPasswordVisible)}> <EyeIcon size={20}/> </Button>
+                  </div>
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -211,7 +221,7 @@ const RegisterForm: FC<RegisterFormProps> = ({}) => {
               </FormItem>
             )}
           />
-          <FormField
+          {/* <FormField
             control={registerForm.control}
             name="department"
             render={({ field }) => (
@@ -223,7 +233,7 @@ const RegisterForm: FC<RegisterFormProps> = ({}) => {
                 <FormMessage />
               </FormItem>
             )}
-          />
+          /> */}
           <FormField
             control={registerForm.control}
             name="college"
@@ -253,10 +263,14 @@ const RegisterForm: FC<RegisterFormProps> = ({}) => {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value={"1"}>I</SelectItem>
-                    <SelectItem value={"2"}>II</SelectItem>
-                    <SelectItem value={"3"}>III</SelectItem>
-                    <SelectItem value={"4"}>IV</SelectItem>
+                    <SelectItem value={"1"}>I UG</SelectItem>
+                    <SelectItem value={"2"}>II UG</SelectItem>
+                    <SelectItem value={"3"}>III UG</SelectItem>
+                    <SelectItem value={"4"}>IV UG</SelectItem>
+                    <SelectItem value={"5"}>I PG</SelectItem>
+                    <SelectItem value={"6"}>II PG</SelectItem>
+                    <SelectItem value={"7"}>I MBA</SelectItem>
+                    <SelectItem value={"8"}>II MBA</SelectItem>
                     <SelectItem value={"11"}>
                       11<sup>th</sup>
                     </SelectItem>
@@ -270,13 +284,17 @@ const RegisterForm: FC<RegisterFormProps> = ({}) => {
               </FormItem>
             )}
           />
-          <Button disabled={isPending} type="submit">
-            Register{isPending && <Loader2 className="animate-spin ml-2" />}
-          </Button>
+          <div className="flex items-center justify-center">   
+            <Button disabled={isPending} type="submit" className='w-3/5 mt-7 mb-3'>
+              Register{isPending && <Loader2 className="animate-spin ml-2" />}
+            </Button>
+          </div>
         </form>
       </Form>
       <Link href={'/resend-verification-email'} >Didn't Receive mail? resend again</Link>
-    </div>
+    
+          
+      </div>
   );
 };
 
