@@ -4,8 +4,8 @@ import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Input } from "./ui/Input";
-import { Button } from "./ui/Button";
+import { Input } from "../ui/Input";
+import { Button } from "../ui/Button";
 import { Loader2 } from "lucide-react";
 import {
   Form,
@@ -15,7 +15,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "./ui/Form";
+} from "../ui/Form";
 import { useRouter } from "next/navigation";
 import axios, { AxiosError } from "axios";
 import { CSRBaseUrl } from "@/lib/utils";

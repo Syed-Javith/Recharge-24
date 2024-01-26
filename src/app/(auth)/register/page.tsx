@@ -1,4 +1,4 @@
-import RegisterForm from "@/components/RegisterForm";
+import RegisterForm from "@/components/forms/RegisterForm";
 import { getAuthSession } from "@/lib/auth";
 import { FC } from "react";
 interface pageProps {}
