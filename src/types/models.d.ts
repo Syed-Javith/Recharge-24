@@ -39,7 +39,7 @@ export type Category = {
   id: number; // ID
   category_name: string; // Category name
   image?: string; // Image
-  events_count: string; // Number of events
+  events_count?: string; // Number of events
 };
 
 type ProShow = {

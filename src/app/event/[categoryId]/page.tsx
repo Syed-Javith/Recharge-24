@@ -16,7 +16,7 @@ const res = await fetch(SSRBaseUrl + "event/category/" + params.categoryId + "/e
 const categoryEvents: CategoryEvents[] = await res.json();
 
 return (
-  <div>
+  <div className="flex flex-col justify-center">
   <div>
       {categoryEvents[0].events.map((event) => (
       <Link href={"/event/" + params.categoryId + "/" + event.id} key={event.id}>
