@@ -11,15 +11,24 @@ import {
 } from "./ui/Card";
 import BuyProShowButton from "./BuyProShowButton";
 
-interface ProshowListProps {}
+import { getAuthSession } from "@/lib/auth";
+
+interface ProshowListProps {
+  
+}
 
 const ProshowList: FC<ProshowListProps> = async ({}) => {
+  const session = await getAuthSession();
+  const is_rec = session?.id.includes("rajalakshmi.edu.in");
   const res = await fetch(SSRBaseUrl + "proshow/proshows/", {
     headers: { Cookie: cookies().toString() },
   });
 
   const proshows: ProShow[] = await res.json();
-  console.log(proshows);
+  // console.log(proshows);
+  const apiResponse = {
+    days: [1, 2, 3]
+  };
 
   return (
     <div>
@@ -32,13 +41,35 @@ const ProshowList: FC<ProshowListProps> = async ({}) => {
             <CardDescription>{proshow.description}</CardDescription>
             <CardDescription>Price: {proshow.amount}</CardDescription>
             <CardFooter>
+              <div className="space-y-[5px]"> 
               <BuyProShowButton
-                disabled={proshow.is_registered}
+                disabled={proshow.premium && proshow.is_registered}
+                label="premium"
                 proshowid={proshow.id}
-              />
+              /> 
+              {!is_rec &&
+                <BuyProShowButton
+                  disabled={proshow.is_registered}
+                  label="standard"
+                  proshowid={proshow.id}
+                />
+              }
+              </div>
             </CardFooter>
           </Card>
         ))}
+        <BuyProShowButton
+          disabled={proshows[0].is_registered && proshows[0].combo && !proshows[0].premium}
+          label="standard combo"
+          proshowid={-1}
+        />
+        {!is_rec &&
+          <BuyProShowButton
+            disabled={proshows[0].is_registered && proshows[0].combo && proshows[0].premium}
+            label="premium combo"
+            proshowid={-1}
+          />
+        }
       </div>
     </div>
   );

@@ -10,12 +10,15 @@ import { CSRBaseUrl } from "@/lib/utils";
 
 interface BuyProShowButtonProps {
   proshowid: number;
+  label: "standard" | "premium" | "standard combo" | "premium combo";
   disabled: boolean;
+
 }
 
 const BuyProShowButton: FC<BuyProShowButtonProps> = ({
   proshowid,
   disabled,
+  label
 }) => {
   const router = useRouter();
   const { mutate: buyProshow, isPending } = useMutation({
@@ -73,7 +76,7 @@ const BuyProShowButton: FC<BuyProShowButtonProps> = ({
       onClick={() => buyProshow({ proshowid })}
       disabled={isPending || disabled}
     >
-      {disabled ? "Already bought this ProShow" : "Buy ProShow"}
+      {(disabled ? "Already bought " : "Buy ") + label}
       {isPending && <Loader2 className="animate-spin" />}
     </Button>
   );
