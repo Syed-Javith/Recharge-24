@@ -17,7 +17,10 @@ import {
   FormMessage,
 } from "./ui/Form";
 import { useRouter } from "next/navigation";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
+import { CSRBaseUrl } from "@/lib/utils";
+import { toast } from "sonner";
+import { NextResponse } from "next/server";
 
 interface LoginFormProps {}
 
@@ -35,6 +38,7 @@ const LoginForm: FC<LoginFormProps> = ({}) => {
 
   const loginForm = useForm<z.infer<typeof loginFormSchema>>({
     resolver: zodResolver(loginFormSchema),
+    defaultValues: { email: "", password: "" },
   });
 
   const { mutate: loginUser, isPending } = useMutation({
@@ -46,14 +50,19 @@ const LoginForm: FC<LoginFormProps> = ({}) => {
       console.log("This is payload\n", payload);
 
       const res = await axios.post(
-        "http://localhost:8000/authenticate/login/",
+        CSRBaseUrl + "authenticate/login/",
         payload,
         { withCredentials: true }
       );
       return res;
     },
     onError: (err) => {
-      console.log("This is the error: \n", err);
+      console.log("This is the error", err);
+      if (err instanceof AxiosError) {
+        toast(err.response?.data.detail);
+      } else {
+        toast("Some error occurred. Please try again later.");
+      }
     },
     onSuccess: (res) => {
       console.log(res);
@@ -76,7 +85,11 @@ const LoginForm: FC<LoginFormProps> = ({}) => {
               <FormItem>
                 <FormLabel>Email</FormLabel>
                 <FormControl>
-                  <Input placeholder="user@example.com" {...field} />
+                  <Input
+                    type="email"
+                    placeholder="user@example.com"
+                    {...field}
+                  />
                 </FormControl>
                 <FormDescription>Ensure your email is verified</FormDescription>
                 <FormMessage />
@@ -90,7 +103,7 @@ const LoginForm: FC<LoginFormProps> = ({}) => {
               <FormItem>
                 <FormLabel>Password</FormLabel>
                 <FormControl>
-                  <Input placeholder="password" {...field} />
+                  <Input type="password" placeholder="password" {...field} />
                 </FormControl>
                 <FormDescription>Check the caps lock</FormDescription>
                 <FormMessage />

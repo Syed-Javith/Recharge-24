@@ -1,6 +1,7 @@
 import { JWTPayload, jwtVerify } from "jose";
 import { getAccessJwtSecretKey } from "./utils";
 import { cookies } from "next/headers";
+import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
 
 export interface UserJwtPayload extends JWTPayload {
   iat: number;
@@ -10,22 +11,34 @@ export interface UserJwtPayload extends JWTPayload {
   id: string;
 }
 
-export const getAuthSession = async () => {
+export const getCookie = () => {
+  const cookie = cookies().get("token");
+  return cookie;
+};
+
+export const getAuthSessionHelper = async (cookie?: RequestCookie) => {
   try {
-    const cookie = cookies().get("token");
     if (cookie) {
       const session_data = await verifyAuth(cookie?.value);
       if (session_data) {
         // console.log(session_data);
         return session_data;
       }
-      return "";
+      return null;
     }
-    return "";
+    return null;
   } catch (err) {
     console.log(err);
-    return "";
+    return null;
   }
+};
+
+export const getAuthSession = () => {
+  return getAuthSessionHelper(getCookie());
+};
+
+export const getParsedCookies = () => {
+  return cookies().toString();
 };
 
 export const verifyAuth = async (token: string) => {

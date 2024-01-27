@@ -13,6 +13,7 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { Avatar, AvatarFallback } from "./ui/Avatar";
+import { CSRBaseUrl, inDevEnvironment } from "@/lib/utils";
 
 interface UserAccountNavProps {
   user: UserJwtPayload;
@@ -20,10 +21,9 @@ interface UserAccountNavProps {
 
 const UserAccountNav: FC<UserAccountNavProps> = ({ user }) => {
   const { id, first_name, last_name } = user;
-
   const router = useRouter();
   const logoutHandler = async () => {
-    await axios("http://localhost:8000/authenticate/logout/", {
+    await axios(CSRBaseUrl + "authenticate/logout/", {
       withCredentials: true,
       method: "post",
     });
@@ -31,6 +31,7 @@ const UserAccountNav: FC<UserAccountNavProps> = ({ user }) => {
     toast("Success", {
       description: "You were logged out successfully.",
     });
+    console.log("inDevEnv", inDevEnvironment);
     router.push("/login");
     router.refresh();
   };
