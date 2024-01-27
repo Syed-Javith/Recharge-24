@@ -1,11 +1,16 @@
-import { FC } from 'react'
+import ResendVerificationForm from "@/components/forms/ResendVerificationwordForm";
+import { FC } from "react";
 
-interface pageProps {
-  
-}
+interface pageProps {}
 
 const page: FC<pageProps> = ({}) => {
-  return <div>resend verification email page</div>
-}
+  return (
+    <div className="flex justify-center">
+      <div className="max-w-[550px] my-4">
+        <ResendVerificationForm />
+      </div>
+    </div>
+  );
+};
 
-export default page
+export default page;
