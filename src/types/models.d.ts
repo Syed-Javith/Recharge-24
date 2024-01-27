@@ -72,3 +72,9 @@ type UserProfileSchema = {
   proshow_registrations: { proshow: ProShow }[];
   event_registrations: EventSchema[];
 };
+
+export type CategoryEvents = {
+  id: number;
+  category_name: string;
+  events: EventSchema[];
+};

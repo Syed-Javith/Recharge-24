@@ -1,9 +1,35 @@
-const page = async ({}) => {
-  return (
-    <div>
-        Event Listing for Category
-    </div>
-  );
+import {
+  Card,
+  CardTitle,
+  CardContent,
+  CardDescription,
+  CardHeader,
+} from "@/components/ui/Card";
+import { CategoryEvents } from "@/types/models";
+import Link from "next/link";
+// import { useRouter } from 'next/router'
+
+const page = async ({ params }: { params: { categoryId: string } }) => {
+const res = await fetch("http://127.0.0.1:8000/event/category/" + params.categoryId + "/events/");
+// c/res.json().then((data) => {console.log(data)});;
+// console.log(resp);
+const categoryEvents: CategoryEvents[] = await res.json();
+
+return (
+  <div>
+  <h1>Events</h1>
+  <div>
+      {categoryEvents[0].events.map((event) => (
+      <Link href={"/event/" + params.categoryId + "/" + event.id}>
+      <Card className="max-w-xl" key={event.id}>
+          <CardHeader><img src={event.image} alt="" /></CardHeader>
+          <CardTitle>{event.name}</CardTitle>
+      </Card>
+      </Link>
+      ))}
+  </div>
+  </div>
+);
 };
 
 export default page;
