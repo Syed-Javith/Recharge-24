@@ -9,6 +9,32 @@ export type EventSchema = {
   is_registered: boolean; // Is registered
 };
 
+export type EventDetailSchema = {
+  id: number;
+  incharges: string;
+  registration_count: number;
+  is_registered: string; 
+  event_registration: array; 
+  name: string;
+  short_description: string | null;
+  description:	string | null;
+  image: string;
+  contact_mail: string;
+  prize:	string | null;
+  time_of_event:	string | null;
+  duration: number;
+  venue:	string | null;
+  name_of_hosting_club:	string | null
+  rules:	string;
+  team_event:	boolean;
+  team_min: number;
+  team_max:	number;
+  pay:	number;
+  max_reg:	number;
+  day:	number;
+  category:	number;
+}
+
 export type Category = {
   id: number; // ID
   category_name: string; // Category name
@@ -45,4 +71,10 @@ type UserProfileSchema = {
   qr_code?: string | undefined;
   proshow_registrations: { proshow: ProShow }[];
   event_registrations: EventSchema[];
+};
+
+export type CategoryEvents = {
+  id: number;
+  category_name: string;
+  events: EventSchema[];
 };

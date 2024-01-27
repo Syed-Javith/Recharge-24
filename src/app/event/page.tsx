@@ -3,23 +3,25 @@ import {
   CardTitle,
   CardContent,
   CardDescription,
+  CardHeader,
 } from "@/components/ui/Card";
-import { SSRBaseUrl } from "@/lib/utils";
-import { EventSchema } from "@/types/models";
+import { Category } from "@/types/models";
+import Link from "next/link";
 
 const page = async ({}) => {
-  const res = await fetch(SSRBaseUrl + "event/events/");
-  const events: EventSchema[] = await res.json();
+  const res = await fetch("http://127.0.0.1:8000/event/category/");
+  const categories: Category[] = await res.json();
   return (
     <div>
       <h1>Events</h1>
       <div>
-        {events.map((event) => (
-          <Card className="max-w-xl" key={event.name}>
-            <CardTitle>{event.name}</CardTitle>
-            <CardContent>{event.short_description}</CardContent>
-            <CardDescription>{event.description}</CardDescription>
+        {categories.map((category) => (
+          <Link href={"/event/" + category.id} key={category.id}>
+          <Card className="max-w-xl">
+            <CardHeader><img src={category.image} alt="" /></CardHeader>
+            <CardTitle>{category.category_name}</CardTitle>
           </Card>
+          </Link>
         ))}
       </div>
     </div>
