@@ -11,8 +11,7 @@ import Link from "next/link";
 
 const page = async ({ params }: { params: { categoryId: string } }) => {
 const res = await fetch("http://127.0.0.1:8000/event/category/" + params.categoryId + "/events/");
-// c/res.json().then((data) => {console.log(data)});;
-// console.log(resp);
+
 const categoryEvents: CategoryEvents[] = await res.json();
 
 return (
@@ -20,7 +19,7 @@ return (
   <h1>Events</h1>
   <div>
       {categoryEvents[0].events.map((event) => (
-      <Link href={"/event/" + params.categoryId + "/" + event.id}>
+      <Link href={"/event/" + params.categoryId + "/" + event.id} key={event.id}>
       <Card className="max-w-xl" key={event.id}>
           <CardHeader><img src={event.image} alt="" /></CardHeader>
           <CardTitle>{event.name}</CardTitle>

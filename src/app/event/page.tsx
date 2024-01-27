@@ -16,8 +16,8 @@ const page = async ({}) => {
       <h1>Events</h1>
       <div>
         {categories.map((category) => (
-          <Link href={"/event/" + category.id}>
-          <Card className="max-w-xl" key={category.id}>
+          <Link href={"/event/" + category.id} key={category.id}>
+          <Card className="max-w-xl">
             <CardHeader><img src={category.image} alt="" /></CardHeader>
             <CardTitle>{category.category_name}</CardTitle>
           </Card>
