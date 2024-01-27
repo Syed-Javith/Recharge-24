@@ -17,9 +17,9 @@ const page = async ({}) => {
   const res = await fetch(SSRBaseUrl + "event/category/");
   const categories: Category[] = await res.json();
   return (
-    <div className="flex justify-center">
-      <h1 style={{fontSize: '72px'}}>EVENTS</h1>
-      <div className="grid grid-cols-3 gap-12 content-center">
+    <div className="flex flex-col justify-center ">
+      <h1 style={{fontSize: '72px', margin: "auto"}}>EVENTS</h1>
+      <div className="grid grid-cols-3 gap-12 content-center m-auto">
         {categories.map((category) => (
           <Link href={"/event/" + category.id} key={category.id}>
           <Card
