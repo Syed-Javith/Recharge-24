@@ -10,7 +10,6 @@ const page: FC<pageProps> = async ({}) => {
     <div className="flex justify-center">
       <div className="max-w-[400px]">
         <LoginForm />
-        <Link href={'/forgot-password'}>Forgot Password</Link>
       </div>
     </div>
   );
