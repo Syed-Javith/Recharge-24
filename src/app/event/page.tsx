@@ -1,26 +1,33 @@
-import {
-  Card,
-  CardTitle,
-  CardContent,
-  CardDescription,
-  CardHeader,
-} from "@/components/ui/Card";
+// import {
+//   Card,
+//   CardTitle,
+//   CardContent,
+//   CardDescription,
+//   CardHeader,
+// } from "@/components/ui/Card";
 import { Category } from "@/types/models";
+import  Card  from "@/components/events/CategoryCard";
 import Link from "next/link";
+import { SSRBaseUrl } from "@/lib/utils";
+// import { useRouter } from "next/router";
 
 const page = async ({}) => {
-  const res = await fetch("http://127.0.0.1:8000/event/category/");
+  // const router = useRouter();
+  // router.reload();
+  const res = await fetch(SSRBaseUrl + "event/category/");
   const categories: Category[] = await res.json();
   return (
-    <div>
-      <h1>Events</h1>
-      <div>
+    <div className="flex justify-center">
+      <h1 style={{fontSize: '72px'}}>EVENTS</h1>
+      <div className="grid grid-cols-3 gap-12 content-center">
         {categories.map((category) => (
           <Link href={"/event/" + category.id} key={category.id}>
-          <Card className="max-w-xl">
-            <CardHeader><img src={category.image} alt="" /></CardHeader>
-            <CardTitle>{category.category_name}</CardTitle>
-          </Card>
+          <Card
+            image={category?.image}
+            title={category.category_name}
+            events_count={category.events_count}
+          />
+            
           </Link>
         ))}
       </div>
