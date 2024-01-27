@@ -17,7 +17,7 @@ const categoryEvents: CategoryEvents[] = await res.json();
 
 return (
   <div className="flex flex-col justify-center">
-  <div>
+  <div className="grid grid-cols-1">
       {categoryEvents[0].events.map((event) => (
       <Link href={"/event/" + params.categoryId + "/" + event.id} key={event.id}>
       <Card className="max-w-xl" key={event.id}>
