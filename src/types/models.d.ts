@@ -39,6 +39,7 @@ export type Category = {
   id: number; // ID
   category_name: string; // Category name
   image?: string; // Image
+  events_count: string; // Number of events
 };
 
 type ProShow = {
@@ -71,4 +72,10 @@ type UserProfileSchema = {
   qr_code?: string | undefined;
   proshow_registrations: { proshow: ProShow }[];
   event_registrations: EventSchema[];
+};
+
+export type CategoryEvents = {
+  id: number;
+  category_name: string;
+  events: EventSchema[];
 };
