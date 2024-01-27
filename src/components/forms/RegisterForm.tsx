@@ -263,20 +263,13 @@ const RegisterForm: FC<RegisterFormProps> = ({}) => {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value={"1"}>I UG</SelectItem>
-                    <SelectItem value={"2"}>II UG</SelectItem>
-                    <SelectItem value={"3"}>III UG</SelectItem>
-                    <SelectItem value={"4"}>IV UG</SelectItem>
-                    <SelectItem value={"5"}>I PG</SelectItem>
-                    <SelectItem value={"6"}>II PG</SelectItem>
-                    <SelectItem value={"7"}>I MBA</SelectItem>
-                    <SelectItem value={"8"}>II MBA</SelectItem>
-                    <SelectItem value={"11"}>
-                      11<sup>th</sup>
-                    </SelectItem>
-                    <SelectItem value={"12"}>
-                      12<sup>th</sup>
-                    </SelectItem>
+                  <SelectItem value={"1"}>I</SelectItem>
+                  <SelectItem value={"2"}>II</SelectItem>
+                  <SelectItem value={"3"}>III</SelectItem>
+                  <SelectItem value={"4"}>IV</SelectItem>
+                  <SelectItem value={"5"}>V</SelectItem>
+                  <SelectItem value={"11"}> 11<sup>th</sup> </SelectItem>
+                  <SelectItem value={"12"}> 12<sup>th</sup> </SelectItem>
                   </SelectContent>
                 </Select>
                 <FormDescription>Enter your academic year</FormDescription>
