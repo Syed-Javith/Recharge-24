@@ -81,7 +81,7 @@ const EventDetails: FC<EventDetailsProps> = ({event,session}:EventDetailsProps) 
         <div className="max-w-[1300px] m-auto md:p-4 p-2">
             <div className="grid grid-cols-12 gap-6 justify-between md:p-6 p-4 mt-4 border-b-2 border-white"> 
                 <div className="flex gap-6 md:col-span-6 lg:col-span-8 col-span-12">
-                    <img src={event.image} alt="" width={250} className="flex-1 lg:block hidden object-cover border-[1.5px] rounded-xl"/>
+                    <img src={event.image} alt="Event Image" width={250} className="max-w-[340px] flex-1 lg:block hidden object-cover border-[1.5px] rounded-xl"/>
                     <div>
                         <h1 className="text-3xl mb-1">{event.name.toUpperCase()}</h1>
                         <div className="flex space-x-3 mb-4">
@@ -119,6 +119,7 @@ const EventDetails: FC<EventDetailsProps> = ({event,session}:EventDetailsProps) 
                         : (event.registration_count <= event.max_reg ? (event.team_event ? (session ? 
                         <div>
                             <Button variant="outline" className="border-2 border-white text-md bg-black mt-6 mr-4" onClick={registerTeam} asChild><span className="cursor-pointer">Create Team</span></Button>
+                            <Button variant="outline" className="border-2 border-white text-md bg-black mt-6 mr-4" onClick={registerTeam} asChild>Create Team</Button>
                             <JoinTeam joinTeam={joinTeam} /> 
                         </div> : 
                         <LoginDialog textContent={["Create Team","Join Team"]}/>) : 
