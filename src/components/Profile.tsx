@@ -36,8 +36,8 @@ const Profile: FC<ProfileProps> = async ({}) => {
           <div className="font-bold">Registered Proshows</div>
           {profile.event_registrations.length > 0 ? (
             profile.event_registrations.map((event_registration) => (
-              <p key={proshow_registration.proshow.id}>
-                {JSON.stringify(proshow_registration.name)}
+              <p key={event_registration.id}>
+                {JSON.stringify(event_registration.name)}
               </p>
             ))
           ) : (
