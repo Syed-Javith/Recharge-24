@@ -1,19 +1,10 @@
-// import {
-//   Card,
-//   CardTitle,
-//   CardContent,
-//   CardDescription,
-//   CardHeader,
-// } from "@/components/ui/Card";
 import { Category } from "@/types/models";
 import  Card  from "@/components/events/CategoryCard";
 import Link from "next/link";
 import { SSRBaseUrl } from "@/lib/utils";
-// import { useRouter } from "next/router";
+
 
 const page = async ({}) => {
-  // const router = useRouter();
-  // router.reload();
   const res = await fetch(SSRBaseUrl + "event/category/");
   const categories: Category[] = await res.json();
   return (
