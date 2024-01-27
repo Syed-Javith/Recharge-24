@@ -1,7 +1,7 @@
 interface CardProps {
     image: string | undefined;
     title: string;
-    events_count: string;
+    events_count: string | undefined;
   }
   
 function Card({ image, title, events_count }: CardProps) {
