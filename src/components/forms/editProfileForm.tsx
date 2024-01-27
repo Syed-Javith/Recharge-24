@@ -62,6 +62,7 @@ const EditProfileForm = ( {profile, setProfile} : EditProfileProps) => {
     const { mutate: editProfile, isPending } = useMutation({
         mutationFn: async (data: editProfilePayload) => {
             const payload: editProfilePayload = { ...data };
+           
             console.log("This is payload\n", payload);
             try {
                 const res = await axios.put(

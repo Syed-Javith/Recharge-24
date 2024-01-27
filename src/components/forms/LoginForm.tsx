@@ -21,6 +21,7 @@ import axios, { AxiosError } from "axios";
 import { CSRBaseUrl } from "@/lib/utils";
 import { toast } from "sonner";
 import { NextResponse } from "next/server";
+import Link from "next/link";
 
 interface LoginFormProps {}
 
@@ -71,50 +72,56 @@ const LoginForm: FC<LoginFormProps> = ({}) => {
     },
   });
   return (
-    <div>
-      <Form {...loginForm}>
+    <div className="flex flex-col">
+      <Form {...loginForm} >
         <form
           onSubmit={loginForm.handleSubmit((e) => {
             loginUser(e);
-          })}
+          })} 
+          className="flex flex-col"
         >
-          <FormField
-            control={loginForm.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Email</FormLabel>
-                <FormControl>
-                  <Input
-                    type="email"
-                    placeholder="user@example.com"
-                    {...field}
-                  />
-                </FormControl>
-                <FormDescription>Ensure your email is verified</FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={loginForm.control}
-            name="password"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Password</FormLabel>
-                <FormControl>
-                  <Input type="password" placeholder="password" {...field} />
-                </FormControl>
-                <FormDescription>Check the caps lock</FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <Button disabled={isPending} type="submit">
+          <div className="my-3">
+            <FormField
+              control={loginForm.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Email</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="email"
+                      placeholder="user@example.com"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormDescription>Ensure your email is verified</FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+              />
+          </div>
+          <div className="my-3">
+            <FormField
+              control={loginForm.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Password</FormLabel>
+                  <FormControl>
+                    <Input type="password" placeholder="password" {...field} />
+                  </FormControl>
+                  <FormDescription>Check the caps lock</FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+              />
+          </div>
+          <Button disabled={isPending} type="submit" className="mx-auto mt-4 mb-2 w-3/6">
             Login{isPending && <Loader2 className="animate-spin ml-2" />}
           </Button>
         </form>
       </Form>
+        <Link href={'/forgot-password'} className="mx-auto text-gray-400 underline">Forgot Password</Link>
     </div>
   );
 };
