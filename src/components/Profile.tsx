@@ -3,12 +3,12 @@ import { UserProfileSchema } from "@/types/models";
 import { FC, useEffect, useState } from "react";
 import { Card, CardContent, CardDescription, CardTitle } from "./ui/Card";
 import { CSRBaseUrl } from "@/lib/utils";
-import EditProfileForm from "./forms/editProfileForm";
 import { useMutation } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";
 import { toast } from "sonner";
 import { AlertCircle, Atom, Brain, CalendarHeart, Loader2, Phone, School } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/Avatar";
+import EditProfileForm from "./forms/EditProfileForm";
 
 interface ProfileProps {}
 
