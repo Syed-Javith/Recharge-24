@@ -47,7 +47,7 @@ const MembersDialog = ({event,user,deleteMember}:MembersDialogProps) => {
                         }
                     )=>(
                         <div key={member.id}>
-                            <TeamMember member={member} currentUser={user} leader={event.event_registration[0].user} deleteMember={deleteMember}/>
+                            {member.email!=user && <TeamMember member={member} currentUser={user} leader={event.event_registration[0].user} deleteMember={deleteMember}/>}
                         </div>
                     ))}
                 </div>
