@@ -1,3 +1,4 @@
+"use client"
 import {
     Dialog,
     DialogContent,
@@ -5,24 +6,47 @@ import {
     DialogHeader,
     DialogTitle,
     DialogTrigger,
-    DialogClose,
     DialogFooter
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/Input"
 import { Label } from "@/components/ui/Label"
 import { Button } from "../ui/Button"
 import { useState } from "react"
+import { CSRBaseUrl } from "@/lib/utils"
+import axios from "axios"
+import { useRouter } from "next/navigation"
+import { Loader2 } from "lucide-react"
+import { useMutation } from "@tanstack/react-query"
+import { toast } from "sonner"
 
-interface JoinTeamProps{
-    joinTeam: Function
-}
-
-const JoinTeam = ({joinTeam}:JoinTeamProps) => {
+const JoinTeam = () => {
 
     const [teamCode,setTeamCode] = useState<string>("")
+    const [open, setOpen] = useState<boolean>(false)
+    
+    const router = useRouter()
+
+    const { mutate: joinTeam, isPending } = useMutation({
+        mutationFn: async () => {           
+            const res = await axios.post(CSRBaseUrl + "event/team/",{"team_code":teamCode},{ withCredentials: true })
+            router.refresh()
+            setOpen(false)
+            return res
+        },
+        onError: (err: any) => {
+            if (err) {
+                toast.error(err?.response?.data?.detail ?? "Invalid Request")
+            } else {
+                toast.error("Some error occurred. Please try again later.")
+            }
+        },
+        onSuccess: (res: any) => {
+            toast.success("Joined team successfully");
+        },
+    })
 
     return (
-        <Dialog>
+        <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger>
                 <Button variant="outline" className="border-2 border-white text-md bg-black mt-6 mr-4 text-center" asChild>
                     <span className="cursor-pointer">Join Team</span>
@@ -40,11 +64,9 @@ const JoinTeam = ({joinTeam}:JoinTeamProps) => {
                     <Input id="teamcode" value={teamCode} className="col-span-3 border-1" onChange={(event)=>setTeamCode(event.target.value)} />
                 </div>
                 <DialogFooter>
-                    <DialogClose asChild>
-                        <Button type="button" className="block w-full text-center" onClick={()=> joinTeam(teamCode)} asChild>
-                            <span className="cursor-pointer">Join Team</span>
-                        </Button>
-                    </DialogClose>
+                    <Button disabled={isPending} className="w-full text-center" onClick={()=> joinTeam()}>
+                        Join Team{isPending && <Loader2 className="animate-spin ml-2" />}
+                    </Button>
                 </DialogFooter>
             </DialogContent>
         </Dialog> 
