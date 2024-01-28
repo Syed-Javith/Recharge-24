@@ -7,7 +7,7 @@ import axios, { AxiosError } from "axios";
 import { Loader2 } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams , useRouter} from "next/navigation";
-import { FC, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 import { toast } from "sonner";
 interface pageProps {}
 
@@ -16,16 +16,18 @@ interface VerifyPasswordProp{
     token : string
 }
 
-const page: FC<pageProps> = async ({}) => {
+const page: FC<pageProps> =  ({}) => {
 
-const searchParams = useSearchParams();
+  const searchParams = useSearchParams();
   const router = useRouter();
+  const [error, setError] = useState<boolean>(false);
+  const [success, setSuccess] = useState<boolean>(false);
   
 
     const { mutate : verifyPassword , isPending } = useMutation({
         mutationFn : async ({ email , token } : VerifyPasswordProp ) => {
             await axios.get(
-                CSRBaseUrl + "/authenticate/forgot_password" ,
+                CSRBaseUrl + "authenticate/forgot_password" ,
                 {
                     params : {
                         email , token
@@ -34,17 +36,18 @@ const searchParams = useSearchParams();
             )
         },
         onError : (err) => {
+            setError(true)
             console.log("error : " , err);
             
             if(err instanceof AxiosError){
-                toast("Unable to confirm password")
+                toast.error(err.response?.data.detail ?? 'Invalid Request')
             }else{
-                toast("Something went wrong")
+                toast.error("Something went wrong")
             }
         },
         onSuccess : (data) => {
-            console.log("Verified " , data );
-            // router.push("/login");
+            setSuccess(true)
+            toast.success("Password Reset Success");
             router.replace("login");
             router.refresh();
         }
@@ -54,13 +57,18 @@ const searchParams = useSearchParams();
         const email = searchParams.get('email') as string;
         const token = searchParams.get('token') as string;
         verifyPassword({ email , token })
-    })
+    },[])
 
     return (
         <div>
             {
-                isPending ? <Loader2 className="animate-spin ml-2" /> : 
-                <p>verified</p>
+                (isPending) ? <Loader2 className="animate-spin mx-auto mt-[25%]" size={40} /> :
+
+                success ? <> </> :
+
+                !error ? <p className="text-center mt-[25%]">Processing...</p> :
+
+                <p className="mx-auto mt-[25%]">Password Reset Failure. Try again.</p>
             }
         </div>
     )

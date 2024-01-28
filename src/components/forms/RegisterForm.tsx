@@ -174,7 +174,7 @@ const RegisterForm: FC<RegisterFormProps> = ({}) => {
                   <FormControl>
                     <div className="flex flex-row gap-4">
                       <Input
-                        type={ passwordVisible ? "text" : "password" }
+                        type={ confirmPasswordVisible ? "text" : "password" }
                         placeholder="confirm password"
                         {...field}
                         />

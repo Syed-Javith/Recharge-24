@@ -18,7 +18,7 @@ const Verify: FC = () => {
 
   const { mutate: verify, isPending } = useMutation({
     mutationFn: async (details: VerificationDetails) => {
-      const res = await axios.get(CSRBaseUrl + "authenticate/verify/", {
+      const res = await axios.get(CSRBaseUrl + "authenticate/verify", {
         params: details,
         withCredentials: true,
       });
