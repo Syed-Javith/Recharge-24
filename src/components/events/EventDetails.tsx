@@ -1,6 +1,6 @@
 "use client"
 import { EventDetailSchema } from "@/types/models"
-import { FC } from "react"
+import { FC, useState } from "react"
 import { Badge } from "@/components/ui/badge"
 import axios from "axios"
 import { useRouter } from "next/navigation"
@@ -32,34 +32,34 @@ interface EventDetailsProps {
 const EventDetails: FC<EventDetailsProps> = ({event,session}:EventDetailsProps) => {
 
     const router = useRouter()
+    const [loading,setLoading] = useState<boolean>(false)
 
     const register = () => {
+        setLoading(true)
         axios.post( CSRBaseUrl + 'event/event-register/',{"event_id":event?.id},{withCredentials:true})
         .then((res)=>{
-            router.refresh()
+            if(event.pay!=0){
+                window.location.href = res.data?.payment_link
+            }
+            else{
+                router.refresh()
+            }
         })
         .catch((err)=>{
             console.log(err)
+            setLoading(false)
         })
     }
 
     const registerTeam = () => {
+        setLoading(true)
         axios.post( CSRBaseUrl + 'event/event-register/',{"event_id":event?.id},{withCredentials:true})
         .then((res)=>{
             router.refresh()
         })
         .catch((err)=>{
             console.log(err)
-        })
-    }
-
-    const joinTeam = (teamCode:string) => {
-        axios.post(CSRBaseUrl + 'event/team/',{"team_code":teamCode},{withCredentials:true})
-        .then((res)=>{
-            router.refresh()
-        })
-        .catch((err)=>{
-            console.log(err)
+            setLoading(false)
         })
     }
 
@@ -86,7 +86,7 @@ const EventDetails: FC<EventDetailsProps> = ({event,session}:EventDetailsProps) 
                         <h1 className="text-3xl mb-1">{event.name.toUpperCase()}</h1>
                         <div className="flex space-x-3 mb-4">
                             {event.team_event ? <Badge variant="default" className="team mt-2 ">Team Event</Badge> : <Badge variant="default" className="team mt-2 ">Individual Event</Badge>}
-                            {event.is_registered && <Badge variant="default" className="team mt-2 ">Registered</Badge>}
+                            {event.is_registered && event.team_event && <Badge variant="default" className="team mt-2 ">Registered</Badge>}
                         </div>
 
                         {event.pay==0 ? 
@@ -94,6 +94,12 @@ const EventDetails: FC<EventDetailsProps> = ({event,session}:EventDetailsProps) 
                             <div className="text-yellow-300 font-semibold text-xl">Amount: Rs. {event.pay}</div>}
         
                         {event.prize && <div className="text-blue-300 font-semibold text-xl py-1">Prize Amount: Rs. {event.prize}</div>}
+
+                        {event.is_registered && !event.team_event && 
+                            <Button variant="outline" className="border-2 border-green-300 text-md bg-black mt-6 mr-4 text-center text-green-300" disabled={true}>
+                                <span className="cursor-pointer">Registered</span>
+                            </Button>
+                        }
 
                         {(event.is_registered && event.team_event && event.event_registration[0]?.team[0]?.members.length>0) && session ?
                             <MembersDialog event={event} user={session.id} deleteMember={deleteMember}/>:<></>
@@ -118,13 +124,12 @@ const EventDetails: FC<EventDetailsProps> = ({event,session}:EventDetailsProps) 
 
                         : (event.registration_count <= event.max_reg ? (event.team_event ? (session ? 
                         <div>
-                            <Button variant="outline" className="border-2 border-white text-md bg-black mt-6 mr-4" onClick={registerTeam} asChild><span className="cursor-pointer">Create Team</span></Button>
-                            <Button variant="outline" className="border-2 border-white text-md bg-black mt-6 mr-4" onClick={registerTeam} asChild>Create Team</Button>
-                            <JoinTeam joinTeam={joinTeam} /> 
+                            <Button variant="outline" className="border-2 border-white text-md bg-black mt-6 mr-4" onClick={registerTeam} disabled={loading}><span className="cursor-pointer">Create Team</span></Button>
+                            <JoinTeam />
                         </div> : 
                         <LoginDialog textContent={["Create Team","Join Team"]}/>) : 
 
-                        (session ? <Button variant="outline" className="border-2 border-white text-md bg-black mt-6 block" onClick={register} asChild>
+                        (session ? <Button variant="outline" className="border-2 border-white text-md bg-black mt-6" onClick={register} disabled={loading}>
                             <span className="cursor-pointer">Register Now</span>
                         </Button> :  <LoginDialog textContent={["Register Now"]}/>)) : 
 
