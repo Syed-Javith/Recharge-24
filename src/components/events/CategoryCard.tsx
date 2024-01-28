@@ -5,7 +5,6 @@ interface CardProps {
   }
   
 function Card({ image, title, events_count }: CardProps) {
-    // document?.getElementById("card-bg")?.setAttribute("style", "--image-url: url(" + image + ")");
     return (
         <div
         className="relative grid h-[34rem] md:w-full w-auto flex-col items-end justify-center overflow-hidden rounded-xl bg-white bg-clip-border text-center text-gray-700 m-12">

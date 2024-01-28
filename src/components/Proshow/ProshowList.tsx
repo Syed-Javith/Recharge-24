@@ -9,21 +9,8 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/Card";
-import {
-  AlertDialog,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog"
-
 import BuyProShowButton from "./BuyProShowButton";
-
 import { getAuthSession } from "@/lib/auth";
-import Link from "next/link";
-import { Button } from "../ui/Button";
 import DialogBox from "../DialogBox";
 
 interface ProshowListProps {

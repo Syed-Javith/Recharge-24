@@ -1,8 +1,7 @@
 "use client";
-
 import { useMutation } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";
-import { redirect, useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import React, { FC, useEffect } from "react";
 import { toast } from "sonner";
 import { CSRBaseUrl } from "@/lib/utils";
