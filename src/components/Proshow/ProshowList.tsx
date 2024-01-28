@@ -8,7 +8,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "./ui/Card";
+} from "../ui/Card";
 import BuyProShowButton from "./BuyProShowButton";
 
 import { getAuthSession } from "@/lib/auth";

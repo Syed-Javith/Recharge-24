@@ -1,4 +1,4 @@
-import ProshowList from "@/components/ProshowList";
+import ProshowList from "@/components/Proshow/ProshowList";
 import { FC } from "react";
 
 interface pageProps {}

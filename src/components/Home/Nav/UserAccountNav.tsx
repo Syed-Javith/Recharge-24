@@ -6,13 +6,13 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
-} from "./ui/DropdownMenu";
+} from "../../ui/DropdownMenu";
 import Link from "next/link";
 import { UserJwtPayload } from "@/lib/auth";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import { Avatar, AvatarFallback } from "./ui/Avatar";
+import { Avatar, AvatarFallback } from "../../ui/Avatar";
 import { CSRBaseUrl, inDevEnvironment } from "@/lib/utils";
 
 interface UserAccountNavProps {
@@ -42,7 +42,7 @@ const UserAccountNav: FC<UserAccountNavProps> = ({ user }) => {
           <AvatarFallback>{first_name[0] + last_name[0]}</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="bg-white" align="end">
+      <DropdownMenuContent className="bg-white text-black" align="end">
         <div className="flex items-center justify-start gap-2 p-2">
           <div className="flex flex-col space-y-1 leading-none">
             {first_name && (

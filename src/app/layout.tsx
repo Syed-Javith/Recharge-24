@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/Home/Nav/Navbar";
 import Providers from "@/components/Providers";
 import { Toaster } from "@/components/ui/Sonner";
 import { ThemeProvider } from "@/components/ThemeProvider";
