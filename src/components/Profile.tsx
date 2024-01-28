@@ -8,7 +8,7 @@ import axios, { AxiosError } from "axios";
 import { toast } from "sonner";
 import { AlertCircle, Atom, Brain, CalendarHeart, Loader2, Phone, School } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/Avatar";
-import EditProfileForm from "./forms/EditProfileForm";
+import EditProfileForm from "@/components/forms/editProfileForm";
 
 interface ProfileProps {}
 
