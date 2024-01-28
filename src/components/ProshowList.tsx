@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { SSRBaseUrl } from "@/lib/utils";
 import { ProShow } from "@/types/models";
 import { cookies } from "next/headers";
@@ -9,6 +10,12 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/Card";
+import { 
+  Alert,
+  AlertDescription,
+  AlertTitle 
+} from "@/components/ui/alert"
+
 import BuyProShowButton from "./BuyProShowButton";
 
 import { getAuthSession } from "@/lib/auth";
@@ -19,6 +26,19 @@ interface ProshowListProps {
 
 const ProshowList: FC<ProshowListProps> = async ({}) => {
   const session = await getAuthSession();
+  
+  if(!session){
+    return(
+    <Alert>
+    <div className="h-4 w-4" />
+    <AlertTitle>You have not logged in!! Please login to continue..</AlertTitle>
+    <AlertDescription>
+    You can <Link href='/login' className="text-blue-500">login here</Link>.
+    </AlertDescription>
+  </Alert>
+    )
+  }
+  if(session){
   const is_rec = session?.id.includes("rajalakshmi.edu.in");
   const res = await fetch(SSRBaseUrl + "proshow/proshows/", {
     headers: { Cookie: cookies().toString() },
@@ -74,5 +94,7 @@ const ProshowList: FC<ProshowListProps> = async ({}) => {
     </div>
   );
 };
+}
+
 
 export default ProshowList;
