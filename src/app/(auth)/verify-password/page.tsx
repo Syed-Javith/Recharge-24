@@ -25,7 +25,7 @@ const searchParams = useSearchParams();
     const { mutate : verifyPassword , isPending } = useMutation({
         mutationFn : async ({ email , token } : VerifyPasswordProp ) => {
             await axios.get(
-                CSRBaseUrl + "/authenticate/forgot_password" ,
+                CSRBaseUrl + "authenticate/forgot_password" ,
                 {
                     params : {
                         email , token

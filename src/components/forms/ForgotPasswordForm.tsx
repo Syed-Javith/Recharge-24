@@ -61,7 +61,7 @@ const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({}) => {
 
       console.log("payload \n", payload);
       const res = await axios.post(
-        CSRBaseUrl + "/authenticate/forgot_password/",
+        CSRBaseUrl + "authenticate/forgot_password/",
         payload,
         {
           withCredentials: true,
@@ -80,7 +80,7 @@ const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({}) => {
     },
     onSuccess: (res) => {
       console.log(res);
-      toast.success('Password changed successfully')
+      toast.success('Verification mail has been sent successfully')
       router.push("/");
       router.refresh();
     },
