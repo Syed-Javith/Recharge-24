@@ -80,9 +80,9 @@ const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({}) => {
     },
     onSuccess: (res) => {
       console.log(res);
-      toast.success('Verification mail has been sent successfully')
-      router.push("/");
-      router.refresh();
+      toast.success('Password Reset Link sent to your Registered mail')
+      // router.push("/");
+      // router.refresh();
     },
   });
 
