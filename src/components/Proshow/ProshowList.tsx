@@ -24,6 +24,7 @@ import BuyProShowButton from "./BuyProShowButton";
 import { getAuthSession } from "@/lib/auth";
 import Link from "next/link";
 import { Button } from "../ui/Button";
+import DialogBox from "../DialogBox";
 
 interface ProshowListProps {
   
@@ -32,25 +33,7 @@ interface ProshowListProps {
 const ProshowList: FC<ProshowListProps> = async ({}) => {
   const session = await getAuthSession();
   if(!session){
-    return <AlertDialog open={true}>
-    <AlertDialogTrigger>Open</AlertDialogTrigger>
-    <AlertDialogContent>
-      <AlertDialogHeader>
-        <AlertDialogTitle>UnAuthorised</AlertDialogTitle>
-        <AlertDialogDescription>
-        You Have not logged in, Please Login and come to continue.
-        </AlertDialogDescription>
-      </AlertDialogHeader>
-      <AlertDialogFooter>
-        <Link href={'/login'}>
-        <Button>
-        Login
-        </Button>
-        </Link>
-      </AlertDialogFooter>
-    </AlertDialogContent>
-  </AlertDialog>
-  
+    return  <DialogBox />
   }
   const is_rec = session?.id.includes("rajalakshmi.edu.in");
   const res = await fetch(SSRBaseUrl + "proshow/proshows/", {

@@ -9,6 +9,7 @@ import { toast } from "sonner";
 import { AlertCircle, Atom, Brain, CalendarHeart, Loader2, Phone, School } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/Avatar";
 import EditProfileForm from "./forms/EditProfileForm";
+import DialogBox from "./DialogBox";
 
 interface ProfileProps {}
 
@@ -57,7 +58,7 @@ const Profile: FC<ProfileProps> = ({}) => {
         <Loader2 className="animate-spin mx-auto mt-[25%]" size={40} />
 
     : (profile==undefined) ?
-        <></>
+        <DialogBox />
 
     : (error) ? 
       <div className="flex items-center justify-center mx-auto mt-[25%]">

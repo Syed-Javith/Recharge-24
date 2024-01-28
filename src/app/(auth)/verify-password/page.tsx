@@ -16,62 +16,61 @@ interface VerifyPasswordProp{
     token : string
 }
 
-const page: FC<pageProps> =  ({}) => {
+const Page: FC<pageProps> = ({}) => {
 
-  const searchParams = useSearchParams();
-  const router = useRouter();
-  const [error, setError] = useState<boolean>(false);
-  const [success, setSuccess] = useState<boolean>(false);
+    const searchParams = useSearchParams();
+    const router = useRouter();
+    const [error, setError] = useState<boolean>(false);
+    const [success, setSuccess] = useState<boolean>(false);
   
-
-    const { mutate : verifyPassword , isPending } = useMutation({
-        mutationFn : async ({ email , token } : VerifyPasswordProp ) => {
-            await axios.get(
-                CSRBaseUrl + "authenticate/forgot_password" ,
-                {
-                    params : {
-                        email , token
-                    }
-                }
-            )
-        },
-        onError : (err) => {
-            setError(true)
-            console.log("error : " , err);
-            
-            if(err instanceof AxiosError){
-                toast.error(err.response?.data.detail ?? 'Invalid Request')
-            }else{
-                toast.error("Something went wrong")
+    const { mutate: verifyPassword, isPending } = useMutation({
+      mutationFn: async ({ email, token }: VerifyPasswordProp) => {
+        await axios.get(
+          CSRBaseUrl + "authenticate/forgot_password",
+          {
+            params: {
+              email, token
             }
-        },
-        onSuccess : (data) => {
-            setSuccess(true)
-            toast.success("Password Reset Success");
-            router.replace("login");
-            router.refresh();
+          }
+        )
+      },
+      onError: (err) => {
+        setError(true);
+        console.log("error : ", err);
+  
+        if (err instanceof AxiosError) {
+          toast.error(err.response?.data.detail ?? 'Invalid Request')
+        } else {
+          toast.error("Something went wrong")
         }
-    })
-
-    useEffect(()=>{
-        const email = searchParams.get('email') as string;
-        const token = searchParams.get('token') as string;
-        verifyPassword({ email , token })
-    },[])
-
+      },
+      onSuccess: (data) => {
+        setSuccess(true);
+        toast.success("Password Reset Success");
+        router.replace("login");
+        router.refresh();
+      }
+    });
+  
+    useEffect(() => {
+      const email = searchParams.get('email') as string;
+      const token = searchParams.get('token') as string;
+      verifyPassword({ email, token });
+    }, []);
+  
     return (
-        <div>
-            {
-                (isPending) ? <Loader2 className="animate-spin mx-auto mt-[25%]" size={40} /> :
-
-                success ? <> </> :
-
-                !error ? <p className="text-center mt-[25%]">Processing...</p> :
-
+      <div>
+        {
+          (isPending) ? <Loader2 className="animate-spin mx-auto mt-[25%]" size={40} /> :
+  
+            success ? <> </> :
+  
+              !error ? <p className="text-center mt-[25%]">Processing...</p> :
+  
                 <p className="mx-auto mt-[25%]">Password Reset Failure. Try again.</p>
-            }
-        </div>
+        }
+      </div>
     )
-}
-
-export default page;
+  }
+  
+  export default Page;
