@@ -25,7 +25,7 @@ const ProshowList: FC<ProshowListProps> = async ({}) => {
   });
 
   const proshows: ProShow[] = await res.json();
-  // console.log(proshows);
+  console.log(proshows);
   const apiResponse = {
     days: [1, 2, 3]
   };
@@ -34,7 +34,7 @@ const ProshowList: FC<ProshowListProps> = async ({}) => {
     <div>
       <h1>Show proshows list</h1>
       <div>
-        {proshows.map((proshow) => (
+        {proshows.length > 0 && proshows.map((proshow) => (
           <Card className="max-w-xl" key={proshow.id}>
             <CardTitle>{proshow.name}</CardTitle>
             <CardHeader>{proshow.id}</CardHeader>
@@ -59,13 +59,13 @@ const ProshowList: FC<ProshowListProps> = async ({}) => {
           </Card>
         ))}
         <BuyProShowButton
-          disabled={proshows[0].is_registered && proshows[0].combo && !proshows[0].premium}
+          disabled={proshows[0]?.is_registered && proshows[0].combo && !proshows[0].premium}
           label="standard combo"
           proshowid={-1}
         />
         {!is_rec &&
           <BuyProShowButton
-            disabled={proshows[0].is_registered && proshows[0].combo && proshows[0].premium}
+            disabled={proshows[0]?.is_registered && proshows[0].combo && proshows[0].premium}
             label="premium combo"
             proshowid={-1}
           />
