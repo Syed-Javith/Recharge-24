@@ -55,7 +55,12 @@ const EventDetails: FC<EventDetailsProps> = ({event,session}:EventDetailsProps) 
         setLoading(true)
         axios.post( CSRBaseUrl + 'event/event-register/',{"event_id":event?.id},{withCredentials:true})
         .then((res)=>{
-            router.refresh()
+            if(event.pay!=0){
+                window.location.href = res.data?.payment_link
+            }
+            else{
+                router.refresh()
+            }
         })
         .catch((err)=>{
             console.log(err)
@@ -125,7 +130,7 @@ const EventDetails: FC<EventDetailsProps> = ({event,session}:EventDetailsProps) 
                         : (event.registration_count <= event.max_reg ? (event.team_event ? (session ? 
                         <div>
                             <Button variant="outline" className="border-2 border-white text-md bg-black mt-6 mr-4" onClick={registerTeam} disabled={loading}><span className="cursor-pointer">Create Team</span></Button>
-                            <JoinTeam />
+                            <JoinTeam eventId={event.id}/>
                         </div> : 
                         <LoginDialog textContent={["Create Team","Join Team"]}/>) : 
 
