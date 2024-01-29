@@ -19,7 +19,11 @@ import { Loader2 } from "lucide-react"
 import { useMutation } from "@tanstack/react-query"
 import { toast } from "sonner"
 
-const JoinTeam = () => {
+interface JoinTeamProps{
+    eventId: number
+}
+
+const JoinTeam = ({eventId}:JoinTeamProps) => {
 
     const [teamCode,setTeamCode] = useState<string>("")
     const [open, setOpen] = useState<boolean>(false)
@@ -28,7 +32,7 @@ const JoinTeam = () => {
 
     const { mutate: joinTeam, isPending } = useMutation({
         mutationFn: async () => {           
-            const res = await axios.post(CSRBaseUrl + "event/team/",{"team_code":teamCode},{ withCredentials: true })
+            const res = await axios.post(CSRBaseUrl + "event/team/",{"team_code":teamCode,"event_id":eventId},{ withCredentials: true })
             router.refresh()
             setOpen(false)
             return res
