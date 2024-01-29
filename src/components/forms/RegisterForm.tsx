@@ -298,7 +298,7 @@ const RegisterForm: FC<RegisterFormProps> = ({}) => {
           </div>
         </form>
       </Form>
-      <Link href={'/resend-verification-email'} className="mx-auto text-gray-400 underline">Didn't Receive mail? resend again</Link>
+      <Link href={'/resend-verification-email'} className="mx-auto text-gray-400 underline">Didn&apos;t Receive mail? resend again</Link>
           
       </div>
   );
