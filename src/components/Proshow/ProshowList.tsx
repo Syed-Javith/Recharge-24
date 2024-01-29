@@ -105,8 +105,7 @@ const ProshowList: FC<ProshowListProps> = async ({}) => {
               {!proshow.premium && proshow.combo &&
               <BuyProShowButton
                 disabled={
-                  (proshows[0]?.is_registered && proshows[0].combo) || 
-                  (proshows.some(proshow => (proshow?.is_registered && proshow.premium)))
+                  proshow.is_registered
                 }
                 label="standard combo"
                 proshowid={-1}
@@ -120,8 +119,7 @@ const ProshowList: FC<ProshowListProps> = async ({}) => {
               {!is_rec && proshow.premium && proshow.combo &&
                 <BuyProShowButton
                   disabled={
-                    (proshows[0]?.is_registered && proshows[0].combo && proshows[0].premium) || 
-                    (proshows.some(proshow => (proshow?.is_registered && proshow.premium)))
+                      proshow.is_registered
                   }
                   label="premium combo"
                   proshowid={-1}
