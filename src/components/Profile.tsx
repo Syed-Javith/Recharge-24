@@ -8,7 +8,6 @@ import axios, { AxiosError } from "axios";
 import { toast } from "sonner";
 import {
   AlertCircle,
-  Atom,
   Brain,
   CalendarHeart,
   Loader2,
