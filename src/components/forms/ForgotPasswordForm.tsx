@@ -1,6 +1,6 @@
 "use client"
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FC } from "react";
+import { FC, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import {
@@ -19,16 +19,16 @@ import { CSRBaseUrl } from "@/lib/utils";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/Button";
-import { Loader2 } from "lucide-react";
+import { EyeIcon, Loader2 } from "lucide-react";
 
-interface ForgotPasswordFormProps {}
+interface ForgotPasswordFormProps { }
 
 const passwordRegex = new RegExp("^(?=.*[a-zA-Z]{6,})[a-zA-Z0-9]*$");
 const forgotPasswordSchema = z
   .object({
     email: z.string().email({ message: "Provide valid mail address" }),
-    password: z.string().min(6).max(128).regex(passwordRegex , {
-      message : "Password should contain minimum 6 Alphabets"
+    password: z.string().min(6).max(128).regex(passwordRegex, {
+      message: "Password should contain minimum 6 Alphabets"
     }),
     confirm_password: z.string().min(6).max(128),
   })
@@ -39,7 +39,7 @@ const forgotPasswordSchema = z
 
 type forgotPasswordPayload = z.infer<typeof forgotPasswordSchema>;
 
-const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({}) => {
+const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({ }) => {
 
   const forgotPasswordForm = useForm<z.infer<typeof forgotPasswordSchema>>({
     resolver: zodResolver(forgotPasswordSchema),
@@ -81,11 +81,10 @@ const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({}) => {
     onSuccess: (res) => {
       console.log(res);
       toast.success('Password Reset Link sent to your Registered mail')
-      // router.push("/");
-      // router.refresh();
     },
   });
-
+  const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
+  const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false)
   return (
     <div>
       <Form {...forgotPasswordForm}>
@@ -119,11 +118,14 @@ const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({}) => {
               <FormItem>
                 <FormLabel>Enter New Password</FormLabel>
                 <FormControl>
-                  <Input
-                    type="password"
-                    placeholder="new password"
-                    {...field}
-                  />
+                  <div className="flex flex-row gap-4">
+                    <Input 
+                     type={confirmPasswordVisible ? "text" : "password"}
+                     placeholder="password" 
+                     {...field} 
+                    />
+                    <Button type="button" onClick={() => setPasswordVisible(!passwordVisible)}> <EyeIcon size={20} /> </Button>
+                  </div>
                 </FormControl>
                 <FormDescription>Password must have a minimum length of 6</FormDescription>
                 <FormMessage />
@@ -137,25 +139,28 @@ const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({}) => {
               <FormItem>
                 <FormLabel>Confirm New Password</FormLabel>
                 <FormControl>
-                  <Input
-                    type="password"
-                    placeholder="confirm your password"
-                    {...field}
-                  />
+                  <div className="flex flex-row gap-4">
+                    <Input
+                      type={confirmPasswordVisible ? "text" : "password"}
+                      placeholder="confirm your password"
+                      {...field}
+                    />
+                    <Button type="button" onClick={() => setConfirmPasswordVisible(!confirmPasswordVisible)}> <EyeIcon size={20} /> </Button>
+                  </div>
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
           <Button disabled={isPending} type="submit" className="my-4">
-            
-            {isPending ? 
+
+            {isPending ?
               <>
                 Submiting... <Loader2 className="animate-spin ml-2" />
               </>
               :
               <>
-              Submit
+                Submit
               </>
             }
           </Button>

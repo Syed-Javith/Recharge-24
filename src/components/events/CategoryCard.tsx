@@ -7,7 +7,7 @@ interface CardProps {
 function Card({ image, title, events_count }: CardProps) {
     return (
         <div
-        className="relative grid h-[34rem] md:w-full w-auto flex-col items-end justify-center overflow-hidden rounded-xl bg-white bg-clip-border text-center text-gray-700 m-12">
+        className="relative grid h-[28rem] md:w-full w-auto flex-col items-end justify-center overflow-hidden rounded-xl bg-white bg-clip-border text-center text-gray-700 m-0 mb-8 hover:scale-105">
         <div
             id="card-bg"  
             //@ts-ignore

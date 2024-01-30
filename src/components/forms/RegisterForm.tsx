@@ -62,7 +62,6 @@ const registerFormSchema = z
   });
 
 const RegisterForm: FC<RegisterFormProps> = ({}) => {
-  const router = useRouter();
   const [passwordVisible , setPasswordVisible] = useState(false)
   const [confirmPasswordVisible , setConfirmPasswordVisible] = useState(false)
   const [mailSent, setMailSent] = useState(false)
