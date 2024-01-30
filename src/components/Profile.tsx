@@ -117,7 +117,7 @@ const Profile: FC<ProfileProps> = ({}) => {
         </CardDescription>
 
         <div className="my-5">
-          <div className="font-bold underline">Registered Events</div>
+          <div className="font-bold underline">Registered Proshows</div>
           {profile.proshow_registrations.length > 0 ? (
             profile.proshow_registrations.map((proshow_registration) => (
               <li key={proshow_registration.proshow.id}>
@@ -131,7 +131,7 @@ const Profile: FC<ProfileProps> = ({}) => {
       </CardContent>
       <CardContent>
         <div className="my-5">
-          <div className="font-bold underline">Registered Proshows</div>
+          <div className="font-bold underline">Registered Events</div>
           {profile.event_registrations.length > 0 ? (
             profile.event_registrations.map((event_registration) => (
               <li key={event_registration.id}>{event_registration.name}</li>
