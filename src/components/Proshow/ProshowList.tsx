@@ -81,7 +81,7 @@ const ProshowList: FC<ProshowListProps> = async ({}) => {
                       <BuyProShowButton
                         disabled={proshow.is_registered}
                         label="standard combo"
-                        proshowid={-1}
+                        proshowid={proshow.id}
                       />
                     )}
 
@@ -93,7 +93,7 @@ const ProshowList: FC<ProshowListProps> = async ({}) => {
                       <BuyProShowButton
                         disabled={proshow.is_registered}
                         label="premium combo"
-                        proshowid={-1}
+                        proshowid={proshow.id}
                       />
                     )}
                   </div>
