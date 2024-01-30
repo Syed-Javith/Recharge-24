@@ -117,7 +117,7 @@ const Profile: FC<ProfileProps> = ({}) => {
         </CardDescription>
 
         <div className="my-5">
-          <div className="font-bold underline">Registered Proshows</div>
+          <div className="font-bold underline">Registered Events</div>
           {profile.proshow_registrations.length > 0 ? (
             profile.proshow_registrations.map((proshow_registration) => (
               <li key={proshow_registration.proshow.id}>
