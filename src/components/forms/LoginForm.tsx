@@ -70,7 +70,7 @@ const LoginForm: FC<LoginFormProps> = ({ }) => {
       router.refresh();
     },
   });
-  const [passwordVisible,setPasswordVisible] = useState<boolean>(false);
+  const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
   return (
     <div className="flex flex-col">
       <Form {...loginForm} >
@@ -109,7 +109,11 @@ const LoginForm: FC<LoginFormProps> = ({ }) => {
                   <FormLabel>Password</FormLabel>
                   <FormControl>
                     <div className="flex flex-row gap-4">
-                      <Input type="password" placeholder="password" {...field} />
+                      <Input
+                        type={passwordVisible ? "text" : "password"} 
+                        placeholder="password"
+                        {...field}
+                      />
                       <Button type="button" onClick={() => setPasswordVisible(!passwordVisible)}> <EyeIcon size={20} /> </Button>
                     </div>
                   </FormControl>
