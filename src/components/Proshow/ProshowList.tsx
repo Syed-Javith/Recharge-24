@@ -46,9 +46,6 @@ const ProshowList: FC<ProshowListProps> = async ({}) => {
               />
               <div className="px-6 py-4">
                 <div className="font-bold text-xl mb-2">{proshow.name}</div>
-                <p className="font-thin text-base text-justify leading-6">
-                  {proshow.description?.slice(0, 270) + " ...."}
-                </p>
                 <div className="flex my-4">
                   <div className="space-y-[5px]">
                     {/* 
@@ -66,7 +63,7 @@ const ProshowList: FC<ProshowListProps> = async ({}) => {
                       ===========BUY STANDARD BUTTON===========
                       Applies for only Non-REC
                     */}
-                    {!is_rec && !proshow.premium && !proshow.combo && (
+                    {!is_rec && !proshow.premium && !proshow.combo &&(
                       <BuyProShowButton
                         disabled={proshow.is_registered}
                         label="standard"
