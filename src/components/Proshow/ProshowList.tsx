@@ -12,15 +12,14 @@ import {
 import BuyProShowButton from "./BuyProShowButton";
 import { getAuthSession } from "@/lib/auth";
 import DialogBox from "../DialogBox";
+import { Button } from "../ui/Button";
 
-interface ProshowListProps {
-  
-}
+interface ProshowListProps {}
 
 const ProshowList: FC<ProshowListProps> = async ({}) => {
   const session = await getAuthSession();
-  if(!session){
-    return  <DialogBox />
+  if (!session) {
+    return <DialogBox />;
   }
   const is_rec = session?.id.includes("rajalakshmi.edu.in");
   const res = await fetch(SSRBaseUrl + "proshow/proshows/", {
@@ -30,77 +29,78 @@ const ProshowList: FC<ProshowListProps> = async ({}) => {
   const proshows: ProShow[] = await res.json();
   console.log(proshows);
   const apiResponse = {
-    days: [1, 2, 3]
+    days: [1, 2, 3],
   };
 
   return (
-    <div>
-      <h1>Show proshows list</h1>
-      <div>
-        {proshows.length > 0 && proshows.map((proshow) => (
-          <Card className="max-w-xl" key={proshow.id}>
-            <CardTitle>{proshow.name}</CardTitle>
-            <CardHeader>{proshow.id}</CardHeader>
-            <CardDescription>{proshow.description}</CardDescription>
-            <CardDescription>Price: {proshow.amount}</CardDescription>
-            <CardFooter>
-              <div className="space-y-[5px]"> 
-
-              {/* 
-                ===========BUY PREMIUM BUTTON===========
-                Applies for both REC and Non-REC
-              */}
-              {proshow.premium && !proshow.combo &&
-              <BuyProShowButton
-                disabled={proshow.is_registered}
-                label="premium"
-                proshowid={proshow.id}
-              /> 
-              }
-              {/* 
-                ===========BUY STANDARD BUTTON===========
-                Applies for only Non-REC
-              */}
-              {!is_rec && !proshow.premium && !proshow.combo &&
-                <BuyProShowButton
-                  disabled={proshow.is_registered}
-                  label="standard"
-                  proshowid={proshow.id}
-                />
-              }
-              {/* 
-                ===========BUY STANDARD COMBO BUTTON===========
-                Applies for both REC and Non-REC
-              */}
-              {!proshow.premium && proshow.combo &&
-              <BuyProShowButton
-                disabled={
-                  proshow.is_registered
-                }
-                label="standard combo"
-                proshowid={-1}
+    <div className="md:max-w-[1300px] sm:max-w-[90%] m-auto p-4">
+      <h1 className="text-4xl text-center mt-4 mb-8">Proshows</h1>
+      <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+        {proshows.length > 0 &&
+          proshows.map((proshow) => (
+            <div className="rounded-md border-2 shadow-white h-full">
+              <img
+                className="w-full rounded-t-md object-cover min-h-[240px] max-h-[240px]"
+                src={proshow.image}
+                alt="Event Image"
               />
-              } 
-      
-              {/* 
-                ===========BUY PREMIUM COMBO BUTTON===========
-                Applies for only Non-REC
-              */}
-              {!is_rec && proshow.premium && proshow.combo &&
-                <BuyProShowButton
-                  disabled={
-                      proshow.is_registered
-                  }
-                  label="premium combo"
-                  proshowid={-1}
-                />
-              }
+              <div className="px-6 py-4">
+                <div className="font-bold text-xl mb-2">{proshow.name}</div>
+                <p className="font-thin text-base text-justify leading-6">
+                  {proshow.description?.slice(0, 270) + " ...."}
+                </p>
+                <div className="flex my-4">
+                  <div className="space-y-[5px]">
+                    {/* 
+                      ===========BUY PREMIUM BUTTON===========
+                      Applies for both REC and Non-REC
+                    */}
+                    {proshow.premium && !proshow.combo && (
+                      <BuyProShowButton
+                        disabled={proshow.is_registered}
+                        label="premium"
+                        proshowid={proshow.id}
+                      />
+                    )}
+                    {/* 
+                      ===========BUY STANDARD BUTTON===========
+                      Applies for only Non-REC
+                    */}
+                    {!is_rec && !proshow.premium && !proshow.combo && (
+                      <BuyProShowButton
+                        disabled={proshow.is_registered}
+                        label="standard"
+                        proshowid={proshow.id}
+                      />
+                    )}
+                    {/* 
+                      ===========BUY STANDARD COMBO BUTTON===========
+                      Applies for both REC and Non-REC
+                    */}
+                    {!proshow.premium && proshow.combo && (
+                      <BuyProShowButton
+                        disabled={proshow.is_registered}
+                        label="standard combo"
+                        proshowid={-1}
+                      />
+                    )}
+
+                    {/* 
+                      ===========BUY PREMIUM COMBO BUTTON===========
+                      Applies for only Non-REC
+                    */}
+                    {!is_rec && proshow.premium && proshow.combo && (
+                      <BuyProShowButton
+                        disabled={proshow.is_registered}
+                        label="premium combo"
+                        proshowid={-1}
+                      />
+                    )}
+                  </div>
+                </div>
               </div>
-            </CardFooter>
-          </Card>
-        ))}
-
-
+            </div>
+          ))}
       </div>
     </div>
   );
