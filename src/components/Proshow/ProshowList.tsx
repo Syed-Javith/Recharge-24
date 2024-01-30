@@ -36,9 +36,9 @@ const ProshowList: FC<ProshowListProps> = async ({}) => {
   return (
     <div>
       <h1>Show proshows list</h1>
-      <div>
+      <div className="flex gap-4 items-center">
         {proshows.length > 0 && proshows.map((proshow) => (
-          <Card className="max-w-xl" key={proshow.id}>
+          <Card className="max-w-xl " key={proshow.id}>
             <CardTitle>{proshow.name}</CardTitle>
             <CardHeader>{proshow.id}</CardHeader>
             <CardDescription>{proshow.description}</CardDescription>
