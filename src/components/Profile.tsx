@@ -67,14 +67,14 @@ const Profile: FC<ProfileProps> = ({}) => {
     </div>
   ) : (
     <Card
-      className="max-w-xl mx-auto my-10 rounded-3xl p-5"
+      className="max-w-xl md:mx-auto md:my-10 rounded-3xl p-5 m-8"
       key={profile.email}
       style={{
         boxShadow:
           "0 0 0.4rem #fff, 0 0 0.4rem #fff, 0 0 4rem rgb(0, 191, 255), 0 0 1rem rgb(0, 191, 255), 0 0 1.6rem rgb(0, 191, 255)",
       }}
     >
-      <div className="flex items-center">
+      <div className="flex md:flex-row flex-col items-center">
         <Avatar className="w-20 h-20">
           <AvatarImage src={profile.profile_photo ?? ""} />
           <AvatarFallback>CN</AvatarFallback>
