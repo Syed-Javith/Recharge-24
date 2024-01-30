@@ -112,6 +112,8 @@ const Profile: FC<ProfileProps> = ({}) => {
         <CardDescription className="max-w-[150px] mx-auto my-3">
           <Image
             src={profile.qr_code ? profile.qr_code : ""}
+            height={200}
+            width={200}
             alt="Unique user id"
             className="rounded-xl"
           />

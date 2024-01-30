@@ -43,6 +43,8 @@ const ProshowList: FC<ProshowListProps> = async ({}) => {
               <Image
                 className="w-full rounded-t-md object-cover min-h-[240px] max-h-[240px]"
                 src={proshow.image}
+                height={100}
+                width={100}
                 alt="Event Image"
               />
               <div className="px-6 py-4">
