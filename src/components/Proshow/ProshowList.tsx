@@ -38,7 +38,7 @@ const ProshowList: FC<ProshowListProps> = async ({}) => {
       <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
         {proshows.length > 0 &&
           proshows.map((proshow) => (
-            <div className="rounded-md border-2 shadow-white h-full">
+            <div className="rounded-md border-2 shadow-white h-full" key={proshow.id}>
               <img
                 className="w-full rounded-t-md object-cover min-h-[240px] max-h-[240px]"
                 src={proshow.image}
