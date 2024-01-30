@@ -128,7 +128,6 @@ const EventDetails: FC<EventDetailsProps> = ({
 
               {event.pay == 0 ? (
                 <div className="text-yellow-300 font-semibold text-xl">
-                  {" "}
                   Free Event
                 </div>
               ) : (
