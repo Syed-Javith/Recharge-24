@@ -23,6 +23,7 @@ import { CSRBaseUrl } from "@/lib/utils";
 import MembersDialog from "./MembersDialog";
 import LoginDialog from "./LoginDialog";
 import JoinTeam from "./JoinTeam";
+import Image from "next/image";
 
 interface EventDetailsProps {
   event: EventDetailSchema;
@@ -101,7 +102,7 @@ const EventDetails: FC<EventDetailsProps> = ({
       <div className="max-w-[1300px] m-auto md:p-4 p-2">
         <div className="grid grid-cols-12 gap-6 justify-between md:p-6 p-4 mt-4 border-b-2 border-white">
           <div className="flex gap-6 md:col-span-6 lg:col-span-8 col-span-12">
-            <img
+            <Image
               src={event.image}
               alt="Event Image"
               width={250}

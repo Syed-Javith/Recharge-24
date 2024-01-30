@@ -13,6 +13,7 @@ import BuyProShowButton from "./BuyProShowButton";
 import { getAuthSession } from "@/lib/auth";
 import DialogBox from "../DialogBox";
 import { Button } from "../ui/Button";
+import Image from "next/image";
 
 interface ProshowListProps {}
 
@@ -39,7 +40,7 @@ const ProshowList: FC<ProshowListProps> = async ({}) => {
         {proshows.length > 0 &&
           proshows.map((proshow) => (
             <div className="rounded-md border-2 shadow-white h-full" key={proshow.id}>
-              <img
+              <Image
                 className="w-full rounded-t-md object-cover min-h-[240px] max-h-[240px]"
                 src={proshow.image}
                 alt="Event Image"
