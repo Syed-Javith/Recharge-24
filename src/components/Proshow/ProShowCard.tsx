@@ -2,7 +2,7 @@
 import { ProShow } from "@/types/models";
 import BuyProShowButton from "./BuyProShowButton";
 import { Card, CardDescription, CardFooter, CardTitle } from "../ui/Card";
-import { Dispatch, FC, SetStateAction, useState } from "react";
+import { Dispatch, FC, SetStateAction, useEffect, useState } from "react";
 
 interface ProshowcardProps {
   proshow: ProShow;
@@ -23,6 +23,25 @@ const ProShowCard: FC<ProshowcardProps> = ({
 }) => {
   const [isButton, setIsButton] = useState<string>("visible");
   if (proshow.premium && proshow.is_registered) { setStdDenied(true); setStdDeniedDate(proshow.day); };
+  const [isBuyDisable , setIsBuyDisable] = useState<boolean>((proshow.day === stdDeniedDate) && stdDenied)
+  console.log("show");
+  console.log((proshow.day === stdDeniedDate));
+  console.log(stdDenied);
+  // setIsBuyDisable((proshow.day === stdDeniedDate) && stdDenied)
+  console.log(isBuyDisable);
+  console.log((proshow.day === stdDeniedDate) && stdDenied);
+  console.log(!((proshow.day === stdDeniedDate) && stdDenied));
+  
+  console.log("end");
+
+  useEffect(()=>{
+  if (proshow.premium && proshow.is_registered) { setStdDenied(true); setStdDeniedDate(proshow.day); };
+    setIsBuyDisable((proshow.day === stdDeniedDate) && stdDenied)
+    console.log("here " + isBuyDisable);
+    
+  },[])
+
+  
   return (
     <div className="h-200 w-72 p-3" onMouseLeave={() => setIsButton("visible")} onMouseOver={() => setIsButton("hidden")}>
       <Card className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
@@ -48,9 +67,10 @@ const ProShowCard: FC<ProshowcardProps> = ({
       ===========BUY PREMIUM BUTTON===========
       Applies for both REC and Non-REC
     */}
+
                 {proshow.premium && !proshow.combo && (
                   <BuyProShowButton
-                    disabled={proshow.is_registered}
+                    disabled={proshow.is_registered || (stdDenied && (stdDeniedDate == proshow.day))}
                     label="premium"
                     proshowid={proshow.id}
                   />
@@ -65,7 +85,7 @@ const ProShowCard: FC<ProshowcardProps> = ({
                       (proshow.is_registered &&
                         !proshow.premium &&
                         !proshow.combo) ||
-                      (stdDenied && stdDeniedDate == proshow.day)
+                      (stdDenied && (stdDeniedDate == proshow.day))
                     }
                     label="standard"
                     proshowid={proshow.id}
@@ -81,7 +101,7 @@ const ProShowCard: FC<ProshowcardProps> = ({
                       (proshow.is_registered &&
                         !proshow.premium &&
                         proshow.combo) ||
-                      (stdDenied && stdDeniedDate == proshow.day)
+                      stdDenied 
                     }
                     label="standard combo"
                     proshowid={-1}
