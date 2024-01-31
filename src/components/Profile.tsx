@@ -22,6 +22,7 @@ import DialogBox from "./DialogBox";
 import KnowMore from "./KnowMore";
 import Link from "next/link";
 import { Button } from "./ui/Button";
+import DesktopProfile from "./DesktopProfile";
 
 interface ProfileProps {}
 
@@ -61,6 +62,8 @@ const Profile: FC<ProfileProps> = ({}) => {
     profileDetails();
   }, []);
 
+  
+
   return isPending ? (
     <Loader2 className="animate-spin mx-auto mt-[25%]" size={40} />
   ) : profile == undefined ? (
@@ -72,6 +75,7 @@ const Profile: FC<ProfileProps> = ({}) => {
     </div>
   ) : (
     <div className="profile-container">
+      <DesktopProfile profile={profile}/>
       <div className="profile-card">
         {profile.profile_photo ? (
           <img className="rounded-full" src={profile.profile_photo} alt="" />
