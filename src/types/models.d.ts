@@ -9,9 +9,15 @@ export type EventSchema = {
   is_registered: boolean; // Is registered
 };
 
+export type EventInchargeSchema = {
+  id: number;
+  name: string;
+  contact_number: number
+}
+
 export type EventDetailSchema = {
   id: number;
-  incharges: string;
+  incharges: EventInchargeSchema[];
   registration_count: number;
   is_registered: string; 
   event_registration: array; 
@@ -33,6 +39,7 @@ export type EventDetailSchema = {
   max_reg:	number;
   day:	number;
   category:	number;
+  registration_end_date: string
 }
 
 export type Category = {
@@ -63,14 +70,14 @@ type ProShow = {
 type UserProfileSchema = {
   email: string;
   first_name: string;
-  last_name?: string;
+  last_name: string;
   profile_photo: string | null;
   mobile_number?: string | null;
   department?: string | null;
   college?: string | null;
   year?: number | null;
   qr_code?: string | undefined;
-  proshow_registrations: { proshow: ProShow }[];
+  proshow_registrations: ProShow[];
   event_registrations: EventSchema[];
 };
 
