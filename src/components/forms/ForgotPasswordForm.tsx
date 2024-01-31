@@ -19,7 +19,8 @@ import { CSRBaseUrl } from "@/lib/utils";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/Button";
-import { EyeIcon, Loader2 } from "lucide-react";
+import { EyeIcon, EyeOffIcon, Loader2 } from "lucide-react";
+import Link from "next/link";
 
 interface ForgotPasswordFormProps { }
 
@@ -86,7 +87,7 @@ const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({ }) => {
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false)
   return (
-    <div>
+    <div className="glass p-4 mt-4">
       <Form {...forgotPasswordForm}>
         <form
           onSubmit={forgotPasswordForm.handleSubmit((e) => {
@@ -119,12 +120,19 @@ const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({ }) => {
                 <FormLabel>Enter New Password</FormLabel>
                 <FormControl>
                   <div className="flex flex-row gap-4">
-                    <Input 
-                     type={confirmPasswordVisible ? "text" : "password"}
-                     placeholder="password" 
-                     {...field} 
+                    <Input
+                      type={passwordVisible ? "text" : "password"}
+                      placeholder="password"
+                      autoComplete="off"
+                      {...field}
                     />
-                    <Button type="button" onClick={() => setPasswordVisible(!passwordVisible)}> <EyeIcon size={20} /> </Button>
+                    <Button
+                      type="button"
+                      onClick={() => setPasswordVisible(!passwordVisible)}>
+                      {
+                        passwordVisible ? <EyeIcon size={20} /> : <EyeOffIcon size={20} />
+                      }
+                    </Button>
                   </div>
                 </FormControl>
                 <FormDescription>Password must have a minimum length of 6</FormDescription>
@@ -143,9 +151,16 @@ const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({ }) => {
                     <Input
                       type={confirmPasswordVisible ? "text" : "password"}
                       placeholder="confirm your password"
+                      autoComplete="off"
                       {...field}
                     />
-                    <Button type="button" onClick={() => setConfirmPasswordVisible(!confirmPasswordVisible)}> <EyeIcon size={20} /> </Button>
+                    <Button
+                      type="button"
+                      onClick={() => setConfirmPasswordVisible(!confirmPasswordVisible)}>
+                      {
+                        confirmPasswordVisible ? <EyeIcon size={20} /> : <EyeOffIcon size={20} />
+                      }
+                    </Button>
                   </div>
                 </FormControl>
                 <FormMessage />
@@ -166,6 +181,11 @@ const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({ }) => {
           </Button>
         </form>
       </Form>
+      <Link
+        href={'/login'}
+        className="mx-auto text-gray-400 underline">
+        Back to Login
+      </Link>
     </div>
   );
 };

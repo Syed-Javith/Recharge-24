@@ -21,9 +21,9 @@ const DialogBox = () => {
         <AlertDialog open={open} onOpenChange={setOpen} >
             <AlertDialogContent>
                 <AlertDialogHeader>
-                    <AlertDialogTitle>UnAuthorised</AlertDialogTitle>
+                    <AlertDialogTitle>UnAuthorised - No User found</AlertDialogTitle>
                     <AlertDialogDescription>
-                        You Have not logged in, Please Login and come to continue.
+                        You Have not logged in, Please Login and visit back to buy tickets.
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>

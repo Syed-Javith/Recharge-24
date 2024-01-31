@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Input } from "../ui/Input";
 import { Button } from "../ui/Button";
-import { EyeIcon, Loader2 } from "lucide-react";
+import { EyeIcon, EyeOffIcon, Loader2 } from "lucide-react";
 import {
   Form,
   FormControl,
@@ -72,7 +72,7 @@ const LoginForm: FC<LoginFormProps> = ({ }) => {
   });
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col p-4 mt-4 glass">
       <Form {...loginForm} >
         <form
           onSubmit={loginForm.handleSubmit((e) => {
@@ -110,11 +110,18 @@ const LoginForm: FC<LoginFormProps> = ({ }) => {
                   <FormControl>
                     <div className="flex flex-row gap-4">
                       <Input
-                        type={passwordVisible ? "text" : "password"} 
+                        type={passwordVisible ? "text" : "password"}
                         placeholder="password"
+                        autoComplete="off"
                         {...field}
                       />
-                      <Button type="button" onClick={() => setPasswordVisible(!passwordVisible)}> <EyeIcon size={20} /> </Button>
+                      <Button
+                        type="button"
+                        onClick={() => setPasswordVisible(!passwordVisible)}>
+                        {
+                          passwordVisible ? <EyeIcon size={20} /> : <EyeOffIcon size={20} />
+                        }
+                      </Button>
                     </div>
                   </FormControl>
                   <FormDescription>Check the caps lock</FormDescription>
@@ -128,7 +135,11 @@ const LoginForm: FC<LoginFormProps> = ({ }) => {
           </Button>
         </form>
       </Form>
-      <Link href={'/forgot-password'} className="mx-auto text-gray-400 underline">Forgot Password</Link>
+      <Link
+        href={'/forgot-password'}
+        className="mx-auto text-gray-400 underline">
+        Forgot Password
+      </Link>
     </div>
   );
 };

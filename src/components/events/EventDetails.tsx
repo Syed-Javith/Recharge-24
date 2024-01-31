@@ -96,6 +96,8 @@ const EventDetails: FC<EventDetailsProps> = ({
       });
   };
 
+  console.log(event);
+  
   if (event) {
     return (
       <div className="max-w-[1300px] m-auto md:p-4 p-2">

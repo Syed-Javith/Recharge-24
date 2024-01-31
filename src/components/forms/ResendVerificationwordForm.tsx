@@ -53,7 +53,7 @@ const ResendVerificationForm : FC<pageProps> = ({}) => {
     }
   })
 
-  return <div>
+  return <div className='glass p-4 mt-4'>
     <Form {...resendPasswordForm}>
         <form
           onSubmit={resendPasswordForm.handleSubmit((e) => {
@@ -85,7 +85,7 @@ const ResendVerificationForm : FC<pageProps> = ({}) => {
               </FormItem>
             )}
           />
-          <Button type='submit' disabled={isPending}>
+          <Button type='submit' disabled={isPending} className='mt-2'>
                 Resend Mail {
                     isPending && <Loader2 className="animate-spin ml-2" />
                 }
