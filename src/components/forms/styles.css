@@ -11,16 +11,24 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
+
+.wrapping {
+  min-height: 90vh;
+}
+
 .cont {
-  margin: 4rem auto;
+  /* margin: 4rem auto; */
+  /* min-height: 100vh; */
+  margin: 4rem 0;
   position: relative;
 }
 
 form {
-  background: rgba(255, 255, 255, 0.3);
-  padding: 3em;
+  background: rgba(255, 255, 255, 0.25);
+  min-width: 30vw;
+  padding: 2.5rem;
   height: auto;
-  border-radius: 20px;
+  border-radius: 8px;
   border-left: 1px solid rgba(255, 255, 255, 0.3);
   border-top: 1px solid rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(10px);
@@ -55,7 +63,7 @@ form {
   input {
     background: transparent;
     padding: 1em;
-    margin-bottom: 2em;
+    /* margin-bottom: 2em; */
     border: none;
     border-left: 1px solid rgba(255, 255, 255, 0.3);
     border-top: 1px solid rgba(255, 255, 255, 0.3);
@@ -84,7 +92,7 @@ form {
 .drop {
   background: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(10px);
-  border-radius: 10px;
+  border-radius: 6px;
   border-left: 1px solid rgba(255, 255, 255, 0.3);
   border-top: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 10px 10px 60px -8px rgba(0, 0, 0, 0.2);
@@ -104,7 +112,7 @@ form {
   height: 80px;
   width: 80px;
   bottom: -30px;
-  right: -10px;
+  left: -10px;
 }
 
 .drop-3 {
@@ -116,10 +124,10 @@ form {
 }
 
 .drop-4 {
-  height: 120px;
-  width: 120px;
-  top: -60px;
-  right: -60px;
+  height: 80px;
+  width: 80px;
+  top: -40px;
+  right: -40px;
 }
 
 .drop-5 {
@@ -139,8 +147,14 @@ button:focus {
 }
 
 @media (width < 500px) {
+
+  .cont {
+    margin: 3rem 0;
+  }
+
   form {
-    padding: 5px;
+    padding: 2.5rem 1rem;
+    max-width: 80vw;
   }
 
   .drop-1 {
@@ -165,9 +179,38 @@ button:focus {
     z-index: -1;
   }
   .drop-2 {
-    height: 35px;
-    width: 35px;
-    bottom: -15px;
-    right: -5px;
+    height: 60px;
+    width: 60px;
+    bottom: -25px;
+    left: -10px;
   }
+}
+
+.eye-btn {
+  background-color: black;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.eye-btn:hover {
+  background-color: rgba(0, 0, 0, 0.85);
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.input-desc {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.submit-btn {
+  background: rgba(255, 255, 255, 0.9);
+  color: black;
+  font-size: 1rem;
+  border-radius: 100px;
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 10px 10px 60px -8px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+}
+
+.submit-btn:hover {
+  background: white;
 }
