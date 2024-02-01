@@ -137,3 +137,37 @@ textarea:focus,
 button:focus {
   outline: none;
 }
+
+@media (width < 500px) {
+  form {
+    padding: 5px;
+  }
+
+  .drop-1 {
+    height: 40px;
+    width: 40px;
+    top: -10px;
+    left: -10px;
+  }
+
+  .drop-4 {
+    height: 50px;
+    width: 50px;
+    top: -25px;
+    right: -25px;
+  }
+
+  .drop-3 {
+    height: 50px;
+    width: 50px;
+    bottom: 120px;
+    right: -25px;
+    z-index: -1;
+  }
+  .drop-2 {
+    height: 35px;
+    width: 35px;
+    bottom: -15px;
+    right: -5px;
+  }
+}

@@ -157,7 +157,7 @@ const RegisterForm: FC<RegisterFormProps> = ({ }) => {
                         <Input type={passwordVisible ? "text" : "password"} placeholder="password" {...field} />
                         <Button type="button" onClick={() => setPasswordVisible(!passwordVisible)}> 
                         {
-                          confirmPasswordVisible ? <EyeIcon size={20} /> : <EyeOff size={20} />
+                          passwordVisible ? <EyeIcon size={20} /> : <EyeOff size={20} />
                         } 
                         </Button>
                       </div>
