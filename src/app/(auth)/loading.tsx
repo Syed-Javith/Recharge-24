@@ -1,6 +1,11 @@
+import Loader from "@/components/loader/Loader"
+
 const loading = () => {
     return (
-        <h1>Loading...</h1>
+        <div>
+            <Loader />
+        </div>
     )
 }
+
 export default loading

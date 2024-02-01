@@ -21,7 +21,8 @@ import axios, { AxiosError } from "axios";
 import { CSRBaseUrl } from "@/lib/utils";
 import { toast } from "sonner";
 import Link from "next/link";
-
+import "./styles.css"
+import RandomBox from "./RandomBox";
 interface LoginFormProps { }
 
 type loginFormPayload = z.infer<typeof loginFormSchema>;
@@ -72,7 +73,7 @@ const LoginForm: FC<LoginFormProps> = ({ }) => {
   });
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
   return (
-    <div className="flex flex-col p-4 mt-4 glass">
+    <div className="flex flex-col cont">
       <Form {...loginForm} >
         <form
           onSubmit={loginForm.handleSubmit((e) => {
@@ -133,13 +134,10 @@ const LoginForm: FC<LoginFormProps> = ({ }) => {
           <Button disabled={isPending} type="submit" className="mx-auto mt-4 mb-2 w-3/6">
             Login{isPending && <Loader2 className="animate-spin ml-2" />}
           </Button>
+      <Link href={'/forgot-password'} className="mx-auto text-gray-400 underline text-[1rem]">Forgot Password</Link>
         </form>
       </Form>
-      <Link
-        href={'/forgot-password'}
-        className="mx-auto text-gray-400 underline">
-        Forgot Password
-      </Link>
+      <RandomBox />
     </div>
   );
 };

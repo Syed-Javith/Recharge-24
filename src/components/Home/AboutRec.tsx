@@ -1,5 +1,5 @@
 import React from 'react'
-import Image from "next/image";
+
 
 const AboutRec = () => {
   return (
@@ -12,7 +12,7 @@ const AboutRec = () => {
         className="basis-1/2 flex justify-center items-center video-border max-w-fit max-h-fit my-8"
       >
 
-        <Image
+        <img
           className="shadow-2xl  rounded-xl  z-10 neon-border "
           id="about-img"
           src="/logo1.webp"

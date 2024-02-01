@@ -1,12 +1,12 @@
 import React from 'react'
-import Image from "next/image";
+
 import Link from "next/link";
 const Landing = () => {
   return (
     <div className='bg-slate-950	h-screen w-screen'>
 
 <div className="flex flex-col items-center gap-y-8 px-[0.5rem] text-center">
-          <Image
+          <img
             src="/logo1.webp"
             className="h-40 lg:scale-125 md:h-64 w-auto"
             alt=""

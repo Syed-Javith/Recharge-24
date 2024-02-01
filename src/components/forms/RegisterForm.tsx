@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Input } from "../ui/Input";
 import { Button } from "../ui/Button";
-import { EyeIcon, EyeOffIcon, Loader2, MailCheck } from "lucide-react";
+import { EyeIcon, EyeOff, EyeOffIcon, Loader2, MailCheck } from "lucide-react";
 import {
   Form,
   FormControl,
@@ -27,7 +27,8 @@ import axios, { AxiosError } from "axios";
 import { CSRBaseUrl } from "@/lib/utils";
 import { toast, Toaster } from "sonner";
 import Link from "next/link";
-
+import "./styles.css"
+import RandomBox from "./RandomBox";
 interface RegisterFormProps { }
 
 type registerFormPayload = z.infer<typeof registerFormSchema>;
@@ -117,7 +118,7 @@ const RegisterForm: FC<RegisterFormProps> = ({ }) => {
         <h3> Verification mail has been sent to your registered mail.</h3>
       </div>
       :
-      <div className="flex flex-col p-4 mt-4 glass">
+      <div className="flex flex-col cont">
         <Form {...registerForm}>
           <form
             onSubmit={registerForm.handleSubmit((e) => {
@@ -153,19 +154,11 @@ const RegisterForm: FC<RegisterFormProps> = ({ }) => {
                     <FormLabel>Password</FormLabel>
                     <FormControl>
                       <div className="flex flex-row gap-4">
-                        <Input
-                          type={passwordVisible ? "text" : "password"}
-                          placeholder="Create your own Password"
-                          autoComplete="off"
-                          {...field}
-                        />
-                        <Button
-                          type="button"
-                          onClick={() => setPasswordVisible(!passwordVisible)}
-                        >
-                          {
-                            passwordVisible ? <EyeIcon size={20} /> : <EyeOffIcon size={20} />
-                          }
+                        <Input type={passwordVisible ? "text" : "password"} placeholder="password" {...field} />
+                        <Button type="button" onClick={() => setPasswordVisible(!passwordVisible)}> 
+                        {
+                          confirmPasswordVisible ? <EyeIcon size={20} /> : <EyeOff size={20} />
+                        } 
                         </Button>
                       </div>
                     </FormControl>
@@ -184,17 +177,13 @@ const RegisterForm: FC<RegisterFormProps> = ({ }) => {
                       <div className="flex flex-row gap-4">
                         <Input
                           type={confirmPasswordVisible ? "text" : "password"}
-                          placeholder="Confirm your Password"
-                          autoComplete="off"
+                          placeholder="confirm password"
                           {...field}
                         />
-                        <Button
-                          type="button"
-                          onClick={() => setConfirmPasswordVisible(!confirmPasswordVisible)}
-                        >
-                          {
-                            confirmPasswordVisible ? <EyeIcon size={20} /> : <EyeOffIcon size={20} />
-                          }
+                        <Button type="button" onClick={() => setConfirmPasswordVisible(!confirmPasswordVisible)}> 
+                        {
+                          confirmPasswordVisible ? <EyeIcon size={20} /> : <EyeOff size={20} />
+                        } 
                         </Button>
                       </div>
                     </FormControl>
@@ -254,7 +243,7 @@ const RegisterForm: FC<RegisterFormProps> = ({ }) => {
                 name="college"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>College / School</FormLabel>
+                    <FormLabel>College</FormLabel>
                     <FormControl>
                       <Input type="text" placeholder="College" {...field} />
                     </FormControl>
@@ -285,24 +274,28 @@ const RegisterForm: FC<RegisterFormProps> = ({ }) => {
                         <SelectItem value={"3"}>III</SelectItem>
                         <SelectItem value={"4"}>IV</SelectItem>
                         <SelectItem value={"5"}>V</SelectItem>
-                        <SelectItem value={"11"}>11<sup>th</sup> </SelectItem>
-                        <SelectItem value={"12"}>12<sup>th</sup> </SelectItem>
+                        <SelectItem value={"11"}> 11<sup>th</sup> </SelectItem>
+                        <SelectItem value={"12"}> 12<sup>th</sup> </SelectItem>
                       </SelectContent>
                     </Select>
-                    <FormDescription>Enter your year of study</FormDescription>
+                    <FormDescription>Enter your academic year</FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
               />
             </div>
-            <div className="flex items-center justify-center">
+            <div className="flex flex-col items-center justify-center">
               <Button disabled={isPending} type="submit" className='w-3/5 mt-7 mb-3'>
                 Register{isPending && <Loader2 className="animate-spin ml-2" />}
               </Button>
+              <Link 
+              href={'/resend-verification-email'} 
+              className="mx-auto text-[1rem] text-gray-400 underline">Didn&apos;t Receive mail? resend again
+              </Link>
             </div>
           </form>
         </Form>
-        <Link href={'/resend-verification-email'} className="mx-auto text-gray-400 underline">Didn&apos;t Receive mail? resend again</Link>
+        <RandomBox />
 
       </div>
   );

@@ -18,6 +18,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "./ui/Avatar";
 import EditProfileForm from "@/components/forms/EditProfileForm";
 import DialogBox from "./DialogBox";
 
+
 interface ProfileProps {}
 
 const Profile: FC<ProfileProps> = ({}) => {
@@ -110,7 +111,9 @@ const Profile: FC<ProfileProps> = ({}) => {
       <CardContent>
         <CardDescription className="max-w-[150px] mx-auto my-3">
           <img
-            src={profile.qr_code && profile.qr_code}
+            src={profile.qr_code ? profile.qr_code : ""}
+            height={200}
+            width={200}
             alt="Unique user id"
             className="rounded-xl"
           />

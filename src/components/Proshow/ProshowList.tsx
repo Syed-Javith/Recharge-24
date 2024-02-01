@@ -4,7 +4,8 @@ import { cookies } from "next/headers";
 import { FC } from "react";
 import { getAuthSession } from "@/lib/auth";
 import DialogBox from "../DialogBox";
-import ProShowCard from "./ProShowCard";
+import { Button } from "../ui/Button";
+
 
 interface ProshowListProps { }
 
@@ -28,7 +29,67 @@ const ProshowList: FC<ProshowListProps> = async ({ }) => {
         <div className="flex md:flex-row flex-col gap-12 items-center justify-center">
         {proshows.length > 0 &&
           proshows.map((proshow) => (
-            <ProShowCard proshow={proshow} is_rec={is_rec} />
+            <div className="rounded-md border-2 shadow-white h-full" key={proshow.id}>
+              <img
+                className="w-full rounded-t-md object-cover min-h-[240px] max-h-[240px]"
+                src={proshow.image}
+                height={100}
+                width={100}
+                alt="Event Image"
+              />
+              <div className="px-6 py-4">
+                <div className="font-bold text-xl mb-2">{proshow.name}</div>
+                <div className="flex my-4">
+                  <div className="space-y-[5px]">
+                    {/* 
+                      ===========BUY PREMIUM BUTTON===========
+                      Applies for both REC and Non-REC
+                    */}
+                    {proshow.premium && !proshow.combo && (
+                      <BuyProShowButton
+                        disabled={proshow.is_registered}
+                        label="premium"
+                        proshowid={proshow.id}
+                      />
+                    )}
+                    {/* 
+                      ===========BUY STANDARD BUTTON===========
+                      Applies for only Non-REC
+                    */}
+                    {!is_rec && !proshow.premium && !proshow.combo &&(
+                      <BuyProShowButton
+                        disabled={proshow.is_registered}
+                        label="standard"
+                        proshowid={proshow.id}
+                      />
+                    )}
+                    {/* 
+                      ===========BUY STANDARD COMBO BUTTON===========
+                      Applies for both REC and Non-REC
+                    */}
+                    {!proshow.premium && proshow.combo && (
+                      <BuyProShowButton
+                        disabled={proshow.is_registered}
+                        label="standard combo"
+                        proshowid={proshow.id}
+                      />
+                    )}
+
+                    {/* 
+                      ===========BUY PREMIUM COMBO BUTTON===========
+                      Applies for only Non-REC
+                    */}
+                    {!is_rec && proshow.premium && proshow.combo && (
+                      <BuyProShowButton
+                        disabled={proshow.is_registered}
+                        label="premium combo"
+                        proshowid={proshow.id}
+                      />
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
           ))}
           </div>
       </div>

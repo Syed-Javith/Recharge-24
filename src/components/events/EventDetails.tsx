@@ -24,6 +24,7 @@ import MembersDialog from "./MembersDialog";
 import LoginDialog from "./LoginDialog";
 import JoinTeam from "./JoinTeam";
 
+
 interface EventDetailsProps {
   event: EventDetailSchema;
   session: UserJwtPayload | null;
@@ -107,6 +108,7 @@ const EventDetails: FC<EventDetailsProps> = ({
               src={event.image}
               alt="Event Image"
               width={250}
+              height={250}
               className="max-w-[340px] flex-1 lg:block hidden object-cover border-[1.5px] rounded-xl"
             />
             <div>
