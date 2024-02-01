@@ -63,14 +63,14 @@ type ProShow = {
 type UserProfileSchema = {
   email: string;
   first_name: string;
-  last_name?: string;
+  last_name: string;
   profile_photo: string | null;
   mobile_number?: string | null;
   department?: string | null;
   college?: string | null;
   year?: number | null;
   qr_code?: string | undefined;
-  proshow_registrations: { proshow: ProShow }[];
+  proshow_registrations: ProShow[];
   event_registrations: EventSchema[];
 };
 
