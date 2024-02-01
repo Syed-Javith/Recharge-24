@@ -20,7 +20,7 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/Button";
 import { EyeIcon, Loader2 } from "lucide-react";
-
+import "./styles.css"
 interface ForgotPasswordFormProps { }
 
 const passwordRegex = new RegExp("^(?=.*[a-zA-Z]{6,})[a-zA-Z0-9]*$");
@@ -86,7 +86,7 @@ const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({ }) => {
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false)
   return (
-    <div>
+    <div className="glass">
       <Form {...forgotPasswordForm}>
         <form
           onSubmit={forgotPasswordForm.handleSubmit((e) => {
