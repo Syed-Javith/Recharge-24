@@ -15,7 +15,8 @@ const ProShowGroup : FC<ProshowGroupProps> = ({ proshows, is_rec }) => {
   return (
     proshows?.length > 0 ?
       proshows.map((proshow) => (
-        <ProShowCard 
+        <ProShowCard
+        key={proshow.id} 
         proshow={proshow} 
         is_rec={is_rec} 
         stdDenied={stdDenied} 
