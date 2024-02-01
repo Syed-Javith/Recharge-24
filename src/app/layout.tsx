@@ -8,7 +8,7 @@ import { Toaster } from "@/components/ui/Sonner";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
 export const metadata: Metadata = {
-  title: "Recharge24",
+  title: "Recharge-2k24",
   description: "Presented by REC",
 };
 
@@ -21,7 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased",
+          "min-h-screen bg-[#0c0c2d] font-sans antialiased",
           GeistSans.variable
         )}
       >
@@ -29,7 +29,6 @@ export default function RootLayout({
             attribute="class"
             defaultTheme="dark"
         >
-          <Navbar />
           <Providers>{children}</Providers>
           <Toaster richColors/>
         </ThemeProvider>
