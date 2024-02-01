@@ -11,7 +11,7 @@ import { Button } from '../ui/Button';
 import { Loader2 } from 'lucide-react';
 import { Input } from '../ui/Input';
 import { zodResolver } from '@hookform/resolvers/zod';
-
+import "./styles.css"
 interface pageProps {}
 
 const resendPasswordFormSchema = z.object({
@@ -53,7 +53,7 @@ const ResendVerificationForm : FC<pageProps> = ({}) => {
     }
   })
 
-  return <div>
+  return <div className="glass">
     <Form {...resendPasswordForm}>
         <form
           onSubmit={resendPasswordForm.handleSubmit((e) => {

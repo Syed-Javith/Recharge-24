@@ -29,7 +29,7 @@ import { CSRBaseUrl } from "@/lib/utils";
 import { toast, Toaster } from "sonner";
 import { NextResponse } from "next/server";
 import Link from "next/link";
-
+import "./styles.css"
 interface RegisterFormProps {}
 
 type registerFormPayload = z.infer<typeof registerFormSchema>;
@@ -119,7 +119,7 @@ const RegisterForm: FC<RegisterFormProps> = ({}) => {
         <h3> Verification mail has been sent to your registered mail.</h3>
       </div>
     :
-    <div className="flex flex-col">
+    <div className="flex flex-col glass">
       <Form {...registerForm}>
         <form
           onSubmit={registerForm.handleSubmit((e) => {

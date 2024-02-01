@@ -21,7 +21,7 @@ import axios, { AxiosError } from "axios";
 import { CSRBaseUrl } from "@/lib/utils";
 import { toast } from "sonner";
 import Link from "next/link";
-
+import "./styles.css"
 interface LoginFormProps { }
 
 type loginFormPayload = z.infer<typeof loginFormSchema>;
@@ -72,7 +72,7 @@ const LoginForm: FC<LoginFormProps> = ({ }) => {
   });
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col glass">
       <Form {...loginForm} >
         <form
           onSubmit={loginForm.handleSubmit((e) => {

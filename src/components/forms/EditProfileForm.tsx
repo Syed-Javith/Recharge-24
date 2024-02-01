@@ -20,7 +20,6 @@ import { Form, FormControl , FormField, FormItem, FormLabel, FormMessage } from 
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select"
 import { UserProfileSchema } from "@/types/models"
 import { Edit, Loader2 } from "lucide-react"
-
 const phoneNumberRegex = new RegExp("^([0-9]{10,})$");
 
 
