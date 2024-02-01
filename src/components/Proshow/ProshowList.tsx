@@ -13,6 +13,10 @@ import BuyProShowButton from "./BuyProShowButton";
 import { getAuthSession } from "@/lib/auth";
 import DialogBox from "../DialogBox";
 
+import { useState } from "react";
+import ProShowCard from "./ProShowCard";
+import ProShowGroup from "./ProShowGroup";
+
 interface ProshowListProps {
   
 }
@@ -34,75 +38,14 @@ const ProshowList: FC<ProshowListProps> = async ({}) => {
   };
 
   return (
-    <div>
-      <h1>Show proshows list</h1>
       <div>
-        {proshows.length > 0 && proshows.map((proshow) => (
-          <Card className="max-w-xl" key={proshow.id}>
-            <CardTitle>{proshow.name}</CardTitle>
-            <CardHeader>{proshow.id}</CardHeader>
-            <CardDescription>{proshow.description}</CardDescription>
-            <CardDescription>Price: {proshow.amount}</CardDescription>
-            <CardFooter>
-              <div className="space-y-[5px]"> 
-
-              {/* 
-                ===========BUY PREMIUM BUTTON===========
-                Applies for both REC and Non-REC
-              */}
-              {proshow.premium && !proshow.combo &&
-              <BuyProShowButton
-                disabled={proshow.is_registered}
-                label="premium"
-                proshowid={proshow.id}
-              /> 
-              }
-              {/* 
-                ===========BUY STANDARD BUTTON===========
-                Applies for only Non-REC
-              */}
-              {!is_rec && !proshow.premium && !proshow.combo &&
-                <BuyProShowButton
-                  disabled={proshow.is_registered}
-                  label="standard"
-                  proshowid={proshow.id}
-                />
-              }
-              {/* 
-                ===========BUY STANDARD COMBO BUTTON===========
-                Applies for both REC and Non-REC
-              */}
-              {!proshow.premium && proshow.combo &&
-              <BuyProShowButton
-                disabled={
-                  proshow.is_registered
-                }
-                label="standard combo"
-                proshowid={-1}
-              />
-              } 
-      
-              {/* 
-                ===========BUY PREMIUM COMBO BUTTON===========
-                Applies for only Non-REC
-              */}
-              {!is_rec && proshow.premium && proshow.combo &&
-                <BuyProShowButton
-                  disabled={
-                      proshow.is_registered
-                  }
-                  label="premium combo"
-                  proshowid={-1}
-                />
-              }
-              </div>
-            </CardFooter>
-          </Card>
-        ))}
-
-
+      <h1 className="text-4xl  mt-10 mb-10 font-bold text-white text-center">Proshows list</h1>
+      <div className=" flex flex-wrap items-center justify-center">
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3" > </div>     
+        <ProShowGroup proshows={proshows} is_rec={is_rec} />
       </div>
-    </div>
+      </div>
+    
   );
 };
 
