@@ -21,6 +21,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "../ui/Button";
 import { EyeIcon, Loader2 } from "lucide-react";
 import "./styles.css"
+import RandomBox from "./RandomBox";
 interface ForgotPasswordFormProps { }
 
 const passwordRegex = new RegExp("^(?=.*[a-zA-Z]{6,})[a-zA-Z0-9]*$");
@@ -86,7 +87,7 @@ const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({ }) => {
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false)
   return (
-    <div className="glass">
+    <div className="cont flex flex-col">
       <Form {...forgotPasswordForm}>
         <form
           onSubmit={forgotPasswordForm.handleSubmit((e) => {
@@ -152,7 +153,7 @@ const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({ }) => {
               </FormItem>
             )}
           />
-          <Button disabled={isPending} type="submit" className="my-4">
+          <Button disabled={isPending} type="submit"  className="my-4 ">
 
             {isPending ?
               <>
@@ -165,7 +166,10 @@ const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({ }) => {
             }
           </Button>
         </form>
+
       </Form>
+      <RandomBox />
+
     </div>
   );
 };

@@ -22,6 +22,7 @@ import { CSRBaseUrl } from "@/lib/utils";
 import { toast } from "sonner";
 import Link from "next/link";
 import "./styles.css"
+import RandomBox from "./RandomBox";
 interface LoginFormProps { }
 
 type loginFormPayload = z.infer<typeof loginFormSchema>;
@@ -72,7 +73,7 @@ const LoginForm: FC<LoginFormProps> = ({ }) => {
   });
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
   return (
-    <div className="flex flex-col glass">
+    <div className="flex flex-col cont">
       <Form {...loginForm} >
         <form
           onSubmit={loginForm.handleSubmit((e) => {
@@ -110,7 +111,7 @@ const LoginForm: FC<LoginFormProps> = ({ }) => {
                   <FormControl>
                     <div className="flex flex-row gap-4">
                       <Input
-                        type={passwordVisible ? "text" : "password"} 
+                        type={passwordVisible ? "text" : "password"}
                         placeholder="password"
                         {...field}
                       />
@@ -128,6 +129,7 @@ const LoginForm: FC<LoginFormProps> = ({ }) => {
           </Button>
         </form>
       </Form>
+      <RandomBox />
       <Link href={'/forgot-password'} className="mx-auto text-gray-400 underline">Forgot Password</Link>
     </div>
   );
