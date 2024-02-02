@@ -1,12 +1,12 @@
 "use client";
-import { FC } from "react";
+import { FC, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Input } from "../ui/Input";
 import { Button } from "../ui/Button";
-import { Loader2 } from "lucide-react";
+import { EyeIcon, Loader2 } from "lucide-react";
 import {
   Form,
   FormControl,
@@ -20,10 +20,9 @@ import { useRouter } from "next/navigation";
 import axios, { AxiosError } from "axios";
 import { CSRBaseUrl } from "@/lib/utils";
 import { toast } from "sonner";
-import { NextResponse } from "next/server";
 import Link from "next/link";
 
-interface LoginFormProps {}
+interface LoginFormProps { }
 
 type loginFormPayload = z.infer<typeof loginFormSchema>;
 
@@ -34,7 +33,7 @@ const loginFormSchema = z.object({
     .min(6, { message: "Your password must contain 6 characters" }),
 });
 
-const LoginForm: FC<LoginFormProps> = ({}) => {
+const LoginForm: FC<LoginFormProps> = ({ }) => {
   const router = useRouter();
 
   const loginForm = useForm<z.infer<typeof loginFormSchema>>({
@@ -71,13 +70,14 @@ const LoginForm: FC<LoginFormProps> = ({}) => {
       router.refresh();
     },
   });
+  const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
   return (
     <div className="flex flex-col">
       <Form {...loginForm} >
         <form
           onSubmit={loginForm.handleSubmit((e) => {
             loginUser(e);
-          })} 
+          })}
           className="flex flex-col"
         >
           <div className="my-3">
@@ -98,7 +98,7 @@ const LoginForm: FC<LoginFormProps> = ({}) => {
                   <FormMessage />
                 </FormItem>
               )}
-              />
+            />
           </div>
           <div className="my-3">
             <FormField
@@ -108,20 +108,27 @@ const LoginForm: FC<LoginFormProps> = ({}) => {
                 <FormItem>
                   <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <Input type="password" placeholder="password" {...field} />
+                    <div className="flex flex-row gap-4">
+                      <Input
+                        type={passwordVisible ? "text" : "password"} 
+                        placeholder="password"
+                        {...field}
+                      />
+                      <Button type="button" onClick={() => setPasswordVisible(!passwordVisible)}> <EyeIcon size={20} /> </Button>
+                    </div>
                   </FormControl>
                   <FormDescription>Check the caps lock</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
-              />
+            />
           </div>
           <Button disabled={isPending} type="submit" className="mx-auto mt-4 mb-2 w-3/6">
             Login{isPending && <Loader2 className="animate-spin ml-2" />}
           </Button>
         </form>
       </Form>
-        <Link href={'/forgot-password'} className="mx-auto text-gray-400 underline">Forgot Password</Link>
+      <Link href={'/forgot-password'} className="mx-auto text-gray-400 underline">Forgot Password</Link>
     </div>
   );
 };

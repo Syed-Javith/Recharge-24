@@ -2,15 +2,16 @@ import { Category } from "@/types/models";
 import Card from "@/components/events/CategoryCard";
 import Link from "next/link";
 import { SSRBaseUrl } from "@/lib/utils";
+import axios from "axios";
 
 
 const page = async ({ }) => {
-  const res = await fetch(SSRBaseUrl + "event/category/");
-  const categories: Category[] = await res.json();
+  const {data} = await axios.get(SSRBaseUrl + "event/category/");
+  const categories: Category[] = await data;
   return (
     <div className="flex flex-col justify-center">
       <h1 style={{ fontSize: '72px', margin: "auto" }}>EVENTS</h1>
-      <div className="grid md:grid-cols-3 grid-cols-1 gap-12 content-center md:m-auto m-0">
+      <div className="grid md:flex-row md:items-center md:grid-cols-2 grid-cols-1 gap-12 content-center md:m-4 xl:m-auto m-4">
         {
           categories.map((category) => (
             <Link href={"/event/" + category.id} key={category.id}>

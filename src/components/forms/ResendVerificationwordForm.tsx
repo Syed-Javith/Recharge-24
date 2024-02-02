@@ -14,7 +14,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 
 interface pageProps {}
 
-
 const resendPasswordFormSchema = z.object({
     email : z.string().email({ message: "Your email is not of correct format." }).min(1).max(128)
 })
