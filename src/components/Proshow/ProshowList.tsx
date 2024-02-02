@@ -5,7 +5,8 @@ import { FC } from "react";
 import { getAuthSession } from "@/lib/auth";
 import DialogBox from "../DialogBox";
 import ProShowGroup from "./ProShowGroup";
-
+import {shows} from "./proshowdata"
+import ProShowGroup2 from "./ProshowGroup2";
 
 interface ProshowListProps { }
 
@@ -19,14 +20,14 @@ const ProshowList: FC<ProshowListProps> = async ({ }) => {
     headers: { Cookie: cookies().toString() },
   });
 
-  const proshows: ProShow[] = await res.json();
-  console.log(proshows);
+  // const proshows: ProShow[] = await res.json();
+  // console.log(proshows);
   return (
     <div>
       <h1 className="text-4xl  mt-10 mb-10 font-bold text-white text-center">Proshows list</h1>
       <div className=" flex flex-wrap items-center justify-center">
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3" > </div>
-        <ProShowGroup proshows={proshows} is_rec={is_rec} />
+        <ProShowGroup2 proshows={shows} is_rec={is_rec} />
       </div>
     </div>
 

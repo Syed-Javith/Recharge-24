@@ -5,11 +5,7 @@ interface pageProps {}
 
 const page: FC<pageProps> = ({}) => {
   return (
-    <div className="flex justify-center">
-      <div className="max-w-[550px] my-4">
-        <ResendVerificationForm />
-      </div>
-    </div>
+    <ResendVerificationForm />
   );
 };
 
