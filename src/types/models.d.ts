@@ -9,9 +9,15 @@ export type EventSchema = {
   is_registered: boolean; // Is registered
 };
 
+export type EventInchargeSchema = {
+  id: number;
+  name: string;
+  contact_number: number
+}
+
 export type EventDetailSchema = {
   id: number;
-  incharges: string;
+  incharges: EventInchargeSchema[];
   registration_count: number;
   is_registered: string; 
   event_registration: array; 
@@ -33,6 +39,7 @@ export type EventDetailSchema = {
   max_reg:	number;
   day:	number;
   category:	number;
+  registration_end_date: string
 }
 
 export type Category = {
