@@ -118,7 +118,11 @@ const RegisterForm: FC<RegisterFormProps> = ({ }) => {
         <h3> Verification mail has been sent to your registered mail.</h3>
       </div>
       :
-      <div className="flex flex-col cont">
+      <div className="flex flex-col justify-center items-center wrapping">
+      <div className="cont">
+        <div className="lighter lighter-1"></div>
+        <div className="lighter lighter-2"></div>
+        <div className="lighter lighter-3"></div>
         <Form {...registerForm}>
           <form
             onSubmit={registerForm.handleSubmit((e) => {
@@ -244,10 +248,10 @@ const RegisterForm: FC<RegisterFormProps> = ({ }) => {
                 name="password"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-white">New Password</FormLabel>
+                    <FormLabel className="text-white">Create your new Password</FormLabel>
                     <FormControl>
                       <div className="flex flex-row gap-4">
-                        <Input type={passwordVisible ? "text" : "password"} placeholder="min. 6 alphabets" {...field} />
+                        <Input type={passwordVisible ? "text" : "password"} placeholder="Password Min. 6 alphabets" {...field} />
                         <Button className="eye-btn" type="button" onClick={() => setPasswordVisible(!passwordVisible)}> 
                         {
                           passwordVisible ? <EyeIcon size={20} /> : <EyeOff size={20} />
@@ -297,8 +301,8 @@ const RegisterForm: FC<RegisterFormProps> = ({ }) => {
           </form>
         </Form>
         <RandomBox />
-
       </div>
+    </div>
   );
 };
 

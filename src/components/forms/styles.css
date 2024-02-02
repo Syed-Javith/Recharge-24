@@ -1,24 +1,10 @@
-body {
-  background: linear-gradient(rgb(2, 114, 194), rgb(0, 0, 146), rgb());
-}
-
-.glass {
-  background: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(5.3px);
-  -webkit-backdrop-filter: blur(5.3px);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-
 .wrapping {
   min-height: 90vh;
+  width: 100%;
+  overflow: hidden;
 }
 
 .cont {
-  /* margin: 4rem auto; */
-  /* min-height: 100vh; */
   margin: 4rem 0;
   position: relative;
 }
@@ -60,10 +46,10 @@ form {
     }
   }
 
-  input {
+  /* input {
     background: transparent;
     padding: 1em;
-    /* margin-bottom: 2em; */
+   
     border: none;
     border-left: 1px solid rgba(255, 255, 255, 0.3);
     border-top: 1px solid rgba(255, 255, 255, 0.3);
@@ -75,7 +61,7 @@ form {
     font-weight: 500;
     transition: all 0.2s ease-in-out;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-  }
+  } */
 
   &:hover {
     margin: 4px;
@@ -213,4 +199,31 @@ button:focus {
 
 .submit-btn:hover {
   background: white;
+}
+
+.lighter {
+  position: absolute;
+  width: 168px;
+  height: 289px;
+  filter: blur(88.55px);
+}
+
+.lighter-1 {
+  background: #0B2139;
+  transform: rotate(-63.49deg);
+}
+
+.lighter-2 {
+  right: 0;
+  bottom: -80px;
+  background: #340F3A;
+  transform: rotate(-43.49deg);
+  background: #0C2947;
+}
+
+.lighter-3 {
+  top: -60px;
+  right: 0;
+  background: #0C2947;
+  transform: rotate(-43.49deg);
 }

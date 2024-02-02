@@ -56,6 +56,9 @@ const ResendVerificationForm: FC<pageProps> = ({ }) => {
 
   return <div className="flex flex-col justify-center items-center wrapping">
     <div className="cont">
+      <div className="lighter lighter-1"></div>
+      <div className="lighter lighter-2"></div>
+      <div className="lighter lighter-3"></div>
     <Form {...resendPasswordForm}>
       <form
         onSubmit={resendPasswordForm.handleSubmit((e) => {

@@ -17,6 +17,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/Avatar";
 import EditProfileForm from "@/components/forms/EditProfileForm";
 import DialogBox from "./DialogBox";
+import Loader from "./loader/Loader";
 
 
 interface ProfileProps {}
@@ -58,7 +59,7 @@ const Profile: FC<ProfileProps> = ({}) => {
   }, []);
 
   return isPending ? (
-    <Loader2 className="animate-spin mx-auto mt-[25%]" size={40} />
+    <Loader/>
   ) : profile == undefined ? (
     <DialogBox />
   ) : error ? (

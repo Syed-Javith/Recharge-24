@@ -89,6 +89,9 @@ const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({ }) => {
   return (
     <div className="flex flex-col justify-center items-center wrapping">
       <div className="cont">
+        <div className="lighter lighter-1"></div>
+        <div className="lighter lighter-2"></div>
+        <div className="lighter lighter-3"></div>
       <Form {...forgotPasswordForm}>
         <form
           onSubmit={forgotPasswordForm.handleSubmit((e) => {

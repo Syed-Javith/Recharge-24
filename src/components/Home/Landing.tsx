@@ -3,7 +3,7 @@ import React from 'react'
 import Link from "next/link";
 const Landing = () => {
   return (
-    <div className='bg-slate-950	h-screen w-screen'>
+    <div className='bg-[#101520]	h-screen w-screen'>
 
 <div className="flex flex-col items-center gap-y-8 px-[0.5rem] text-center">
           <img
