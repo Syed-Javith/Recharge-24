@@ -24,6 +24,7 @@ import MembersDialog from "./MembersDialog";
 import LoginDialog from "./LoginDialog";
 import JoinTeam from "./JoinTeam";
 
+
 interface EventDetailsProps {
   event: EventDetailSchema;
   session: UserJwtPayload | null;
@@ -96,6 +97,8 @@ const EventDetails: FC<EventDetailsProps> = ({
       });
   };
 
+  console.log(event);
+  
   if (event) {
     return (
       <div className="max-w-[1300px] m-auto md:p-4 p-2">
@@ -105,6 +108,7 @@ const EventDetails: FC<EventDetailsProps> = ({
               src={event.image}
               alt="Event Image"
               width={250}
+              height={250}
               className="max-w-[340px] flex-1 lg:block hidden object-cover border-[1.5px] rounded-xl"
             />
             <div>
@@ -128,7 +132,6 @@ const EventDetails: FC<EventDetailsProps> = ({
 
               {event.pay == 0 ? (
                 <div className="text-yellow-300 font-semibold text-xl">
-                  {" "}
                   Free Event
                 </div>
               ) : (
@@ -299,6 +302,12 @@ const EventDetails: FC<EventDetailsProps> = ({
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
+          </div>
+          <div>
+            <h1 className="text-2xl mt-4 mb-4">Event Incharges</h1>
+              {event.incharges.length>0 && event.incharges.map(incharge => (
+                <li className="py-2 text-[1.2em]">{incharge.name + " - " + incharge.contact_number}</li>
+              ))}
           </div>
         </div>
       </div>

@@ -1,8 +1,7 @@
 "use client";
-
 import { useMutation } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";
-import { redirect, useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import React, { FC, useEffect } from "react";
 import { toast } from "sonner";
 import { CSRBaseUrl } from "@/lib/utils";
@@ -18,7 +17,7 @@ const Verify: FC = () => {
 
   const { mutate: verify, isPending } = useMutation({
     mutationFn: async (details: VerificationDetails) => {
-      const res = await axios.get(CSRBaseUrl + "authenticate/verify/", {
+      const res = await axios.get(CSRBaseUrl + "authenticate/verify", {
         params: details,
         withCredentials: true,
       });
@@ -34,6 +33,8 @@ const Verify: FC = () => {
     },
     onSuccess: (res: any) => {
       console.log(res);
+      toast.success("Thank you for registering !")
+      toast.success("Explore the events of Recharge")
       router.push("/");
       router.refresh();
     },

@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Input } from "../ui/Input";
 import { Button } from "../ui/Button";
-import { EyeIcon, Loader2, MailCheck } from "lucide-react";
+import { EyeIcon, EyeOff, EyeOffIcon, Loader2, MailCheck } from "lucide-react";
 import {
   Form,
   FormControl,
@@ -23,14 +23,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useRouter } from "next/navigation";
 import axios, { AxiosError } from "axios";
 import { CSRBaseUrl } from "@/lib/utils";
 import { toast, Toaster } from "sonner";
-import { NextResponse } from "next/server";
 import Link from "next/link";
-
-interface RegisterFormProps {}
+import "./styles.css"
+import RandomBox from "./RandomBox";
+interface RegisterFormProps { }
 
 type registerFormPayload = z.infer<typeof registerFormSchema>;
 
@@ -61,10 +60,9 @@ const registerFormSchema = z
     path: ["confirm_password"],
   });
 
-const RegisterForm: FC<RegisterFormProps> = ({}) => {
-  const router = useRouter();
-  const [passwordVisible , setPasswordVisible] = useState(false)
-  const [confirmPasswordVisible , setConfirmPasswordVisible] = useState(false)
+const RegisterForm: FC<RegisterFormProps> = ({ }) => {
+  const [passwordVisible, setPasswordVisible] = useState(false)
+  const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false)
   const [mailSent, setMailSent] = useState(false)
 
   const registerForm = useForm<z.infer<typeof registerFormSchema>>({
@@ -100,7 +98,7 @@ const RegisterForm: FC<RegisterFormProps> = ({}) => {
       }
     },
     onError: (err: any) => {
-     
+
       if (err) {
         toast.error(err?.response?.data?.detail ?? "Email already exists");
       } else {
@@ -114,192 +112,191 @@ const RegisterForm: FC<RegisterFormProps> = ({}) => {
 
   return (
 
-    (mailSent) ? 
+    (mailSent) ?
       <div className="flex flex-col justify-center items-center">
-        <MailCheck size={40}/>
+        <MailCheck size={40} />
         <h3> Verification mail has been sent to your registered mail.</h3>
       </div>
-    :
-    <div className="flex flex-col">
-      <Form {...registerForm}>
-        <form
-          onSubmit={registerForm.handleSubmit((e) => {
-            registerUser(e);
-          })}
-        >
-          <div className="my-3">
-            <FormField
-              control={registerForm.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Email</FormLabel>
-                  <FormControl>
-                    <Input
-                      type="email"
-                      placeholder="user@example.com"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormDescription>Ensure your email is verified</FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
-          <div className="my-3">
-            <FormField
-              control={registerForm.control}
-              name="password"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Password</FormLabel>
-                  <FormControl>
-                  <div className="flex flex-row gap-4">
-                  <Input type={ passwordVisible ? "text" : "password" } placeholder="password" {...field} />
-                    <Button type="button" onClick={()=> setPasswordVisible(!passwordVisible)}> <EyeIcon size={20}/> </Button>
-                  </div>
-                  </FormControl>   
-                </FormItem>
-              )}
-            />
-          </div>
-          <div className="my-3">
-            <FormField
-              control={registerForm.control}
-              name="confirm_password"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Confirm Password</FormLabel>
-                  <FormControl>
-                    <div className="flex flex-row gap-4">
-                      <Input
-                        type={ passwordVisible ? "text" : "password" }
-                        placeholder="confirm password"
-                        {...field}
-                        />
-                      <Button type="button" onClick={() => setConfirmPasswordVisible(!confirmPasswordVisible)}> <EyeIcon size={20}/> </Button>
-                    </div>
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
-          <div className="my-3">
-            <FormField
-              control={registerForm.control}
-              name="first_name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>First Name</FormLabel>
-                  <FormControl>
-                    <Input type="text" placeholder="First Name" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
-          <div className="my-3">
-            <FormField
-              control={registerForm.control}
-              name="last_name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Last Name</FormLabel>
-                  <FormControl>
-                    <Input type="text" placeholder="Last Name" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
-          <div className="my-3">
-            <FormField
-              control={registerForm.control}
-              name="mobile_number"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Mobile Number</FormLabel>
-                  <FormControl>
-                    <Input type="text" placeholder="Mobile Number" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
-          {/* <FormField
-            control={registerForm.control}
-            name="department"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Department</FormLabel>
-                <FormControl>
-                  <Input type="text" placeholder="Department" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          /> */}
-          <div className="my-3">
-            <FormField
-              control={registerForm.control}
-              name="college"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>College</FormLabel>
-                  <FormControl>
-                    <Input type="text" placeholder="College" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
-          <div className="my-3">
-            <FormField
-              control={registerForm.control}
-              name="year"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Year</FormLabel>
-                  <Select
-                    onValueChange={(value) => field.onChange(parseInt(value, 10))}
-                    defaultValue={field.value.toString()}
-                  >
+      :
+      <div className="flex flex-col cont">
+        <Form {...registerForm}>
+          <form
+            onSubmit={registerForm.handleSubmit((e) => {
+              registerUser(e);
+            })}
+          >
+            <div className="my-3">
+              <FormField
+                control={registerForm.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Email</FormLabel>
                     <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select a year" />
-                      </SelectTrigger>
+                      <Input
+                        type="email"
+                        placeholder="user@example.com"
+                        {...field}
+                      />
                     </FormControl>
-                    <SelectContent>
-                    <SelectItem value={"1"}>I</SelectItem>
-                    <SelectItem value={"2"}>II</SelectItem>
-                    <SelectItem value={"3"}>III</SelectItem>
-                    <SelectItem value={"4"}>IV</SelectItem>
-                    <SelectItem value={"5"}>V</SelectItem>
-                    <SelectItem value={"11"}> 11<sup>th</sup> </SelectItem>
-                    <SelectItem value={"12"}> 12<sup>th</sup> </SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <FormDescription>Enter your academic year</FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
-          <div className="flex items-center justify-center">   
-            <Button disabled={isPending} type="submit" className='w-3/5 mt-7 mb-3'>
-              Register{isPending && <Loader2 className="animate-spin ml-2" />}
-            </Button>
-          </div>
-        </form>
-      </Form>
-      <Link href={'/resend-verification-email'} className="mx-auto text-gray-400 underline">Didn't Receive mail? resend again</Link>
-          
+                    <FormDescription>Ensure your email is verified</FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <div className="my-3">
+              <FormField
+                control={registerForm.control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Password</FormLabel>
+                    <FormControl>
+                      <div className="flex flex-row gap-4">
+                        <Input type={passwordVisible ? "text" : "password"} placeholder="password" {...field} />
+                        <Button type="button" onClick={() => setPasswordVisible(!passwordVisible)}> 
+                        {
+                          passwordVisible ? <EyeIcon size={20} /> : <EyeOff size={20} />
+                        } 
+                        </Button>
+                      </div>
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+            </div>
+            <div className="my-3">
+              <FormField
+                control={registerForm.control}
+                name="confirm_password"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Confirm Password</FormLabel>
+                    <FormControl>
+                      <div className="flex flex-row gap-4">
+                        <Input
+                          type={confirmPasswordVisible ? "text" : "password"}
+                          placeholder="confirm password"
+                          {...field}
+                        />
+                        <Button type="button" onClick={() => setConfirmPasswordVisible(!confirmPasswordVisible)}> 
+                        {
+                          confirmPasswordVisible ? <EyeIcon size={20} /> : <EyeOff size={20} />
+                        } 
+                        </Button>
+                      </div>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <div className="my-3">
+              <FormField
+                control={registerForm.control}
+                name="first_name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>First Name</FormLabel>
+                    <FormControl>
+                      <Input type="text" placeholder="First Name" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <div className="my-3">
+              <FormField
+                control={registerForm.control}
+                name="last_name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Last Name</FormLabel>
+                    <FormControl>
+                      <Input type="text" placeholder="Last Name" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <div className="my-3">
+              <FormField
+                control={registerForm.control}
+                name="mobile_number"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Mobile Number</FormLabel>
+                    <FormControl>
+                      <Input type="text" placeholder="Mobile Number" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <div className="my-3">
+              <FormField
+                control={registerForm.control}
+                name="college"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>College</FormLabel>
+                    <FormControl>
+                      <Input type="text" placeholder="College" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <div className="my-3">
+              <FormField
+                control={registerForm.control}
+                name="year"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Year</FormLabel>
+                    <Select
+                      onValueChange={(value) => field.onChange(parseInt(value, 10))}
+                      defaultValue={field.value.toString()}
+                    >
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select a year" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value={"1"}>I</SelectItem>
+                        <SelectItem value={"2"}>II</SelectItem>
+                        <SelectItem value={"3"}>III</SelectItem>
+                        <SelectItem value={"4"}>IV</SelectItem>
+                        <SelectItem value={"5"}>V</SelectItem>
+                        <SelectItem value={"11"}> 11<sup>th</sup> </SelectItem>
+                        <SelectItem value={"12"}> 12<sup>th</sup> </SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormDescription>Enter your academic year</FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <div className="flex flex-col items-center justify-center">
+              <Button disabled={isPending} type="submit" className='w-3/5 mt-7 mb-3'>
+                Register{isPending && <Loader2 className="animate-spin ml-2" />}
+              </Button>
+              <Link 
+              href={'/resend-verification-email'} 
+              className="mx-auto text-[1rem] text-gray-400 underline">Didn&apos;t Receive mail? resend again
+              </Link>
+            </div>
+          </form>
+        </Form>
+        <RandomBox />
+
       </div>
   );
 };

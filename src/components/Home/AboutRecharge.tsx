@@ -1,5 +1,5 @@
 import React from 'react'
-import Image from "next/image";
+
 
 function AboutRecharge() {
   return (
@@ -31,7 +31,7 @@ function AboutRecharge() {
 
     <div id="right" className="basis-1/2 flex justify-center items-center video-border max-h-fit max-w-fit my-8">
    
-    <Image
+    <img
             src="/logo1.webp"
             className="shadow-2xl rounded-xl z-10 neon-border "
             alt=""
