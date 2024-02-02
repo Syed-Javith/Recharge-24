@@ -1,13 +1,26 @@
+// "use client"
 import { SSRBaseUrl } from "@/lib/utils"
 import { CategoryEvents } from "@/types/models"
 import Link from "next/link"
 import axios from "axios"
 import './style.css'
+// import { useEffect } from "react"
+// import VanillaTilt from 'vanilla-tilt'
 
-const page = async ({ params }: { params: { categoryId: number } }) => {
+const EventList = async ({ params }: { params: { categoryId: number } }) => {
 const {data} = await axios.get(SSRBaseUrl + "event/category/" + params.categoryId + "/events/");
 
 const categoryEvents: CategoryEvents[] = await data
+
+// useEffect(()=>{ //@ts-ignore
+//   VanillaTilt.init(document.querySelectorAll(".event-cards"), {
+//       max: 15,
+//       speed: 300,
+//       glare:1,
+//       "max-glare":.25,
+//       gyroscope:false
+//   })
+// },[])
 
 return (
   <div className="">
@@ -31,4 +44,4 @@ return (
 )
 }
 
-export default page
+export default EventList
