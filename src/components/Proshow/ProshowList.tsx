@@ -1,6 +1,5 @@
 "use client";
 import { ProShow } from "@/types/models";
-import { FC, useEffect, useState } from "react";
 import ProShowCard from "./ProShowCard";
 
 interface ProshowListProps {
