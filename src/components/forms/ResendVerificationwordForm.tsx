@@ -54,12 +54,17 @@ const ResendVerificationForm: FC<pageProps> = ({ }) => {
     }
   })
 
-  return <div className="flex flex-col">
+  return <div className="flex flex-col justify-center items-center wrapping">
+    <div className="cont">
+      <div className="lighter lighter-1"></div>
+      <div className="lighter lighter-2"></div>
+      <div className="lighter lighter-3"></div>
     <Form {...resendPasswordForm}>
       <form
         onSubmit={resendPasswordForm.handleSubmit((e) => {
           resendVerification(e);
         })}
+        className="flex flex-col"
       >
         <div className="my-3">
         <FormField
@@ -67,11 +72,11 @@ const ResendVerificationForm: FC<pageProps> = ({ }) => {
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel className="text-white">Enter your Email</FormLabel>
               <FormControl>
                 <Input
                   type="email"
-                  placeholder="user@example.com"
+                  placeholder="Enter your Registered mail ID"
                   {...field}
                 />
               </FormControl>
@@ -80,15 +85,15 @@ const ResendVerificationForm: FC<pageProps> = ({ }) => {
                   isPending ?
                     <>
                       Wait we are sending you <br /> Verification Email again
-                    </> : <>Ensure your email is verified</>
+                    </> : <></>
                 }
               </FormDescription>
-              <FormMessage />
+              <FormMessage className="text-red-500"/>
             </FormItem>
           )}
         />
         </div>
-        <Button type='submit' disabled={isPending}>
+        <Button type='submit' disabled={isPending} className='mx-auto mt-4 mb-2 w-6/12 submit-btn'>
           Resend Mail {
             isPending && <Loader2 className="animate-spin ml-2" />
           }
@@ -97,6 +102,7 @@ const ResendVerificationForm: FC<pageProps> = ({ }) => {
       </form>
     </Form>
     <RandomBox />
+    </div>
   </div>
 }
 

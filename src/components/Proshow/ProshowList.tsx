@@ -1,35 +1,58 @@
-import { SSRBaseUrl } from "@/lib/utils";
+"use client";
 import { ProShow } from "@/types/models";
-import { cookies } from "next/headers";
-import { FC } from "react";
-import { getAuthSession } from "@/lib/auth";
-import DialogBox from "../DialogBox";
-import ProShowGroup from "./ProShowGroup";
+import ProShowCard from "./ProShowCard";
 
+interface ProshowListProps {
+  is_rec: boolean;
+  proshows: ProShow[];
+  isDayPremium: boolean;
+  isPremiumCombo: boolean;
+  isStandardCombo: boolean;
+  datePremium: number[];
+}
 
-interface ProshowListProps { }
-
-const ProshowList: FC<ProshowListProps> = async ({ }) => {
-  const session = await getAuthSession();
-  if (!session) {
-    return <DialogBox />;
-  }
-  const is_rec = session?.id.includes("rajalakshmi.edu.in") || false;
-  const res = await fetch(SSRBaseUrl + "proshow/proshows/", {
-    headers: { Cookie: cookies().toString() },
-  });
-
-  const proshows: ProShow[] = await res.json();
-  console.log(proshows);
+const ProshowList = async ({
+  is_rec,
+  proshows,
+  isDayPremium,
+  isPremiumCombo,
+  isStandardCombo,
+  datePremium,
+}: ProshowListProps) => {
   return (
     <div>
-      <h1 className="text-4xl  mt-10 mb-10 font-bold text-white text-center">Proshows list</h1>
+      <h1 className="text-4xl  mt-10 mb-10 font-bold text-white text-center">
+        Proshows list
+      </h1>
       <div className=" flex flex-wrap items-center justify-center">
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3" > </div>
-        <ProShowGroup proshows={proshows} is_rec={is_rec} />
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {" "}
+        </div>
+        {proshows?.length > 0 &&
+          proshows.map((proshow) => {
+            return (
+              !is_rec ?
+              <ProShowCard
+                key={proshow.id}
+                proshow={proshow}
+                is_rec={is_rec}
+                isDayPremium={isDayPremium}
+                isPremiumCombo={isPremiumCombo}
+                isStandardCombo={isStandardCombo}
+                datePremium={datePremium}
+              /> : ((!proshow.premium && !proshow.combo) || (proshow.premium && proshow.combo)) ? <></> : <ProShowCard
+                key={proshow.id}
+                proshow={proshow}
+                is_rec={is_rec}
+                isDayPremium={isDayPremium}
+                isPremiumCombo={isPremiumCombo}
+                isStandardCombo={isStandardCombo}
+                datePremium={datePremium}
+              />
+            )
+          })}
       </div>
     </div>
-
   );
 };
 

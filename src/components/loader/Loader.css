@@ -4,14 +4,23 @@
     --waveDur: 2100ms;
   }
     
+
   .load-container {
     position: absolute;
-    background-color: #FF69B4;
-    left: 40%;
+    width: 530px;
+    height: 200px;
+    /* background-color: #ffdbed; */
+    left: 50%;
     top: 50%; 
-    transform: translate(-100%, -50%);
-    scale: 0.5;
-    margin : auto;
+    transform: translate(-125%, -125%);
+    scale: 0.4;
+    /* width: 100%; */
+    /* height: 100px; */
+    /* display: flex; */
+    /* justify-content: center; */
+
+    /* align-items: center; */
+    /* margin : auto; */
   }
   
   .text {
@@ -123,10 +132,13 @@
   }
   
   @keyframes text {
-    0%, 30% {
+    0%, 38% {
+      transform: translate3d(0, -4rem, 0);
+    }
+    69% {
       transform: translate3d(0, 0, 0);
     }
-    45%, 100% {
+    100% {
       transform: translate3d(0, -4rem, 0);
     }
   }
@@ -178,9 +190,9 @@
     }
   }
   
-  @media ( width < 500px){
+  @media ( width < 700px){
     .load-container{
-    scale: 0.3;
-    left: 30%;
+      scale: 0.3;
+      transform: translate(-166.667%, -166.667%);
     }
   }
