@@ -6,6 +6,7 @@ import Navbar from "@/components/Home/Nav/Navbar";
 import Providers from "@/components/Providers";
 import { Toaster } from "@/components/ui/Sonner";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Recharge-2k24",
@@ -20,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"/>
+        <Script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"/>
       </head>
       <body
         className={cn(

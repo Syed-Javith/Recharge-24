@@ -306,7 +306,7 @@ const EventDetails: FC<EventDetailsProps> = ({
           <div>
             <h1 className="text-2xl mt-4 mb-4">Event Incharges</h1>
               {event.incharges.length>0 && event.incharges.map(incharge => (
-                <li className="py-2 text-[1.2em]">{incharge.name + " - " + incharge.contact_number}</li>
+                <li className="py-2 text-[1.2em]" key={incharge.id}>{incharge.name + " - " + incharge.contact_number}</li>
               ))}
           </div>
         </div>
