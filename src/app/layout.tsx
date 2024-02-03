@@ -19,6 +19,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"/>
+      </head>
       <body
         className={cn(
           "min-h-screen bg-[#0c0c2d] font-sans antialiased",

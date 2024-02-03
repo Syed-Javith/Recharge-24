@@ -20,7 +20,7 @@ const sliderBg = new Swiper('.slider_bg', {
     slidesPerView: 3.5,
     parallax: true,
     spaceBetween: 60,
-    allowTouchMove: false,
+    allowTouchMove: true,
 })
 
 sliderMain.controller.control = sliderBg
@@ -34,11 +34,29 @@ function removeClass(items,className) {
     })
 }
 
-sliderItems.forEach(item => {
-    item.addEventListener('click', e => {
-        if (!item.classList.contains('opened')) removeClass(sliderItems,'opened')
-        item.classList.toggle('opened')
-    })
+// sliderItems.forEach(item => {
+//     item.addEventListener('click', e => {
+//         if (!item.classList.contains('opened')) removeClass(sliderItems,'opened')
+//         item.classList.toggle('opened')
+//     })
+// })
+
+// document.getElementById('mainslider').
+// onscrollend(() => {
+//     document.getElementById('custom').scroll({
+//         top: "300px",
+
+
+//     })
+// }, _);
+const ele = document.querySelector('#mainslider div:first-child')
+document.querySelector('#mainslider div:first-child').addEventListener('scroll', () => {
+    
+    console.log(ele.scrollTop)
+    console.log(ele.scrollHeight)
+    console.log(ele.scrollLeft)
+    console.log(ele.scrollWidth)
+    console.log(">>>>>>>>>>>")
 })
 
 sliderMain.on('slideChange', e => {
