@@ -2,7 +2,7 @@
 import { ProShow } from "@/types/models";
 import BuyProShowButton from "./BuyProShowButton";
 import { Card, CardDescription, CardFooter, CardTitle } from "../ui/Card";
-import { Dispatch, FC, SetStateAction, useState } from "react";
+import { FC, useState } from "react";
 
 interface ProshowcardProps {
   proshow: ProShow;
