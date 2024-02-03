@@ -1,6 +1,7 @@
 import "./Loader.css"
 const Loader = () => {
     return (
+       
         <div className="load-container">
             <div className="coast">
                 <div className="wave-rel-wrap">

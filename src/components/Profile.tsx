@@ -22,6 +22,8 @@ import DialogBox from "./DialogBox";
 import KnowMore from "./KnowMore";
 import Link from "next/link";
 import { Button } from "./ui/Button";
+import DesktopProfile from "./DesktopProfile";
+import Loader from "./loader/Loader";
 
 interface ProfileProps {}
 
@@ -61,8 +63,10 @@ const Profile: FC<ProfileProps> = ({}) => {
     profileDetails();
   }, []);
 
+  
+
   return isPending ? (
-    <Loader2 className="animate-spin mx-auto mt-[25%]" size={40} />
+    <Loader/>
   ) : profile == undefined ? (
     <DialogBox />
   ) : error ? (
@@ -72,7 +76,8 @@ const Profile: FC<ProfileProps> = ({}) => {
     </div>
   ) : (
     <div className="profile-container">
-      <div className="profile-card">
+      <DesktopProfile profile={profile}/>
+      {/* <div className="profile-card">
         {profile.profile_photo ? (
           <img className="rounded-full" src={profile.profile_photo} alt="" />
         ) : (
@@ -94,7 +99,7 @@ const Profile: FC<ProfileProps> = ({}) => {
         <div className="edit-profile">
           <EditProfileForm profile={profile} setProfile={setProfile} />
         </div>
-      </div>
+      </div> */}
       <div className="proshow-event">
         {profile.event_registrations.length > 0 && (
           <div className="pr-proshow-container">
@@ -114,7 +119,7 @@ const Profile: FC<ProfileProps> = ({}) => {
                       <KnowMore />
                     </Link>
                   </div>
-                  <p>{proshow.description?.slice(0, 240) + " ..."}</p>
+                  {/* <p>{proshow.description?.slice(0, 240) + " ..."}</p> */}
                 </div>
               </div>
             ))}
@@ -140,7 +145,7 @@ const Profile: FC<ProfileProps> = ({}) => {
                       <KnowMore />
                     </Link>
                   </div>
-                  <p>{event.description?.slice(0, 240) + " ..."}</p>
+                  {/* <p>{event.description?.slice(0, 240) + " ..."}</p> */}
                 </div>
               </div>
             ))}
