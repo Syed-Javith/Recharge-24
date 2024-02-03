@@ -10,7 +10,9 @@ const DesktopProfile = ({ profile } : { profile : UserProfileSchema }) => {
             <div className="profile md:w-[90vw] p-[20px] w-screen max-[500px]:p-[10px] max-[500px]:m-[5px]">
 
                 <div className="profile__picture">
-                    <img src={profile.profile_photo+""} alt={profile.first_name} />
+                    <div className='text-center text-3xl font-bold m-auto'>
+                        {profile.first_name[0] + profile.last_name[0]}
+                    </div>
                 </div>
 
                 <div className="profile__header items-start">
@@ -23,7 +25,26 @@ const DesktopProfile = ({ profile } : { profile : UserProfileSchema }) => {
                     </div>
                 </div>
 
-                <div className="profile__stats flex flex-col">
+                <div className='flex'>
+                    <div className='flex flex-col'>
+                         <div>
+                            syedjavith14@gmail.com
+                         </div>
+                         <div>
+                            6380411427
+                         </div>
+                    </div>
+                    <div className='flex flex-col ml-auto'>
+                        <div>
+                        Rajalakshmi Engineering College
+                        </div>
+                        <div>
+                            3 rd year
+                        </div>
+                    </div>
+                </div>
+
+                {/* <div className="profile__stats flex flex-col">
                     <div className="profile__stat flex gap-4">
                         <div>
                         <div className="profile__icon">
@@ -50,7 +71,7 @@ const DesktopProfile = ({ profile } : { profile : UserProfileSchema }) => {
                         </div>
                         <div className="profile__value">Rajalaksmi Engineering College</div>
                     </div>
-                </div>
+                </div> */}
 
             </div>
         </div>

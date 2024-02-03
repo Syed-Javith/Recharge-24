@@ -94,3 +94,8 @@
     margin-top: -1.5rem;
     cursor: pointer;
 }
+@media ( width < 500px ){
+    #cat-title{
+        font-size: 3rem;
+    }
+}

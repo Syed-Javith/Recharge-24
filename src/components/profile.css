@@ -67,8 +67,6 @@
     color: rgba(255,255,255,0.5)
 }
 :root {
-    --montserrat: "Montserrat", sans-serif;
-    --base-font: var(--montserrat);
     --black: #000000;
     --blue: #8faae8;
     --gold: #eab100;
@@ -110,9 +108,7 @@
     animation: popUp ease-in-out 350ms;
     background: rgba(12, 12, 45,0.2);
     border-radius: 25px;
-    box-shadow: 0 0 40px 0px rgba(var(--black), 0.17);
     margin-top: 40px;
-    /* padding: 28px 30px 30px 35px; */
     position: relative;
     color: #fff;
     box-shadow: rgba(213, 213, 220, 0.2) 0px 0px 30px 4px;  
@@ -166,13 +162,13 @@
   }
   
   .profile__picture {
-    background: rgba(12, 12, 45,0.2);
+    background: rgba(12, 12, 45);
     border-radius: 100px;
     border: 10px solid rgba(12, 12, 45,0.2);
-    height: var(--profile-picture-size);
+    height: 100px;
     position: absolute;
     top: -40px;
-    width: var(--profile-picture-size);
+    width: 100px;
   }
   
   .profile__picture:before {

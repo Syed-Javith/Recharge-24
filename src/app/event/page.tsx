@@ -13,6 +13,7 @@ const page = async () => {
       <p id="cat-title">Categories</p>
       <div className="flex justify-center items-center flex-wrap category-container mt-12">
         {categories.map((category) => (
+          category.events_count != 0 &&
           <Link key={category.id} href={"/event/" + category.id}>
             <div className="mb-12 category-element">
             <div className=" category-wrapper">
