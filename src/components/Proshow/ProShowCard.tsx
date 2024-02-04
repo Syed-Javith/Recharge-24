@@ -37,7 +37,7 @@ const ProShowCard: FC<ProshowcardProps> = ({
 
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70">
           <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0">
-            <CardTitle className="font-dmserif relative bottom-0 left-0 mb-2 ml-2 md:text-3xl text-3xl text-white-600">
+            <CardTitle className="font-dmserif relative bottom-0 left-0 mb-2 ml-2 text-3xl text-white-600 ">
               {proshow.name}{" "}
             </CardTitle>
 
@@ -106,15 +106,20 @@ const ProShowCard: FC<ProshowcardProps> = ({
             <CardDescription className="mb-3 text-md italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               {proshow.description?.slice(0, 120)}{" "}
             </CardDescription>
+            <span className="bg-gradient-to-r from-pink-500 to-yellow-500 text-transparent text-lg bg-clip-text">Unlock Proshow for just Rs.{proshow.amount}</span> 
 
             <div className="rounded-full  px-3.5 py-2 font-com text-sm capitalize text-white ">
-              price: {proshow.amount}
+       
+         
+          
+
               <CardFooter>
                 {/* 
       ===========BUY PREMIUM BUTTON===========
       Applies for both REC and Non-REC
     */}
                 {proshow.premium && !proshow.combo && (
+                  
                   <BuyProShowButton
                     disabled={proshow.is_registered || isPremiumCombo}
                     label="premium"
