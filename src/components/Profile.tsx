@@ -76,7 +76,7 @@ const Profile: FC<ProfileProps> = ({}) => {
     </div>
   ) : (
     <div className="profile-container">
-      <DesktopProfile profile={profile}/>
+      <DesktopProfile profile={profile} setProfile={setProfile}/>
       {/* <div className="profile-card">
         {profile.profile_photo ? (
           <img className="rounded-full" src={profile.profile_photo} alt="" />

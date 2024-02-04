@@ -1,15 +1,32 @@
 import { UserProfileSchema } from '@/types/models'
 import { Calendar, GraduationCapIcon, MailIcon, PhoneCall, SchoolIcon } from 'lucide-react';
-import React from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
+import EditProfileForm from './forms/EditProfileForm';
 
-const DesktopProfile = ({ profile } : { profile : UserProfileSchema }) => {
+const DesktopProfile = ({ profile , setProfile } : { profile : UserProfileSchema , setProfile : Dispatch<SetStateAction<UserProfileSchema | undefined>> }) => {
+
+    const formatYear = (year : number | null | undefined) => {
+        if(year==1){
+            return "1st "
+        }
+        if(year==2){
+            return "2nd"
+        }
+        if(year == 3){
+            return "3rd"
+        }
+        if(year == 4 || year == 5){
+            return `${year}th`
+        }
+        return `${year}th standard`
+    }
     console.log(profile);
     
     return (
         <div className="layout">
             <div className="profile md:w-[90vw] p-[20px] w-screen max-[500px]:p-[10px] max-[500px]:m-[5px]">
 
-                <div className="profile__picture">
+                <div className="profile__picture bg-[#0f1323]">
                     <div className='text-center text-3xl font-bold m-auto'>
                         {profile.first_name[0] + profile.last_name[0]}
                     </div>
@@ -21,25 +38,27 @@ const DesktopProfile = ({ profile } : { profile : UserProfileSchema }) => {
                     </div>
 
                     <div className="profile__edit">
-                        <a href="#" className="profile__button">Edit Profile</a>
+                        
+                            <EditProfileForm profile={profile} setProfile={setProfile} />
+                       
                     </div>
                 </div>
 
-                <div className='flex'>
-                    <div className='flex flex-col'>
-                         <div>
-                            syedjavith14@gmail.com
+                <div className='flex md:flex-row flex-col gap-4'>
+                    <div className='flex flex-col gap-4'>
+                         <div className='flex gap-2'>
+                            <MailIcon />  {profile.email}
                          </div>
-                         <div>
-                            6380411427
+                         <div className='flex gap-2'>
+                            <PhoneCall/> {profile.mobile_number}
                          </div>
                     </div>
-                    <div className='flex flex-col ml-auto'>
-                        <div>
-                        Rajalakshmi Engineering College
+                    <div className='flex flex-col md:ml-auto ml-0 gap-4'>
+                        <div className='flex gap-2'>
+                            <SchoolIcon /> {profile.college}
                         </div>
-                        <div>
-                            3 rd year
+                        <div className='flex gap-2'>
+                           <GraduationCapIcon /> {formatYear(profile.year)} year
                         </div>
                     </div>
                 </div>
