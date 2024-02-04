@@ -1,29 +1,27 @@
-import { register } from "swiper/element/bundle";
-// import "./gallery.css";
+"use client"
 import GalleryCard from "./GalleryCard";
 
-interface GalleryProps {
-    type: string;
+interface GallerySliderProps {
+    data: any;
 }
 
-register();
-
-const Gallery = async ({ type }: GalleryProps) => {
+const GallerySlider = ({ data }: GallerySliderProps) => {
   return (
-    <div className={"swiper slider slider_" + type} id="mainslider" style={{transform: "rotate(0deg)"}}>
-      {/* <div className="swiper slider slider_bg" id="mainslider" style={{overflow:"hidden"}}> */}
-        <div className="swiper-wrapper slider__wrapper">
-            <GalleryCard imgURL="https://dmitry-rogg.vn.ua/animate-slider/images/1.jpg"/>
-            <GalleryCard imgURL="https://dmitry-rogg.vn.ua/animate-slider/images/2.jpg"/>
-            <GalleryCard imgURL="https://dmitry-rogg.vn.ua/animate-slider/images/3.jpg"/>
-            <GalleryCard imgURL="https://dmitry-rogg.vn.ua/animate-slider/images/4.jpg"/>
-            <GalleryCard imgURL="https://dmitry-rogg.vn.ua/animate-slider/images/2.jpg"/>
-            <GalleryCard imgURL="https://dmitry-rogg.vn.ua/animate-slider/images/1.jpg"/>
-            
-        </div>
-      {/* </div> */}
+    <div 
+      className='slides overflow-scroll smooth-scroll w-full whitespace-nowrap touch-pan-x before:shrink-0 after:shrink-0 before:w-[36vw] after:w-[36vw] flex'
+      onScroll={(element: any) => {
+        element.target.scrollLeft > 63 ? document.querySelector(".description")?.classList.add('hidden') : document.querySelector(".description")?.classList.remove('hidden')
+      }}
+    >
+        {
+          data?.map((image: any, index: number) => {
+            return(
+              <GalleryCard imgURL={image.url} key={index}/>
+            );
+          })
+        }
     </div> 
   );
 };
 
-export default Gallery;
+export default GallerySlider;

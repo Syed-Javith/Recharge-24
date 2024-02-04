@@ -1,22 +1,55 @@
+import GallerySlider from "./GallerySlider";
 import "./gallery.css";
-import Script from "next/script";
-import Gallery from "@/components/gallery/GallerySlider";
 
+const ImageData = [
+  {
+    name: "No Name",
+    url: "https://dmitry-rogg.vn.ua/animate-slider/images/1.jpg"
+  },
+  {
+    name: "No Name",
+    url: "https://dmitry-rogg.vn.ua/animate-slider/images/2.jpg"
+  },
+  {
+    name: "No Name",
+    url: "https://dmitry-rogg.vn.ua/animate-slider/images/3.jpg"
+  },
+  {
+    name: "No Name",
+    url: "https://dmitry-rogg.vn.ua/animate-slider/images/4.jpg"
+  },
+  {
+    name: "No Name",
+    url: "https://dmitry-rogg.vn.ua/animate-slider/images/5.jpg"
+  },
+  {
+    name: "No Name",
+    url: "https://dmitry-rogg.vn.ua/animate-slider/images/6.jpg"
+  },
+  {
+    name: "No Name",
+    url: "https://dmitry-rogg.vn.ua/animate-slider/images/7.jpg"
+  },
+  {
+    name: "No Name",
+    url: "https://dmitry-rogg.vn.ua/animate-slider/images/8.jpg"
+  },
+  {
+    name: "No Name",
+    url: "https://dmitry-rogg.vn.ua/animate-slider/images/9.jpg"
+  },
+]
 
-const GallerySection = async ({ }) => {
+const GallerySection = ({ }) => {
   return (
-    <>
-    <span className="gallery">
-    <div className="description">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
-        <div className="logo">Gallery</div>
+    <div className="gallery touch-auto">
+    <div className="description bottom-1 pb-11">
+      <h1 className="logo">
+        GALLERY. . .
+      </h1>
     </div>
-    <Gallery type="main"/>
-    <Gallery type="bg"/>
-    
-    <Script src="/gallery.js"/>
-    </span>
-    </>
+      <GallerySlider data={ImageData}/>
+    </div>
   );
 };
 

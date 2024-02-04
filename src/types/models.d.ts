@@ -86,3 +86,5 @@ export type CategoryEvents = {
   category_name: string;
   events: EventSchema[];
 };
+
+declare module 'vanta/src/vanta.birds';

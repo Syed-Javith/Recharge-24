@@ -81,10 +81,19 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        parallax: {
+          '0%': {
+            objectPosition: 'right',
+          },
+          '100%': {
+            objectPosition: 'left',
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        parallax: 'parallax linear both',
       },
       fontFamily: {
         sans: ["var(--font-geist-sans)"],
