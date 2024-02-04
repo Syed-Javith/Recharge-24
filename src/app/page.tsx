@@ -3,8 +3,8 @@ import Landing from '../components/Home/Landing'
 import AboutRecharge from "@/components/Home/AboutRecharge";
 import AboutRec from "@/components/Home/AboutRec";
 import GallerySection from '@/components/gallery/Gallery';
-
-// const BIRDS =  require("vanta/src/vanta.birds");
+import FAQ from '@/components/Home/Faq';
+import Footer from '@/components/Home/Footer';
 
 export default function Home() {
   return (
@@ -13,7 +13,8 @@ export default function Home() {
       <AboutRecharge/>
       <AboutRec/>
       <GallerySection/>
-      {/* <BirdBg/> */}
+      <FAQ/>
+      <Footer/>
       {/* <div className="h-[200px] w-[100%] bg-white"></div> */}
     </div>
   );
