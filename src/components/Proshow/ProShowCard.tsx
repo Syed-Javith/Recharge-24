@@ -37,7 +37,7 @@ const ProShowCard: FC<ProshowcardProps> = ({
 
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70">
           <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0">
-            <CardTitle className="font-dmserif relative bottom-0 left-0 mb-2 ml-2 text-3xl text-white-600 line-clamp-3">
+            <CardTitle className="font-dmserif relative bottom-0 left-0 mb-2 ml-2 md:text-3xl text-3xl text-white-600">
               {proshow.name}{" "}
             </CardTitle>
 
