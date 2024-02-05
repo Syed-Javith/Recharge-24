@@ -248,7 +248,7 @@ const RegisterForm: FC<RegisterFormProps> = ({ }) => {
                 name="password"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-white">Create your new Password</FormLabel>
+                    <FormLabel className="text-white">Create your own Password</FormLabel>
                     <FormControl>
                       <div className="flex flex-row gap-4">
                         <Input type={passwordVisible ? "text" : "password"} placeholder="Password Min. 6 alphabets" {...field} />
@@ -269,12 +269,12 @@ const RegisterForm: FC<RegisterFormProps> = ({ }) => {
                 name="confirm_password"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-white">Reenter Password</FormLabel>
+                    <FormLabel className="text-white">Confirm Password</FormLabel>
                     <FormControl>
                       <div className="flex flex-row gap-4">
                         <Input
                           type={confirmPasswordVisible ? "text" : "password"}
-                          placeholder="Reenter password"
+                          placeholder="confirm your new password"
                           {...field}
                         />
                         <Button className="eye-btn" type="button" onClick={() => setConfirmPasswordVisible(!confirmPasswordVisible)}> 

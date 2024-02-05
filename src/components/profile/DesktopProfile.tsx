@@ -1,7 +1,7 @@
 import { UserProfileSchema } from '@/types/models'
-import { Calendar, GraduationCapIcon, MailIcon, PhoneCall, SchoolIcon } from 'lucide-react';
+import { GraduationCapIcon, MailIcon, PhoneCall, SchoolIcon } from 'lucide-react';
 import React, { Dispatch, SetStateAction } from 'react'
-import EditProfileForm from './forms/EditProfileForm';
+import EditProfileForm from '../forms/EditProfileForm';
 
 const DesktopProfile = ({ profile , setProfile } : { profile : UserProfileSchema , setProfile : Dispatch<SetStateAction<UserProfileSchema | undefined>> }) => {
 

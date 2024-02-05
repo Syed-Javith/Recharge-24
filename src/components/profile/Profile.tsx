@@ -16,14 +16,14 @@ import {
   PenIcon,
   Mail,
 } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/Avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/Avatar";
 import EditProfileForm from "@/components/forms/EditProfileForm";
-import DialogBox from "./DialogBox";
-import KnowMore from "./KnowMore";
+import DialogBox from "../DialogBox";
+import KnowMore from "../KnowMore";
 import Link from "next/link";
-import { Button } from "./ui/Button";
+import { Button } from "../ui/Button";
 import DesktopProfile from "./DesktopProfile";
-import Loader from "./loader/Loader";
+import Loader from "../loader/Loader";
 
 interface ProfileProps {}
 
