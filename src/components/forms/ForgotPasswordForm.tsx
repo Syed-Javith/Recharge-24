@@ -19,8 +19,9 @@ import { CSRBaseUrl } from "@/lib/utils";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/Button";
-import { EyeIcon, Loader2 } from "lucide-react";
-
+import { EyeIcon, EyeOffIcon, Loader2 } from "lucide-react";
+import "./styles.css"
+import RandomBox from "./RandomBox";
 interface ForgotPasswordFormProps { }
 
 const passwordRegex = new RegExp("^(?=.*[a-zA-Z]{6,})[a-zA-Z0-9]*$");
@@ -86,73 +87,102 @@ const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({ }) => {
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false)
   return (
-    <div>
+    <div className="flex flex-col justify-center items-center wrapping">
+      <div className="cont">
+        <div className="lighter lighter-1"></div>
+        <div className="lighter lighter-2"></div>
+        <div className="lighter lighter-3"></div>
       <Form {...forgotPasswordForm}>
         <form
           onSubmit={forgotPasswordForm.handleSubmit((e) => {
             forgotPasswordHandel(e);
           })}
+          className="flex flex-col"
         >
+          <div className="my-3">
           <FormField
             control={forgotPasswordForm.control}
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel className="text-white">Enter your Email</FormLabel>
                 <FormControl>
                   <Input
                     type="email"
-                    placeholder="user@example.com"
+                    // placeholder="user@example.com"
+                    placeholder="Enter your registered email address"
                     {...field}
                   />
                 </FormControl>
-                <FormDescription>Ensure your email is verified</FormDescription>
-                <FormMessage />
+                {/* <FormDescription>Ensure your email is verified</FormDescription> */}
+                <FormMessage className="text-red-500"/>
               </FormItem>
             )}
-          />
+            />
+          </div>
+          <div className="my-3">
           <FormField
             control={forgotPasswordForm.control}
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Enter New Password</FormLabel>
+                <FormLabel className="text-white">Enter New Password</FormLabel>
                 <FormControl>
                   <div className="flex flex-row gap-4">
-                    <Input 
-                     type={confirmPasswordVisible ? "text" : "password"}
-                     placeholder="password" 
-                     {...field} 
+                    <Input
+                      type={passwordVisible ? "text" : "password"}
+                      // placeholder="password"
+                      placeholder="min. 6 alphabets"
+                      autoComplete="off"
+                      {...field}
                     />
-                    <Button type="button" onClick={() => setPasswordVisible(!passwordVisible)}> <EyeIcon size={20} /> </Button>
+                    <Button
+                      type="button"
+                      className="eye-btn"
+                      onClick={() => setPasswordVisible(!passwordVisible)}>
+                      {
+                        passwordVisible ? <EyeIcon size={20} /> : <EyeOffIcon size={20} />
+                      }
+                    </Button>
                   </div>
                 </FormControl>
-                <FormDescription>Password must have a minimum length of 6</FormDescription>
-                <FormMessage />
+                {/* <FormDescription>Password must have a minimum length of 6</FormDescription> */}
+                <FormMessage className="text-red-500"/>
               </FormItem>
             )}
           />
+          </div>
+          <div className="my-3">
           <FormField
             control={forgotPasswordForm.control}
             name="confirm_password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Confirm New Password</FormLabel>
+                <FormLabel className="text-white">Confirm New Password</FormLabel>
                 <FormControl>
                   <div className="flex flex-row gap-4">
                     <Input
                       type={confirmPasswordVisible ? "text" : "password"}
-                      placeholder="confirm your password"
+                      placeholder="Confirm your password"
+                      autoComplete="off"
                       {...field}
                     />
-                    <Button type="button" onClick={() => setConfirmPasswordVisible(!confirmPasswordVisible)}> <EyeIcon size={20} /> </Button>
+                    <Button
+                      type="button"
+                      className="eye-btn"
+                      onClick={() => setConfirmPasswordVisible(!confirmPasswordVisible)}>
+                      {
+                        confirmPasswordVisible ? <EyeIcon size={20} /> : <EyeOffIcon size={20} />
+                      }
+                    </Button>
                   </div>
                 </FormControl>
-                <FormMessage />
+                <FormMessage className="text-red-500"/>
               </FormItem>
             )}
           />
-          <Button disabled={isPending} type="submit" className="my-4">
+          </div>
+          <Button disabled={isPending} type="submit"  className="mx-auto mt-4 mb-2 w-6/12 submit-btn">
 
             {isPending ?
               <>
@@ -165,7 +195,10 @@ const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({ }) => {
             }
           </Button>
         </form>
+
       </Form>
+      <RandomBox />
+      </div>
     </div>
   );
 };

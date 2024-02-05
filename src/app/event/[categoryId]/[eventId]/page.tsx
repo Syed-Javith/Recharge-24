@@ -19,6 +19,8 @@ const page: FC<pageProps> = async ({ params }: pageProps) => {
       headers: { Cookie: cookies().toString() },
     }
   );
+  console.log(event);
+  
   return (
     <div>
       <EventDetails session={session} event={event} />

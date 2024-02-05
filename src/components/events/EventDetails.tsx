@@ -97,6 +97,8 @@ const EventDetails: FC<EventDetailsProps> = ({
       });
   };
 
+  console.log(event);
+  
   if (event) {
     return (
       <div className="max-w-[1300px] m-auto md:p-4 p-2">
@@ -300,6 +302,12 @@ const EventDetails: FC<EventDetailsProps> = ({
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
+          </div>
+          <div>
+            <h1 className="text-2xl mt-4 mb-4">Event Incharges</h1>
+              {event.incharges.length>0 && event.incharges.map(incharge => (
+                <li className="py-2 text-[1.2em]" key={incharge.id}>{incharge.name + " - " + incharge.contact_number}</li>
+              ))}
           </div>
         </div>
       </div>

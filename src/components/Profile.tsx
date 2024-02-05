@@ -1,7 +1,7 @@
 "use client";
 import { UserProfileSchema } from "@/types/models";
 import { FC, useEffect, useState } from "react";
-import { Card, CardContent, CardDescription, CardTitle } from "./ui/Card";
+import "./profile.css";
 import { CSRBaseUrl } from "@/lib/utils";
 import { useMutation } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";
@@ -13,11 +13,17 @@ import {
   Loader2,
   Phone,
   School,
+  PenIcon,
+  Mail,
 } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/Avatar";
 import EditProfileForm from "@/components/forms/EditProfileForm";
 import DialogBox from "./DialogBox";
-
+import KnowMore from "./KnowMore";
+import Link from "next/link";
+import { Button } from "./ui/Button";
+import DesktopProfile from "./DesktopProfile";
+import Loader from "./loader/Loader";
 
 interface ProfileProps {}
 
@@ -57,8 +63,10 @@ const Profile: FC<ProfileProps> = ({}) => {
     profileDetails();
   }, []);
 
+  
+
   return isPending ? (
-    <Loader2 className="animate-spin mx-auto mt-[25%]" size={40} />
+    <Loader/>
   ) : profile == undefined ? (
     <DialogBox />
   ) : error ? (
@@ -67,84 +75,84 @@ const Profile: FC<ProfileProps> = ({}) => {
       <h2>Error loading profile </h2>
     </div>
   ) : (
-    <Card
-      className="max-w-xl md:mx-auto md:my-10 rounded-3xl p-5 m-8"
-      key={profile.email}
-      style={{
-        boxShadow:
-          "0 0 0.4rem #fff, 0 0 0.4rem #fff, 0 0 4rem rgb(0, 191, 255), 0 0 1rem rgb(0, 191, 255), 0 0 1.6rem rgb(0, 191, 255)",
-      }}
-    >
-      <div className="flex md:flex-row flex-col items-center">
-        <Avatar className="w-20 h-20">
-          <AvatarImage src={profile.profile_photo ?? ""} />
-          <AvatarFallback>CN</AvatarFallback>
-        </Avatar>
-        <div className="mx-3">
-          <div className="flex justify-center items-center">
-            <CardTitle className="mr-6">
-              {profile.first_name + " " + profile.last_name}
-            </CardTitle>
-            <span className="w-28"></span>
-            <EditProfileForm profile={profile} setProfile={setProfile} />
+    <div className="profile-container">
+      <DesktopProfile profile={profile} setProfile={setProfile}/>
+      {/* <div className="profile-card">
+        {profile.profile_photo ? (
+          <img className="rounded-full" src={profile.profile_photo} alt="" />
+        ) : (
+          <div className="profile-avatar">
+            {profile.first_name[0] + profile.last_name[0]}
           </div>
-          <CardDescription className="flex items-center my-1">
-            <Phone size={15} className="mr-2" />
-            {profile.mobile_number}
-          </CardDescription>
+        )}
+        <div className="flex flex-col gap-2">
+          <h2 className="font-semibold text-[#d7d70c]">{profile.first_name + " " + profile.last_name}</h2>
           <div className="flex">
-            <CardDescription className="flex items-center mr-4">
-              <School size={15} className="mr-2" />
-              {profile.college}
-            </CardDescription>
-            <CardDescription className="flex items-center mr-4">
-              <Brain size={15} className="mr-2" />
-              {profile.department}
-            </CardDescription>
-            <CardDescription className="flex items-center mr-4">
-              <CalendarHeart size={15} className="mr-2" />
-              {profile.year}
-            </CardDescription>
+            <Mail className="inline-block pr-2" />
+            <p className="">{" " + profile.email}</p>
+          </div>
+          <div className="flex">
+            <Phone className="inline-block pr-2" />
+            <p className="">{" " + profile.mobile_number}</p>
           </div>
         </div>
+        <div className="edit-profile">
+          <EditProfileForm profile={profile} setProfile={setProfile} />
+        </div>
+      </div> */}
+      <div className="proshow-event">
+        {profile.event_registrations.length > 0 && (
+          <div className="pr-proshow-container">
+            <h2 className="m-4">Registered Proshows</h2>
+            {profile.event_registrations.map((proshow, index) => (
+              <div
+                className={`profile-proshow ${
+                  index % 2 == 0 ? "prp-even" : "prp-odd"
+                }`}
+                key={proshow.id}
+              >
+                <img src={proshow.image} alt="" />
+                <div className="pr-proshow-content">
+                  <div className="flex gap-4 items-center mb-2">
+                    <h2 className="pr-event-title">{proshow.name}</h2>
+                    <Link href="proshow">
+                      <KnowMore />
+                    </Link>
+                  </div>
+                  {/* <p>{proshow.description?.slice(0, 240) + " ..."}</p> */}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+        {profile.event_registrations.length > 0 && (
+          <div className="pr-event-container">
+            <h2 className="m-4">Registered Events</h2>
+            {profile.event_registrations.map((event, index) => (
+              <div
+                className={`profile-event ${
+                  index % 2 == 0 ? "pre-even" : "pre-odd"
+                }`}
+                key={event.id}
+              >
+                <img src={event.image} alt="" />
+                <div className="pr-event-content">
+                  <div className="flex gap-4 items-center mb-2">
+                    <h2 className="pr-event-title">{event.name}</h2>
+                    <Link
+                      href={`${"event/" + event.category.id + "/" + event.id}`}
+                    >
+                      <KnowMore />
+                    </Link>
+                  </div>
+                  {/* <p>{event.description?.slice(0, 240) + " ..."}</p> */}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
-      <CardContent>
-        <CardDescription className="max-w-[150px] mx-auto my-3">
-          <img
-            src={profile.qr_code ? profile.qr_code : ""}
-            height={200}
-            width={200}
-            alt="Unique user id"
-            className="rounded-xl"
-          />
-        </CardDescription>
-
-        <div className="my-5">
-          <div className="font-bold underline">Registered Proshows</div>
-          {profile.proshow_registrations.length > 0 ? (
-            profile.proshow_registrations.map((proshow_registration) => (
-              <li key={proshow_registration.proshow.id}>
-                {proshow_registration.proshow.name}
-              </li>
-            ))
-          ) : (
-            <h3>-</h3>
-          )}
-        </div>
-      </CardContent>
-      <CardContent>
-        <div className="my-5">
-          <div className="font-bold underline">Registered Events</div>
-          {profile.event_registrations.length > 0 ? (
-            profile.event_registrations.map((event_registration) => (
-              <li key={event_registration.id}>{event_registration.name}</li>
-            ))
-          ) : (
-            <h3>-</h3>
-          )}
-        </div>
-      </CardContent>
-    </Card>
+    </div>
   );
 };
 

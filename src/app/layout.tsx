@@ -6,9 +6,10 @@ import Navbar from "@/components/Home/Nav/Navbar";
 import Providers from "@/components/Providers";
 import { Toaster } from "@/components/ui/Sonner";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import Script from "next/script";
 
 export const metadata: Metadata = {
-  title: "Recharge24",
+  title: "Recharge-2k24",
   description: "Presented by REC",
 };
 
@@ -19,9 +20,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <Script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"/>
+      </head>
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased",
+          "min-h-screen bg-[#101520] font-sans antialiased",
           GeistSans.variable
         )}
       >

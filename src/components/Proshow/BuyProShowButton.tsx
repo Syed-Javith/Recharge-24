@@ -12,13 +12,14 @@ interface BuyProShowButtonProps {
   proshowid: number;
   label: "standard" | "premium" | "standard combo" | "premium combo";
   disabled: boolean;
-
+  is_registered: boolean;
 }
 
 const BuyProShowButton: FC<BuyProShowButtonProps> = ({
   proshowid,
   disabled,
-  label
+  label,
+  is_registered
 }) => {
   const router = useRouter();
   const { mutate: buyProshow, isPending } = useMutation({
@@ -76,7 +77,7 @@ const BuyProShowButton: FC<BuyProShowButtonProps> = ({
       onClick={() => buyProshow({ proshowid })}
       disabled={isPending || disabled}
     >
-      {(disabled ? "Already bought " : "Buy ") + label} {isPending && <Loader2 className="animate-spin" />}
+      {(disabled ? is_registered ? "Already Bought " : "Can't Buy "  : "Buy ") + label} {isPending && <Loader2 className="animate-spin" />}
     </Button>
   );
 };

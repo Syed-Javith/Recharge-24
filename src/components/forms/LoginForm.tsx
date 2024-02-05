@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Input } from "../ui/Input";
 import { Button } from "../ui/Button";
-import { EyeIcon, Loader2 } from "lucide-react";
+import { EyeIcon, EyeOffIcon, Loader2 } from "lucide-react";
 import {
   Form,
   FormControl,
@@ -21,7 +21,8 @@ import axios, { AxiosError } from "axios";
 import { CSRBaseUrl } from "@/lib/utils";
 import { toast } from "sonner";
 import Link from "next/link";
-
+import "./styles.css"
+import RandomBox from "./RandomBox";
 interface LoginFormProps { }
 
 type loginFormPayload = z.infer<typeof loginFormSchema>;
@@ -72,7 +73,11 @@ const LoginForm: FC<LoginFormProps> = ({ }) => {
   });
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col justify-center items-center wrapping">
+      <div className="cont">
+        <div className="lighter lighter-1"></div>
+        <div className="lighter lighter-2"></div>
+        <div className="lighter lighter-3"></div>
       <Form {...loginForm} >
         <form
           onSubmit={loginForm.handleSubmit((e) => {
@@ -86,7 +91,7 @@ const LoginForm: FC<LoginFormProps> = ({ }) => {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel className="text-white">Enter your Email</FormLabel>
                   <FormControl>
                     <Input
                       type="email"
@@ -94,8 +99,8 @@ const LoginForm: FC<LoginFormProps> = ({ }) => {
                       {...field}
                     />
                   </FormControl>
-                  <FormDescription>Ensure your email is verified</FormDescription>
-                  <FormMessage />
+                  {/* <FormDescription className="input-desc">Ensure your email is verified</FormDescription> */}
+                  <FormMessage className="text-red-500"/>
                 </FormItem>
               )}
             />
@@ -106,29 +111,40 @@ const LoginForm: FC<LoginFormProps> = ({ }) => {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Password</FormLabel>
+                  <FormLabel className="text-white">Enter your Password</FormLabel>
                   <FormControl>
                     <div className="flex flex-row gap-4">
                       <Input
-                        type={passwordVisible ? "text" : "password"} 
+                        type={passwordVisible ? "text" : "password"}
                         placeholder="password"
+                        autoComplete="off"
                         {...field}
                       />
-                      <Button type="button" onClick={() => setPasswordVisible(!passwordVisible)}> <EyeIcon size={20} /> </Button>
+                      <Button
+                        className="eye-btn"
+                        type="button"
+                        tabIndex={-1}
+                        onClick={() => setPasswordVisible(!passwordVisible)}>
+                        {
+                          passwordVisible ? <EyeIcon size={20} /> : <EyeOffIcon size={20} />
+                        }
+                      </Button>
                     </div>
                   </FormControl>
-                  <FormDescription>Check the caps lock</FormDescription>
-                  <FormMessage />
+                  {/* <FormDescription className="input-desc">Check the caps lock</FormDescription> */}
+                  <FormMessage className="text-red-500" />
                 </FormItem>
               )}
             />
           </div>
-          <Button disabled={isPending} type="submit" className="mx-auto mt-4 mb-2 w-3/6">
+          <Button disabled={isPending} type="submit" className="mx-auto mt-4 mb-2 w-6/12 submit-btn">
             Login{isPending && <Loader2 className="animate-spin ml-2" />}
           </Button>
+      <Link href={'/forgot-password'} className="mx-auto text-gray-50 text-[0.85rem] mt-2 hover:text-white">Forgot Password ?</Link>
         </form>
       </Form>
-      <Link href={'/forgot-password'} className="mx-auto text-gray-400 underline">Forgot Password</Link>
+      <RandomBox />
+      </div>
     </div>
   );
 };

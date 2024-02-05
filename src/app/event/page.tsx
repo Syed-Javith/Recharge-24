@@ -3,26 +3,41 @@ import Card from "@/components/events/CategoryCard";
 import Link from "next/link";
 import { SSRBaseUrl } from "@/lib/utils";
 import axios from "axios";
+import "./style.css";
 
-
-const page = async ({ }) => {
-  const {data} = await axios.get(SSRBaseUrl + "event/category/");
+const page = async () => {
+  const { data } = await axios.get(SSRBaseUrl + "event/category/");
   const categories: Category[] = await data;
   return (
-    <div className="flex flex-col justify-center">
-      <h1 style={{ fontSize: '72px', margin: "auto" }}>EVENTS</h1>
-      <div className="grid md:flex-row md:items-center md:grid-cols-2 grid-cols-1 gap-12 content-center md:m-4 xl:m-auto m-4">
-        {
-          categories.map((category) => (
-            <Link href={"/event/" + category.id} key={category.id}>
-              <Card
-                image={category?.image}
-                title={category.category_name}
-                events_count={category?.events_count}
+    <div>
+      <p id="cat-title">Categories</p>
+      <div className="flex justify-center items-center flex-wrap category-container mt-12">
+        {categories.map((category) => (
+          category.events_count != 0 &&
+          <Link key={category.id} href={"/event/" + category.id}>
+            <div className="mb-12 category-element">
+            <div className=" category-wrapper">
+              <img
+                src={category.image}
+                id="cat-blur"
+                className="h-[380px] w-[380px]"
               />
-            </Link>
-          ))
-        }
+              <img
+                src={category.image}
+                id="cat-normal"
+                className="h-[330px] w-[330px]"
+              />
+              <div className="cat-big-circle"></div>
+              <div className="cat-big-circle"></div>
+              <div className="cat-small-circle"></div>
+              <div className="cat-small-circle"></div>
+              <div className="cat-square"></div>
+              <div className="cat-square"></div>
+            </div>
+            <span>{category.category_name}</span>
+          </div>
+          </Link>
+        ))}
       </div>
     </div>
   );

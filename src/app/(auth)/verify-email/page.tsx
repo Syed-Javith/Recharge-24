@@ -33,6 +33,8 @@ const Verify: FC = () => {
     },
     onSuccess: (res: any) => {
       console.log(res);
+      toast.success("Thank you for registering !")
+      toast.success("Explore the events of Recharge")
       router.push("/");
       router.refresh();
     },
