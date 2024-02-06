@@ -39,7 +39,7 @@ const ProShowCard: FC<ProshowcardProps> = ({
           <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0">
             <CardTitle className="font-dmserif relative bottom-0 left-0 mb-2 ml-2 text-3xl text-white-600 ">
               {proshow.name}{" "}
-            <span className="text-xl">  23 MARCH </span>
+            <h3 className="text-xl">  23 MARCH </h3>
             </CardTitle>
 
             <div className={"sm:hidden " + isButton}>
