@@ -47,13 +47,12 @@
 
 'use client'
 
-import React from 'react'
-import { UserJwtPayload, getAuthSession } from "@/lib/auth";
+import React, { useEffect } from 'react'
+import { UserJwtPayload } from "@/lib/auth";
 import { usePathname } from "next/navigation"
 import './Navbar.css'
 import Link from 'next/link';
 import { Menu } from 'lucide-react';
-import { ScrollDownButton } from '@radix-ui/react-select';
 
 type SesstionType =  {
   session: UserJwtPayload | null
@@ -62,6 +61,25 @@ type SesstionType =  {
 const Navbar = ({session} : SesstionType) => {
 
   const pathname = usePathname()
+
+  useEffect(() => {
+    document.getElementById('ul')?.classList.remove('dropdown-custom')
+  }, [pathname]);
+  
+  useEffect(() => {
+    window.addEventListener('resize', () => {
+      if(window.innerWidth>=690) {
+        document.getElementById('ul')?.classList.remove('dropdown-custom')
+      }
+    })
+    
+    window.addEventListener('click', (event) => {
+      if(!document.getElementById('ham')?.contains(event.target as Node)) {
+        document.getElementById('ul')?.classList.remove('dropdown-custom')
+      }
+    })
+  }, [])
+  
 
   return (
     <header id='landing-header'>
