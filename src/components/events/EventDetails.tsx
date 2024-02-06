@@ -23,8 +23,7 @@ import { CSRBaseUrl } from "@/lib/utils";
 import MembersDialog from "./MembersDialog";
 import LoginDialog from "./LoginDialog";
 import JoinTeam from "./JoinTeam";
-
-
+import ParticleBackground from "../Particles/ParticleBackGround";
 interface EventDetailsProps {
   event: EventDetailSchema;
   session: UserJwtPayload | null;
@@ -310,6 +309,7 @@ const EventDetails: FC<EventDetailsProps> = ({
               ))}
           </div>
         </div>
+        {/* <ParticleBackground /> */}
       </div>
     );
   }

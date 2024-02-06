@@ -33,7 +33,7 @@ function AboutRecharge() {
    
     <img
             src="/logo1.webp"
-            className="shadow-2xl rounded-xl z-10 neon-border "
+            className="shadow-2xl rounded-xl z-10 neon-border cut"
             alt=""
             width={3000}
             height={1000}
