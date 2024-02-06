@@ -28,11 +28,13 @@ function hoverRotate() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+console.log("DOne")
+// document.addEventListener('DOMContentLoaded', function() {
     rotateRectangles();
     hoverRotate()
-});
+// });
 
-window.addEventListener('load', function() {
-    rotateRectangles();
-});
+// window.addEventListener('load', function() {
+    // console.log("DOne")
+    // rotateRectangles();
+// });

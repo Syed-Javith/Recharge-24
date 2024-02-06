@@ -59,7 +59,7 @@ type SesstionType =  {
   session: UserJwtPayload | null
 }
 
-const Navbar = async ({session} : SesstionType) => {
+const Navbar = ({session} : SesstionType) => {
 
   const pathname = usePathname()
 

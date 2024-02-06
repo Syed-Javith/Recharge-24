@@ -24,10 +24,6 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-
-      <Head>
-        <script type="text/javascript" src="/static/Landing.js"></script>
-      </Head>
       <body
         className={cn(
           // "min-h-screen bg-[#0c0c2d] font-sans antialiased",

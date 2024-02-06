@@ -75,6 +75,7 @@ div#fin-row-4 h2 {
 }
 
 div#fin-row-4 #caption {
+    margin: 0 1rem;
     top: 25%;
 }
 
@@ -202,39 +203,18 @@ div#fin-row-5 h3 {
 
     .btn {
         top: 40%;
-        scale: 0.9;
+        transform: scale(0.9);
     }
 
     div#fin-row-5 h3 {
         bottom: -70%;
-        scale: 0.8;
     }
 }
 
 
 @media screen and (max-width: 732px) {
-
-    .fin {
-        height: 60px;
-    }
-
     #logo {
         width: 300px;
-        top: 15%;
-    }
-
-    div#fin-row-4 #date, div#fin-row-4 #caption {
-        font-size: 1rem ;
-    }
-
-    .btn {
-        top: 40%;
-        scale: 0.9;
-    }
-
-    div#fin-row-5 h3 {
-        bottom: -70%;
-        scale: 0.8;
     }
 }
 
@@ -247,12 +227,18 @@ div#fin-row-5 h3 {
 
     .fin-2, .fin-3, .fin-4 {
         width: calc(27.2vw * 1.4);
-
     }
 
+    .btn {
+        top: 30%;
+    }
 }
 
 @media screen and (max-width: 480px) {
+
+    .btn {
+        top: 20%;
+    }
 
     #eye {
         display: none;
@@ -295,16 +281,12 @@ div#fin-row-5 h3 {
         width: 50vw ;
     }
 
-    .fin-2 {
+    .fin-2, .fin-4 {
         width: 70vw;
     }
 
     .fin-3 {
         width: 90vw;
-    }
-
-    .fin-4 {
-        width: 70vw;
     }
 
  }
