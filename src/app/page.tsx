@@ -5,6 +5,7 @@ import AboutRec from "@/components/Home/AboutRec";
 import GallerySection from '@/components/gallery/Gallery';
 import FAQ from '@/components/Home/Faq';
 import Footer from '@/components/Home/Footer';
+import ProshowSection from '@/components/Home/ProshowSection';
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Landing/>
       <AboutRecharge/>
       <AboutRec/>
+      <ProshowSection />
       <GallerySection/>
       <FAQ/>
       <Footer/>
