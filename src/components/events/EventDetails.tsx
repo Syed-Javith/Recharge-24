@@ -101,7 +101,7 @@ const EventDetails: FC<EventDetailsProps> = ({
   
   if (event) {
     return (
-      <div className="max-w-[1300px] m-auto md:p-4 p-2">
+      <div className="max-w-[1300px] m-auto md:p-4 p-2 mt-10">
         <div className="grid grid-cols-12 gap-6 justify-between md:p-6 p-4 mt-4 border-b-2 border-white">
           <div className="flex gap-6 md:col-span-6 lg:col-span-8 col-span-12">
             <img
@@ -302,6 +302,12 @@ const EventDetails: FC<EventDetailsProps> = ({
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
+          </div>
+          <div>
+            <h1 className="text-2xl mt-4 mb-4">Event Incharges</h1>
+              {event.incharges.length>0 && event.incharges.map(incharge => (
+                <li className="py-2 text-[1.2em]">{incharge.name + " - " + incharge.contact_number}</li>
+              ))}
           </div>
         </div>
       </div>

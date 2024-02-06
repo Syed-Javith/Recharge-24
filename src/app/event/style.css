@@ -1,0 +1,103 @@
+#cat-title{
+    font-size: 4rem;
+    text-align: center;
+    margin-top: 10vh;
+    letter-spacing: 0.4rem;
+}
+.category-wrapper img{
+    transition: all 0.1s ease-in-out;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
+.category-wrapper{
+    position: relative;
+    scale: 0.6;
+}
+#cat-normal {
+    filter: brightness(0.9);
+}
+#cat-blur {
+    position: absolute;
+    border: 1px solid #000000;
+    filter: blur(72.5px);
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+.cat-big-circle {
+    filter: brightness(1.3);
+    position: absolute;
+    bottom: 30px;
+    left: -20px;
+    z-index: -1;
+    width: 105px;
+    height: 105px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 68px #000000, inset 0px 0px 71px #000000;
+    transition: all 0.2s ease-in-out;
+}
+
+.cat-square {
+    filter: brightness(1.3);
+    position: absolute;
+    bottom: 215px;
+    left: 245px;
+    z-index: -1;
+    width: 102px;
+    height: 99px;
+    border-radius: 20px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 68px #000000, inset 0px 0px 71px #000000;
+    transition: all 0.2s ease-in-out;
+}
+
+.cat-small-circle {
+    filter: brightness(1.3);
+    position: absolute;
+    bottom: 40px;
+    left: 275px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 68px #000000, inset 0px 0px 35px #000000;
+    transition: all 0.2s ease-in-out;
+}
+
+.category-wrapper #cat-normal:hover {
+    filter: brightness(1.15);
+}
+
+
+.category-wrapper img:hover ~ .cat-big-circle {
+    border-radius: 20px;
+    filter: brightness(1.3);
+}
+
+.category-wrapper img:hover ~ .cat-small-circle {
+    filter: brightness(1.3);
+    border-radius: 10px;
+}
+
+.category-wrapper img:hover ~ .cat-square {
+    filter: brightness(1.3);
+    border-radius: 50%;
+}
+
+.category-element span {
+    display: block;
+    text-align: center;
+    font-size: 2rem;
+    margin-left: 1rem;
+    margin-top: -1.5rem;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 420px) {
+    #cat-title {
+        font-size: 3rem;
+        margin-top: 20vh;
+    }
+}

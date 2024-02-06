@@ -6,19 +6,28 @@ import Navbar from "@/components/Home/Nav/Navbar";
 import Providers from "@/components/Providers";
 import { Toaster } from "@/components/ui/Sonner";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import Head from "next/head";
+import { getAuthSession } from "@/lib/auth";
 
 export const metadata: Metadata = {
-  title: "Recharge24",
+  title: "Recharge-2k24",
   description: "Presented by REC",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+
+  const session = await getAuthSession();
+
   return (
     <html lang="en">
+
+      <Head>
+        <script type="text/javascript" src="/static/Landing.js"></script>
+      </Head>
       <body
         className={cn(
           // "min-h-screen bg-[#0c0c2d] font-sans antialiased",
@@ -30,10 +39,11 @@ export default function RootLayout({
             attribute="class"
             defaultTheme="dark"
         >
-          <Navbar />
+          <Navbar session={session}/>
           <Providers>{children}</Providers>
           <Toaster richColors/>
         </ThemeProvider>
+
       </body>
     </html>
   );

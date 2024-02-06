@@ -1,6 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+*{
+  padding: 0; margin: 0;
+  box-sizing: border-box;
+
+}
  
 @layer base {
   :root {
@@ -73,6 +79,15 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+::-webkit-scrollbar {
+  width: 0; 
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: transparent;
 }
 
 .glass{
