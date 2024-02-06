@@ -16,7 +16,7 @@ const FaqSection: React.FC<FaqSectionProps> = ({ question, answer }) => {
 
   return (
     <div className="mb-4 border border-zinc-500 rounded-md overflow-hidden">
-      <div className="bg-black-200 p-4 flex justify-between items-center cursor-pointer" onClick={toggleAnswer}>
+      <div className="bg-black-200 p-4 flex justify-between items-center cursor-pointer max-[500px]:p-2" onClick={toggleAnswer}>
         <p className="text-lg font-semibold">{question}</p>
         <div className={`transition-transform transform ${isOpen ? 'rotate-360' : 'rotate-0'} duration-300`}>
           {isOpen ? <BsChevronUp /> : <BsChevronDown />}
