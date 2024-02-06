@@ -1,6 +1,10 @@
 "use client";
 import { ProShow } from "@/types/models";
 import ProShowCard from "./ProShowCard";
+import localFont from 'next/font/local'
+
+
+const SketchFont = localFont({ src: '../../../public/fonts/Mexcellent.ttf' })
 
 interface ProshowListProps {
   is_rec: boolean;
@@ -20,10 +24,13 @@ const ProshowList = async ({
   datePremium,
 }: ProshowListProps) => {
   return (
-    <div>
-      <h1 className="text-4xl  mt-10 mb-10 font-bold text-white text-center">
-        Proshows list
+    <div >
+      <div className={SketchFont.className}>
+      <h1 className= "text-4xl  mt-10 mb-10 text-white text-center" >
+        Proshows
       </h1>
+      </div>
+
       <div className=" flex flex-wrap items-center justify-center">
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
           {" "}

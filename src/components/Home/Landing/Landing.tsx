@@ -69,11 +69,13 @@ const Landing = () => {
             <div id="fin-row-5">
                 <img src="/Landing/fin1.png" className="fin fin-5 fin-l" />
                 <img src="/Landing/fin2.png" className="fin fin-5 fin-r" />
-                <button className="btn" id="front-btn">BUY TICKETS</button>
+                <button className="btn" id="front-btn"><Link href={'/proshow'}>BUY TICKETS</Link></button>
                 <button className="btn" id="bg-btn">BUY TICKETS</button>
                     <h3 id='landing-h3'>
                         <Link href='/event'>
-                            Explore All Events 
+                            <Link href={'/event'}>
+                            Explore All Events
+                            </Link> 
                         </Link>
                     </h3>
             </div>
