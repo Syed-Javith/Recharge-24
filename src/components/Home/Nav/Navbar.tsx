@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { FC } from "react";
-import { buttonVariants } from "../../ui/Button";
+import { Button, buttonVariants } from "../../ui/Button";
 import { getAuthSession } from "@/lib/auth";
 import UserAccountNav from "./UserAccountNav";
 
@@ -33,8 +33,10 @@ const Navbar: FC<NavbarProps> = async ({}) => {
             <Link href="/login" className={buttonVariants()}>
               Log In
             </Link>
-            <Link href="/register" className={buttonVariants()}>
-              Register
+            <Link href="/register">
+              <Button >
+                register
+              </Button>
             </Link>
           </>
         )}
