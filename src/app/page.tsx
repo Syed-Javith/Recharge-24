@@ -15,7 +15,7 @@ export default function Home() {
       <GallerySection/>
       <FAQ/>
       <Footer/>
-      {/* <div className="h-[200px] w-[100%] bg-white"></div> */}
+      {/* <img src="/LogoReveal2.gif" alt="" className='h-[95vh] w-[99%] object-fill' /> */}
     </div>
   );
 }

@@ -33,7 +33,7 @@ export default function RootLayout({
             attribute="class"
             defaultTheme="dark"
         >
-          <Navbar />
+          {/* <Navbar /> */}
           <Providers>{children}</Providers>
           <Toaster richColors/>
         </ThemeProvider>
