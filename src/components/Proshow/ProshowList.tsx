@@ -25,7 +25,7 @@ const ProshowList = async ({
   datePremium,
 }: ProshowListProps) => {
   return (
-    <div className="h-screen w-screen brick">
+    <div className="h-[100%] w-[100%] brick">
       <div className="mt-24">
         <h1 className=" text-5xl mt-10 mb-10 font-bold text-white text-center fast-flicker">
           Proshows list
