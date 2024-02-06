@@ -29,12 +29,5 @@ function hoverRotate() {
 }
 
 console.log("DOne")
-// document.addEventListener('DOMContentLoaded', function() {
     rotateRectangles();
     hoverRotate()
-// });
-
-// window.addEventListener('load', function() {
-    // console.log("DOne")
-    // rotateRectangles();
-// });
