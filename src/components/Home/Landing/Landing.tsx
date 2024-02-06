@@ -40,6 +40,8 @@
 // export default Landing
 
 import React from 'react'
+import Link from 'next/link'
+import Script from 'next/script'
 import './Landing.css'
 
 const Landing = () => {
@@ -71,12 +73,17 @@ const Landing = () => {
                 <img src="/Landing/fin2.png" className="fin fin-5 fin-r" />
                 <button className="btn" id="front-btn">BUY TICKETS</button>
                 <button className="btn" id="bg-btn">BUY TICKETS</button>
-                <h3 id='landing-h3'>Explore All Events </h3>
+                    <h3 id='landing-h3'>
+                        <Link href='/event'>
+                            Explore All Events 
+                        </Link>
+                    </h3>
             </div>
         </div>
         <img src="/Landing/light.png" alt="light" className="light" id="light-1" />
         <img src="/Landing/light.png" alt="light" className="light" id="light-2" />
 
+        <Script src='/static/Landing.js' defer></Script>
     </main>
   )
 }
