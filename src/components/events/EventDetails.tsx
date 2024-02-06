@@ -5,7 +5,6 @@ import { Badge } from "@/components/ui/badge";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { UserJwtPayload } from "@/lib/auth";
-import Clipboard from "../ClipBoard";
 import {
   Tooltip,
   TooltipContent,
