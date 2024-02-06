@@ -1,7 +1,7 @@
 "use client";
 import { ProShow } from "@/types/models";
 import ProShowCard from "./ProShowCard";
-
+import "./style.css";
 interface ProshowListProps {
   is_rec: boolean;
   proshows: ProShow[];
@@ -21,7 +21,7 @@ const ProshowList = async ({
 }: ProshowListProps) => {
   return (
     <div>
-      <h1 className="text-4xl  mt-10 mb-10 font-bold text-white text-center">
+      <h1 className=" text-5xl  mt-10 mb-10 font-bold text-white text-center fast-flicker">
         Proshows list
       </h1>
       <div className=" flex flex-wrap items-center justify-center">
