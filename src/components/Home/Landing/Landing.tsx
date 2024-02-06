@@ -1,47 +1,48 @@
+"use client"
 import React, { useEffect } from 'react'
 import Link from 'next/link'
-import Script from 'next/script'
 import './Landing.css'
-import dynamic from 'next/dynamic'
-// import "../../../../public/static/Landing"
+
 
 const Landing = () => {
-    // const Script = dynamic(() => import(""));
-    // useEffect(()=>{
-    //     function rotateRectangles() {
-    //         const rectangle = document.querySelectorAll('.fin');
-    //         rectangle.forEach(function(rect) {
-    //             rect.style.transform = 'rotate(0deg)';
-    //         });
-    //     }
+    useEffect(()=>{
+        function rotateRectangles() {
+            let rectangle : NodeList  = document.querySelectorAll('.fin');
+            rectangle.forEach(function(rect : Node) {
+                if (rect instanceof HTMLElement) {
+                    const myElement: HTMLElement = rect;
+                    myElement.style.transform = 'rotate(0deg)';
+                }
+            });
+        }        
         
-    //     function hoverRotate() {
-    //         var rotateButton = document.getElementById('front-btn');
-    //         var leftElements = document.querySelectorAll('.fin-l');
-    //         var rightElements = document.querySelectorAll('.fin-r');
-    //         rotateButton?.addEventListener('mouseenter', function() {
-    //             leftElements.forEach(function(element) {
-    //                 element.classList.add('rotate-l');
-    //             });
-    //             rightElements.forEach(function(element) {
-    //                 element.classList.add('rotate-r');
-    //             });
-    //         });
+        function hoverRotate() {
+            var rotateButton = document.getElementById('front-btn');
+            var leftElements = document.querySelectorAll('.fin-l');
+            var rightElements = document.querySelectorAll('.fin-r');
+            rotateButton?.addEventListener('mouseenter', function() {
+                leftElements.forEach(function(element) {
+                    element.classList.add('rotate-l');
+                });
+                rightElements.forEach(function(element) {
+                    element.classList.add('rotate-r');
+                });
+            });
             
-    //         rotateButton?.addEventListener('mouseleave', function() {
-    //             leftElements.forEach(function(element) {
-    //                 element.classList.remove('rotate-l');
-    //             });
-    //             rightElements.forEach(function(element) {
-    //                 element.classList.remove('rotate-r');
-    //             });
-    //         });
-    //     }
+            rotateButton?.addEventListener('mouseleave', function() {
+                leftElements.forEach(function(element) {
+                    element.classList.remove('rotate-l');
+                });
+                rightElements.forEach(function(element) {
+                    element.classList.remove('rotate-r');
+                });
+            });
+        }
         
-    //     console.log("DOne")
-    //     rotateRectangles();
-    //     hoverRotate()
-    // })
+        console.log("DOne")
+        rotateRectangles();
+        hoverRotate()
+    })
   return (
     <main id='landing-main group'>
         <div id="content">
@@ -79,8 +80,6 @@ const Landing = () => {
         </div>
         <img src="/Landing/light.png" alt="light" className="light" id="light-1" />
         <img src="/Landing/light.png" alt="light" className="light" id="light-2" />
-
-        <Script src='/static/Landing.js' defer></Script>
     </main>
   )
 }
