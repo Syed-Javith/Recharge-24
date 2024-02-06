@@ -323,7 +323,6 @@ const EventDetails: FC<EventDetailsProps> = ({
             </div>
           )}
         </div>
-        {/* <ParticleBackground /> */}
       </div>
     );
   }
