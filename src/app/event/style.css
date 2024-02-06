@@ -1,7 +1,7 @@
 #cat-title{
     font-size: 4rem;
     text-align: center;
-    margin: 2rem 0 1rem 0;
+    margin-top: 10vh;
     letter-spacing: 0.4rem;
 }
 .category-wrapper img{
@@ -94,8 +94,10 @@
     margin-top: -1.5rem;
     cursor: pointer;
 }
-@media ( width < 500px ){
-    #cat-title{
+
+@media screen and (max-width: 420px) {
+    #cat-title {
         font-size: 3rem;
+        margin-top: 20vh;
     }
 }

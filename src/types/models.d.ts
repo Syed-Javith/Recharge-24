@@ -84,7 +84,7 @@ type UserProfileSchema = {
 export type CategoryEvents = {
   id: number;
   category_name: string;
-  events: EventSchema[];
+  events: EventDetailsSchema[];
 };
 
 declare module 'vanta/src/vanta.birds';

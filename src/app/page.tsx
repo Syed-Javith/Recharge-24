@@ -1,5 +1,5 @@
 
-import Landing from '../components/Home/Landing'
+import Landing from '../components/Home/Landing/Landing'
 import AboutRecharge from "@/components/Home/AboutRecharge";
 import AboutRec from "@/components/Home/AboutRec";
 import GallerySection from '@/components/gallery/Gallery';
