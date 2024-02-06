@@ -237,11 +237,14 @@ div#fin-row-5 h3 {
 @media screen and (max-width: 480px) {
 
     .btn {
-        top: 20%;
+        top: 0%;
+        transform: scale(1);
     }
 
     #eye {
-        display: none;
+        height: auto;
+        opacity: 0.25;
+        transform: scale(3);
     }
 
     #content #fin-row-1, #content #fin-row-2, #content #fin-row-3, #content #fin-row-4 {
@@ -249,11 +252,18 @@ div#fin-row-5 h3 {
     }
 
     #logo {
-        width: 250px;
+        width: 270px;
+        top: 5%;
     }
 
     div#fin-row-4 #caption {
-        top: -60%;
+        top: -70%;
+        font-size: 1.2rem;
+    }
+    
+    div#fin-row-4 #date {
+        bottom: 5%;
+        font-size: 1.2rem;
     }
 
     #landing-h3 {
@@ -261,22 +271,22 @@ div#fin-row-5 h3 {
         margin-top: 3rem;
     }
 
-    div#fin-row-3 {
+    /* div#fin-row-3 {
         justify-content: center;
-    }
+    } */
 
     .fin-1.fin-l, .fin-2.fin-r, .fin-3.fin-l, .fin-4.fin-r {
         display: none;
     }
-
+/* 
     #content div#fin-row-5 img {
         visibility: hidden;
-    }
+    } */
 
     .light {
         display: none;
     }
-
+/* 
     .fin-1 {
         width: 50vw ;
     }
@@ -287,6 +297,9 @@ div#fin-row-5 h3 {
 
     .fin-3 {
         width: 90vw;
-    }
+    } */
 
+    .fin {
+        visibility: hidden;
+    }
  }
