@@ -4,7 +4,6 @@ import EventDetails from "@/components/events/EventDetails";
 import { SSRBaseUrl } from "@/lib/utils";
 import { cookies } from "next/headers";
 import axios from "axios";
-import ParticleBackground from "@/components/Particles/ParticleBackGround";
 
 interface pageProps {
   params: {
@@ -25,7 +24,6 @@ const page: FC<pageProps> = async ({ params }: pageProps) => {
   return (
     <div>
       <EventDetails session={session} event={event} />
-      {/* <ParticleBackground /> */}
     </div>
   );
 };

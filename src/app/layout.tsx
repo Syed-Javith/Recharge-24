@@ -6,7 +6,6 @@ import Navbar from "@/components/Home/Nav/Navbar";
 import Providers from "@/components/Providers";
 import { Toaster } from "@/components/ui/Sonner";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import Head from "next/head";
 import { getAuthSession } from "@/lib/auth";
 
 export const metadata: Metadata = {

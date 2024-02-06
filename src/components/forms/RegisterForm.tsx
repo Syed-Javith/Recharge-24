@@ -10,7 +10,6 @@ import { EyeIcon, EyeOff, EyeOffIcon, Loader2, MailCheck } from "lucide-react";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,

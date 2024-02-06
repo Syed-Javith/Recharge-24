@@ -1,4 +1,3 @@
-// "use client"
 import { SSRBaseUrl } from "@/lib/utils"
 import { CategoryEvents } from "@/types/models"
 import Link from "next/link"
@@ -7,8 +6,6 @@ import localFont from 'next/font/local'
 import './style.css'
 
 const AirFillFont = localFont({ src: '../../../../public/fonts/air-fill.ttf' })
-
-const AirOutline = localFont({ src: '../../../../public/fonts/air-outline.ttf' })
 
 const EventList = async ({ params }: { params: { categoryId: number } }) => {
 const {data} = await axios.get(SSRBaseUrl + "event/category/" + params.categoryId + "/events/");

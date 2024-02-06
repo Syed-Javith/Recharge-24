@@ -1,5 +1,4 @@
 import { Category } from "@/types/models";
-import Card from "@/components/events/CategoryCard";
 import Link from "next/link";
 import { SSRBaseUrl } from "@/lib/utils";
 import axios from "axios";
