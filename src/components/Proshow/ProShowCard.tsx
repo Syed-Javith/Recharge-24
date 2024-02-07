@@ -33,11 +33,20 @@ const ProShowCard: FC<ProshowcardProps> = ({
       <Card className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
         <div className="group relative cursor-pointer items-center  justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
           <div className="h-200 w-72">
-            <img
+            {/* <img
               className="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
               src='https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
               alt=""
-            />
+            /> */}
+            <img
+            src={proshow.image}
+            alt="proshow Image"
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
+          />
+            
+               
+            
+
           </div>
         </div>
 
@@ -46,7 +55,7 @@ const ProShowCard: FC<ProshowcardProps> = ({
           <div className="absolute inset-0 flex translate-y-[57%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0 pt-3 ">
             <CardTitle className="font-dmserif relative bottom-0 left-0 mb-2 ml-2 title">
               <span className={((proshow.premium && proshow.combo) || (proshow.premium))? `${titleFont.className} ${styles.premiumTitle} uppercase text-md mb-2 text-bold` : `${titleFont.className} ${styles.standardTitle} uppercase text-md mb-2 ` }>{proshow.name}</span>
-              <h4 className={((proshow.premium && proshow.combo) || (proshow.premium))? `${subtitleFont.className} ${styles.premiumTitle} text-sm mt-3 mb-3` : `${subtitleFont.className} ${styles.standardTitle} text-sm mt-3 mb-3` }> DAY {proshow.day}</h4>
+              <h4 className={((proshow.premium && proshow.combo) || (proshow.premium))? `${subtitleFont.className} ${styles.premiumTitle} text-sm mt-3 mb-3` : `${subtitleFont.className} ${styles.standardTitle} text-sm mt-3 mb-3` }> DAY <span className="pl-2">{proshow.day}</span></h4>
             </CardTitle>
 
             {/* text-sm mt-3 mb-3` */}
