@@ -7,6 +7,8 @@ export type EventSchema = {
   image?: string; // Image
   registration_count?: string; // Registration count
   is_registered: boolean; // Is registered
+  // team_event: boolean; // Is team event
+  // day: number; // Day
 };
 
 export type EventInchargeSchema = {
@@ -65,6 +67,7 @@ type ProShow = {
   premium: boolean;
   is_registered: boolean;
   readOnly: true;
+  proshow: ProShow;
 };
 
 type UserProfileSchema = {
@@ -78,7 +81,7 @@ type UserProfileSchema = {
   year?: number | null;
   qr_code?: string | undefined;
   proshow_registrations: ProShow[];
-  event_registrations: EventSchema[];
+  event_registrations: EventDetailSchema[];
 };
 
 export type CategoryEvents = {
