@@ -6,6 +6,7 @@
 .brick {
   background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url("../../../public/proshow-bg.jpg");
   background-size: cover;
+  
   height: 100vh;
 }
 
@@ -61,7 +62,7 @@
   animation: shine 2s forwards, blink 3s 2s infinite;
 }
 
-.fast-flicker {
+.fastFlicker {
   animation: shine 2s forwards, blink 10s 1s infinite;
 }
 
@@ -208,7 +209,7 @@
     opacity: 1;
   }
 }
-.golden-btn {
+.goldenBtn {
   display: inline-block;
   position: relative;
  
@@ -224,20 +225,20 @@
   cursor: pointer;
   outline: none;
   overflow: hidden;
-  
-  &:hover {
+}
+  .goldenBtn:hover {
     border: 1px solid #f2bd1f;
     background: #f2bd1f;
     box-shadow: inset 0 20px 20px rgba(255,255,255,.1);
     color: #000;
   }
-  &:active {
+  .goldenBtn:active {
     border-top: 1px solid #c99a10;
     background: #f2bd1f;
     box-shadow: inset 0 1px 1px rgba(201,154,16,.4),  inset 0 20px 20px rgba(201,154,16,.01);
   }
-  &:before,
-  &:after {
+  .goldenBtn:before,
+  .goldenBtn:after {
     content: '';
     position: absolute;
     top: -20px;
@@ -250,22 +251,22 @@
     z-index: 1;
     transition: all 0s;
   }
-  &:after {
+  .goldenBtn:after {
     background: rgba(255,255,255,.2);
     margin-left: 40px;
     width: 15px;
   }
-  &:hover:before,
-  &:hover:after {
+  .goldenBtn:hover:before,
+  .goldenBtn:hover:after {
     left: 110%;
     transition: all 1s .2s cubic-bezier(.07,.79,.59,1.12);
   }
-  &:hover:before {
+  .goldenBtn:hover:before {
     left: 120%;
     transition: all .7s .3s cubic-bezier(.07,.79,.59,1);
   }
-}
-.silver-btn {
+
+.silverBtn {
   display: inline-block;
   position: relative;
   font-size: 14px;
@@ -281,21 +282,21 @@
   overflow: hidden;
 }
 
-.silver-btn:hover {
+.silverBtn:hover {
   border: 1px solid #999; /* Darker silver border on hover */
   background: #999; /* Darker silver background on hover */
   box-shadow: inset 0 20px 20px rgba(255,255,255,.1);
   color: #090808; /* White text color on hover */
 }
 
-.silver-btn:active {
+.silverBtn:active {
   border-top: 1px solid #777; /* Even darker silver border on active state */
   background: #999; /* Darker silver background on active state */
   box-shadow: inset 0 1px 1px rgba(119, 119, 119, .4),  inset 0 20px 20px rgba(119, 119, 119, .01);
 }
 
-.silver-btn:before,
-.silver-btn:after {
+.silverBtn:before,
+.silverBtn:after {
   content: '';
   position: absolute;
   top: -20px;
@@ -309,33 +310,33 @@
   transition: all 0s;
 }
 
-.silver-btn:after {
+.silverBtn:after {
   background: rgba(255,255,255,.2);
   margin-left: 40px;
   width: 15px;
 }
 
-.silver-btn:hover:before,
-.silver-btn:hover:after {
+.silverBtn:hover:before,
+.silverBtn:hover:after {
   left: 110%;
   transition: all 1s .2s cubic-bezier(.07,.79,.59,1.12);
 }
 
-.silver-btn:hover:before {
+.silverBtn:hover:before {
   left: 120%;
   transition: all .7s .3s cubic-bezier(.07,.79,.59,1);
 }
 
 
-.fast-flicker-standard{
-  animation: shine-standard 2s forwards, blink-standard 7s 1s infinite;
+.fastFlickerStandard{
+  animation: shineStandard 2s forwards, blinkStandard 7s 1s infinite;
 }
 
-.fast-flicker-premium{
-  animation: shine-premium 2s forwards, blink-premium 10s 1s infinite;
+.fastFlickerPremium{
+  animation: shinePremium 2s forwards, blinkPremium 10s 1s infinite;
 }
 
-@keyframes shine-standard {
+@keyframes shineStandard {
   0% {
     color: #2b186b;
     text-shadow: none;
@@ -348,7 +349,7 @@
   }
 }
 
-@keyframes shine-premium {
+@keyframes shinePremium {
   0% {
     color: #6b6618;
     text-shadow: none;
@@ -361,7 +362,7 @@
   }
 }
 
-@keyframes blink-standard {
+@keyframes blinkStandard {
   0%,
   22%,
   36%,
@@ -383,7 +384,7 @@
   }
 }
 
-@keyframes blink-premium {
+@keyframes blinkPremium {
   0%,
   22%,
   36%,

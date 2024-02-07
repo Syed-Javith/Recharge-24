@@ -3,7 +3,7 @@ import { ProShow } from "@/types/models";
 import BuyProShowButton from "./BuyProShowButton";
 import { Card, CardDescription, CardFooter, CardTitle } from "../ui/Card";
 import { FC, useState } from "react";
-import "./style.css";
+import styles from './proshow.module.css'
 interface ProshowcardProps {
   proshow: ProShow;
   is_rec: boolean;
@@ -40,7 +40,7 @@ const ProShowCard: FC<ProshowcardProps> = ({
             <img src="/rmbg.png" alt="" className= {((proshow.premium && proshow.combo) || (proshow.premium))? "top-[-22px] left-[-110px] absolute rotate-[-45deg] z-10" : "hidden" }/>
           <div className="absolute inset-0 flex translate-y-[75%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0 pt-3 ">
             <CardTitle className="font-dmserif relative bottom-0 left-0 mb-2 ml-2 title">
-              <span className={((proshow.premium && proshow.combo) || (proshow.premium))? "fast-flicker uppercase text-md mb-2 text-bold" : "fast-flicker uppercase text-md mb-2 " }>{proshow.name}</span>
+              <span className={((proshow.premium && proshow.combo) || (proshow.premium))? `${styles.fastFlickerPremium}  uppercase text-md mb-2 text-bold` : `${styles.fastFlickerStandard} uppercase text-md mb-2 ` }>{proshow.name}</span>
               <h4 className="date mt-3" >23 MARCH</h4>
             </CardTitle>
 

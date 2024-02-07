@@ -7,7 +7,7 @@ import { toast } from "sonner";
 import axios from "axios";
 import { Loader2 } from "lucide-react";
 import { CSRBaseUrl } from "@/lib/utils";
-
+import styles from "./proshow.module.css"
 interface BuyProShowButtonProps {
   proshowid: number;
   label: "standard" | "premium" | "standard combo" | "premium combo";
@@ -66,7 +66,7 @@ const BuyProShowButton: FC<BuyProShowButtonProps> = ({
   return (
     <Button
     
-    className={label === "premium" ? "golden-btn" : "silver-btn"}
+    className={label === "premium" ? styles.goldenBtn : styles.silverBtn}
     
       onClick={() => buyProshow({ proshowid })}
       disabled={isPending || disabled}

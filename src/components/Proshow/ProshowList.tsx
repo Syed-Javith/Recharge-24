@@ -1,7 +1,7 @@
 "use client";
 import { ProShow } from "@/types/models";
 import ProShowCard from "./ProShowCard";
-import "./style.css";
+import styles from './proshow.module.css';
 import localFont from 'next/font/local'
 
 
@@ -30,7 +30,7 @@ const ProshowList = async ({
         paddingTop: "10vh"
       }}>
         <div >
-          <div className={SketchFont.className}>
+          <div className={`${SketchFont.className} ${styles.fastFlicker}`}>
             <h1 className="text-6xl  mt-10 mb-10 text-white text-center fast-flicker" >
               Proshows
             </h1>
