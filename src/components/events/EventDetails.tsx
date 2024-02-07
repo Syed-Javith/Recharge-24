@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { UserJwtPayload } from "@/lib/auth";
-import './event.css'
+import styles from './event.module.css'
 import {
   Tooltip,
   TooltipContent,
@@ -20,6 +20,11 @@ import JoinTeam from "./JoinTeam";
 import { Building, CalendarCheckIcon, Clock, Copy, Hourglass, Mail, MapPinIcon, Users } from "lucide-react";
 import { toast } from "sonner";
 import CreateTeamDialog from "./CreateTeamDialog";
+import localFont from 'next/font/local'
+
+
+const ChakraFont = localFont({ src: '../../../public/fonts/chakra.ttf' })
+const JuraFont = localFont({ src: '../../../public/fonts/Jura.ttf' })
 
 interface EventDetailsProps {
   event: EventDetailSchema;
@@ -95,7 +100,7 @@ const EventDetails: FC<EventDetailsProps> = ({
 
   if (event) {
     return (
-      <div className="event-details-bg"><div className="max-w-[1300px] m-auto md:p-4 p-2 pt-10">
+      <div className={styles.event_details_bg}><div className="max-w-[1300px] m-auto md:p-4 p-2 pt-10">
       <div className="grid grid-cols-12 gap-6 justify-between md:p-6 p-4 mt-16 border-b-2 border-white">
         <div className="flex gap-6 md:col-span-6 lg:col-span-8 col-span-12">
           <img
@@ -106,7 +111,7 @@ const EventDetails: FC<EventDetailsProps> = ({
             className="max-w-[340px] flex-1 lg:block hidden object-cover border-[1.5px] rounded-xl"
           />
           <div>
-            <h1 className="text-3xl mb-1">{event.name.toUpperCase()}</h1>
+            <h1 className={`text-5xl mb-3 ${JuraFont.className} ${styles.event_head}`}>{event.name.toUpperCase()}</h1>
             <div className="flex space-x-3 mb-4">
               {event.team_event ? (
                 <Badge variant="default" className="team mt-2 ">
@@ -125,22 +130,22 @@ const EventDetails: FC<EventDetailsProps> = ({
             </div>
 
             {event.pay == 0 ? (
-              <div className="text-yellow-300 font-semibold text-xl">
+              <div className="font-semibold text-xl">
                 Free Event
               </div>
             ) : (
-              <div className="text-yellow-300 font-semibold text-xl">
-                Amount: Rs. {event.pay}
+              <div className="font-semibold text-xl">
+                Registration Fee: Rs. {event.pay}
               </div>
             )}
 
             {event.prize && (
-              <div className="text-[rgb(234,111,232)] font-semibold text-xl py-1">
-                Prize Amount: Rs. {event.prize}
+              <div className="font-semibold text-xl py-1">
+                Prize Pool: Rs. {event.prize}
               </div>
             )}
 
-            {event.registration_end_date && <div className="end-date text-2xl mt-2">
+            {event.registration_end_date && <div className={`text-2xl mt-2 text-[rgb(237,215,90)] ${styles.end_date}`}>
               <span>Registration End Date:{" "}
               {event.registration_end_date.split("-").reverse().join("-")}</span>
             </div>}
@@ -251,7 +256,7 @@ const EventDetails: FC<EventDetailsProps> = ({
             )}
           </div>
         </div>
-        <div className="grid justify-between col-span-12 md:col-span-6 lg:col-span-4 text-lg p-4 border-white border-[1.25px] rounded-md bg-black">
+        <div className="grid justify-between col-span-12 md:col-span-6 lg:col-span-4 text-lg p-4 border-white border-[1.25px] event-desc rounded-xl bg-black">
           <div className="flex gap-2 items-center"><CalendarCheckIcon /> Day: {event.day}</div>
           {event.team_event && (
             <div className="flex gap-2 items-center">
@@ -267,7 +272,7 @@ const EventDetails: FC<EventDetailsProps> = ({
       </div>
       <div className="md:p-6 p-4">
         <div>
-          <h1 className="text-2xl mt-4 mb-4">Description</h1>
+          <h1 className={`text-3xl mt-4 mb-4 font-bold ${ChakraFont.className}`}>Description</h1>
           {event.description &&
             (showDescription
               ? event.description.split("\r\n").map((point, index) => (
@@ -299,7 +304,7 @@ const EventDetails: FC<EventDetailsProps> = ({
           </div>
         </div>
         <div>
-          <h1 className="text-2xl mt-4 mb-4">Rules and Regulations</h1>
+          <h1 className={`text-3xl mt-4 mb-4 font-bold ${ChakraFont.className}`}>Rules and Regulations</h1>
           {event.rules.split("\r\n").map((point, index) => (
             <li key={index} className="leading-8 text-justify text-md">
               {point}

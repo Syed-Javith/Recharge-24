@@ -5,7 +5,11 @@ import { usePathname } from "next/navigation"
 import './Navbar.css'
 import Link from 'next/link';
 import { Menu } from 'lucide-react';
-import LogoutButton from './LogoutButton';
+import LogoutDialog from './LogoutDialog';
+import axios from 'axios';
+import { CSRBaseUrl, inDevEnvironment } from '@/lib/utils';
+import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
 
 type SesstionType =  {
   session: UserJwtPayload | null
@@ -14,6 +18,7 @@ type SesstionType =  {
 const Navbar = ({session} : SesstionType) => {
 
   const pathname = usePathname()
+  const router = useRouter()
 
   useEffect(() => {
     document.getElementById('ul')?.classList.remove('dropdown-custom')
@@ -32,6 +37,21 @@ const Navbar = ({session} : SesstionType) => {
       }
     })
   }, [])
+
+
+  const logoutHandler = async () => {
+    await axios(CSRBaseUrl + "authenticate/logout/", {
+      withCredentials: true,
+      method: "post",
+    });
+
+    toast("Success", {
+      description: "You were logged out successfully.",
+    });
+    console.log("inDevEnv", inDevEnvironment);
+    router.push("/login");
+    router.refresh();
+  };
   
 
   return (
@@ -58,7 +78,7 @@ const Navbar = ({session} : SesstionType) => {
                   (
                    <>
                      <li className={pathname=="/profile" ? "active" : "disabled"}><a href="/profile">Profile</a></li>
-                    <LogoutButton />
+                    <LogoutDialog logoutHandler={logoutHandler}/>
                    </>
 
                   ) :
