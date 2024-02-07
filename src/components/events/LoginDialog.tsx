@@ -11,14 +11,17 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Button } from "../ui/Button";
 import Link from "next/link";
+import { useState } from "react";
 
 interface LoginDialogProps {
   textContent: Array<String>;
 }
 
 const LoginDialog = ({ textContent }: LoginDialogProps) => {
+  const [open,setOpen] = useState<boolean>(false)
+
   return (
-    <AlertDialog>
+    <AlertDialog open={open} onOpenChange={setOpen}>
       <AlertDialogTrigger asChild>
         <div className="flex space-x-4">
           <Button
@@ -43,13 +46,13 @@ const LoginDialog = ({ textContent }: LoginDialogProps) => {
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Login to Continue</AlertDialogTitle>
-          <AlertDialogDescription>
+          <AlertDialogTitle className="text-left">Login to Continue</AlertDialogTitle>
+          <AlertDialogDescription className="text-left">
             You have to be logged in to register for an event
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <div className="flex gap-1 items-center">
+          <div className="flex gap-3 items-center">
             <Link href="/login">
               <Button
                 variant="outline"
@@ -59,11 +62,9 @@ const LoginDialog = ({ textContent }: LoginDialogProps) => {
                 <span className="cursor-pointer">Login</span>
               </Button>
             </Link>
-            <AlertDialogCancel>
-              <Button asChild>
-                <span className="cursor-pointer">Cancel</span>
-              </Button>
-            </AlertDialogCancel>
+            <Button asChild onClick={()=>setOpen(false)}>
+              <span className="cursor-pointer">Cancel</span>
+            </Button>
           </div>
         </AlertDialogFooter>
       </AlertDialogContent>
