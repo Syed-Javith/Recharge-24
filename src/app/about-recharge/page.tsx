@@ -14,7 +14,7 @@ const page = () => {
             
                 </h1>
             <div className={`md:text-[1.25rem] flex flex-col gap-4 text-justify mb-6 ${paraFont.className}`}>
-                <p>Rajalakshmi Institutions is proud to present its most prominent and signature Cultural fest - RECHARGE'23, which promotes liberty, energy, and enthusiasm among both participants and spectators while also providing students an opportunity to explore and rediscover themselves.</p>
+                <p>Rajalakshmi Institutions is proud to present its most prominent and signature Cultural fest - RECHARGE&apos;23, which promotes liberty, energy, and enthusiasm among both participants and spectators while also providing students an opportunity to explore and rediscover themselves.</p>
 
                 <p>Recharge is Rajalakshmi Engineering College&apos;s inter-collegiate annual cultural fest. The previous editions of Recharge and other cultural fests at REC featured celebrities from showbiz like Karthi Sivakumar, Santhosh Narayanan, Andrea Jeremiah, and DJ Gowtham. REC has also had the privilege of hosting eminent sports personalities like Kris Srikkanth, T. Natarajan, and Dwayne Bravo at our sport-driven events.</p>
 
