@@ -49,11 +49,21 @@ const LoginDialog = ({ textContent }: LoginDialogProps) => {
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <div className="flex gap-3">
-            <AlertDialogAction>
-              <Link href="/login">Login Now</Link>
-            </AlertDialogAction>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <div className="flex gap-1 items-center">
+            <Link href="/login">
+              <Button
+                variant="outline"
+                className="border-2 border-white text-md bg-black px-4"
+                asChild
+              >
+                <span className="cursor-pointer">Login</span>
+              </Button>
+            </Link>
+            <AlertDialogCancel>
+              <Button asChild>
+                <span className="cursor-pointer">Cancel</span>
+              </Button>
+            </AlertDialogCancel>
           </div>
         </AlertDialogFooter>
       </AlertDialogContent>

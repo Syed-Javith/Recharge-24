@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { UserJwtPayload } from "@/lib/auth";
+import './event.css'
 import {
   Tooltip,
   TooltipContent,
@@ -18,6 +19,7 @@ import LoginDialog from "./LoginDialog";
 import JoinTeam from "./JoinTeam";
 import { Copy } from "lucide-react";
 import { toast } from "sonner";
+import CreateTeamDialog from "./CreateTeamDialog";
 
 interface EventDetailsProps {
   event: EventDetailSchema;
@@ -148,10 +150,10 @@ const EventDetails: FC<EventDetailsProps> = ({
                 </Button>
               )}
 
-              <div className="mt-4 text-xl text-orange-700 font-bold">
-                Registration End Date:{" "}
-                {event.registration_end_date.split("-").reverse().join("-")}
-              </div>
+              {event.registration_end_date && <div className="end-date text-2xl mt-2 font-semibold">
+                <span>Registration End Date:{" "}
+                {event.registration_end_date.split("-").reverse().join("-")}</span>
+              </div>}
 
               {event.is_registered &&
               event.team_event &&
@@ -216,18 +218,11 @@ const EventDetails: FC<EventDetailsProps> = ({
                   <> </>
                 )
               ) : event.registration_count <= event.max_reg &&
-                new Date(event.registration_end_date) <= new Date() ? (
+                (new Date(event.registration_end_date) > new Date() || event.registration_end_date==null) ? (
                 event.team_event ? (
                   session ? (
-                    <div>
-                      <Button
-                        variant="outline"
-                        className="border-2 border-white text-md bg-black mt-6 mr-4"
-                        onClick={registerTeam}
-                        disabled={loading}
-                      >
-                        <span className="cursor-pointer">Create Team</span>
-                      </Button>
+                    <div className="flex">
+                      <CreateTeamDialog registerTeam={registerTeam} loading={loading}/>
                       <JoinTeam eventId={event.id} />
                     </div>
                   ) : (
