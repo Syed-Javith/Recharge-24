@@ -35,7 +35,7 @@ const CreateTeamDialog = ({ registerTeam,loading }: CreateTeamDialogProps) => {
           <AlertDialogTitle className="text-xl">Points to be noted</AlertDialogTitle>
           <AlertDialogDescription>
             <div className="leading-8 text-md">
-                <li>Once a team is created, it can't be deleted.</li>
+                <li>Once a team is created, it can&apos;t be deleted.</li>
                 <li>Only team leader needs to pay for a event.</li>
                 <li>Other team members can join the team using the team code generated after successful payment.</li>
                 <li>Only team leader can remove other team members.</li>
