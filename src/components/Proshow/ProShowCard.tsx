@@ -5,7 +5,6 @@ import { Card, CardDescription, CardFooter, CardTitle } from "../ui/Card";
 import { FC, useState } from "react";
 import ProShowStyle from './proshow.module.css'
 import localFont from "next/font/local";
-import Tilt from 'react-vanilla-tilt';
 
 interface ProshowcardProps {
   proshow: ProShow;
@@ -28,36 +27,10 @@ const ProShowCard: FC<ProshowcardProps> = ({
   datePremium
 }) => {
 
-  const config = {
-    reverse:           false,  // reverse the tilt direction
-    max:               35,     // max tilt rotation (degrees)
-    perspective:       1000,   // Transform perspective, the lower the more extreme the tilt gets.
-    scale:             1,      // 2 = 200%, 1.5 = 150%, etc..
-    speed:             300,    // Speed of the enter/exit transition
-    transition:        true,   // Set a transition on enter/exit.
-    axis:              null,   // What axis should be disabled. Can be X or Y.
-    reset:             true   , // If the tilt effect has to be reset on exit.
-    easing:            "cubic-bezier(.03,.98,.52,.99)",    // Easing on enter/exit.
-    glare:             false ,  // if it should have a "glare" effect
-    "max-glare":       1,      // the maximum "glare" opacity (1 = 100%, 0.5 = 50%)
-    "glare-prerender": false,   // false = VanillaTilt creates the glare elements for you, otherwise
-    margin: 0,
-    padding: 0
-                               // you need to add .js-tilt-glare>.js-tilt-glare-inner by yourself
-}
-  // const [isButton, setIsButton] = useState<string>("visible");
   return (
-    <Tilt options={config} style={{
-      margin: 0,
-      padding: 0,
-    }}>
-
 
     <div className="h-200 w-72 p-3"
     >
-
-
-      
 
       <Card className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
         <div className="group relative cursor-pointer items-center  justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
@@ -166,8 +139,7 @@ const ProShowCard: FC<ProshowcardProps> = ({
         </div>
       </Card>
     </div>
-      
-      </Tilt>
+  
   );
 };
 
