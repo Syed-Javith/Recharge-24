@@ -15,21 +15,24 @@ import DesktopProfile from "./DesktopProfile";
 import Loader from "../loader/Loader";
 import ProshowTicket from "./ProshowTicket";
 import EventTicket from "./EventTicket";
+// import { useRouter } from "next/router";
 
 interface ProfileProps {}
 
 const Profile: FC<ProfileProps> = ({}) => {
+  // window.location.reload();
+  // const router = useRouter();
   const [profile, setProfile] = useState<UserProfileSchema>();
-
+  
   const [error, setError] = useState<boolean>(false);
-
+  
   const { mutate: profileDetails, isPending } = useMutation({
     mutationFn: async () => {
       try {
         const res = await axios.get(CSRBaseUrl + "authenticate/profile/", {
           withCredentials: true,
         });
-        console.log(res);
+        // console.log(res);
         return res;
       } catch (err) {
         console.error("Error during login:", err);
@@ -51,11 +54,12 @@ const Profile: FC<ProfileProps> = ({}) => {
   });
   
   useEffect(() => {
+    // router.reload();
+    // window.location.reload();
     profileDetails();
-    // console.log(profile);
+    console.log(profile);
   }, []);
 
-  
 
   return isPending ? (
     <Loader/>
@@ -86,7 +90,7 @@ const Profile: FC<ProfileProps> = ({}) => {
         }
         <div className="glowing-line"></div>
       <h1 className="profile-section-title">Registered Events</h1>
-      <div className="grid md:grid-cols-3 sm:grid-cols-1 m-auto justify-center">
+      <div className="grid md:grid-cols-3 sm:grid-cols-1 gap-8 m-auto justify-center">
         {
           profile.event_registrations.map((event, index) =>{
             return(

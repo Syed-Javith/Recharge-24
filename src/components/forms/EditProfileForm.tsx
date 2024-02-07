@@ -108,7 +108,7 @@ const EditProfileForm = ({ profile, setProfile }: EditProfileProps) => {
 
         <Button asChild
           variant="outline"
-          className="border-2 border-white text-md mt-4 text-center cursor-pointer"
+          className="border-0 border-black text-md mt-4 text-center cursor-pointer"
         >
           <div>
             <p>Edit Profile</p>

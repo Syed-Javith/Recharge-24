@@ -4,7 +4,7 @@
 
 .ticket {
   width: fit-content;
-  margin: 2% auto 2% auto;
+  margin: 4%;
   display: flex;
   background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #b78b2a 30%, #b58d2f 40%, transparent 80%),
               radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #9c7b2f 62.5%, #98782d 100%);
@@ -214,6 +214,9 @@
     color: black;
 	font-size: 14px;
 	letter-spacing: 0.1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .layout {
@@ -223,124 +226,7 @@
 
 }
 
-  .profile {
-    animation: popUp ease-in-out 350ms;
-    background: rgba(12, 12, 45,0.2);
-    border-radius: 25px;
-    margin-top: 40px;
-    position: relative;
-    color: #fff;
-    box-shadow: rgba(213, 213, 220, 0.2) 0px 0px 30px 4px;  
-  }
 
-  .profile__account {
-    align-self: center;
-    display: flex;
-    padding-left: calc(var(--profile-picture-size) + 10px);
-  }
-  
-  .profile__button {
-    border-radius: 50px;
-    border: 1px solid white;
-    color: white;
-    display: block;
-    font-size: 13px;
-    padding: 10px;
-    text-align: center;
-    text-decoration: none;
-    transition: ease-in-out 250ms background, ease-in-out 250ms color;
-  }
-  
-  .profile__button:hover {
-    background: white;
-    color: black;
-  }
-  
-  .profile__edit {
-    flex: none;
-    margin-left: auto;
-    width: 140px;
-  }
-  
-  .profile__header {
-    display: flex;
-    margin-bottom: 20px;
-  }
-  
-  .profile__icon {
-    flex: none;
-    font-size: 1.5em;
-    margin-right: 10px;
-    padding-top: 3px;
-  }
-  .profile__key {
-  
-    font-size: 13px;
-    font-weight: 400;
-    text-align: center;
-  }
-  
-  .profile__picture {
-    background: rgba(12, 12, 45);
-    border-radius: 100px;
-    border: 10px solid rgba(12, 12, 45,0.2);
-    height: 100px;
-    position: absolute;
-    top: -40px;
-    width: 100px;
-    display: flex;
-  }
-  
-  .profile__picture:before {
-    border-radius: 100px;
-    box-shadow: 0 0 40px 0px rgba(var(--black), 0.17);
-    content: "";
-    height: calc(100% + 20px);
-    left: -10px;
-    position: absolute;
-    top: -10px;
-    width: calc(100% + 20px);
-    z-index: -1;
-  }
-  
-  .profile__picture img {
-    border-radius: 100px;
-    height: 100%;
-    width: 100%;
-  }
-  
-  .profile__stat {
-    animation: slideUp ease-in-out 350ms forwards;
-    /* border-right: 1px solid #e9e9e9; */
-    display: flex;
-    flex: 1;
-    justify-content: center;
-    opacity: 0;
-    padding: 10px 4px;
-    transform: translateY(5px);
-  }
-  
-  .profile__stat:last-of-type {
-    border-right: none;
-  }
-  
-  .profile__stats {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  .profile__username {
-  
-    font-weight: 600;
-    margin: 0;
-    text-align: right;
-  }
-  
-  .profile__value {
-    font-size: 1rem;
-    font-weight: 500;
-    text-align: center;
-  }
 
   .profile-event-card {
     width: 230px;
@@ -505,8 +391,8 @@
   }
 
   .profile-personal-detail{
-    width: 100%;
-    margin: 5% auto 7% auto;
+    width: 94%;
+    margin: 100px auto 7% auto;
   }
 .profile-personal-detail .description {
   display: flex;
@@ -522,6 +408,7 @@
 
   .profile-personal-detail .container {
     /* position: absolute; */
+    /* margin: 5%; */
     top: 20%;
     left: 30%;
     transform: translate((-50%, -50%));
@@ -572,6 +459,13 @@ background-image: linear-gradient(315deg, #f1f2f6 0%, #c9c6c6 74%);
     padding: 0;
     text-align: justify;
     line-height: 28px;
+  }
+
+  .profile-personal-detail .bg-background {
+    background-color: #ffffff00;
+  }
+  .profile-personal-detail .bg-background:hover {
+    color: #686868;
   }
 
   @keyframes glow {
@@ -631,7 +525,9 @@ background-image: linear-gradient(315deg, #f1f2f6 0%, #c9c6c6 74%);
   .location, .time, .image-content{
       display: none;
   }
-
+  /* .ticket-info, .left {
+    margin: 5px;
+  } */
   
 }
 @media (max-width: 1000px) {
@@ -657,6 +553,14 @@ background-image: linear-gradient(315deg, #f1f2f6 0%, #c9c6c6 74%);
     transform: none;
     margin: auto;
     text-align: center;
+    justify-content: center;
+  }
+  .profile-personal-detail .edit {
+    flex-direction: column;
+    align-items: center;
+  }
+  .profile-personal-detail .e-child {
+    margin: auto;
   }
 }
 
