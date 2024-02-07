@@ -1,9 +1,13 @@
+import localFont from 'next/font/local';
 import FaqSection from './FaqSection';
+import styles from './Faq.module.css'
+
+const titleFont = localFont({ src: '../../../public/fonts/Jura.ttf' })
 
 const FAQ = () => {
   return (
-    <div className="container mx-auto md:px-40 md:py-20 p-2">
-      <h1 className="text-3xl font-bold mb-6">Frequently Asked Questions</h1>
+    <div className="container mx-auto md:px-40 md:py-20">
+      <h1 className={` ${titleFont.className} ${styles.faqTitle} text-3xl font-bold mb-6`}>Frequently Asked Questions</h1>
       <FaqSection
         question="How do I create a new account?"
         answer="You can create a new account by registering using the register button. Once you have created an account, you will be able to log in to your account using your email and password."
