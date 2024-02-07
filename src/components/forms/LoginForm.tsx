@@ -21,7 +21,7 @@ import axios, { AxiosError } from "axios";
 import { CSRBaseUrl } from "@/lib/utils";
 import { toast } from "sonner";
 import Link from "next/link";
-import "./styles.css"
+import Style from "./auth.module.css"
 import RandomBox from "./RandomBox";
 interface LoginFormProps { }
 
@@ -73,77 +73,77 @@ const LoginForm: FC<LoginFormProps> = ({ }) => {
   });
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
   return (
-    <div className="flex flex-col justify-center items-center wrapping">
-      <div className="cont">
-        <div className="lighter lighter-1"></div>
-        <div className="lighter lighter-2"></div>
-        <div className="lighter lighter-3"></div>
-      <Form {...loginForm} >
-        <form
-          onSubmit={loginForm.handleSubmit((e) => {
-            loginUser(e);
-          })}
-          className="flex flex-col"
-        >
-          <div className="my-3">
-            <FormField
-              control={loginForm.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-white">Enter your Email</FormLabel>
-                  <FormControl>
-                    <Input
-                      type="email"
-                      placeholder="user@example.com"
-                      {...field}
-                    />
-                  </FormControl>
-                  {/* <FormDescription className="input-desc">Ensure your email is verified</FormDescription> */}
-                  <FormMessage className="text-red-500"/>
-                </FormItem>
-              )}
-            />
-          </div>
-          <div className="my-3">
-            <FormField
-              control={loginForm.control}
-              name="password"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-white">Enter your Password</FormLabel>
-                  <FormControl>
-                    <div className="flex flex-row gap-4">
+    <div className={`flex flex-col justify-center items-center ${Style.wrapping}`}>
+      <div className={Style.cont}>
+        <div className={`${Style.lighter} ${Style.lighter1}`}></div>
+        <div className={`${Style.lighter} ${Style.lighter2}`}></div>
+        <div className={`${Style.lighter} ${Style.lighter3}`}></div>
+        <Form {...loginForm} >
+          <form
+            onSubmit={loginForm.handleSubmit((e) => {
+              loginUser(e);
+            })}
+            className="flex flex-col"
+          >
+            <div className="my-3">
+              <FormField
+                control={loginForm.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-white">Enter your Email</FormLabel>
+                    <FormControl>
                       <Input
-                        type={passwordVisible ? "text" : "password"}
-                        placeholder="password"
-                        autoComplete="off"
+                        type="email"
+                        placeholder="user@example.com"
                         {...field}
                       />
-                      <Button
-                        className="eye-btn"
-                        type="button"
-                        tabIndex={-1}
-                        onClick={() => setPasswordVisible(!passwordVisible)}>
-                        {
-                          passwordVisible ? <EyeIcon size={20} /> : <EyeOffIcon size={20} />
-                        }
-                      </Button>
-                    </div>
-                  </FormControl>
-                  {/* <FormDescription className="input-desc">Check the caps lock</FormDescription> */}
-                  <FormMessage className="text-red-500" />
-                </FormItem>
-              )}
-            />
-          </div>
-          <Button disabled={isPending} type="submit" className="mx-auto mt-4 mb-2 w-6/12 submit-btn">
-            Login{isPending && <Loader2 className="animate-spin ml-2" />}
-          </Button>
-      <Link href={'/forgot-password'} className="mx-auto text-gray-50 text-[0.85rem] mt-2 hover:text-white">Forgot Password ?</Link>
-        </form>
-      </Form>
-      <RandomBox />
+                    </FormControl>
+                    {/* <FormDescription className="input-desc">Ensure your email is verified</FormDescription> */}
+                    <FormMessage className="text-red-500" />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <div className="my-3">
+              <FormField
+                control={loginForm.control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-white">Enter your Password</FormLabel>
+                    <FormControl>
+                      <div className="flex flex-row gap-4">
+                        <Input
+                          type={passwordVisible ? "text" : "password"}
+                          placeholder="password"
+                          autoComplete="off"
+                          {...field}
+                        />
+                        <Button
+                          className="eye-btn"
+                          type="button"
+                          tabIndex={-1}
+                          onClick={() => setPasswordVisible(!passwordVisible)}>
+                          {
+                            passwordVisible ? <EyeIcon size={20} /> : <EyeOffIcon size={20} />
+                          }
+                        </Button>
+                      </div>
+                    </FormControl>
+                    {/* <FormDescription className="input-desc">Check the caps lock</FormDescription> */}
+                    <FormMessage className="text-red-500" />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <Button disabled={isPending} type="submit" className="mx-auto mt-4 mb-2 w-6/12 submit-btn">
+              Login{isPending && <Loader2 className="animate-spin ml-2" />}
+            </Button>
+            <Link href={'/forgot-password'} className="mx-auto text-gray-50 text-[0.85rem] mt-2 hover:text-white">Forgot Password ?</Link>
+          </form>
+        </Form>
+        <RandomBox />
       </div>
     </div>
   );

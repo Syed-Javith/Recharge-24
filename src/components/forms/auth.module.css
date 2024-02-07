@@ -9,7 +9,7 @@
   position: relative;
 }
 
-form {
+.formt {
   background: rgba(255, 255, 255, 0.25);
   min-width: 30vw;
   padding: 2.5rem;
@@ -21,37 +21,35 @@ form {
   box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
   position: relative;
   transition: all 0.2s ease-in-out;
-
-  p {
-    font-weight: 500;
-    color: #fff;
-    opacity: 0.7;
-    font-size: 1.4rem;
-    margin-top: 0;
-    margin-bottom: 60px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-  }
-
-  a {
-    text-decoration: none;
-    color: #ddd;
-    font-size: 12px;
-
-    &:hover {
-      text-shadow: 2px 2px 6px #00000040;
-    }
-
-    &:active {
-      text-shadow: none;
-    }
-  }
-
-  &:hover {
-    margin: 4px;
-  }
+}
+.formp {
+  font-weight: 500;
+  color: #fff;
+  opacity: 0.7;
+  font-size: 1.4rem;
+  margin-top: 0;
+  margin-bottom: 60px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-::placeholder {
+.forma {
+  text-decoration: none;
+  color: #ddd;
+  font-size: 12px;
+}
+.forma:hover {
+  text-shadow: 2px 2px 6px #00000040;
+}
+
+.forma:active {
+  text-shadow: none;
+}
+
+.formt:hover {
+  margin: 4px;
+}
+
+.formt::placeholder {
   font-family: Montserrat, sans-serif;
   font-weight: 400;
   color: #fff;
@@ -69,7 +67,7 @@ form {
   transition: all 0.2s ease;
 }
 
-.drop-1 {
+.drop1 {
   height: 80px;
   width: 80px;
   top: -20px;
@@ -77,14 +75,14 @@ form {
   z-index: -1;
 }
 
-.drop-2 {
+.drop2 {
   height: 80px;
   width: 80px;
   bottom: -30px;
   left: -10px;
 }
 
-.drop-3 {
+.drop3 {
   height: 100px;
   width: 100px;
   bottom: 120px;
@@ -92,14 +90,14 @@ form {
   z-index: -1;
 }
 
-.drop-4 {
+.drop4 {
   height: 80px;
   width: 80px;
   top: -40px;
   right: -40px;
 }
 
-.drop-5 {
+.drop5 {
   height: 60px;
   width: 60px;
   bottom: 170px;
@@ -107,13 +105,13 @@ form {
   z-index: -1;
 }
 
-a,
+/* a,
 input:focus,
 select:focus,
 textarea:focus,
 button:focus {
   outline: none;
-}
+} */
 
 @media (width < 500px) {
 
@@ -124,33 +122,33 @@ button:focus {
     margin: 15vh 0;
   }
 
-  form {
+  .form {
     padding: 2.5rem 1rem;
     max-width: 80vw;
   }
 
-  .drop-1 {
+  .drop1 {
     height: 40px;
     width: 40px;
     top: -10px;
     left: -10px;
   }
 
-  .drop-4 {
+  .drop4 {
     height: 50px;
     width: 50px;
     top: -25px;
     right: -25px;
   }
 
-  .drop-3 {
+  .drop3 {
     height: 50px;
     width: 50px;
     bottom: 120px;
     right: -25px;
     z-index: -1;
   }
-  .drop-2 {
+  .drop2 {
     height: 60px;
     width: 60px;
     bottom: -25px;

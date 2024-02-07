@@ -1,5 +1,8 @@
 import React, { FC } from 'react'
-import "./about.css"
+import Style from "./about.module.css"
+import localFont from 'next/font/local'
+
+const SketchFont = localFont({ src: '../../../../public/fonts/Jura.ttf' })
 
 interface AboutProps {
     image : string ,
@@ -18,7 +21,7 @@ const About : FC<AboutProps> = ({ image , content , title , isReverse}) => {
       >
 
         <img
-          className="shadow-2xl  rounded-xl  z-10 neon-border cut"
+          className={`shadow-2xl  rounded-xl  z-10 neon-border ${Style.cut}`}
           id="about-img"
           src={image}
           alt=""
@@ -29,7 +32,7 @@ const About : FC<AboutProps> = ({ image , content , title , isReverse}) => {
 
       <div id="right" className="basis-1/2 flex flex-col gap-y-5">
         <div className="main text-5xl">
-          <span className="socod text-left">{title}</span>
+          <span className={`socod text-left ${SketchFont.className} ${Style.neon}`}>{title}</span>
         </div>
 
         <p className=" text-lg  shadow-inner leading-loose">
@@ -38,6 +41,11 @@ const About : FC<AboutProps> = ({ image , content , title , isReverse}) => {
         {/* <button className='bg-gradient-to-r text-black from-[#ff0055] to-[#ffdd1f] p-2 m-auto rounded-md'>
           SHOW MORE
         </button> */}
+        
+        {/* <button className="about max-w-[200px] py-4 px-2 text-black font-md bg-white">
+          Show More
+        </button>
+                 */}
       </div>
     </div>
   )

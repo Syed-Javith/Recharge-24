@@ -5,7 +5,7 @@ import "./spotlight.css"
 import localFont from "next/font/local";
 
 interface ProshowSectionProps { }
-const SketchFont = localFont({ src: '../../../../public/fonts/Mexcellent.ttf' })
+const SketchFont = localFont({ src: '../../../../public/fonts/Jura.ttf' })
 
 
 const ProshowSection: FC<ProshowSectionProps> = ({ }) => {
