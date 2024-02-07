@@ -1,11 +1,15 @@
 'use client'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { UserJwtPayload } from "@/lib/auth";
 import { usePathname } from "next/navigation"
 import NavStyle from './Navbar.module.css'
 import Link from 'next/link';
 import { Menu } from 'lucide-react';
-import LogoutButton from './LogoutButton';
+import LogoutDialog from './LogoutDialog';
+import axios from 'axios';
+import { CSRBaseUrl, inDevEnvironment } from '@/lib/utils';
+import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
 
 type SesstionType =  {
   session: UserJwtPayload | null
@@ -14,43 +18,61 @@ type SesstionType =  {
 const Navbar = ({session} : SesstionType) => {
 
   const pathname = usePathname()
+  const router = useRouter()
 
-  console.log(pathname)
+  // console.log(pathname)
 
-  useEffect(() => {
-    document.getElementById('ul')?.classList.remove(NavStyle.dropdown_custom)
-  }, [pathname]);
+  // useEffect(() => {
+  //   setMobNavActive(false)
+  // }, [pathname]);
   
   useEffect(() => {
     window.addEventListener('resize', () => {
       if(window.innerWidth>=690) {
-        document.getElementById('ul')?.classList.remove(NavStyle.dropdown_custom)
+        setMobNavActive(false)
       }
     })
     
     window.addEventListener('click', (event) => {
-      if(!document.getElementById('ham')?.contains(event.target as Node)) {
-        document.getElementById('ul')?.classList.remove(NavStyle.dropdown_custom)
+      if(!document.getElementById('ham-menu')?.contains(event.target as Node)) {
+        setMobNavActive(false)
       }
     })
   }, [])
+
+
+  const logoutHandler = async () => {
+    await axios(CSRBaseUrl + "authenticate/logout/", {
+      withCredentials: true,
+      method: "post",
+    });
+
+    toast("Success", {
+      description: "You were logged out successfully.",
+    });
+    console.log("inDevEnv", inDevEnvironment);
+    router.push("/login");
+    router.refresh();
+  };
+
+  const [mobNavActive, setMobNavActive] = useState<boolean>(false);
   
 
   return (
     <header className={NavStyle.landing_header}>
+
+        
+
         <img src="/Landing/college.webp" className={NavStyle.college}/>
         <nav className={NavStyle.navbar_nav}>
 
-          <Menu className={NavStyle.ham} onClick={
+          <Menu id='ham-menu' className={NavStyle.ham} onClick={
               () => {
-                if(document.getElementsByClassName(NavStyle.dropdown_custom).length==0)
-                    document.getElementById('ul')?.classList.add(NavStyle.dropdown_custom)
-                else
-                    document.getElementById('ul')?.classList.remove(NavStyle.dropdown_custom)
+                setMobNavActive(!mobNavActive)
               }} />
 
 
-            <ul id="ul" className={NavStyle.navbar_ul}>
+            <ul className={`${NavStyle.navbar_ul} ${mobNavActive ? NavStyle.dropdown_custom : ''}`}>
                 <li className={ `${NavStyle.navbar_li} ${pathname=="/" ? NavStyle.active : NavStyle.disabled}`}>
                   <Link href="/">
                     Home
@@ -78,7 +100,7 @@ const Navbar = ({session} : SesstionType) => {
                         Profile
                       </a>
                     </li>
-                    <LogoutButton />
+                    <LogoutDialog logoutHandler={logoutHandler}/>
                    </>
 
                   ) :

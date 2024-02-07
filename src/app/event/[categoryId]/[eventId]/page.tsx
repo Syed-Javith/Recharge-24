@@ -19,11 +19,32 @@ const page: FC<pageProps> = async ({ params }: pageProps) => {
       headers: { Cookie: cookies().toString() },
     }
   );
-  console.log(event);
-  
+
+  function convertTo12HourFormat(time: string) {
+    var timeArray = time.split(":");
+    var hours = parseInt(timeArray[0]);
+    var minutes = timeArray[1];
+    var period = hours >= 12 ? "p.m" : "a.m";
+
+    hours = hours > 12 ? hours - 12 : hours;
+    hours = hours == 0 ? 12 : hours;
+
+    var convertedTime = hours + ":" + minutes + " " + period;
+
+    return convertedTime;
+  }
+
+  let convTime = null;
+  if (event.time_of_event) {
+    convTime = convertTo12HourFormat(event.time_of_event);
+  }
+
   return (
     <div>
-      <EventDetails session={session} event={event} />
+      <EventDetails
+        session={session}
+        event={{ ...event, time_of_event: convTime }}
+      />
     </div>
   );
 };

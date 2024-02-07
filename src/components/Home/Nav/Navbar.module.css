@@ -58,6 +58,25 @@
     cursor: pointer;
 }
 
+@media screen and (max-width: 690px) {
+    .navbar_ul {
+         display: none;
+    }
+
+    .ham {
+        display: block;
+        color: white;
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .college {
+         width: 100px;
+    }
+}
+
+
 .dropdown_custom{
     display: block;
     position: absolute;
@@ -80,23 +99,4 @@
 .dropdown_custom .disabled {
     font-size: medium;
     opacity: 0.4;
-}
-
-
-@media screen and (max-width: 690px) {
-    .navbar_ul {
-         display: none;
-    }
-
-    .ham {
-        display: block;
-        color: white;
-        font-size: 2rem;
-    }
-}
-
-@media screen and (max-width: 420px) {
-    .college {
-         width: 100px;
-    }
 }
