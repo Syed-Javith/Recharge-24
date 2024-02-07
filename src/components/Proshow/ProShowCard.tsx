@@ -29,7 +29,7 @@ const ProShowCard: FC<ProshowcardProps> = ({
           <div className="h-200 w-72">
             <img
               className="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
-              src={proshow.image}
+              src='https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
               alt=""
             />
           </div>

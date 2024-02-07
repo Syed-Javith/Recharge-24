@@ -59,15 +59,16 @@ const BuyProShowButton: FC<BuyProShowButtonProps> = ({
       const { payment_link } = data;
       console.log(payment_link);
 
-      toast(`Please complete your Proshow purchase`, {
-        action: {
-          label: "Pay now",
-          onClick() {
-            window.location.href = payment_link;
-          },
-        },
-        duration: 100 * 1000,
-      });
+      // toast(`Please complete your Proshow purchase`, {
+      //   action: {
+      //     label: "Pay now",
+      //     onClick() {
+      //       window.location.href = payment_link;
+      //     },
+      //   },
+      //   duration: 100 * 1000,
+      // });
+      router.push(payment_link)
       router.refresh();
     },
   });
