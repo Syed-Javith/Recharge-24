@@ -19,7 +19,7 @@
   margin-left: -15px;
 }
 .sectionrow:hover .sectioncol{
-  opacity: 0.1;
+  opacity: 0.2;
 }
 .sectioncol{
   position: relative;
@@ -125,7 +125,7 @@
 }
 .pro {
   text-align: center;
-  width: 65%;
+  /* width: 65%; */
   height: 100px;
   margin: auto;
    user-select: none;
@@ -174,5 +174,15 @@
   92.5% {
     color: inherit;
     text-shadow: inherit;
+  }
+}
+
+@media screen and (max-width: 480px) {  
+  .pro b{
+    font-size: 3rem;
+  }
+
+  .sectionrow {
+    margin-bottom:4rem;
   }
 }

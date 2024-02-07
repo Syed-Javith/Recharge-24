@@ -1,16 +1,16 @@
 import React from 'react'
 import localFont from "next/font/local";
-import Style from "../about-recharge/aboutrec.module.css"
+import AboutStyle from "../about-recharge/aboutrec.module.css"
 
 const SketchFont = localFont({ src: '../../../public/fonts/Jura.ttf' })
 const paraFont = localFont({ src: "../../../public/fonts/chakra.ttf" })
 const page = () => {
     return (
-        <div id='about-recharge' className={`h-screen-full ${Style.aboutpic}`}>
+        <div id='about-recharge' className={`h-screen-full ${AboutStyle.aboutpic}`}>
             <div className='text-center container md:w-[80vw] w-auto pt-20'>
-                <h1 className={`md:text-[3.5rem] text-[2rem] font-bold mb-4 ${SketchFont.className} ${Style.neon}`}>
+                <h1 className={`md:text-[3.5rem] text-[2rem] font-bold mb-4 ${SketchFont.className} ${AboutStyle.neon}`}>
 
-                    About REC
+                    ABOUT REC
 
                 </h1>
                 <div className={`md:text-[1.25rem] flex flex-col gap-4 text-justify ${paraFont.className}`}>
