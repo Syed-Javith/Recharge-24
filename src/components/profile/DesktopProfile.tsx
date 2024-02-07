@@ -20,7 +20,7 @@ const DesktopProfile = ({ profile , setProfile } : { profile : UserProfileSchema
         }
         return `${year}th standard`
     }
-    console.log(profile);
+    // console.log(profile);
     
     return (
         <div className='profile-personal-detail'>
@@ -28,59 +28,27 @@ const DesktopProfile = ({ profile , setProfile } : { profile : UserProfileSchema
                 <div className="logo"></div>
                 <div className="description">
                     <div>
-                        <h1> {profile.first_name + " " + profile.last_name} </h1>
-                        <h3> {profile.college + " | " + profile.department} </h3>
-                        <p className="bio">
-                            {"Email : " + profile.email + " | Mobile : " + profile.mobile_number}<br />
-                            {"Year Of Study : " + formatYear(profile.year) + " year | Proshows : " + profile.proshow_registrations.length + " | Events : " + profile.event_registrations.length}
+                        <div className='edit flex flex-row align-top'>
+                            <div className='e-child mr-auto'>
+                                <h1> {profile.first_name + " " + profile.last_name} </h1>
+                                <h3> {profile.college} </h3>
+                            </div>
+                            <div className='e-child mr-auto'>
+                                <EditProfileForm profile={profile} setProfile={setProfile}/>
+                            </div>
+                        </div>
+                        <p className="bio flex md:flex-row sm:flex-col flex-wrap gap-4">
+                            <div className='w-fit whitespace-nowrap'>{"Email : " + profile.email }</div>
+                            <div className='w-fit whitespace-nowrap'>{" Mobile : " + profile.mobile_number}</div>
+                            <div className='w-fit whitespace-nowrap'>{"Year Of Study : " + formatYear(profile.year) + " year "}</div>
+                            <div className='w-fit whitespace-nowrap'>{"Proshows : " + profile.proshow_registrations.length }</div>
+                            <div className='w-fit whitespace-nowrap'>{ "Events : " + profile.event_registrations.length}</div>
                         </p>
                     </div>
                     <img src="https://external-preview.redd.it/cg8k976AV52mDvDb5jDVJABPrSZ3tpi1aXhPjgcDTbw.png?auto=webp&s=1c205ba303c1fa0370b813ea83b9e1bddb7215eb" alt="QR code"/>
                 </div>
             </div>
         </div>
-        // <div className="layout">
-        //     <div className="profile md:w-[90vw] p-[20px] w-screen max-[500px]:p-[10px] max-[500px]:m-[5px]">
-
-        //         <div className="profile__picture bg-[#0f1323]">
-        //             <div className='text-center text-3xl font-bold m-auto'>
-        //                 {profile.first_name[0] + profile.last_name[0]}
-        //             </div>
-        //         </div>
-
-        //         <div className="profile__header items-start">
-        //             <div className="profile__account">
-        //                 <h4 className="profile__username">{profile.first_name + " " + profile.last_name}</h4>
-        //             </div>
-
-        //             <div className="profile__edit">
-                        
-        //                     <EditProfileForm profile={profile} setProfile={setProfile} />
-                       
-        //             </div>
-        //         </div>
-
-        //         <div className='flex md:flex-row flex-col gap-4'>
-        //             <div className='flex flex-col gap-4'>
-        //                  <div className='flex gap-2'>
-        //                     <MailIcon />  {profile.email}
-        //                  </div>
-        //                  <div className='flex gap-2'>
-        //                     <PhoneCall/> {profile.mobile_number}
-        //                  </div>
-        //             </div>
-        //             <div className='flex flex-col md:ml-auto ml-0 gap-4'>
-        //                 <div className='flex gap-2'>
-        //                     <SchoolIcon /> {profile.college}
-        //                 </div>
-        //                 <div className='flex gap-2'>
-        //                    <GraduationCapIcon /> {formatYear(profile.year)} year
-        //                 </div>
-        //             </div>
-        //         </div>
-
-        //     </div>
-        // </div>
     )
 }
 
