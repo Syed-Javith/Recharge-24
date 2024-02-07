@@ -45,10 +45,11 @@ const ProShowCard: FC<ProshowcardProps> = ({
           </div>
         </div>
 
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70">
-          <div className="absolute inset-0 flex translate-y-[55%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0 pt-3 ">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/70 to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70">
+            <img src="/rmbg.png" alt="" className= {((proshow.premium && proshow.combo) || (proshow.premium))? "top-[-22px] left-[-110px] absolute rotate-[-45deg] z-10" : "hidden" }/>
+          <div className="absolute inset-0 flex translate-y-[75%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0 pt-3 ">
             <CardTitle className="font-dmserif relative bottom-0 left-0 mb-2 ml-2 title">
-              <span className="fast-flicker uppercase text-md mb-2 ">{proshow.name}</span>
+              <span className={((proshow.premium && proshow.combo) || (proshow.premium))? "fast-flicker uppercase text-md mb-2 text-bold" : "fast-flicker uppercase text-md mb-2 " }>{proshow.name}</span>
               <h4 className="date mt-3" >23 MARCH</h4>
             </CardTitle>
 
@@ -60,7 +61,7 @@ const ProShowCard: FC<ProshowcardProps> = ({
     */}
 
                 {proshow.premium && !proshow.combo && (
-                  <BuyProShowButton
+                  <BuyProShowButton 
                     disabled={proshow.is_registered || isPremiumCombo}
                     label="premium"
                     proshowid={proshow.id}
