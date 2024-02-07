@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import Style from "./about.module.css"
+import AboutStyle from "./about.module.css"
 import localFont from 'next/font/local'
 
 const SketchFont = localFont({ src: '../../../../public/fonts/Jura.ttf' })
@@ -21,7 +21,7 @@ const About : FC<AboutProps> = ({ image , content , title , isReverse}) => {
       >
 
         <img
-          className={`shadow-2xl  rounded-xl  z-10 neon-border ${Style.cut}`}
+          className={`shadow-2xl  rounded-xl  z-10 neon-border ${AboutStyle.cut}`}
           id="about-img"
           src={image}
           alt=""
@@ -32,7 +32,7 @@ const About : FC<AboutProps> = ({ image , content , title , isReverse}) => {
 
       <div id="right" className="basis-1/2 flex flex-col gap-y-5">
         <div className="main text-5xl">
-          <span className={`socod text-left ${SketchFont.className} ${Style.neon}`}>{title}</span>
+          <span className={`socod text-left ${SketchFont.className} ${AboutStyle.neon}`}>{title}</span>
         </div>
 
         <p className=" text-lg  shadow-inner leading-loose">

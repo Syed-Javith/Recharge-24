@@ -1,13 +1,13 @@
 "use client"
 import React, { useEffect } from 'react'
 import Link from 'next/link'
-import styles from './Landing.module.css'
+import LandingStyles from './Landing.module.css'
 
 
 const Landing = () => {
     useEffect(() => {
         function rotateRectangles() {
-            const rectangle: NodeList = document.querySelectorAll('.'+styles.fin);
+            const rectangle: NodeList = document.querySelectorAll('.'+LandingStyles.fin);
             rectangle.forEach(function (rect: Node) {
                 if (rect instanceof HTMLElement) {
                     const myElement: HTMLElement = rect;
@@ -17,24 +17,24 @@ const Landing = () => {
         }
 
         function hoverRotate() {
-            const rotateButton = document.getElementsByClassName(styles.front_btn);
-            const leftElements = document.querySelectorAll('.'+styles.fin_l);
-            const rightElements = document.querySelectorAll('.'+styles.fin_r);
+            const rotateButton = document.getElementsByClassName(LandingStyles.front_btn);
+            const leftElements = document.querySelectorAll('.'+LandingStyles.fin_l);
+            const rightElements = document.querySelectorAll('.'+LandingStyles.fin_r);
             rotateButton[0]?.addEventListener('mouseenter', function () {
                 leftElements.forEach(function (element) {
-                    element.classList.add(styles.rotate_l);
+                    element.classList.add(LandingStyles.rotate_l);
                 });
                 rightElements.forEach(function (element) {
-                    element.classList.add(styles.rotate_r);
+                    element.classList.add(LandingStyles.rotate_r);
                 });
             });
 
             rotateButton[0]?.addEventListener('mouseleave', function () {
                 leftElements.forEach(function (element) {
-                    element.classList.remove(styles.rotate_l);
+                    element.classList.remove(LandingStyles.rotate_l);
                 });
                 rightElements.forEach(function (element) {
-                    element.classList.remove(styles.rotate_r);
+                    element.classList.remove(LandingStyles.rotate_r);
                 });
             });
         }
@@ -42,38 +42,38 @@ const Landing = () => {
         hoverRotate()
     })
     return (
-        <main className={styles.landing_main}>
-            <div className={styles.content}>
-                <img src="/Landing/logo1.png" alt="Recharge Logo" className={styles.landing_logo} />
-                <img src="/Landing/eye.png" alt="Eye" className={styles.eye} />
-                <div className={styles.fin_row_1}>
-                    <img src="/Landing/fin1.png" className={`${styles.fin} ${styles.fin_1} ${styles.fin_l}`} />
-                    <img src="/Landing/fin2.png" className={`${styles.fin} ${styles.fin_1} ${styles.fin_r}`} />
+        <main className={LandingStyles.landing_main}>
+            <div className={LandingStyles.content}>
+                <img src="/Landing/logo1.png" alt="Recharge Logo" className={LandingStyles.landing_logo} />
+                <img src="/Landing/eye.png" alt="Eye" className={LandingStyles.eye} />
+                <div className={LandingStyles.fin_row_1}>
+                    <img src="/Landing/fin1.png" className={`${LandingStyles.fin} ${LandingStyles.fin_1} ${LandingStyles.fin_l}`} />
+                    <img src="/Landing/fin2.png" className={`${LandingStyles.fin} ${LandingStyles.fin_1} ${LandingStyles.fin_r}`} />
                 </div>
-                <div className={styles.fin_row_2}>
-                    <img src="/Landing/fin1.png" className={`${styles.fin} ${styles.fin_2} ${styles.fin_l}`} />
-                    <img src="/Landing/fin2.png" className={`${styles.fin} ${styles.fin_2} ${styles.fin_r}`} />
+                <div className={LandingStyles.fin_row_2}>
+                    <img src="/Landing/fin1.png" className={`${LandingStyles.fin} ${LandingStyles.fin_2} ${LandingStyles.fin_l}`} />
+                    <img src="/Landing/fin2.png" className={`${LandingStyles.fin} ${LandingStyles.fin_2} ${LandingStyles.fin_r}`} />
                 </div>
-                <div className={styles.fin_row_3}>
-                    <img src="/Landing/fin1.png" className={`${styles.fin} ${styles.fin_3} ${styles.fin_l}`} />
-                    <img src="/Landing/fin2.png" className={`${styles.fin} ${styles.fin_3} ${styles.fin_r}`} />
+                <div className={LandingStyles.fin_row_3}>
+                    <img src="/Landing/fin1.png" className={`${LandingStyles.fin} ${LandingStyles.fin_3} ${LandingStyles.fin_l}`} />
+                    <img src="/Landing/fin2.png" className={`${LandingStyles.fin} ${LandingStyles.fin_3} ${LandingStyles.fin_r}`} />
                 </div>
-                <div className={styles.fin_row_4}>
-                    <img src="/Landing/fin1.png" className={`${styles.fin} ${styles.fin_4} ${styles.fin_l}`} />
-                    <img src="/Landing/fin2.png" className={`${styles.fin} ${styles.fin_4} ${styles.fin_r}`} />
-                    <h2 className={styles.caption}>Recharge Your Spirit And Reignite Your Passion!</h2>
-                    <h2 className={styles.date}>30 | 40 | 41 April</h2>
+                <div className={LandingStyles.fin_row_4}>
+                    <img src="/Landing/fin1.png" className={`${LandingStyles.fin} ${LandingStyles.fin_4} ${LandingStyles.fin_l}`} />
+                    <img src="/Landing/fin2.png" className={`${LandingStyles.fin} ${LandingStyles.fin_4} ${LandingStyles.fin_r}`} />
+                    <h2 className={LandingStyles.caption}>Recharge Your Spirit And Reignite Your Passion!</h2>
+                    <h2 className={LandingStyles.date}>30 | 40 | 41 April</h2>
                 </div>
-                <div className={styles.fin_row_5}>
-                    <img src="/Landing/fin1.png" className={`${styles.fin} ${styles.fin_5} ${styles.fin_l}`} />
-                    <img src="/Landing/fin2.png" className={`${styles.fin} ${styles.fin_5} ${styles.fin_r}`} />
+                <div className={LandingStyles.fin_row_5}>
+                    <img src="/Landing/fin1.png" className={`${LandingStyles.fin} ${LandingStyles.fin_5} ${LandingStyles.fin_l}`} />
+                    <img src="/Landing/fin2.png" className={`${LandingStyles.fin} ${LandingStyles.fin_5} ${LandingStyles.fin_r}`} />
 
-                    <button className={`${styles.btn} ${styles.front_btn}`}>
+                    <button className={`${LandingStyles.btn} ${LandingStyles.front_btn}`}>
                         <Link href={'/proshow'}>BUY PROSHOW TICKETS</Link>
                     </button>
-                    <button className={`${styles.btn} ${styles.bg_btn}`}>BUY PROSHOW TICKETS</button>
+                    <button className={`${LandingStyles.btn} ${LandingStyles.bg_btn}`}>BUY PROSHOW TICKETS</button>
 
-                    <h3 className={styles.landing_h3}>
+                    <h3 className={LandingStyles.landing_h3}>
                         <Link href='/event'>
                             Explore All Events {'>'}
                         </Link>
@@ -81,8 +81,8 @@ const Landing = () => {
 
                 </div>
             </div>
-            <img src="/Landing/light.png" alt="light" className={`${styles.light} ${styles.light_1}`} />
-            <img src="/Landing/light.png" alt="light" className={`${styles.light} ${styles.light_2}`} />
+            <img src="/Landing/light.png" alt="light" className={`${LandingStyles.light} ${LandingStyles.light_1}`} />
+            <img src="/Landing/light.png" alt="light" className={`${LandingStyles.light} ${LandingStyles.light_2}`} />
         </main>
     )
 }

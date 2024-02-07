@@ -21,7 +21,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "../ui/Button";
 import { EyeIcon, EyeOffIcon, Loader2 } from "lucide-react";
 import RandomBox from "./RandomBox";
-import Style from "./auth.module.css"
+import FormStyle from "./auth.module.css"
 interface ForgotPasswordFormProps { }
 
 const passwordRegex = new RegExp("^(?=.*[a-zA-Z]{6,})[a-zA-Z0-9]*$");
@@ -87,17 +87,17 @@ const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({ }) => {
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false)
   return (
-    <div className={`flex flex-col justify-center items-center ${Style.wrapping}`}>
-      <div className={Style.cont}>
-        <div className={`${Style.lighter} ${Style.lighter1}`}></div>
-        <div className={`${Style.lighter} ${Style.lighter2}`}></div>
-        <div className={`${Style.lighter} ${Style.lighter3}`}></div>
+    <div className={`flex flex-col justify-center items-center ${FormStyle.wrapping}`}>
+      <div className={FormStyle.cont}>
+        <div className={`${FormStyle.lighter} ${FormStyle.lighter1}`}></div>
+        <div className={`${FormStyle.lighter} ${FormStyle.lighter2}`}></div>
+        <div className={`${FormStyle.lighter} ${FormStyle.lighter3}`}></div>
         <Form {...forgotPasswordForm}>
           <form
             onSubmit={forgotPasswordForm.handleSubmit((e) => {
               forgotPasswordHandel(e);
             })}
-            className="flex flex-col"
+            className={`flex flex-col ${FormStyle.formt}`}
           >
             <div className="my-3">
               <FormField
@@ -138,7 +138,7 @@ const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({ }) => {
                         />
                         <Button
                           type="button"
-                          className="eye-btn"
+                          className={FormStyle.eye_btn}
                           onClick={() => setPasswordVisible(!passwordVisible)}>
                           {
                             passwordVisible ? <EyeIcon size={20} /> : <EyeOffIcon size={20} />
@@ -169,7 +169,7 @@ const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({ }) => {
                         />
                         <Button
                           type="button"
-                          className="eye-btn"
+                          className={FormStyle.eye_btn}
                           onClick={() => setConfirmPasswordVisible(!confirmPasswordVisible)}>
                           {
                             confirmPasswordVisible ? <EyeIcon size={20} /> : <EyeOffIcon size={20} />
@@ -182,7 +182,7 @@ const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({ }) => {
                 )}
               />
             </div>
-            <Button disabled={isPending} type="submit" className="mx-auto mt-4 mb-2 w-6/12 submit-btn">
+            <Button disabled={isPending} type="submit" className={`mx-auto mt-4 mb-2 w-6/12 ${FormStyle.submit_btn}`}>
 
               {isPending ?
                 <>

@@ -27,7 +27,7 @@ import { CSRBaseUrl } from "@/lib/utils";
 import { toast, Toaster } from "sonner";
 import Link from "next/link";
 import RandomBox from "./RandomBox";
-import Style from "./auth.module.css"
+import FormStyle from "./auth.module.css"
 interface RegisterFormProps { }
 
 type registerFormPayload = z.infer<typeof registerFormSchema>;
@@ -117,17 +117,17 @@ const RegisterForm: FC<RegisterFormProps> = ({ }) => {
         <h3> Verification mail has been sent to your registered mail.</h3>
       </div>
       :
-      <div className={`flex flex-col justify-center items-center ${Style.wrapping}`}>
-        <div className={Style.cont}>
-          <div className={`${Style.lighter} ${Style.lighter1}`}></div>
-          <div className={`${Style.lighter} ${Style.lighter2}`}></div>
-          <div className={`${Style.lighter} ${Style.lighter3}`}></div>
+      <div className={`flex flex-col justify-center items-center ${FormStyle.wrapping}`}>
+        <div className={FormStyle.cont}>
+          <div className={`${FormStyle.lighter} ${FormStyle.lighter1}`}></div>
+          <div className={`${FormStyle.lighter} ${FormStyle.lighter2}`}></div>
+          <div className={`${FormStyle.lighter} ${FormStyle.lighter3}`}></div>
           <Form {...registerForm}>
             <form
               onSubmit={registerForm.handleSubmit((e) => {
                 registerUser(e);
               })}
-              className={`${Style.formt}`}
+              className={`${FormStyle.formt}`}
             >
 
               <div className="my-3">
@@ -252,7 +252,7 @@ const RegisterForm: FC<RegisterFormProps> = ({ }) => {
                       <FormControl>
                         <div className="flex flex-row gap-4">
                           <Input type={passwordVisible ? "text" : "password"} placeholder="Password Min. 6 alphabets" {...field} />
-                          <Button className="eye-btn" type="button" onClick={() => setPasswordVisible(!passwordVisible)}>
+                          <Button className={FormStyle.eye_btn} type="button" onClick={() => setPasswordVisible(!passwordVisible)}>
                             {
                               passwordVisible ? <EyeIcon size={20} /> : <EyeOff size={20} />
                             }
@@ -277,7 +277,7 @@ const RegisterForm: FC<RegisterFormProps> = ({ }) => {
                             placeholder="Re-enter password"
                             {...field}
                           />
-                          <Button className="eye-btn" type="button" onClick={() => setConfirmPasswordVisible(!confirmPasswordVisible)}>
+                          <Button className={FormStyle.eye_btn} type="button" onClick={() => setConfirmPasswordVisible(!confirmPasswordVisible)}>
                             {
                               confirmPasswordVisible ? <EyeIcon size={20} /> : <EyeOff size={20} />
                             }
@@ -290,7 +290,7 @@ const RegisterForm: FC<RegisterFormProps> = ({ }) => {
                 />
               </div>
               <div className="flex flex-col items-center justify-center">
-                <Button disabled={isPending} type="submit" className='w-3/5 mt-7 mb-3 submit-btn'>
+                <Button disabled={isPending} type="submit" className={`w-3/5 mt-7 mb-3 ${FormStyle.submit_btn}`}>
                   Register{isPending && <Loader2 className="animate-spin ml-2" />}
                 </Button>
                 <Link

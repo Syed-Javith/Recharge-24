@@ -1,12 +1,12 @@
-import Style from "./auth.module.css"
+import FormStyle from "./auth.module.css"
 const RandomBox = () => {
   return (
-    <div className={Style.drops}>
-      <div className={`${Style.drop} ${Style.drop1}`}></div>
-      <div className={`${Style.drop} ${Style.drop2}`}></div>
-      <div className={`${Style.drop} ${Style.drop3}`}></div>
-      <div className={`${Style.drop} ${Style.drop4}`}></div>
-      <div className={`${Style.drop} ${Style.drop5}`}></div>
+    <div className={FormStyle.drops}>
+      <div className={`${FormStyle.drop} ${FormStyle.drop1}`}></div>
+      <div className={`${FormStyle.drop} ${FormStyle.drop2}`}></div>
+      <div className={`${FormStyle.drop} ${FormStyle.drop3}`}></div>
+      <div className={`${FormStyle.drop} ${FormStyle.drop4}`}></div>
+      <div className={`${FormStyle.drop} ${FormStyle.drop5}`}></div>
     </div>
   );
 }

@@ -27,7 +27,7 @@ const LogoutButton = () => {
         logoutHandler();
       }}
     >
-      <LogOut size={20} />
+      <LogOut size={15} className='m-auto hover:cursor-pointer' />
     </li>
   )
 }

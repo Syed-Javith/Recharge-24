@@ -122,7 +122,7 @@ button:focus {
     margin: 15vh 0;
   }
 
-  .form {
+  .formt {
     padding: 2.5rem 1rem;
     max-width: 80vw;
   }
@@ -156,13 +156,13 @@ button:focus {
   }
 }
 
-.eye-btn {
+.eye_btn {
   background-color: black;
   margin-top: 0;
   color: rgba(255, 255, 255, 0.5);
 }
 
-.eye-btn:hover {
+.eye_btn:hover {
   background-color: rgba(0, 0, 0, 0.85);
   color: rgba(255, 255, 255, 0.75);
 }
@@ -171,7 +171,7 @@ button:focus {
   color: rgba(255, 255, 255, 0.65);
 }
 
-.submit-btn {
+.submit_btn {
   background: rgba(255, 255, 255, 0.9);
   color: black;
   font-size: 1rem;
@@ -182,7 +182,7 @@ button:focus {
   transition: all 0.2s ease;
 }
 
-.submit-btn:hover {
+.submit_btn:hover {
   background: white;
 }
 
@@ -193,12 +193,12 @@ button:focus {
   filter: blur(88.55px);
 }
 
-.lighter-1 {
+.lighter1 {
   background: #0B2139;
   transform: rotate(-63.49deg);
 }
 
-.lighter-2 {
+.lighter2 {
   right: 0;
   bottom: -80px;
   background: #340F3A;
@@ -206,7 +206,7 @@ button:focus {
   background: #0C2947;
 }
 
-.lighter-3 {
+.lighter3 {
   top: -60px;
   right: 0;
   background: #0C2947;

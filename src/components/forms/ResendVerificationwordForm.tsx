@@ -12,7 +12,7 @@ import { Loader2 } from 'lucide-react';
 import { Input } from '../ui/Input';
 import { zodResolver } from '@hookform/resolvers/zod';
 import RandomBox from './RandomBox';
-import Style from "./auth.module.css"
+import FormStyle from "./auth.module.css"
 interface pageProps { }
 
 const resendPasswordFormSchema = z.object({
@@ -55,17 +55,17 @@ const ResendVerificationForm: FC<pageProps> = ({ }) => {
     }
   })
 
-  return <div className={`flex flex-col justify-center items-center ${Style.wrapping}`}>
-    <div className={Style.cont}>
-      <div className="lighter lighter-1"></div>
-      <div className="lighter lighter-2"></div>
-      <div className="lighter lighter-3"></div>
+  return <div className={`flex flex-col justify-center items-center ${FormStyle.wrapping}`}>
+    <div className={FormStyle.cont}>
+      <div className={`${FormStyle.lighter} ${FormStyle.lighter1}`}></div>
+      <div className={`${FormStyle.lighter} ${FormStyle.lighter2}`}></div>
+      <div className={`${FormStyle.lighter} ${FormStyle.lighter3}`}></div>
       <Form {...resendPasswordForm}>
         <form
           onSubmit={resendPasswordForm.handleSubmit((e) => {
             resendVerification(e);
           })}
-          className={`flex flex-col ${Style.formt}`}
+          className={`flex flex-col ${FormStyle.formt}`}
         >
           <div className="my-3">
             <FormField
@@ -86,7 +86,7 @@ const ResendVerificationForm: FC<pageProps> = ({ }) => {
               )}
             />
           </div>
-          <Button type='submit' disabled={isPending} className='mx-auto mt-4 mb-2 submit-btn'>
+          <Button type='submit' disabled={isPending} className={`mx-auto mt-4 mb-2 ${FormStyle.submit_btn}`}>
             Resend Verification Mail {
               isPending && <Loader2 className="animate-spin ml-2" />
             }

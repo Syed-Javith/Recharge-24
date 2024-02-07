@@ -2,16 +2,16 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Jura:wght@300..700&display=swap');
 
-nav {
+.navbar_nav {
     position: relative;
 }
 
-#college {
+.college {
     width: 129px;
     margin-left: 30px;
 }
 
-#landing-header {
+.landing_header {
     z-index: 49;
     background: transparent !important;
     color: white;
@@ -24,7 +24,7 @@ nav {
     filter: brightness(1.5);
 }
 
-ul {
+.navbar_ul {
     display: flex;
     list-style-type: none;
     font-family:  "Jockey One";
@@ -33,8 +33,9 @@ ul {
     font-size: 0.9rem;
 }
 
-li {
+.navbar_li {
     margin: 0 15px;
+    letter-spacing: 1px;
     cursor: pointer;
 }
 
@@ -48,16 +49,16 @@ li {
 
 /* responsive */
 
-#ham {
+.ham {
     z-index: 9999 ;
     display: none;
 }
 
-#ham:hover {
+.ham:hover {
     cursor: pointer;
 }
 
-.dropdown-custom{
+.dropdown_custom{
     display: block;
     position: absolute;
     right: 0;
@@ -68,26 +69,26 @@ li {
     padding: 5px;
 }
 
-.dropdown-custom li {
+.dropdown_custom li {
     padding: 5px 0;
 }
 
-.dropdown-custom .active {
+.dropdown_custom .active {
     font-size: large;
 }
 
-.dropdown-custom .disabled {
+.dropdown_custom .disabled {
     font-size: medium;
     opacity: 0.4;
 }
 
 
 @media screen and (max-width: 690px) {
-    ul {
+    .navbar_ul {
          display: none;
     }
 
-    #ham {
+    .ham {
         display: block;
         color: white;
         font-size: 2rem;
@@ -95,7 +96,7 @@ li {
 }
 
 @media screen and (max-width: 420px) {
-    #college {
+    .college {
          width: 100px;
     }
 }

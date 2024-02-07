@@ -21,7 +21,7 @@ import axios, { AxiosError } from "axios";
 import { CSRBaseUrl } from "@/lib/utils";
 import { toast } from "sonner";
 import Link from "next/link";
-import Style from "./auth.module.css"
+import FormStyle from "./auth.module.css"
 import RandomBox from "./RandomBox";
 interface LoginFormProps { }
 
@@ -73,17 +73,17 @@ const LoginForm: FC<LoginFormProps> = ({ }) => {
   });
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
   return (
-    <div className={`flex flex-col justify-center items-center ${Style.wrapping}`}>
-      <div className={Style.cont}>
-        <div className={`${Style.lighter} ${Style.lighter1}`}></div>
-        <div className={`${Style.lighter} ${Style.lighter2}`}></div>
-        <div className={`${Style.lighter} ${Style.lighter3}`}></div>
+    <div className={`flex flex-col justify-center items-center ${FormStyle.wrapping}`}>
+      <div className={FormStyle.cont}>
+        <div className={`${FormStyle.lighter} ${FormStyle.lighter1}`}></div>
+        <div className={`${FormStyle.lighter} ${FormStyle.lighter2}`}></div>
+        <div className={`${FormStyle.lighter} ${FormStyle.lighter3}`}></div>
         <Form {...loginForm} >
           <form
             onSubmit={loginForm.handleSubmit((e) => {
               loginUser(e);
             })}
-            className="flex flex-col"
+            className={`flex flex-col ${FormStyle.formt}`}
           >
             <div className="my-3">
               <FormField
@@ -121,7 +121,7 @@ const LoginForm: FC<LoginFormProps> = ({ }) => {
                           {...field}
                         />
                         <Button
-                          className="eye-btn"
+                          className={FormStyle.eye_btn}
                           type="button"
                           tabIndex={-1}
                           onClick={() => setPasswordVisible(!passwordVisible)}>
@@ -137,7 +137,7 @@ const LoginForm: FC<LoginFormProps> = ({ }) => {
                 )}
               />
             </div>
-            <Button disabled={isPending} type="submit" className="mx-auto mt-4 mb-2 w-6/12 submit-btn">
+            <Button disabled={isPending} type="submit" className={`mx-auto mt-4 mb-2 w-6/12  ${FormStyle.submit_btn}` }>
               Login{isPending && <Loader2 className="animate-spin ml-2" />}
             </Button>
             <Link href={'/forgot-password'} className="mx-auto text-gray-50 text-[0.85rem] mt-2 hover:text-white">Forgot Password ?</Link>
