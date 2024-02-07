@@ -1,0 +1,552 @@
+.ticket {
+  width: fit-content;
+  margin: 4%;
+  display: flex;
+  background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #b78b2a 30%, #b58d2f 40%, transparent 80%),
+              radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #9c7b2f 62.5%, #98782d 100%);
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.left {
+	display: flex;
+    position: relative;
+}
+
+.imageContent {
+	height: 250px;
+	width: 250px;
+  background-size: contain;
+  opacity: 0.85;
+  position: relative;
+}
+
+.image {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px 0% 0% 10px;
+}
+
+.admitOne {
+	position: absolute;
+	color: darkgray;
+	height: 250px;
+	padding: 0 10px;
+	letter-spacing: 0.15em;
+	display: flex;
+	text-align: center;
+	justify-content: space-around;
+	writing-mode: vertical-rl;
+    font-size: 70%;
+	transform: rotate(-180deg);
+}
+
+.admitOne span:nth-child(2) {
+	color: white;
+	font-weight: 700;
+}
+
+.left .ticketNumber {
+	height: 250px;
+	width: 250px;
+	display: flex;
+	justify-content: flex-end;
+	align-items: flex-end;
+	padding: 5px;
+  z-index: 1;
+}
+
+.ticketInfo {
+	padding: 10px 30px;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	justify-content: space-between;
+	align-items: center;
+    
+}
+
+.date {
+	border-top: 1px solid white;
+	border-bottom: 1px solid rgb(255, 255, 255);
+	padding: 5px 0;
+	font-weight: 700;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+  width: 100%
+}
+
+.date span {
+	margin: 0 5px;
+}
+
+.date span:first-child {
+	text-align: left;
+}
+
+.date span:last-child {
+	text-align: right;
+}
+
+.date .march {
+	color: #ffee55;
+	font-size: 15px;
+    text-shadow: 1px 2px 4px var(#ffeba7), 0 0 0 #000, 1px 2px 4px var(#ffeba7);
+}
+
+.showName {
+	font-size: 32px;
+	font-family: "Bonheur Royal", cursive;
+    font-weight: 700;
+	color: #11141f;
+}
+
+.showName h1 {
+  /* background: linear-gradient(to bottom, #cfc09f 22%,#634f2c 24%, #cfc09f 26%, #cfc09f 27%,#ffecb3 40%,#3a2c0f 78%);  */
+  background: linear-gradient(to bottom, rgb(155, 28, 28) 40%,#3a2c0f 78%); 
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  position: relative;
+	text-transform: uppercase;	
+	font-size: 36px;
+	font-weight: 900;
+	letter-spacing: 0.1em;
+}
+
+.showName h1:after {
+  background: none;
+  content: attr(data-heading);
+  left: 0;
+  top: 0;
+  z-index: -1;
+  position: absolute;
+  text-shadow: 
+  -1px 0 1px #c6bb9f, 
+  0 1px 1px #c6bb9f, 
+  5px 5px 10px rgba(0, 0, 0, 0.4),
+  -5px -5px 10px rgba(0, 0, 0, 0.4);
+}
+
+.time {
+	padding: 10px 0;
+	color: #4a437e;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	font-weight: 700;
+  font-family: "Nanum Pen Script", cursive;
+}
+
+.time span {
+	font-weight: 400;
+	color: gray;
+}
+
+.left .time {
+	font-size: 28px;
+}
+
+.location {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	width: 100%;
+	padding-top: 8px;
+	border-top: 1px solid white;
+}
+
+.location .separator {
+	font-size: 20px;
+}
+
+.right {
+	width: 180px;
+	border-left: 1px dashed #404040;
+}
+
+.right .admitOne {
+	color: darkgray;
+}
+
+.right .admitOne span:nth-child(2) {
+	color: gray;
+}
+
+.right .right-info-container {
+	height: 250px;
+	padding: 10px 10px 10px 35px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.right .showName h1 {
+	font-size: 18px;
+}
+
+.barcode {
+	height: 100px;
+}
+
+.barcode img {
+	height: 100%;
+}
+
+.right .ticketNumber {
+	color: gray;
+}
+
+.profileContainer{
+    max-width: 1000px;
+    margin: 0 auto 2rem auto;
+    color: black;
+	font-size: 14px;
+	letter-spacing: 0.1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.layout {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+}
+
+.profileEventCard {
+  width: 230px;
+  border-radius: 20px;
+  background: #0f2844;
+  padding: 5px;
+  margin: 5% auto 5% auto;
+  overflow: hidden;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 20px 0px;
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.profileEventCard:hover {
+  transform: scale(1.05);
+}
+
+.profileEventCard .topSection {
+  height: 150px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.profileEventCard .topSection .border {
+  border-bottom-right-radius: 10px;
+  height: 30px;
+  width: 130px;
+  background: white;
+  background: #0f2844;
+  position: absolute;
+  transform: skew(-40deg);
+  box-shadow: -10px -10px 0 0 #1b233d;
+}
+
+.profileEventCard .topSection .border::before {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  top: 0;
+  right: -15px;
+  background: rgba(255, 255, 255, 0);
+  border-top-left-radius: 10px;
+  box-shadow: -5px -5px 0 2px #1b233d;
+}
+
+.profileEventCard .topSection::before {
+  content: "";
+  position: absolute;
+  top: 30px;
+  left: 0;
+  background: rgba(255, 255, 255, 0);
+  height: 15px;
+  width: 15px;
+  border-top-left-radius: 15px;
+  box-shadow: -5px -5px 0 2px #1b233d;
+}
+
+.profileEventCard .topSection .icons {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.profileEventCard .topSection .icons .logo {
+  height: 100%;
+  /* aspect-ratio: 1; */
+  padding: 3px 0 7px 15px;
+  /* margin: auto; */
+  text-align: center;
+  font-weight: 700;
+  color: white;
+}
+
+.profileEventCard .topSection .icons .logo .topSection {
+  height: 100%;
+}
+
+.profileEventCard .topSection .icons .socialMedia {
+  height: 100%;
+  padding: 8px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 7px;
+}
+
+.profileEventCard .topSection .icons .socialMedia .svg {
+  height: 100%;
+  fill: #ffffff;
+}
+.profileEventCard .topSection .icons .socialMedia p {
+  font-weight: 700;
+  color: white;
+  text-align: center;
+}
+
+.profileEventCard .bottomSection {
+  margin-top: 15px;
+  padding: 10px 5px;
+}
+
+.profileEventCard .bottomSection .title {
+  display: block;
+  font-size: 17px;
+  font-weight: bolder;
+  color: white;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.profileEventCard .bottomSection .row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.profileEventCard .bottomSection .row .item {
+  flex: 30%;
+  text-align: center;
+  padding: 5px;
+  color: rgba(170, 222, 243, 0.721);
+}
+
+.profileEventCard .bottomSection .row .item .bigText {
+  font-size: 12px;
+  display: block;
+}
+
+.profileEventCard .bottomSection .row .item .regularText {
+  font-size: 9px;
+}
+
+.profileEventCard .bottomSection .row .item:nth-child(2) {
+  border-left: 1px solid rgba(255, 255, 255, 0.126);
+  border-right: 1px solid rgba(255, 255, 255, 0.126);
+}
+
+.profileSectionTitle {
+  font-size: calc(10px + 5vh);
+  text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
+    color: #fff6a9;
+  font-family: "Sacramento", cursive;
+  text-align: center;
+  animation: blink 12s infinite;
+  -webkit-animation: blink 12s infinite;
+}
+
+.glowingLine {
+  width: 100%;
+  height: 2px;
+  margin: 50px auto 50px auto;
+  background: linear-gradient(to right, rgba(200, 0, 255, 0.303), #2500f9, rgba(200, 0, 255, 0.3)); /* Adjust colors as needed */
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+.profilePersonalDetail{
+  width: 94%;
+  margin: 100px auto 7% auto;
+}
+.profilePersonalDetail .description {
+  display: flex;
+  flex-direction: row;
+}
+
+.profilePersonalDetail img{
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  filter: blur(0px);
+}
+
+.profilePersonalDetail .container {
+  top: 20%;
+  left: 30%;
+  transform: translate((-50%, -50%));
+  width: fit-content;
+  height: fit-content;
+  color: rgb(206, 231, 255);
+  padding: 30px;
+  background: linear-gradient(45deg, rgba(50, 50, 200, 0.1), rgba(50,50,50, 0.4));
+  border-radius: 10px;
+  box-shadow: 0 0 .2rem #fff,
+          0 0 .2rem #fff,
+          0 0 0.8rem #133efe,
+          inset 0 0 0.5rem #133efe; 
+}
+
+.profilePersonalDetail .logo {
+  width: 180px;
+  height: 180px;
+  background-color: rgba(0, 0, 0, 0.4);
+  background-image: url(https://static.vecteezy.com/system/resources/thumbnails/002/104/171/small_2x/account-neon-icon-for-website-and-ui-material-illustration-vector.jpg);
+  background-size: cover;
+  border-radius: 50%;
+  float: left;
+  margin: 30px 20px 0px 0;
+  box-shadow: -2px 2px 400px #01127363;
+  transform: translate(-70%, -20%);
+}
+
+.profilePersonalDetail h1 {
+  transform: translateX(-85px);
+  margin: 0 0 5px;
+  padding: 0;
+  font-size: 30px;
+}
+
+.profilePersonalDetail h3 {
+  font-weight: 600;
+  transform: translateX(-85px);
+  margin: 0 0 20px;
+  padding: 0;
+}
+
+.profilePersonalDetail .bio {
+  transform: translateX(-95px);
+  font-family: "KoHo", sans-serif;
+  font-size: 15px;
+  margin: 0;
+  padding: 0;
+  text-align: justify;
+  line-height: 28px;
+}
+
+.profilePersonalDetail .bg-background {
+  background-color: #ffffff00;
+}
+.profilePersonalDetail .bg-background:hover {
+  color: #7ebcff;
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 10px #7300ff; /* Adjust glow color and intensity */
+  }
+  100% {
+    box-shadow: 0 0 20px #7300ff; /* Adjust glow color and intensity */
+  }
+}
+
+@-webkit-keyframes blink {
+  20%,
+  24%,
+  55% {
+    color: #111;
+    text-shadow: none;
+  }
+
+  0%,
+  19%,
+  21%,
+  23%,
+  25%,
+  54%,
+  56%,
+  100% {
+
+  text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
+    color: #fff6a9;
+  }
+}
+
+@keyframes blink {
+  20%,
+  24%,
+  55% {
+    color: #111;
+    text-shadow: none;
+  }
+
+  0%,
+  19%,
+  21%,
+  23%,
+  25%,
+  54%,
+  56%,
+  100% {
+  text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
+    color: #fff6a9;
+  }
+}
+
+  
+@media (max-width: 768px) {
+  .location, .time, .imageContent{
+      display: none;
+  }  
+}
+@media (max-width: 1000px) {
+  .profilePersonalDetail .logo {
+    display: none;
+  }
+  .profilePersonalDetail .description {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profilePersonalDetail h1 {
+    transform: none;
+    margin: auto;
+    text-align: center;
+  }
+  .profilePersonalDetail h3 {
+    transform: none;
+    margin: auto;
+    text-align: center;
+  }
+  .profilePersonalDetail .bio {
+    transform: none;
+    margin: auto;
+    text-align: center;
+    justify-content: center;
+  }
+  .profilePersonalDetail .edit {
+    flex-direction: column;
+    align-items: center;
+  }
+  .profilePersonalDetail .eChild {
+    margin: auto;
+  }
+}
+
