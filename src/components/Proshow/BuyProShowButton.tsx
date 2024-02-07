@@ -7,13 +7,17 @@ import { toast } from "sonner";
 import axios from "axios";
 import { Loader2 } from "lucide-react";
 import { CSRBaseUrl } from "@/lib/utils";
-
+import ProShowStyle from "./proshow.module.css"
+import localFont from "next/font/local";
 interface BuyProShowButtonProps {
   proshowid: number;
-  label: "standard" | "premium" | "standard combo" | "premium combo";
+  label: "Standard" | "Premium" | "Standard combo" | "Premium combo";
   disabled: boolean;
   is_registered: boolean;
 }
+
+const titleFont = localFont({ src: '../../../public/fonts/Jura.ttf' })
+const subtitleFont = localFont({ src: '../../../public/fonts/chakra.ttf' })
 
 const BuyProShowButton: FC<BuyProShowButtonProps> = ({
   proshowid,
@@ -66,7 +70,7 @@ const BuyProShowButton: FC<BuyProShowButtonProps> = ({
   return (
     <Button
     
-    className={label === "premium" ? "golden-btn" : "silver-btn"}
+    className={label === "Premium" ? `${ProShowStyle.goldenBtn} ${subtitleFont.className}` : `${ProShowStyle.silverBtn} ${subtitleFont.className}`}
     
       onClick={() => buyProshow({ proshowid })}
       disabled={isPending || disabled}

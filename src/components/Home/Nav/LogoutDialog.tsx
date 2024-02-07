@@ -23,7 +23,7 @@ import { LogOut } from "lucide-react";
     return (
       <AlertDialog open={open} onOpenChange={setOpen}>
         <AlertDialogTrigger asChild>
-          <li className={`${NavStyle.navbar_li} ${NavStyle.disabled}`}>Log out</li>
+          <li className={`${NavStyle.navbar_li} ${NavStyle.disabled}`}>Logout</li>
           {/* <LogOut size={15} className='m-auto hover:cursor-pointer' /> */}
         </AlertDialogTrigger>
         <AlertDialogContent>

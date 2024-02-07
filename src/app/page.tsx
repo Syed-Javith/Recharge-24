@@ -7,7 +7,8 @@ import ProshowSection from '@/components/Home/Proshow/ProshowSection';
 
 export default function Home() {
   return (
-    <div className="overflow-x-hidden recharge bg-[#020617]">
+    // <div className="overflow-x-hidden recharge bg-[#020617]">
+    <div className="overflow-x-hidden recharge bg-[#030711]">
       <Landing/>
      <AboutSection />
       <ProshowSection />

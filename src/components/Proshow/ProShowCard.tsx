@@ -3,7 +3,10 @@ import { ProShow } from "@/types/models";
 import BuyProShowButton from "./BuyProShowButton";
 import { Card, CardDescription, CardFooter, CardTitle } from "../ui/Card";
 import { FC, useState } from "react";
-import "./style.css";
+import ProShowStyle from './proshow.module.css'
+import localFont from "next/font/local";
+import Tilt from 'react-vanilla-tilt';
+
 interface ProshowcardProps {
   proshow: ProShow;
   is_rec: boolean;
@@ -13,6 +16,9 @@ interface ProshowcardProps {
   datePremium: number[]
 }
 
+const titleFont = localFont({ src: '../../../public/fonts/Jura.ttf' })
+const subtitleFont = localFont({ src: '../../../public/fonts/chakra.ttf' })
+
 const ProShowCard: FC<ProshowcardProps> = ({
   proshow,
   is_rec,
@@ -21,34 +27,75 @@ const ProShowCard: FC<ProshowcardProps> = ({
   isStandardCombo,
   datePremium
 }) => {
+
+  const config = {
+    reverse:           false,  // reverse the tilt direction
+    max:               35,     // max tilt rotation (degrees)
+    perspective:       1000,   // Transform perspective, the lower the more extreme the tilt gets.
+    scale:             1,      // 2 = 200%, 1.5 = 150%, etc..
+    speed:             300,    // Speed of the enter/exit transition
+    transition:        true,   // Set a transition on enter/exit.
+    axis:              null,   // What axis should be disabled. Can be X or Y.
+    reset:             true   , // If the tilt effect has to be reset on exit.
+    easing:            "cubic-bezier(.03,.98,.52,.99)",    // Easing on enter/exit.
+    glare:             false ,  // if it should have a "glare" effect
+    "max-glare":       1,      // the maximum "glare" opacity (1 = 100%, 0.5 = 50%)
+    "glare-prerender": false,   // false = VanillaTilt creates the glare elements for you, otherwise
+    margin: 0,
+    padding: 0
+                               // you need to add .js-tilt-glare>.js-tilt-glare-inner by yourself
+}
   // const [isButton, setIsButton] = useState<string>("visible");
   return (
+    <Tilt options={config} style={{
+      margin: 0,
+      padding: 0,
+    }}>
+
+
     <div className="h-200 w-72 p-3"
     >
+
+
+      
+
       <Card className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
         <div className="group relative cursor-pointer items-center  justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
           <div className="h-200 w-72">
-            <img
+            {/* <img
               className="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
               src='https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
               alt=""
-            />
+            /> */}
+            <img
+            src={proshow.image}
+            alt="proshow Image"
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
+          />
+            
+               
+            
+
           </div>
         </div>
 
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/70 to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70">
-            <img src="/rmbg.png" alt="" className= {((proshow.premium && proshow.combo) || (proshow.premium))? "top-[-22px] left-[-110px] absolute rotate-[-45deg] z-10" : "hidden" }/>
-          <div className="absolute inset-0 flex md:translate-y-[75%] translate-y-[55%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0 pt-3 ">
+
+            {/* <img src="/rmbg.png" alt="" className= {((proshow.premium && proshow.combo) || (proshow.premium))? "top-[-22px] left-[-110px] absolute rotate-[-45deg] z-10" : "hidden" }/> */}
+          <div className="absolute inset-0 flex translate-y-[57%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0 pt-3 ">
+
             <CardTitle className="font-dmserif relative bottom-0 left-0 mb-2 ml-2 title">
-              <span className={((proshow.premium && proshow.combo) || (proshow.premium))? "fast-flicker uppercase text-md mb-2 text-bold" : "fast-flicker uppercase text-md mb-2 " }>{proshow.name}</span>
-              <h4 className="date mt-3" >23 MARCH</h4>
+              <span className={((proshow.premium && proshow.combo) || (proshow.premium))? `${titleFont.className} ${ProShowStyle.premiumTitle} uppercase text-md mb-2 text-bold` : `${titleFont.className} ${ProShowStyle.standardTitle} uppercase text-md mb-2 ` }>{proshow.name}</span>
+              <h4 className={((proshow.premium && proshow.combo) || (proshow.premium))? `${subtitleFont.className} ${ProShowStyle.premiumTitle} text-sm mt-3 mb-3` : `${subtitleFont.className} ${ProShowStyle.standardTitle} text-sm mt-3 mb-3` }> DAY <span className="pl-2">{proshow.day}</span></h4>
             </CardTitle>
 
-            <CardDescription className="mb-3 text-md italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            {/* text-sm mt-3 mb-3` */}
+            {/* <CardDescription className="mb-3 text-md italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               {proshow.description?.slice(0, 120)}{" "}
-            </CardDescription>
-            <span className="bg-gradient-to-r from-pink-500 to-yellow-500 text-transparent text-lg bg-clip-text">Unlock Proshow for just Rs.{proshow.amount}</span>
-
+            </CardDescription> */}
+            <span className= {`${subtitleFont.className} bg-gradient-to-r from-pink-500 to-yellow-500  text-lg bg-clip-text`}> Unlock Proshow for just Rs.{proshow.amount}</span>
+            
+          
             <div className="rounded-full  px-3.5 py-2 font-com text-sm capitalize text-white ">
 
 
@@ -63,7 +110,7 @@ const ProShowCard: FC<ProshowcardProps> = ({
 
                   <BuyProShowButton
                     disabled={proshow.is_registered || isPremiumCombo}
-                    label="premium"
+                    label="Premium"
                     proshowid={proshow.id}
                     is_registered={proshow.is_registered}
                   />
@@ -79,7 +126,7 @@ const ProShowCard: FC<ProshowcardProps> = ({
                         !proshow.premium &&
                         !proshow.combo) || (datePremium[proshow.day - 1] == 1 || isPremiumCombo || isStandardCombo)
                     }
-                    label="standard"
+                    label="Standard"
                     proshowid={proshow.id}
                     is_registered={proshow.is_registered}
                   />
@@ -95,7 +142,7 @@ const ProShowCard: FC<ProshowcardProps> = ({
                         !proshow.premium &&
                         proshow.combo) || (isPremiumCombo || isDayPremium)
                     }
-                    label="standard combo"
+                    label="Standard combo"
                     proshowid={proshow.id}
                     is_registered={proshow.is_registered}
                   />
@@ -108,7 +155,7 @@ const ProShowCard: FC<ProshowcardProps> = ({
                 {!is_rec && proshow.premium && proshow.combo && (
                   <BuyProShowButton
                     disabled={proshow.is_registered}
-                    label="premium combo"
+                    label="Premium combo"
                     proshowid={proshow.id}
                     is_registered={proshow.is_registered}
                   />
@@ -119,6 +166,8 @@ const ProShowCard: FC<ProshowcardProps> = ({
         </div>
       </Card>
     </div>
+      
+      </Tilt>
   );
 };
 

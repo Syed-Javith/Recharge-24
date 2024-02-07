@@ -88,9 +88,9 @@ const Navbar = ({session} : SesstionType) => {
                     Events
                   </Link>
                   </li>
-                <li className={`${NavStyle.navbar_li} ${pathname=="/gallery" ? NavStyle.active : NavStyle.disabled}` }>
+                {/* <li className={`${NavStyle.navbar_li} ${pathname=="/gallery" ? NavStyle.active : NavStyle.disabled}` }>
                   Gallery
-                  </li>
+                  </li> */}
 
                 {session ?
                   (

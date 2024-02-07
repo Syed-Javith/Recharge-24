@@ -26,7 +26,7 @@ export default async function RootLayout({
       <body
         className={cn(
           // "min-h-screen bg-[#0c0c2d] font-sans antialiased",
-          "min-h-screen bg-[#101520] font-sans antialiased ",
+          "min-h-screen bg-[#030711] font-sans antialiased ",
           GeistSans.variable
         )}
       >

@@ -82,10 +82,10 @@
   text-align: center;
     -ms-flex-item-align: center;
     align-self: center;
-  mix-blend-mode: difference;
+  /* mix-blend-mode: difference; */
 }
 .hovertext h2{
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Jura', sans-serif;
   font-weight: 800;
   font-size: 4vw;
   line-height: 1;
@@ -135,7 +135,12 @@
   font-size: 4rem;
   font-weight: lighter;
   color: #fee;
-  text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #ff4444, 0 0 0.5em #ff4444, 0 0 0.1em #ff4444, 0 10px 3px #000;
+  text-shadow: 
+  /* 0 -40px 100px, 0 0 2px,  */
+  0 0 1em #ff4444, 
+  0 0 0.5em #ff4444, 
+  0 0 0.1em #ff4444, 
+  0 10px 3px #000;
 }
 .pro b span{
   animation: blink linear infinite 2s;

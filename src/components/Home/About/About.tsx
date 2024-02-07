@@ -13,7 +13,8 @@ interface AboutProps {
 const About : FC<AboutProps> = ({ image , content , title , isReverse}) => {
   return (
     <div
-      className={`flex flex-col justify-center lg:flex-row items-center lg:items-center  gap-y-8 stretch-to-screen text-white p-10 lg:gap-x-20 bg-slate-950 ${isReverse && "lg:flex-row-reverse"}`}
+      // className={`flex flex-col justify-center lg:flex-row items-center lg:items-center  gap-y-8 stretch-to-screen text-white p-10 lg:gap-x-20 bg-slate-950 ${isReverse && "lg:flex-row-reverse"}`}
+      className={`flex flex-col justify-center lg:flex-row items-center lg:items-center  gap-y-8 stretch-to-screen text-white p-10 lg:gap-x-20 bg-[#030711] ${isReverse && "lg:flex-row-reverse"}`}
     >
       <div
         id="left"

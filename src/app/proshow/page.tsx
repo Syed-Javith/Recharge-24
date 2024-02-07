@@ -11,12 +11,13 @@ const page = async ({}) => {
   if (!session) {
     return <DialogBox />;
   }
-  const is_rec = session?.id.includes("rajalakshmi.edu.in") || false;
+  const is_rec = session?.id.includes("rajalakshmi.edu.in") || session?.id.includes("ritchennai.edu.in") || false;
   const { data: shows } = await axios.get(SSRBaseUrl + "proshow/proshows/", {
     headers: { Cookie: cookies().toString() },
   });
 
   let proshows: ProShow[] = shows
+  console.log(shows)
   proshows = [...shows,...shows,...shows,...shows]
 
   let isDayPremium = false;
