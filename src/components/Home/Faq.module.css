@@ -1,7 +1,7 @@
 .faqTitle {
     font-family: "Jura";
     color: white;
-    margin: 3rem;
+    margin: 3rem 0;
     font-size: 3rem;
     font-weight: lighter;
     text-shadow: 0 0 0 transparent, 0 0 10px #09f, 0 0 20px rgba(38,149,255,.5), 0 0 40px #09f, 0 0 100px #09f;
@@ -11,5 +11,11 @@
 @keyframes buzz {
     70% {
         opacity:0.8;
+    }
 }
+
+@media screen and (max-width: 480px) {
+    .faqTitle {
+        font-size: 2rem;
+    }
 }
