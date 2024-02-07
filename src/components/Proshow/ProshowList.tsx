@@ -5,7 +5,8 @@ import styles from './proshow.module.css';
 import localFont from 'next/font/local'
 
 
-const SketchFont = localFont({ src: '../../../public/fonts/Mexcellent.ttf' })
+const titleFont = localFont({ src: '../../../public/fonts/Jura.ttf' })
+
 
 interface ProshowListProps {
   is_rec: boolean;
@@ -30,9 +31,9 @@ const ProshowList = async ({
         paddingTop: "10vh"
       }}>
         <div >
-          <div className={`${SketchFont.className} ${styles.fastFlicker}`}>
-            <h1 className="text-6xl  mt-10 mb-10 text-white text-center fast-flicker" >
-              Proshows
+          <div className={`${titleFont.className} ${styles.fastFlicker}`}>
+            <h1 className="text-6xl mt-10 mb-10 text-white text-center fast-flicker" >
+              PROSHOWS
             </h1>
           </div>
 

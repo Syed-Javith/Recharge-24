@@ -3,12 +3,12 @@
   src: url("https://acupoftee.github.io/fonts/Clip.ttf");
 }
 
-.brick {
+/* .brick {
   background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url("../../../public/proshow-bg.jpg");
   background-size: cover;
   
   height: 100vh;
-}
+} */
 
 .sign {
   position: absolute;
@@ -78,12 +78,12 @@
       0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
   }
 }
-.date{
+/* .date{
   font-size:19px;
-}
-.title{
+} */
+/* .title{
   font-size:21px;
-}
+} */
 @keyframes flicker {
   from {
     opacity: 1;
@@ -283,15 +283,15 @@
 }
 
 .silverBtn:hover {
-  border: 1px solid #999; /* Darker silver border on hover */
-  background: #999; /* Darker silver background on hover */
+  border: 1px solid #797878; /* Darker silver border on hover */
+  background: #797878; /* Darker silver background on hover */
   box-shadow: inset 0 20px 20px rgba(255,255,255,.1);
   color: #090808; /* White text color on hover */
 }
 
 .silverBtn:active {
-  border-top: 1px solid #777; /* Even darker silver border on active state */
-  background: #999; /* Darker silver background on active state */
+  border-top: 1px solid #565656; /* Even darker silver border on active state */
+  background: #565656; /* Darker silver background on active state */
   box-shadow: inset 0 1px 1px rgba(119, 119, 119, .4),  inset 0 20px 20px rgba(119, 119, 119, .01);
 }
 
@@ -328,7 +328,7 @@
 }
 
 
-.fastFlickerStandard{
+/* .fastFlickerStandard{
   animation: shineStandard 2s forwards, blinkStandard 7s 1s infinite;
 }
 
@@ -404,4 +404,13 @@
     color: #fff824;
     text-shadow: none;
   }
+} */
+
+.standardTitle
+{
+  color: #979795;
+}
+
+.premiumTitle{
+  color: #FEE99E;
 }
