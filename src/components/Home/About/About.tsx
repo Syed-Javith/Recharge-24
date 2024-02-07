@@ -35,9 +35,9 @@ const About : FC<AboutProps> = ({ image , content , title , isReverse}) => {
         <p className=" text-lg  shadow-inner leading-loose">
          {content}
         </p>
-        <button className='bg-gradient-to-r from-[#ff0055] to-[#ffdd1f] p-2 m-auto rounded-md'>
+        {/* <button className='bg-gradient-to-r text-black from-[#ff0055] to-[#ffdd1f] p-2 m-auto rounded-md'>
           SHOW MORE
-        </button>
+        </button> */}
       </div>
     </div>
   )

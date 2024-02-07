@@ -16,7 +16,8 @@ const page = async ({}) => {
     headers: { Cookie: cookies().toString() },
   });
 
-  const proshows: ProShow[] = shows
+  let proshows: ProShow[] = shows
+  proshows = [...shows,...shows,...shows,...shows]
 
   let isDayPremium = false;
   let isPremiumCombo = false;

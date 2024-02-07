@@ -36,10 +36,7 @@ const ProshowList = async ({
             </h1>
           </div>
 
-          <div className=" flex flex-wrap items-center justify-center">
-            <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {" "}
-            </div>
+          <div className=" flex flex-wrap items-center justify-center md:max-w-[80vw] max-w-[100vw] m-auto">
             {proshows?.length > 0 &&
               proshows.map((proshow) => {
                 return (
