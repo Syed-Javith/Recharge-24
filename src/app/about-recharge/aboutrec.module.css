@@ -1,0 +1,26 @@
+.aboutpic{
+  height: 100vh;
+  background-image: url("https://images.unsplash.com/photo-1515550962725-a254324472e9?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzU1MTI1NjE&ixlib=rb-4.0.3&q=80");
+  background-size: cover;
+}
+@media ( max-width : 1000px ) {
+  .aboutpic{
+    height: 100%;
+    background-size: auto;
+  }
+}
+.neon {
+  font-family: "Jura";
+  color: white;
+  margin: 3rem;
+  font-size: 3rem;
+  font-weight: lighter;
+  text-shadow: 0 0 0 transparent, 0 0 10px #09f, 0 0 20px rgba(38,149,255,.5), 0 0 40px #09f, 0 0 100px #09f;
+  animation: buzz 1s infinite alternate;
+}
+
+@keyframes buzz {
+  70% {
+      opacity: .8;
+  }
+}

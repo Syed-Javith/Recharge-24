@@ -2,7 +2,7 @@ import FaqSection from './FaqSection';
 
 const FAQ = () => {
   return (
-    <div className="container mx-auto px-40 py-20">
+    <div className="container mx-auto md:px-40 md:py-20 p-2">
       <h1 className="text-3xl font-bold mb-6">Frequently Asked Questions</h1>
       <FaqSection
         question="How do I create a new account?"
