@@ -218,7 +218,7 @@ const EventDetails: FC<EventDetailsProps> = ({
                 <> </>
               )
             ) : event.registration_count <= event.max_reg &&
-              (new Date(event.registration_end_date) > new Date() || event.registration_end_date==null) ? (
+              (new Date(event.registration_end_date) >= new Date() || event.registration_end_date==null) ? (
               event.team_event ? (
                 session ? (
                   <div className="flex">
