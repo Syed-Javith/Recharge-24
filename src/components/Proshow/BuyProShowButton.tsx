@@ -58,16 +58,6 @@ const BuyProShowButton: FC<BuyProShowButtonProps> = ({
     onSuccess: (data) => {
       const { payment_link } = data;
       console.log(payment_link);
-
-      // toast(`Please complete your Proshow purchase`, {
-      //   action: {
-      //     label: "Pay now",
-      //     onClick() {
-      //       window.location.href = payment_link;
-      //     },
-      //   },
-      //   duration: 100 * 1000,
-      // });
       router.push(payment_link)
       router.refresh();
     },
@@ -75,7 +65,9 @@ const BuyProShowButton: FC<BuyProShowButtonProps> = ({
 
   return (
     <Button
-      variant={"proshow"}
+    
+    className={label === "premium" ? "golden-btn" : "silver-btn"}
+    
       onClick={() => buyProshow({ proshowid })}
       disabled={isPending || disabled}
     >

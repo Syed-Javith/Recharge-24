@@ -73,7 +73,7 @@ const Landing = () => {
                     <button className="btn" id="bg-btn">BUY TICKETS</button>
                     <h3 id='landing-h3'>
                         <Link href='/event'>
-                            Explore All Events
+                            Explore All Events {'>'}
                         </Link>
                     </h3>
                 </div>

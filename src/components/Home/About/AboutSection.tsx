@@ -13,7 +13,7 @@ const AboutSection = () => {
         signature Cultural fest - RECHARGE `&apos` 23, which promotes liberty, energy,
         and enthusiasm among both participants and spectators while also
         providing students an opportunity to explore and rediscover
-        themselves.' image='/logo1.webp' />
+        themselves.' image='https://alphatest-recharge23.netlify.app/static/media/dj.5155e6fa9d36cf2dcd12.webp' />
     </div>
   )
 }

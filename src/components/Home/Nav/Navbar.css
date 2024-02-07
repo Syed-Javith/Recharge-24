@@ -12,7 +12,7 @@ nav {
 }
 
 #landing-header {
-    z-index: 9999;
+    z-index: 49;
     background: transparent !important;
     color: white;
     position: absolute;

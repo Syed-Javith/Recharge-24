@@ -90,7 +90,9 @@ div#fin-row-5 {
 div#fin-row-5 h3 {
     position: absolute;
     font-family: "Jura";
-    bottom: -50%;
+    font-size: x-large;
+    font-weight: bold;
+    bottom: -80%;
 }
 
 #landing-h3:hover {
@@ -202,11 +204,13 @@ div#fin-row-5 h3 {
     }
 
     .btn {
-        top: 40%;
+        top: 10%;
         transform: scale(0.9);
     }
 
-    div#fin-row-5 h3 {
+    div#fin-row-5 h3 
+    {
+        font-size: large;
         bottom: -70%;
     }
 }
@@ -230,7 +234,7 @@ div#fin-row-5 h3 {
     }
 
     .btn {
-        top: 30%;
+        top: 10%;
     }
 }
 
@@ -271,33 +275,13 @@ div#fin-row-5 h3 {
         margin-top: 3rem;
     }
 
-    /* div#fin-row-3 {
-        justify-content: center;
-    } */
-
     .fin-1.fin-l, .fin-2.fin-r, .fin-3.fin-l, .fin-4.fin-r {
         display: none;
     }
-/* 
-    #content div#fin-row-5 img {
-        visibility: hidden;
-    } */
 
     .light {
         display: none;
     }
-/* 
-    .fin-1 {
-        width: 50vw ;
-    }
-
-    .fin-2, .fin-4 {
-        width: 70vw;
-    }
-
-    .fin-3 {
-        width: 90vw;
-    } */
 
     .fin {
         visibility: hidden;
