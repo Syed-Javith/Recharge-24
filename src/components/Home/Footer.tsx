@@ -27,7 +27,6 @@ const Footer = () => {
                   </div>
                   
                 </div>
-
                 <div className="">
                   <div className="p-5">
                       <h1 className="text-3xl font-bold pb-5">For Sponsorship</h1>
@@ -43,10 +42,7 @@ const Footer = () => {
                 </div>
               </div>
         </footer>
-      </>
-        
-
-      
+      </>   
     );
   };
   
