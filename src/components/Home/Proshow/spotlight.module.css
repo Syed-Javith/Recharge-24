@@ -1,12 +1,4 @@
-p{
-	font-family: 'Poppins', sans-serif;
-	font-weight: 400;
-	font-size: 16px;
-	line-height: 1.7;
-	color: #fff;
-  margin: 0;
-}
-.section-fluid-main{
+.sectionfluidmain{
   position: relative;
   display: block;
   /* overflow: hidden; */
@@ -18,7 +10,7 @@ p{
   max-width: 1140px;
   /* padding: 100px 0; */
 }
-.section-row{
+.sectionrow{
   display: -ms-flexbox;
   display: flex;
   /* -ms-flex-wrap: wrap;
@@ -26,10 +18,10 @@ p{
   margin-right: -15px;
   margin-left: -15px;
 }
-.section-row:hover .section-col{
+.sectionrow:hover .sectioncol{
   opacity: 0.1;
 }
-.section-col{
+.sectioncol{
   position: relative;
   width: 100%;
   -ms-flex: 0 0 50%;
@@ -37,7 +29,7 @@ p{
   /* max-width: 50%; */
   transition: opacity 250ms linear;
 }
-.section-row .section-col:hover{
+.sectionrow .sectioncol:hover{
   opacity: 1;
 }
 .section{
@@ -48,7 +40,7 @@ p{
   cursor: pointer;
   padding: 15px;
 }
-.section-in{
+.sectionin{
   position: relative;
   display: block;
   width: 100%;
@@ -56,17 +48,17 @@ p{
   border-radius: 6px;
   cursor: pointer;
 }
-.section-in img{
+.sectionin img{
   display: block;
   width: 100%;
   height: auto;
   transition: transform 250ms linear;
 }
-.section-col:hover .section-in img{
+.sectioncol:hover .sectionin img{
   transform: scale(1.1) rotate(-3deg);
 }
 
-.hover-text{
+.hovertext{
   position: absolute;
   top: 0;
   left: 0;
@@ -92,7 +84,7 @@ p{
     align-self: center;
   mix-blend-mode: difference;
 }
-.hover-text h2{
+.hovertext h2{
   font-family: 'Poppins', sans-serif;
   font-weight: 800;
   font-size: 4vw;
@@ -102,24 +94,33 @@ p{
   transform: scale(0.8);
   transition: transform 250ms linear, opacity 250ms ease;
 }
-.section-col:hover + .hover-text h2{
+.sectioncol:hover + .hovertext h2{
   opacity: 1;
   transform: scale(1);
 }
 
 
 @media (max-width: 767px) {
-  .section-col{
+  .sectioncol{
     -ms-flex: 0 0 100%;
     flex: 0 0 100%;
     max-width: 100%;
   }
-  .hover-text h2{
+  .hovertext h2{
     font-size: 12vw;
   }
-  .section-row{
+  .sectionrow{
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
+  }
+  .t1{
+    top: -400px;
+  }
+  .t2{
+    top: 0px;
+  }
+  .t3{
+    top: 400px;
   }
 }
 .pro {
