@@ -10,7 +10,6 @@ import { EyeIcon, EyeOff, EyeOffIcon, Loader2, MailCheck } from "lucide-react";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -138,7 +137,7 @@ const RegisterForm: FC<RegisterFormProps> = ({ }) => {
                   <FormItem>
                     <FormLabel className="text-white">First Name</FormLabel>
                     <FormControl>
-                      <Input type="text" placeholder="First Name" {...field} />
+                      <Input type="text" placeholder="eg: Arun" {...field} />
                     </FormControl>
                     <FormMessage className="text-red-500"/>
                   </FormItem>
@@ -153,7 +152,7 @@ const RegisterForm: FC<RegisterFormProps> = ({ }) => {
                   <FormItem>
                     <FormLabel className="text-white">Last Name</FormLabel>
                     <FormControl>
-                      <Input type="text" placeholder="Last Name" {...field} />
+                      <Input type="text" placeholder="eg: Kumar" {...field} />
                     </FormControl>
                     <FormMessage className="text-red-500"/>
                   </FormItem>
@@ -170,7 +169,7 @@ const RegisterForm: FC<RegisterFormProps> = ({ }) => {
                     <FormControl>
                       <Input
                         type="email"
-                        placeholder="user@example.com"
+                        placeholder="eg: user@example.com"
                         {...field}
                       />
                     </FormControl>
@@ -188,7 +187,7 @@ const RegisterForm: FC<RegisterFormProps> = ({ }) => {
                   <FormItem>
                     <FormLabel className="text-white">Mobile Number</FormLabel>
                     <FormControl>
-                      <Input type="text" placeholder="Mobile Number" {...field} />
+                      <Input type="text" placeholder="eg: 9876543210" {...field} />
                     </FormControl>
                     <FormMessage className="text-red-500"/>
                   </FormItem>
@@ -203,7 +202,7 @@ const RegisterForm: FC<RegisterFormProps> = ({ }) => {
                   <FormItem>
                     <FormLabel className="text-white">College/School Name</FormLabel>
                     <FormControl>
-                      <Input type="text" placeholder="College/School Name" {...field} />
+                      <Input type="text" placeholder="eg: Rajalakshmi Engineering College" {...field} />
                     </FormControl>
                     <FormMessage className="text-red-500"/>
                   </FormItem>
@@ -216,7 +215,7 @@ const RegisterForm: FC<RegisterFormProps> = ({ }) => {
                 name="year"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-white">Year/Standard of Study</FormLabel>
+                    <FormLabel className="text-white">Year of Study</FormLabel>
                     <Select
                       onValueChange={(value) => field.onChange(parseInt(value, 10))}
                       defaultValue={field.value.toString()}
@@ -248,7 +247,7 @@ const RegisterForm: FC<RegisterFormProps> = ({ }) => {
                 name="password"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-white">Create your new Password</FormLabel>
+                    <FormLabel className="text-white">Create your own Password</FormLabel>
                     <FormControl>
                       <div className="flex flex-row gap-4">
                         <Input type={passwordVisible ? "text" : "password"} placeholder="Password Min. 6 alphabets" {...field} />
@@ -269,12 +268,12 @@ const RegisterForm: FC<RegisterFormProps> = ({ }) => {
                 name="confirm_password"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-white">Reenter Password</FormLabel>
+                    <FormLabel className="text-white">Confirm Password</FormLabel>
                     <FormControl>
                       <div className="flex flex-row gap-4">
                         <Input
                           type={confirmPasswordVisible ? "text" : "password"}
-                          placeholder="Reenter password"
+                          placeholder="Re-enter password"
                           {...field}
                         />
                         <Button className="eye-btn" type="button" onClick={() => setConfirmPasswordVisible(!confirmPasswordVisible)}> 
@@ -295,7 +294,7 @@ const RegisterForm: FC<RegisterFormProps> = ({ }) => {
               </Button>
               <Link 
               href={'/resend-verification-email'} 
-              className="mx-auto text-gray-50 text-[0.85rem] mt-2 hover:text-white">Didn&apos;t Receive mail? resend again
+              className="mx-auto text-gray-50 text-[0.85rem] mt-2 hover:text-white text-center">Didn&apos;t Receive verification mail?<br/> Resend again
               </Link>
             </div>
           </form>

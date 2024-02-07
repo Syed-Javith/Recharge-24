@@ -1,11 +1,11 @@
 .wrapping {
-  min-height: 90vh;
+  min-height: 100vh;
   width: 100%;
-  overflow: hidden;
+  position: relative;
 }
 
 .cont {
-  margin: 4rem 0;
+  margin: 20vh 0;
   position: relative;
 }
 
@@ -45,23 +45,6 @@ form {
       text-shadow: none;
     }
   }
-
-  /* input {
-    background: transparent;
-    padding: 1em;
-   
-    border: none;
-    border-left: 1px solid rgba(255, 255, 255, 0.3);
-    border-top: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 5000px;
-    backdrop-filter: blur(5px);
-    box-shadow: 4px 4px 60px rgba(0, 0, 0, 0.2);
-    color: #fff;
-    font-family: Montserrat, sans-serif;
-    font-weight: 500;
-    transition: all 0.2s ease-in-out;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-  } */
 
   &:hover {
     margin: 4px;
@@ -134,8 +117,11 @@ button:focus {
 
 @media (width < 500px) {
 
+  .wrapping {
+    overflow: hidden;
+  }
   .cont {
-    margin: 3rem 0;
+    margin: 15vh 0;
   }
 
   form {
@@ -174,6 +160,7 @@ button:focus {
 
 .eye-btn {
   background-color: black;
+  margin-top: 0;
   color: rgba(255, 255, 255, 0.5);
 }
 

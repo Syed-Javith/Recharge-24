@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Courgette&display=swap");
+.event-details-bg{
+    background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('/event-image-31.jpg');
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.end-date span {
+  font-family: Courgette;
+  color: #c6e2ff;
+  animation: neon 0.18s ease-in-out infinite alternate;
+  text-shadow: 0 0 6px rgba(202, 228, 225, 0.92),
+      0 0 30px rgba(202, 228, 225, 0.34), 0 0 12px rgba(255,255,255, 0.52),
+      0 0 21px rgba(33, 238, 228, 0.92), 0 0 34px rgba(33, 238, 228, 0.78),
+      0 0 54px rgba(33, 238, 228, 0.92);
+}

@@ -34,7 +34,7 @@ const MembersDialog = ({ event, user, deleteMember }: MembersDialogProps) => {
         <DialogHeader className="text-left">
           <DialogTitle>Team Members</DialogTitle>
           <DialogDescription>
-            Here are your team members for this event
+            Here are your other team members for this event
           </DialogDescription>
         </DialogHeader>
         <div className="flex-column">

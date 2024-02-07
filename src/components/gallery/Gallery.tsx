@@ -4,39 +4,39 @@ import "./gallery.css";
 const ImageData = [
   {
     name: "No Name",
-    url: "https://dmitry-rogg.vn.ua/animate-slider/images/1.jpg"
+    url: "https://alphatest-recharge23.netlify.app/static/media/andrea1.f4f70c5e592dfb57baca.webp"
   },
   {
     name: "No Name",
-    url: "https://dmitry-rogg.vn.ua/animate-slider/images/2.jpg"
+    url: "https://alphatest-recharge23.netlify.app/static/media/dj.5155e6fa9d36cf2dcd12.webp"
   },
   {
     name: "No Name",
-    url: "https://dmitry-rogg.vn.ua/animate-slider/images/3.jpg"
+    url: "https://alphatest-recharge23.netlify.app/static/media/bravo.be25486838c2169477f2.webp"
   },
   {
     name: "No Name",
-    url: "https://dmitry-rogg.vn.ua/animate-slider/images/4.jpg"
+    url: "https://alphatest-recharge23.netlify.app/static/media/jagan.945d81b21bc37aa17b62.webp"
   },
   {
     name: "No Name",
-    url: "https://dmitry-rogg.vn.ua/animate-slider/images/5.jpg"
+    url: "https://alphatest-recharge23.netlify.app/static/media/karthi.2507a9fb30a53b355de8.webp"
   },
   {
     name: "No Name",
-    url: "https://dmitry-rogg.vn.ua/animate-slider/images/6.jpg"
+    url: "https://alphatest-recharge23.netlify.app/static/media/santhosh.b7d8090a1ef18af18e0e.webp"
   },
   {
     name: "No Name",
-    url: "https://dmitry-rogg.vn.ua/animate-slider/images/7.jpg"
+    url: "https://alphatest-recharge23.netlify.app/static/media/andrea1.f4f70c5e592dfb57baca.webp"
   },
   {
     name: "No Name",
-    url: "https://dmitry-rogg.vn.ua/animate-slider/images/8.jpg"
+    url: "https://alphatest-recharge23.netlify.app/static/media/dj.5155e6fa9d36cf2dcd12.webp"
   },
   {
     name: "No Name",
-    url: "https://dmitry-rogg.vn.ua/animate-slider/images/9.jpg"
+    url: "https://alphatest-recharge23.netlify.app/static/media/andrea1.f4f70c5e592dfb57baca.webp"
   },
 ]
 
