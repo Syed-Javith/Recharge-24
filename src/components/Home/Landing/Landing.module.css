@@ -1,4 +1,4 @@
-#landing-main {   
+.landing_main {   
     background: linear-gradient(104.79deg, #030711 37%, #060C1A 102.89%);
     min-height: 100vh;
     width: 100%;
@@ -10,7 +10,7 @@
     /* overflow: hidden; */
 }
 
-#logo {
+.landing_logo {
     position: absolute;
     width: 420px;
     top: 10%;
@@ -26,68 +26,68 @@
     transition: transform 3s;
 }
 
-.fin-r {
+.fin_r {
     transform: rotate(18deg);
 }
 
-.fin-1 {
+.fin_1 {
     width: 17.2vw;
     height: 70px;
 }
 
-.fin-2, .fin-3, .fin-4 {
+.fin_2, .fin_3, .fin_4 {
     width: 27.2vw;
     height: 70px;
 }
 
-.fin-5 {
+.fin_5 {
     width: 18vw;
     height: 70px;
 }
 
-#content {
+.content {
     margin-top: 5rem;
     position: relative;
     display: grid;
     align-items: center;
 }
 
-#content div {
+.content div {
     display: flex;
     margin: 0 2.6rem 2.6rem 2.6rem;
     justify-content: space-evenly;
     z-index: 1;
 }
 
-div#fin-row-3 {
+div.fin_row_3 {
     justify-content: space-between;
 }
 
-div#fin-row-4 {
+div.fin_row_4 {
     justify-content: space-around;
     position: relative;
 }
 
-div#fin-row-4 h2 {
+div.fin_row_4 h2 {
     position: absolute;
     font-family: "Jura";
     font-size: 1.2rem;
 }
 
-div#fin-row-4 #caption {
+div.fin_row_4 .caption {
     margin: 0 1rem;
     top: 25%;
 }
 
-div#fin-row-4 #date {
+div.fin_row_4 .date {
     bottom: -20%;
 }
 
-div#fin-row-5 {
+div.fin_row_5 {
     position: relative;
 }
 
-div#fin-row-5 h3 {
+div.fin_row_5 h3 {
     position: absolute;
     font-family: "Jura";
     font-size: x-large;
@@ -95,7 +95,7 @@ div#fin-row-5 h3 {
     bottom: -80%;
 }
 
-#landing-h3:hover {
+.landing_h3:hover {
     cursor: pointer;
 }
 
@@ -109,7 +109,7 @@ div#fin-row-5 h3 {
     z-index: 0;
 }
 
-#light-2 {
+.light_2 {
     right: 0;
     transform: scaleX(-1);
 }
@@ -133,7 +133,7 @@ div#fin-row-5 h3 {
     filter: brightness(1.5);
 }
 
-#front-btn::before {
+.front_btn::before {
     content: "";
     position: absolute;
     left: 2px;
@@ -145,27 +145,27 @@ div#fin-row-5 h3 {
     z-index: -1;
 }
 
-#bg-btn{
+.bg_btn{
     z-index: 99;
     filter: blur(10px);
     transition: 0.05s;
 }
 
-#front-btn:hover + #bg-btn {
+.front_btn:hover + .bg_btn {
     filter: blur(14px);
 }
 
-.rotate-l {
+.rotate_l {
     transition: transform 0.5s !important;
     transform: rotate(10deg) !important;
 }
 
-.rotate-r {
+.rotate_r {
     transition: transform 0.5s !important;
     transform: rotate(-10deg) !important;
 }
 
-#eye {
+.eye {
     position: absolute;
     z-index: 1;
     height: 650px;
@@ -193,12 +193,12 @@ div#fin-row-5 h3 {
         height: 60px;
     }
 
-    #logo {
+    .landing_logo {
         width: 360px;
         top: 15%;
     }
 
-    div#fin-row-4 #date, div#fin-row-4 #caption {
+    div.fin_row_4 .date, div.fin_row_4 .caption {
         font-size: 1rem ;
         text-align: center;
     }
@@ -208,7 +208,7 @@ div#fin-row-5 h3 {
         transform: scale(0.9);
     }
 
-    div#fin-row-5 h3 
+    div.fin_row_5 h3 
     {
         font-size: large;
         bottom: -70%;
@@ -217,19 +217,19 @@ div#fin-row-5 h3 {
 
 
 @media screen and (max-width: 732px) {
-    #logo {
+    .landing_logo {
         width: 300px;
     }
 }
 
 @media screen and (max-width: 690px) {
 
-   .fin-1 {
+   .fin_1 {
         width: calc(17.2vw *  1.4);
 
     }
 
-    .fin-2, .fin-3, .fin-4 {
+    .fin_2, .fin_3, .fin_4 {
         width: calc(27.2vw * 1.4);
     }
 
@@ -245,37 +245,37 @@ div#fin-row-5 h3 {
         transform: scale(1);
     }
 
-    #eye {
+    .eye {
         height: auto;
         opacity: 0.25;
         transform: scale(3);
     }
 
-    #content #fin-row-1, #content #fin-row-2, #content #fin-row-3, #content #fin-row-4 {
+    .content .fin_row_1, .content .fin_row_2, .content .fin_row_3, .content .fin_row_4 {
         margin: 0 0 2.6rem 0 ;
     }
 
-    #logo {
+    .landing_logo {
         width: 270px;
         top: 5%;
     }
 
-    div#fin-row-4 #caption {
+    div.fin_row_4 .caption {
         top: -70%;
         font-size: 1.2rem;
     }
     
-    div#fin-row-4 #date {
+    div.fin_row_4 .date {
         bottom: 5%;
         font-size: 1.2rem;
     }
 
-    #landing-h3 {
+    .landing_h3 {
         position: relative;
         margin-top: 3rem;
     }
 
-    .fin-1.fin-l, .fin-2.fin-r, .fin-3.fin-l, .fin-4.fin-r {
+    .fin_1.fin_l, .fin_2.fin_r, .fin_3.fin_l, .fin_4.fin_r {
         display: none;
     }
 
