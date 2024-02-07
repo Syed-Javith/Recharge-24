@@ -1,6 +1,7 @@
+import { EventDetailSchema } from "@/types/models";
 import { CheckCircle2, UserRound, UsersRound, XCircle } from "lucide-react";
 
-const EventTicket = ({ eventDetail }: { eventDetail: any }) => {
+const EventTicket = ({ eventDetail }: { eventDetail: EventDetailSchema }) => {
     return(
         <>
             <div className="profile-event-card">
@@ -15,13 +16,13 @@ const EventTicket = ({ eventDetail }: { eventDetail: any }) => {
                     {
                         eventDetail.team_event ? <UsersRound className="text-white"/> : <UserRound className="text-white"/>
                     }
-                    <p>
-                        {(eventDetail.event_registration[0]?.team[0]?.members?.length == null ? 1 : eventDetail.event_registration[0].team[0].members.length)}
+                    {/* <p>
+                        {( (eventDetail.event_registration[0].team.length === 0 ) ? 1 : eventDetail?.event_registration[0].team[0].members.length)}
                     </p>
                     {
-                        (eventDetail.event_registration[0]?.team[0]?.members?.length == null ? 1 : eventDetail.event_registration[0].team[0].members.length) == eventDetail.team_max ?
+                        ( (eventDetail != undefined  && eventDetail.event_registration && eventDetail.event_registration.length > 0 && eventDetail?.event_registration[0]?.team[0]?.members?.length == null) ? 1 : eventDetail?.event_registration[0].team[0].members.length) == eventDetail.team_max ?
                         <CheckCircle2 className="text-emerald-500"/> : <></>
-                    }
+                    } */}
                 </div>
                 </div>
             </div>

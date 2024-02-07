@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation"
 import './Navbar.css'
 import Link from 'next/link';
 import { Menu } from 'lucide-react';
+import LogoutButton from './LogoutButton';
 
 type SesstionType =  {
   session: UserJwtPayload | null
@@ -55,7 +56,11 @@ const Navbar = ({session} : SesstionType) => {
 
                 {session ?
                   (
-                    <li className={pathname=="/profile" ? "active" : "disabled"}><a href="/profile">Profile</a></li>
+                   <>
+                     <li className={pathname=="/profile" ? "active" : "disabled"}><a href="/profile">Profile</a></li>
+                    <LogoutButton />
+                   </>
+
                   ) :
                   (
                     <>
