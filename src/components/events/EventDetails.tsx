@@ -111,7 +111,7 @@ const EventDetails: FC<EventDetailsProps> = ({
             className="max-w-[340px] flex-1 lg:block hidden object-cover border-[1.5px] rounded-xl"
           />
           <div>
-            <h1 className={`text-5xl mb-3 ${JuraFont.className} ${styles.event_head}`}>{event.name.toUpperCase()}</h1>
+            <h1 className={`text-4xl mb-3 ${JuraFont.className} ${styles.event_head}`}>{event.name.toUpperCase()}</h1>
             <div className="flex space-x-3 mb-4">
               {event.team_event ? (
                 <Badge variant="default" className="team mt-2 ">
