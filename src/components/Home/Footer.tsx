@@ -35,32 +35,22 @@ const Footer = () => {
                   
                   </div>                  
                 </div>
-                <div className="flex items-center">
-                  <div>
-                  <div className="pb-3">
-                      <h1 className="md:text-3xl text-2xl font-bold pb-3">For Sponsorship</h1>
-                      <div className="pb-2 inline-block">
-                      <MailIcon className="inline-block pl-0"></MailIcon>
-                      <Link className="text-sm pl-2 md:text-lg" href="mailto:sponsorship.recharge@rajalakshmi.edu.in">sponsorship.recharge@rajalakshmi.edu.in</Link>
-                      </div>
-                      
-                  </div>   
-                  <span className="p-3"></span>               
-                  <div className="pb-3">
-                      <h1 className="md:text-3xl text-2xl font-bold pb-3">For Queries</h1>
-                      <div className="pb-1 inline-block">
-                      <MailIcon className="inline-block pl-0"></MailIcon>
-                      <Link className="text-sm pl-2 md:text-lg" href="mailto:support.recharge@rajalakshmi.edu.in">support.recharge@rajalakshmi.edu.in</Link>
-                      </div>
-                      </div>
+                <div className="">
+                  <div className="p-5">
+                      <h1 className="text-3xl font-bold pb-5">For Sponsorship</h1>
+                      <MailIcon className="inline-block"></MailIcon>
+                      <Link className="p-3" href="mailto:sponsorship.recharge@rajalakshmi.edu.in">sponsorship.recharge@rajalakshmi.edu.in</Link>
+                  </div>
+                  
+                  <div className="p-5">
+                      <h1 className="text-3xl font-bold pb-5">For Queries</h1>
+                      <MailIcon className="inline-block"></MailIcon>
+                      <Link className="p-3" href="mailto:support.recharge@rajalakshmi.edu.in">support.recharge@rajalakshmi.edu.in</Link>
                   </div>
                 </div>
               </div>
         </footer>
-      </>
-        
-
-      
+      </>   
     );
   };
   
