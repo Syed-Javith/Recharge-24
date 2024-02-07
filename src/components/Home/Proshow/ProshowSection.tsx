@@ -12,7 +12,7 @@ const ProshowSection: FC<ProshowSectionProps> = ({ }) => {
 
   return (
 
-    <div>
+    <div className="min-h-screen">
       <div className={SketchFont.className}>
         <div className="pro"><b>P<span>RO</span>SH<span>O</span>W</b></div>
       </div>
