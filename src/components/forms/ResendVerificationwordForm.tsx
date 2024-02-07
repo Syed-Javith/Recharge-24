@@ -42,6 +42,7 @@ const ResendVerificationForm: FC<pageProps> = ({ }) => {
     onError: (err) => {
       console.log("error ", err);
       if (err instanceof AxiosError) {
+        console.log(err)
         toast.error(err.response?.data.detail)
       } else {
         toast.error("Something went wrong please try again later.")
@@ -80,21 +81,13 @@ const ResendVerificationForm: FC<pageProps> = ({ }) => {
                   {...field}
                 />
               </FormControl>
-              <FormDescription>
-                {
-                  isPending ?
-                    <>
-                      Wait we are sending you <br /> Verification Email again
-                    </> : <></>
-                }
-              </FormDescription>
               <FormMessage className="text-red-500"/>
             </FormItem>
           )}
         />
         </div>
-        <Button type='submit' disabled={isPending} className='mx-auto mt-4 mb-2 w-6/12 submit-btn'>
-          Resend Mail {
+        <Button type='submit' disabled={isPending} className='mx-auto mt-4 mb-2 submit-btn'>
+          Resend Verification Mail {
             isPending && <Loader2 className="animate-spin ml-2" />
           }
         </Button>

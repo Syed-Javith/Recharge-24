@@ -5,25 +5,19 @@ import { Badge } from "@/components/ui/badge";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { UserJwtPayload } from "@/lib/auth";
-import Clipboard from "../ClipBoard";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { Button } from "../ui/Button";
 import { CSRBaseUrl } from "@/lib/utils";
 import MembersDialog from "./MembersDialog";
 import LoginDialog from "./LoginDialog";
 import JoinTeam from "./JoinTeam";
-
+import { Copy } from "lucide-react";
+import { toast } from "sonner";
 
 interface EventDetailsProps {
   event: EventDetailSchema;
@@ -97,11 +91,9 @@ const EventDetails: FC<EventDetailsProps> = ({
       });
   };
 
-  console.log(event);
-  
   if (event) {
     return (
-      <div className="max-w-[1300px] m-auto md:p-4 p-2">
+      <div className="max-w-[1300px] m-auto md:p-4 p-2 mt-10">
         <div className="grid grid-cols-12 gap-6 justify-between md:p-6 p-4 mt-4 border-b-2 border-white">
           <div className="flex gap-6 md:col-span-6 lg:col-span-8 col-span-12">
             <img
@@ -156,6 +148,11 @@ const EventDetails: FC<EventDetailsProps> = ({
                 </Button>
               )}
 
+              <div className="mt-4 text-xl text-orange-700 font-bold">
+                Registration End Date:{" "}
+                {event.registration_end_date.split("-").reverse().join("-")}
+              </div>
+
               {event.is_registered &&
               event.team_event &&
               event.event_registration[0]?.team[0]?.members.length > 0 &&
@@ -196,7 +193,14 @@ const EventDetails: FC<EventDetailsProps> = ({
                         <TooltipProvider>
                           <Tooltip>
                             <TooltipTrigger>
-                              <Clipboard />
+                              <Copy
+                                className="w-6 h-4 inline-block"
+                                onClick={() => {
+                                  toast.success(
+                                    "Team Code Copied Successfully"
+                                  );
+                                }}
+                              />
                             </TooltipTrigger>
                             <TooltipContent>
                               <p>Copy to Clipboard</p>
@@ -211,7 +215,8 @@ const EventDetails: FC<EventDetailsProps> = ({
                 ) : (
                   <> </>
                 )
-              ) : event.registration_count <= event.max_reg ? (
+              ) : event.registration_count <= event.max_reg &&
+                new Date(event.registration_end_date) <= new Date() ? (
                 event.team_event ? (
                   session ? (
                     <div>
@@ -240,9 +245,13 @@ const EventDetails: FC<EventDetailsProps> = ({
                 ) : (
                   <LoginDialog textContent={["Register Now"]} />
                 )
+              ) : event.registration_count > event.max_reg ? (
+                <p className="text-xl font-semibold text-[#e6d62b] mt-4">
+                  Registration Limit Exceeded!
+                </p>
               ) : (
                 <p className="text-xl font-semibold text-[#e6d62b] mt-4">
-                  Registrations Closed!
+                  Registration Closed!
                 </p>
               )}
             </div>
@@ -257,6 +266,7 @@ const EventDetails: FC<EventDetailsProps> = ({
             <div>Venue: {event.venue}</div>
             <div>Timings: {event.time_of_event}</div>
             <div>Duration: {event.duration} hours</div>
+            <div>Hosting Club: {event.name_of_hosting_club}</div>
             <div>Contact: {event.contact_mail}</div>
           </div>
         </div>
@@ -266,7 +276,10 @@ const EventDetails: FC<EventDetailsProps> = ({
             {event.description &&
               (showDescription
                 ? event.description.split("\r\n").map((point, index) => (
-                    <p key={index} className="leading-8 mb-4 text-justify text-md">
+                    <p
+                      key={index}
+                      className="leading-8 mb-4 text-justify text-md"
+                    >
                       {point}
                     </p>
                   ))
@@ -274,7 +287,10 @@ const EventDetails: FC<EventDetailsProps> = ({
                     .split("\r\n")
                     .slice(0, 1)
                     .map((point, index) => (
-                      <p key={index} className="leading-8 mb-4 text-justify text-md">
+                      <p
+                        key={index}
+                        className="leading-8 mb-4 text-justify text-md"
+                      >
                         {point}
                       </p>
                     )))}
@@ -288,27 +304,24 @@ const EventDetails: FC<EventDetailsProps> = ({
             </div>
           </div>
           <div>
-            <Accordion type="single" collapsible>
-              <AccordionItem value="item-1">
-                <AccordionTrigger>
-                  <h1 className="text-2xl mt-4 mb-4">Rules and Regulations</h1>
-                </AccordionTrigger>
-                <AccordionContent>
-                  {event.rules.split("\r\n").map((point, index) => (
-                    <li key={index} className="leading-8 text-justify text-md">
-                      {point}
-                    </li>
-                  ))}
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
+            <h1 className="text-2xl mt-4 mb-4">Rules and Regulations</h1>
+            {event.rules.split("\r\n").map((point, index) => (
+              <li key={index} className="leading-8 text-justify text-md">
+                {point}
+              </li>
+            ))}
           </div>
-          <div>
-            <h1 className="text-2xl mt-4 mb-4">Event Incharges</h1>
-              {event.incharges.length>0 && event.incharges.map(incharge => (
-                <li className="py-2 text-[1.2em]" key={incharge.id}>{incharge.name + " - " + incharge.contact_number}</li>
-              ))}
-          </div>
+          {event.incharges.length > 0 && (
+            <div className="mt-8">
+              <h1 className="text-2xl mb-2">Event Incharges</h1>
+              {event.incharges.length > 0 &&
+                event.incharges.map((incharge) => (
+                  <p className="py-2 text-[1.2em]" key={incharge.id}>
+                    {incharge.name + " - " + incharge.contact_number}
+                  </p>
+                ))}
+            </div>
+          )}
         </div>
       </div>
     );

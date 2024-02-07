@@ -1,17 +1,20 @@
 import { Category } from "@/types/models";
-import Card from "@/components/events/CategoryCard";
 import Link from "next/link";
 import { SSRBaseUrl } from "@/lib/utils";
 import axios from "axios";
 import "./style.css";
+import localFont from 'next/font/local'
+
+
+const SketchFont = localFont({ src: '../../../public/fonts/Mexcellent.ttf' })
 
 const page = async () => {
   const { data } = await axios.get(SSRBaseUrl + "event/category/");
   const categories: Category[] = await data;
   return (
-    <div>
+    <div className={SketchFont.className}>
       <p id="cat-title">Categories</p>
-      <div className="flex justify-center items-center flex-wrap category-container mt-12">
+      <div className="flex justify-center items-center flex-wrap category-container">
         {categories.map((category) => (
           category.events_count != 0 &&
           <Link key={category.id} href={"/event/" + category.id}>
