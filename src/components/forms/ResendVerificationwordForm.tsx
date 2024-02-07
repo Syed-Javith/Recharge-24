@@ -11,8 +11,8 @@ import { Button } from '../ui/Button';
 import { Loader2 } from 'lucide-react';
 import { Input } from '../ui/Input';
 import { zodResolver } from '@hookform/resolvers/zod';
-import "./styles.css"
 import RandomBox from './RandomBox';
+import Style from "./auth.module.css"
 interface pageProps { }
 
 const resendPasswordFormSchema = z.object({
@@ -55,46 +55,46 @@ const ResendVerificationForm: FC<pageProps> = ({ }) => {
     }
   })
 
-  return <div className="flex flex-col justify-center items-center wrapping">
-    <div className="cont">
+  return <div className={`flex flex-col justify-center items-center ${Style.wrapping}`}>
+    <div className={Style.cont}>
       <div className="lighter lighter-1"></div>
       <div className="lighter lighter-2"></div>
       <div className="lighter lighter-3"></div>
-    <Form {...resendPasswordForm}>
-      <form
-        onSubmit={resendPasswordForm.handleSubmit((e) => {
-          resendVerification(e);
-        })}
-        className="flex flex-col"
-      >
-        <div className="my-3">
-        <FormField
-          control={resendPasswordForm.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="text-white">Enter your Email</FormLabel>
-              <FormControl>
-                <Input
-                  type="email"
-                  placeholder="Enter your Registered mail ID"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage className="text-red-500"/>
-            </FormItem>
-          )}
-        />
-        </div>
-        <Button type='submit' disabled={isPending} className='mx-auto mt-4 mb-2 submit-btn'>
-          Resend Verification Mail {
-            isPending && <Loader2 className="animate-spin ml-2" />
-          }
-        </Button>
+      <Form {...resendPasswordForm}>
+        <form
+          onSubmit={resendPasswordForm.handleSubmit((e) => {
+            resendVerification(e);
+          })}
+          className={`flex flex-col ${Style.formt}`}
+        >
+          <div className="my-3">
+            <FormField
+              control={resendPasswordForm.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-white">Enter your Email</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="email"
+                      placeholder="Enter your Registered mail ID"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage className="text-red-500" />
+                </FormItem>
+              )}
+            />
+          </div>
+          <Button type='submit' disabled={isPending} className='mx-auto mt-4 mb-2 submit-btn'>
+            Resend Verification Mail {
+              isPending && <Loader2 className="animate-spin ml-2" />
+            }
+          </Button>
 
-      </form>
-    </Form>
-    <RandomBox />
+        </form>
+      </Form>
+      <RandomBox />
     </div>
   </div>
 }
