@@ -10,6 +10,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Button } from "../ui/Button";
+import { useState } from "react";
 
 interface CreateTeamDialogProps {
   registerTeam: Function;
@@ -17,8 +18,11 @@ interface CreateTeamDialogProps {
 }
 
 const CreateTeamDialog = ({ registerTeam,loading }: CreateTeamDialogProps) => {
+
+  const [open,setOpen] = useState<boolean>(false)
+
   return (
-    <AlertDialog>
+    <AlertDialog open={open} onOpenChange={setOpen}>
       <AlertDialogTrigger asChild>
         <div className="flex space-x-4">
           <Button
@@ -32,8 +36,8 @@ const CreateTeamDialog = ({ registerTeam,loading }: CreateTeamDialogProps) => {
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle className="text-xl">Points to be noted</AlertDialogTitle>
-          <AlertDialogDescription>
+          <AlertDialogTitle className="text-xl text-left">Points to be noted</AlertDialogTitle>
+          <AlertDialogDescription className="text-left">
             <div className="leading-8 text-md">
                 <li>Once a team is created, it can't be deleted.</li>
                 <li>Only team leader needs to pay for a event.</li>
@@ -43,7 +47,7 @@ const CreateTeamDialog = ({ registerTeam,loading }: CreateTeamDialogProps) => {
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <div className="flex gap-1 items-center">
+          <div className="flex gap-3 items-center">
             <Button
               variant="outline"
               className="border-2 border-white text-md bg-black"
@@ -53,12 +57,10 @@ const CreateTeamDialog = ({ registerTeam,loading }: CreateTeamDialogProps) => {
             >
               <span className="cursor-pointer">Create Team</span>
             </Button>
-            <AlertDialogCancel>
-              <Button asChild>
+            <Button asChild onClick={()=>setOpen(false)}>
                 <span className="cursor-pointer">Cancel</span>
-              </Button>
-            </AlertDialogCancel>
-          </div>
+            </Button>
+            </div>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
