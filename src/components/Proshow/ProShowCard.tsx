@@ -30,20 +30,20 @@ const ProShowCard: FC<ProshowcardProps> = ({
           <div className="h-200 w-72">
             <img
               className="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
-              src={proshow.image}
+              src='https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
               alt=""
             />
           </div>
         </div>
 
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70">
-          <div className="absolute inset-0 flex translate-y-[55%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0 pt-3 ">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/70 to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70">
+            <img src="/rmbg.png" alt="" className= {((proshow.premium && proshow.combo) || (proshow.premium))? "top-[-22px] left-[-110px] absolute rotate-[-45deg] z-10" : "hidden" }/>
+          <div className="absolute inset-0 flex translate-y-[75%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0 pt-3 ">
             <CardTitle className="font-dmserif relative bottom-0 left-0 mb-2 ml-2 title">
-              <span className="fast-flicker uppercase text-md mb-2 ">{proshow.name}</span>
+              <span className={((proshow.premium && proshow.combo) || (proshow.premium))? "fast-flicker uppercase text-md mb-2 text-bold" : "fast-flicker uppercase text-md mb-2 " }>{proshow.name}</span>
               <h4 className="date mt-3" >23 MARCH</h4>
             </CardTitle>
 
-            
             <CardDescription className="mb-3 text-md italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               {proshow.description?.slice(0, 120)}{" "}
             </CardDescription>
