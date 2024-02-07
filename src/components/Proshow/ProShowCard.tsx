@@ -21,25 +21,16 @@ const ProShowCard: FC<ProshowcardProps> = ({
   isStandardCombo,
   datePremium
 }) => {
-  const [isButton, setIsButton] = useState<string>("visible");
+  // const [isButton, setIsButton] = useState<string>("visible");
   return (
     <div className="h-200 w-72 p-3"
-      onMouseLeave={() => setIsButton("visible")}
-      onMouseOver={() => setIsButton("hidden")}
-      onTouchCancel={() => setIsButton("visible")}
-      onTouchStart={() => setIsButton("hidden")}
-      onClick={() => setIsButton((prev) => {
-        if (prev === "visible")
-          return "hidden"
-        return "visible"
-      })}
     >
       <Card className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
         <div className="group relative cursor-pointer items-center  justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
           <div className="h-200 w-72">
             <img
               className="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
-              src='https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
+              src={proshow.image}
               alt=""
             />
           </div>
@@ -52,68 +43,7 @@ const ProShowCard: FC<ProshowcardProps> = ({
               <h4 className="date mt-3" >23 MARCH</h4>
             </CardTitle>
 
-            <div className={"sm:hidden " + isButton}>
-              <CardFooter>
-                {/* 
-      ===========BUY PREMIUM BUTTON===========
-      Applies for both REC and Non-REC
-    */}
-
-                {proshow.premium && !proshow.combo && (
-                  <BuyProShowButton
-                    disabled={proshow.is_registered || isPremiumCombo}
-                    label="premium"
-                    proshowid={proshow.id}
-                    is_registered={proshow.is_registered}
-                  />
-                )}
-                {/* 
-      ===========BUY STANDARD BUTTON===========
-      Applies for only Non-REC
-    */}
-                {!is_rec && !proshow.premium && !proshow.combo && (
-                  <BuyProShowButton
-                    disabled={
-                      (proshow.is_registered &&
-                        !proshow.premium &&
-                        !proshow.combo) || (datePremium[proshow.day - 1] == 1 || isPremiumCombo || isStandardCombo)
-                    }
-                    is_registered={proshow.is_registered}
-                    label="standard"
-                    proshowid={proshow.id}
-                  />
-                )}
-                {/* 
-      ===========BUY STANDARD COMBO BUTTON===========
-      Applies for both REC and Non-REC
-    */}
-                {!proshow.premium && proshow.combo && (
-                  <BuyProShowButton
-                    disabled={
-                      (proshow.is_registered &&
-                        !proshow.premium &&
-                        proshow.combo) || (isPremiumCombo || isDayPremium)
-                    }
-                    is_registered={proshow.is_registered}
-                    label="standard combo"
-                    proshowid={proshow.id}
-                  />
-                )}
-
-                {/* 
-      ===========BUY PREMIUM COMBO BUTTON===========
-      Applies for only Non-REC
-    */}
-                {!is_rec && proshow.premium && proshow.combo && (
-                  <BuyProShowButton
-                    disabled={proshow.is_registered}
-                    label="premium combo"
-                    is_registered={proshow.is_registered}
-                    proshowid={proshow.id}
-                  />
-                )}
-              </CardFooter>
-            </div>
+            
             <CardDescription className="mb-3 text-md italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               {proshow.description?.slice(0, 120)}{" "}
             </CardDescription>

@@ -2,36 +2,28 @@
 import { FC } from "react";
 import SpotlightCard from "./SpotlightCard";
 import "./spotlight.css"
+import localFont from "next/font/local";
 
 interface ProshowSectionProps { }
+const SketchFont = localFont({ src: '../../../../public/fonts/Mexcellent.ttf' })
 
-const ProshowSection: FC<ProshowSectionProps> =  ({ }) => {
-  function isInViewport(element : any) {
-    const rect = element.getBoundingClientRect();
-    if (
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    ) {
-      console.log("hide");
-      
-    }
-}
+
+const ProshowSection: FC<ProshowSectionProps> = ({ }) => {
 
   return (
 
-    <div onScroll={(e) => isInViewport(e.target)} className="flex flex-start flex-wrap space-x-4 space-y-4 items-center justify-center">
-      <h1>Spotlight</h1>
-      <div className="flex gap-4 overflow-y-scroll">
-        <div className="section-fluid-main">
-          <div className="section-row">
-           <SpotlightCard />
-           <SpotlightCard />
-            <SpotlightCard />
-            {/* <SpotlightCard />
-            <SpotlightCard />
-            <SpotlightCard /> */}
+    <div>
+      <div className={SketchFont.className}>
+        <div className="pro"><b>P<span>RO</span>SH<span>O</span>W</b></div>
+      </div>
+      <div className="flex flex-start flex-wrap space-x-4 space-y-4 items-center justify-center">
+        <div className="flex gap-4 overflow-y-scroll">
+          <div className="section-fluid-main">
+            <div className="section-row">
+              <SpotlightCard />
+              <SpotlightCard />
+              <SpotlightCard />
+            </div>
           </div>
         </div>
       </div>
