@@ -27,10 +27,6 @@ const ProshowList = async ({
   return (
     <div className="min-h-screen min-w-screen brick">
       <div className="mt-24">
-        {/* <h1 className=" text-5xl mt-10 mb-10 font-bold text-white text-center fast-flicker">
-          Proshows list
-        </h1> */}
-
         <div >
           <div className={SketchFont.className}>
             <h1 className="text-4xl  mt-10 mb-10 text-white text-center fast-flicker" >
