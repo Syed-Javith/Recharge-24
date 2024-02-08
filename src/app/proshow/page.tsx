@@ -17,8 +17,6 @@ const page = async ({}) => {
   });
 
   let proshows: ProShow[] = shows
-  console.log(shows)
-  proshows = [...shows,...shows,...shows,...shows]
 
   let isDayPremium = false;
   let isPremiumCombo = false;

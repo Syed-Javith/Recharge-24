@@ -1,7 +1,7 @@
 "use client";
 import { ProShow } from "@/types/models";
 import ProShowCard from "./ProShowCard";
-import ProShowStyle from './proshow.module.css';
+import styles from './proshow.module.css';
 import localFont from 'next/font/local'
 
 
@@ -26,18 +26,18 @@ const ProshowList = async ({
   datePremium,
 }: ProshowListProps) => {
   return (
-    <div className="min-h-screen min-w-screen brick">
+    <div className="min-h-screen min-w-screen brick mb-12">
       <div style={{
         paddingTop: "10vh"
       }}>
         <div >
-          <div className={`${titleFont.className} ${ProShowStyle.fastFlicker}`}>
+          <div className={`${titleFont.className} ${styles.fastFlicker}`}>
             <h1 className="text-6xl mt-10 mb-10 text-white text-center fast-flicker" >
               PROSHOWS
             </h1>
           </div>
 
-          <div className=" flex flex-wrap items-center justify-center md:max-w-[80vw] max-w-[100vw] m-auto">
+          <div className=" flex flex-wrap items-center justify-center max-w-[95vw] m-auto">
             {proshows?.length > 0 &&
               proshows.map((proshow) => {
                 return (
