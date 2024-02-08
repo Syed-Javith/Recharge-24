@@ -1,4 +1,8 @@
 import Style from "./profile.module.css"
+import localFont from 'next/font/local'
+
+const SketchFont = localFont({ src: '../../../public/fonts/chakra.ttf' });
+const TitleFont = localFont({ src: '../../../public/fonts/Jura.ttf' });
 
 interface ProshowTicketProps {
     imgURL: string;
@@ -35,15 +39,14 @@ const ProshowTicket = ({imgURL, day, show_name, guest_name, time}: ProshowTicket
                         <span className={`${Style.march}`}>{Date}</span>
                     </p>
                     <div className={`${Style.showName}`}>
-                        <h1>{show_name}</h1>
-                        <h2>{guest_name}</h2>
+                        <h1 className={`${TitleFont.className}`}>{show_name}</h1>
+                        <h2 className="text-2xl subpixel-antialiased mt-1 font-medium">{/* */"Jonia Gandhi"}</h2>
                     </div>
-                    <div className={`${Style.time}`}>
-                        <p>{"EXCITEMENT @ " + time}</p>
+                    <div className={`${Style.time} ${SketchFont.className}`}>
+                        <p className="text-2xl">{"EXCITEMENT @ " + time}</p>
                     </div>
                     <p className={`${Style.location}`}>
-                        <span>Open Gorund, R</span>
-                        <span>ajalakshmi Engineering College</span>
+                        <span>Open Gorund, Rajalakshmi Engineering College</span>
                     </p>
                 </div>
             </div>

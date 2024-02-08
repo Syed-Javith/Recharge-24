@@ -27,18 +27,18 @@ const DesktopProfile = ({ profile , setProfile } : { profile : UserProfileSchema
     return (
         <div className={`${Style.profilePersonalDetail}`}>
             <div className={`${Style.container}`}>
-                <div className={`${Style.logo}`}></div>
+                {/* <div className={`${Style.logo}`}></div> */}
                 <div className={`${Style.description}`}>
                     <div>
                         <div className={`${Style.edit} flex flex-row align-top`}>
                             <div className={`${Style.eChild} mr-auto`}>
                                 <h1 className={`${SketchFont.className}`}> {profile.first_name + " " + profile.last_name} </h1>
-                                <h3> {profile.college} </h3>
                             </div>
-                            <div className={`${Style.eChild} mr-auto`}>
+                            <div className={`${Style.eChild} mr-8`}>
                                 <EditProfileForm profile={profile} setProfile={setProfile}/>
                             </div>
                         </div>
+                                <h3> {"Rajalakshmi Engineering College"} </h3>
                         <p className={`${Style.bio} flex md:flex-row sm:flex-col flex-wrap gap-4`}>
                             <div className='w-fit whitespace-nowrap'>{"Email : " + profile.email }</div>
                             <div className='w-fit whitespace-nowrap'>{" Mobile : " + profile.mobile_number}</div>
