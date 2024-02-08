@@ -28,7 +28,7 @@ const ProShowCard: FC<ProshowcardProps> = ({
 }) => {
   // const [isButton, setIsButton] = useState<string>("visible");
   return (
-    <div className="h-200 w-72 p-3"
+    <div className="h-200 w-72 m-2 scale-85"
     >
       <Card className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
         <div className="group relative cursor-pointer items-center  justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
@@ -43,10 +43,6 @@ const ProShowCard: FC<ProshowcardProps> = ({
             alt="proshow Image"
             className="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
           />
-            
-               
-            
-
           </div>
         </div>
 
