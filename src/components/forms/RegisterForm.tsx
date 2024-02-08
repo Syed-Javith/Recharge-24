@@ -106,13 +106,14 @@ const RegisterForm: FC<RegisterFormProps> = ({ }) => {
     },
     onSuccess: (res: any) => {
       setMailSent(true)
+      toast.success("Welcome to RECHARGE, explore our fest!")
     },
   });
 
   return (
 
     (mailSent) ?
-      <div className="flex flex-col justify-center items-center">
+      <div className="min-h-screen flex flex-col justify-center items-center">
         <MailCheck size={40} />
         <h3> Verification mail has been sent to your registered mail.</h3>
       </div>
