@@ -62,8 +62,9 @@ const Navbar = ({session} : SesstionType) => {
     <header className={NavStyle.landing_header}>
 
         
-
-        <img src="/Landing/college.webp" className={NavStyle.college}/>
+        <Link href='/'>
+          <img src="/Landing/college.webp" className={NavStyle.college}/>
+        </Link>
         <nav className={NavStyle.navbar_nav}>
 
           <Menu id='ham-menu' className={NavStyle.ham} onClick={
