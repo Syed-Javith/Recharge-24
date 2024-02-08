@@ -1,13 +1,31 @@
 .aboutpic{
-  height: 100vh;
-  background-image: url("https://images.unsplash.com/photo-1515550962725-a254324472e9?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzU1MTI1NjE&ixlib=rb-4.0.3&q=80");
+  min-height: 100vh;
+  background-image: url("../../../public/new.jpg");
   background-size: cover;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  
 }
-@media ( max-width : 1000px ) {
+/* @media ( max-width : 1000px ) {
   .aboutpic{
     height: 100%;
     background-size: auto;
   }
+} */
+.glass {
+  background: rgba(49, 49, 49, 0.15);
+  /* min-width: 30vw;
+  padding: 2.5rem;
+  height: auto; */
+  backdrop-filter: 10px ;
+  border-radius: 15px;
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(9px);
+  box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
+  /* position: relative;
+  transition: all 0.2s ease-in-out; */
 }
 .neon {
   font-family: "Jura";
