@@ -140,7 +140,8 @@ const LoginForm: FC<LoginFormProps> = ({ }) => {
             <Button disabled={isPending} type="submit" className={`mx-auto mt-4 mb-2 w-6/12  ${FormStyle.submit_btn}` }>
               Login{isPending && <Loader2 className="animate-spin ml-2" />}
             </Button>
-            <Link href={'/forgot-password'} className="mx-auto text-gray-50 text-[0.85rem] mt-2 hover:text-white">Forgot Password ?</Link>
+            <Link href={'/forgot-password'} className="mx-auto text-gray-50 mb-2 text-[0.85rem] mt-2 hover:text-white">Forgot Password ? Reset</Link>
+            <Link href={'/register'} className="mx-auto text-gray-50 text-[0.85rem] mt-2 hover:text-white">New User ? Register</Link>
           </form>
         </Form>
         <RandomBox />

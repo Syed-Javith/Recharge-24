@@ -8,7 +8,7 @@ const subtitleFont = localFont({ src: '../../../public/fonts/chakra.ttf' })
 const Footer = () => {
     return (
       <>
-        <footer className="text-white md:px-28 container mx-0  bg-slate-900 rounded-t-lg justify-start items-center">
+        <footer className="text-white min-w-full md:px-28 container mx-0  bg-slate-900 rounded-t-lg justify-start items-center">
             
               <div className="flex md:flex-row flex-col justify-between">
                 <div className="">
