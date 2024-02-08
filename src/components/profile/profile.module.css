@@ -4,9 +4,10 @@
   display: flex;
   background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #b78b2a 30%, #b58d2f 40%, transparent 80%),
               radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #9c7b2f 62.5%, #98782d 100%);
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  box-shadow: rgba(255, 211, 149, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
   border-radius: 10px;
   overflow: hidden;
+  
 }
 
 .left {
@@ -100,7 +101,7 @@
 
 .showName {
 	font-size: 32px;
-	font-family: "Bonheur Royal", cursive;
+	/* font-family: "Bonheur Royal", cursive; */
     font-weight: 700;
 	color: #11141f;
 }
@@ -111,7 +112,7 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: #fff;
-  font-family: 'Playfair Display', serif;
+  /* font-family: 'Playfair Display', serif; */
   position: relative;
 	text-transform: uppercase;	
 	font-size: 36px;
@@ -140,8 +141,7 @@
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
-	font-weight: 700;
-  font-family: "Nanum Pen Script", cursive;
+	font-weight: 900;
 }
 
 .time span {
@@ -368,7 +368,7 @@
   font-size: calc(10px + 5vh);
   text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
     color: #fff6a9;
-  font-family: "Sacramento", cursive;
+  /* font-family: "Sacramento", cursive; */
   text-align: center;
   animation: blink 12s infinite;
   -webkit-animation: blink 12s infinite;
@@ -384,7 +384,7 @@
 
 .profilePersonalDetail{
   width: 94%;
-  margin: 100px auto 7% auto;
+  margin: 100px auto 7% 0;
 }
 .profilePersonalDetail .description {
   display: flex;
@@ -401,7 +401,7 @@
 .profilePersonalDetail .container {
   top: 20%;
   left: 30%;
-  transform: translate((-50%, -50%));
+  /* transform: translate((-50%, -50%)); */
   width: fit-content;
   height: fit-content;
   color: rgb(206, 231, 255);
@@ -428,7 +428,7 @@
 }
 
 .profilePersonalDetail h1 {
-  transform: translateX(-85px);
+  /* transform: translateX(-85px); */
   margin: 0 0 5px;
   padding: 0;
   font-size: 30px;
@@ -436,14 +436,14 @@
 
 .profilePersonalDetail h3 {
   font-weight: 600;
-  transform: translateX(-85px);
+  /* transform: translateX(-85px); */
   margin: 0 0 20px;
   padding: 0;
 }
 
 .profilePersonalDetail .bio {
-  transform: translateX(-95px);
-  font-family: "KoHo", sans-serif;
+  /* transform: translateX(-95px); */
+  /* font-family: "KoHo", sans-serif; */
   font-size: 15px;
   margin: 0;
   padding: 0;
