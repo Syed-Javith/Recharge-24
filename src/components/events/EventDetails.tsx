@@ -319,7 +319,7 @@ const EventDetails: FC<EventDetailsProps> = ({
               ? event.description.split("\r\n").map((point, index) => (
                   <p
                     key={index}
-                    className="leading-8 mx-auto w-[85vw] text-justify opacity-90 text-md indent-8"
+                    className="leading-8 mx-auto text-justify opacity-90 text"
                   >
                     {point}
                   </p>

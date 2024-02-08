@@ -54,7 +54,7 @@ const ProShowCard: FC<ProshowcardProps> = ({
 
             <CardTitle className="font-dmserif relative bottom-0 left-0 mb-2 ml-2 title">
               <span className={((proshow.premium && proshow.combo) || (proshow.premium))? `${titleFont.className} ${ProShowStyle.premiumTitle} uppercase text-md mb-2 text-bold` : `${titleFont.className} ${ProShowStyle.standardTitle} uppercase text-md mb-2 ` }>{proshow.name}</span>
-              <h4 className={((proshow.premium && proshow.combo) || (proshow.premium))? `${subtitleFont.className} ${ProShowStyle.premiumTitle} text-sm mt-3 mb-3` : `${subtitleFont.className} ${ProShowStyle.standardTitle} text-sm mt-3 mb-3` }> DAY <span className="pl-2">{proshow.day}</span></h4>
+              <h4 className={((proshow.premium && proshow.combo) || (proshow.premium))? `${subtitleFont.className} ${ProShowStyle.premiumTitle} text-sm mt-3 mb-3` : `${subtitleFont.className} ${ProShowStyle.standardTitle} text-sm mt-3 mb-3` }> {proshow.day<=3? <span>DAY <span className="pl-2">{proshow.day}</span></span>:<span>ALL DAYS</span>}</h4>
             </CardTitle>
 
             {/* text-sm mt-3 mb-3` */}
