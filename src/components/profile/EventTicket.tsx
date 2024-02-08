@@ -1,18 +1,20 @@
 import { EventDetailSchema } from "@/types/models";
-import { CheckCircle2, UserRound, UsersRound, XCircle } from "lucide-react";
+import { UserRound, UsersRound } from "lucide-react";
+import Style from "./profile.module.css";
+import "./profile.module.css";
 
 const EventTicket = ({ eventDetail }: { eventDetail: EventDetailSchema }) => {
     return(
         <>
-            <div className="profile-event-card">
-            <div className="top-section">
-                <div className="border"></div>
+            <div className={`${Style.profileEventCard}`}>
+            <div className={`${Style.topSection}`}>
+                <div className={`${Style.border}`}></div>
                 <img src={eventDetail.image} alt=''/>
-                <div className="icons">
-                <div className="logo">
+                <div className={`${Style.icons}`}>
+                <div className={`${Style.logo}`}>
                     <p>{eventDetail.name_of_hosting_club}</p>
                 </div>
-                <div className="social-media">
+                <div className={`${Style.socialMedia}`}>
                     {
                         eventDetail.team_event ? <UsersRound className="text-white"/> : <UserRound className="text-white"/>
                     }
@@ -21,25 +23,25 @@ const EventTicket = ({ eventDetail }: { eventDetail: EventDetailSchema }) => {
                     </p>
                     {
                         ( (eventDetail != undefined  && eventDetail.event_registration && eventDetail.event_registration.length > 0 && eventDetail?.event_registration[0]?.team[0]?.members?.length == null) ? 1 : eventDetail?.event_registration[0].team[0].members.length) == eventDetail.team_max ?
-                        <CheckCircle2 className="text-emerald-500"/> : <></>
+                        <CheckCircle2 className={"text-emerald-500"/> : <></>
                     } */}
                 </div>
                 </div>
             </div>
-            <div className="bottom-section">
-                <span className="title">{eventDetail.name}</span>
-                <div className="row row1">
-                <div className="item">
-                    <span className="big-text">ON</span>
-                    <span className="regular-text">{ "Day: " + eventDetail.day + " " + eventDetail.time_of_event }</span>
+            <div className={`${Style.bottomSection}`}>
+                <span className={`${Style.title}`}>{eventDetail.name}</span>
+                <div className={`${Style.row} ${Style.row1}`}>
+                <div className={`${Style.item}`}>
+                    <span className={`${Style.bigText}`}>ON</span>
+                    <span className={`${Style.regularText}`}>{ "Day: " + eventDetail.day + " " + eventDetail.time_of_event }</span>
                 </div>
-                <div className="item">
-                    <span className="big-text">AT</span>
-                    <span className="regular-text">{ eventDetail.venue }</span>
+                <div className={`${Style.item}`}>
+                    <span className={`${Style.bigText}`}>AT</span>
+                    <span className={`${Style.regularText}`}>{ eventDetail.venue }</span>
                 </div>
-                <div className="item">
-                    <span className="big-text">{ eventDetail.registration_count }</span>
-                    <span className="regular-text">Slots Occupied</span>
+                <div className={`${Style.item}`}>
+                    <span className={`${Style.bigText}`}>{ eventDetail.registration_count }</span>
+                    <span className={`${Style.regularText}`}>Slots Occupied</span>
                 </div>
                 </div>
             </div>
