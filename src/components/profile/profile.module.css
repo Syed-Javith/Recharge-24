@@ -366,8 +366,8 @@
 
 .profileSectionTitle {
   font-size: calc(10px + 5vh);
-  text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
-    color: #fff6a9;
+  /* text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000; */
+    color: #ffffff;
   font-family: "Sacramento", cursive;
   text-align: center;
   animation: blink 12s infinite;
@@ -395,6 +395,7 @@
   width: 180px;
   height: 180px;
   object-fit: contain;
+  border-radius: 10px;
   filter: blur(0px);
 }
 
@@ -484,8 +485,8 @@
   56%,
   100% {
 
-  text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
-    color: #fff6a9;
+  /* text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000; */
+    /* color: #fff6a9; */
   }
 }
 
@@ -505,8 +506,18 @@
   54%,
   56%,
   100% {
-  text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
-    color: #fff6a9;
+  /* text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000; */
+  /* text-shadow:  */
+  /* 0 -40px 100px, 0 0 2px,  */
+  /* 0 0 1em #ff4444, 
+  0 0 0.5em #ff4444, 
+  0 0 0.1em #ff4444, 
+  0 10px 3px #000;
+   */
+    /* color: #fff6a9; */
+
+    text-shadow: 0 0 0 transparent, 0 0 10px #09f, 0 0 20px rgba(38,149,255,.5), 0 0 40px #09f, 0 0 100px #09f;
+    color: white;
   }
 }
 

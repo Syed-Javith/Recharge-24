@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import AboutStyle from "./about.module.css"
 import localFont from 'next/font/local'
+import Link from 'next/link'
 
 const SketchFont = localFont({ src: '../../../../public/fonts/Jura.ttf' })
 
@@ -39,6 +40,11 @@ const About : FC<AboutProps> = ({ image , content , title , isReverse}) => {
         <p className=" text-lg  shadow-inner leading-loose">
          {content}
         </p>
+
+        <Link href={title=="ABOUT REC" ? "/about-rec" : "/about-recharge"}>
+          <p className={AboutStyle.pulsate}>SHOW MORE</p>
+        </Link>
+
         {/* <button className='bg-gradient-to-r text-black from-[#ff0055] to-[#ffdd1f] p-2 m-auto rounded-md'>
           SHOW MORE
         </button> */}

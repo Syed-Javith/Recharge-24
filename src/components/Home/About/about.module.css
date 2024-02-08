@@ -26,6 +26,27 @@
   animation: buzz 1s infinite alternate;
 }
 
+.pulsate {
+  color: white;
+  text-shadow: 0 0 0 transparent, 0 0 10px #09f, 0 0 20px rgba(38,149,255,.5), 0 0 40px #09f, 0 0 100px #09f;
+  animation: pulsate 2s infinite ease-in-out;
+  opacity: 0.5;
+}
+@keyframes pulsate {
+  0% { 
+      opacity: 0.5;
+     
+  }
+  50% { 
+      opacity: 1.0;
+     
+  }
+  100% { 
+      opacity: 0.5;
+     
+  }
+}
+
 @keyframes buzz {
   70% {
       opacity: .8;

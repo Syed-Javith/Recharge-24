@@ -85,7 +85,7 @@ const Profile: FC<ProfileProps> = ({}) => {
         }
         <div className={`${Style.glowingLine}`}></div>
       <h1 className={`${Style.profileSectionTitle} ${SketchFont.className}`}>Registered Events</h1>
-      <div className="grid md:grid-cols-3 sm:grid-cols-1 gap-8 m-auto justify-center">
+      <div className="grid md:grid-cols-3 sm:grid-cols-1 gap-8 m-auto mt-8 justify-center">
         {
           profile.event_registrations.map((event, index) =>{
             return(
