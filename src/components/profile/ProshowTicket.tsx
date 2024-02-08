@@ -32,6 +32,9 @@ const ProshowTicket = ({imgURL, day, show_name, guest_name, time}: ProshowTicket
                         </p>
                     </div>
                 </div>
+                <div className={`${Style.serations}`}>
+                    <div className={`${Style.circle}`}></div>
+                </div>
                 <div className={`${Style.ticketInfo}`}>
                     <p className={`${Style.date}`}>
                         <span>{Day}</span>
