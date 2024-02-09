@@ -16,16 +16,18 @@ import ProshowTicket from "./ProshowTicket";
 import EventTicket from "./EventTicket";
 import localFont from 'next/font/local'
 import Neon from "../Text/Neon";
+import Link from "next/link";
+import { Button } from "../ui/Button";
 
 const SketchFont = localFont({ src: '../../../public/fonts/Jura.ttf' });
 
-interface ProfileProps {}
+interface ProfileProps { }
 
-const Profile: FC<ProfileProps> = ({}) => {
+const Profile: FC<ProfileProps> = ({ }) => {
   const [profile, setProfile] = useState<UserProfileSchema>();
-  
+
   const [error, setError] = useState<boolean>(false);
-  
+
   const { mutate: profileDetails, isPending } = useMutation({
     mutationFn: async () => {
       try {
@@ -51,14 +53,14 @@ const Profile: FC<ProfileProps> = ({}) => {
       setProfile(tempProfile);
     },
   });
-  
+
   useEffect(() => {
     profileDetails();
   }, []);
 
 
   return isPending ? (
-    <Loader/>
+    <Loader />
   ) : profile == undefined ? (
     <DialogBox />
   ) : error ? (
@@ -68,39 +70,45 @@ const Profile: FC<ProfileProps> = ({}) => {
     </div>
   ) : (
     <div className={`${Style.profileContainer}`}>
-      <DesktopProfile profile={profile} setProfile={setProfile}/>
-      {/* <h1 className={`${Style.profileSectionTitle} ${SketchFont.className}`}>
-        {
-          (profile.proshow_registrations.length == 0) ? "No Proshows Registered" : "Registered Proshows"
-        }
-      </h1> */}
+      <DesktopProfile profile={profile} setProfile={setProfile} />
       <Neon text={(profile.proshow_registrations.length == 0) ? "No Proshows Registered" : "Registered Proshows"} />
       {
-        profile.proshow_registrations.map(({proshow}, index) => {
+        profile.proshow_registrations.length == 0 &&
+        <Link href={'/proshow'} className="m-auto mt-6" >
+          <Button>
+            Register Proshows now
+          </Button>
+        </Link>
+      }
+      {
+        profile.proshow_registrations.map(({ proshow }, index) => {
           return (
-            <ProshowTicket 
-            key={index}
-            imgURL={proshow.image} 
-            day={proshow.day} 
-            show_name={proshow.name} 
-            guest_name={proshow.day == 1 ? "Celeb 1" : (proshow.day == 2 ? "celeb 2" : "Celeb 3")} 
-            time={"6:00 PM"} 
+            <ProshowTicket
+              key={index}
+              imgURL={proshow.image}
+              day={proshow.day}
+              show_name={proshow.name}
+              guest_name={proshow.day == 1 ? "Celeb 1" : (proshow.day == 2 ? "celeb 2" : "Celeb 3")}
+              time={"6:00 PM"}
             />
-            );
-          })
-        }
-        <div className={`${Style.glowingLine}`}></div>
-      {/* <h1 className={`${Style.profileSectionTitle} ${SketchFont.className}`}>
-        {
-          (profile.event_registrations.length == 0) ? "No Events Registered" : "Registered Events"
-        }
-      </h1> */}
+          );
+        })
+      }
+      <div className={`${Style.glowingLine}`}></div>
       <Neon text={(profile.event_registrations.length == 0) ? "No Events Registered" : "Registered Events"} />
+      {
+          profile.event_registrations.length == 0 &&
+          <Link href={'/event'} className="m-auto mt-6">
+            <Button>
+              Register events now
+            </Button>
+          </Link>
+        }
       <div className="grid md:grid-cols-3 sm:grid-cols-1 gap-8 m-auto mt-8 justify-center">
         {
-          profile.event_registrations.map((event, index) =>{
-            return(
-              <EventTicket eventDetail={event} key={index}/>
+          profile.event_registrations.map((event, index) => {
+            return (
+              <EventTicket eventDetail={event} key={index} />
             )
           })
         }
