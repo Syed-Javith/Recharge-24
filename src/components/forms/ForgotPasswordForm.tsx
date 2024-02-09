@@ -194,6 +194,9 @@ const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({ }) => {
                 </>
               }
             </Button>
+            <p className="mx-auto text-gray-50 text-[0.85rem] mt-2 hover:text-white w-[70%]">
+              Please check your email inbox to confirm your password reset request
+            </p>
           </form>
 
         </Form>

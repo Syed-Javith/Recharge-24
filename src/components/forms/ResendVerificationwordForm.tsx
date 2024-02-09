@@ -91,7 +91,9 @@ const ResendVerificationForm: FC<pageProps> = ({ }) => {
               isPending && <Loader2 className="animate-spin ml-2" />
             }
           </Button>
-
+          <p className="mx-auto text-gray-50 text-[0.85rem] mt-2 hover:text-white w-[70%]">
+              Please check your email inbox for the verification link
+            </p>
         </form>
       </Form>
       <RandomBox />

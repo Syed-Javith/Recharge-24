@@ -46,14 +46,14 @@ const BuyProShowButton: FC<BuyProShowButtonProps> = ({
       console.log(err);
       if (axios.isAxiosError(err)) {
         if (err.response?.status === 400) {
-          toast(`${err.response.data.detail}`);
+          toast.error(`${err.response.data.detail}`);
         } else {
-          toast(`Some error occured`, {
+          toast.error(`Some error occured`, {
             description: `${err.message}`,
           });
         }
       } else {
-        toast(`Some other error occurred`, {
+        toast.error(`Some other error occurred`, {
           description: `Please try again later`,
         });
       }
@@ -70,12 +70,13 @@ const BuyProShowButton: FC<BuyProShowButtonProps> = ({
   return (
     <Button
     
-    className={label === "Premium" || label === "Premium combo" ? `${ProShowStyle.goldenBtn} ${subtitleFont.className}` : `${ProShowStyle.silverBtn} ${subtitleFont.className}`}
+    className={label === "Premium" || label === "Premium combo" ? `${ProShowStyle.goldenBtn} ${subtitleFont.className} flex` : `${ProShowStyle.silverBtn} ${subtitleFont.className} flex`}
     
       onClick={() => buyProshow({ proshowid })}
       disabled={isPending || disabled}
+      style={{ display: 'flex', alignItems: 'center' }}
     >
-      {(disabled ? is_registered ? "Already Bought " : "Can't Buy " : "Buy ") + label} {isPending && <Loader2 className="animate-spin" />}
+      {(disabled ? is_registered ? "Already Bought " : "Can't Buy " : "Buy ") + label} {isPending && <Loader2 className="animate-spin ml-2" />}
     </Button>
   );
 };

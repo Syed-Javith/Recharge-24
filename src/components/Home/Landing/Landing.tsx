@@ -44,7 +44,7 @@ const Landing = () => {
     return (
         <main className={LandingStyles.landing_main}>
             <div className={LandingStyles.content}>
-                <img src="/Landing/logo1.png" alt="Recharge Logo" className={LandingStyles.landing_logo} />
+                <img src="/R24.png" alt="Recharge Logo" className={LandingStyles.landing_logo} />
                 <img src="/Landing/eye.png" alt="Eye" className={LandingStyles.eye} />
                 <div className={LandingStyles.fin_row_1}>
                     <img src="/Landing/fin1.png" className={`${LandingStyles.fin} ${LandingStyles.fin_1} ${LandingStyles.fin_l}`} />

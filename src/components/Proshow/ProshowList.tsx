@@ -3,6 +3,7 @@ import { ProShow } from "@/types/models";
 import ProShowCard from "./ProShowCard";
 import styles from './proshow.module.css';
 import localFont from 'next/font/local'
+import Neon from "../Text/Neon";
 
 
 const titleFont = localFont({ src: '../../../public/fonts/Jura.ttf' })
@@ -31,12 +32,9 @@ const ProshowList = async ({
         paddingTop: "10vh"
       }}>
         <div >
-          <div className={`${titleFont.className} ${styles.fastFlicker}`}>
-            <h1 className="text-6xl mt-10 mb-10 text-white text-center fast-flicker" >
-              PROSHOWS
-            </h1>
+          <div className="text-center mb-6">
+            <Neon text="PROSHOWS" />
           </div>
-
           <div className=" flex flex-wrap items-center justify-center max-w-[95vw] m-auto">
             {proshows?.length > 0 &&
               proshows.map((proshow) => {

@@ -19,7 +19,6 @@
 .neon {
   font-family: "Jura";
   color: white;
-  /* margin: 3rem; */
   font-size: 3rem;
   font-weight: lighter;
   text-shadow: 0 0 0 transparent, 0 0 10px #09f, 0 0 20px rgba(38,149,255,.5), 0 0 40px #09f, 0 0 100px #09f;

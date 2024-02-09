@@ -8,12 +8,12 @@ const subtitleFont = localFont({ src: '../../../public/fonts/chakra.ttf' })
 const Footer = () => {
     return (
       <>
-        <footer className="text-white md:px-28 container mx-0  bg-slate-900 rounded-t-lg justify-start items-center">
+        <footer className="text-white min-w-full md:px-28 container mx-0  bg-slate-900 rounded-t-lg justify-start items-center">
             
               <div className="flex md:flex-row flex-col justify-between">
-                <div className="">
+                <div>
                   <div className="flex justify-center items-center">
-                    <img src="logo24.png" alt="Recharge Logo" className="h-30 w-40 items-center justify-center m-2"/>
+                    <img src="/R24.png" alt="Recharge Logo" className="h-30 w-40 items-center justify-center m-2 bg-[#0f172a]"/>
                   </div>
                   
                   <div className={`${subtitleFont.className} pb-5`}>

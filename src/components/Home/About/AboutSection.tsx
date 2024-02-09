@@ -10,7 +10,7 @@ const AboutSection = () => {
           thousands of students in landing their dream careers and becoming
           professionals in their fields.' image='/banner.jpg'/>
       <About isReverse={true} title='ABOUT RECHARGE' content='Rajalakshmi Institutions is proud to present its most prominent and
-        signature Cultural fest - RECHARGE&apos;23, which promotes liberty, energy,
+        signature Cultural fest - RECHARGE&apos;24, which promotes liberty, energy,
         and enthusiasm among both participants and spectators while also
         providing students an opportunity to explore and rediscover
         themselves.' image='https://alphatest-recharge23.netlify.app/static/media/dj.5155e6fa9d36cf2dcd12.webp' />

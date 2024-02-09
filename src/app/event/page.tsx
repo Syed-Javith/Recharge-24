@@ -4,6 +4,7 @@ import { SSRBaseUrl } from "@/lib/utils";
 import axios from "axios";
 import CatStyle from  "./Category.module.css";
 import localFont from 'next/font/local'
+import Neon from "@/components/Text/Neon";
 
 
 const JuraFont = localFont({ src: '../../../public/fonts/Jura.ttf' })
@@ -15,7 +16,9 @@ const page = async () => {
   
   return (
     <div>
-      <p className={`${JuraFont.className} ${CatStyle.cat_title}`}>CATEGORIES</p>
+      <div className={`mt-[10vh] text-center ${CatStyle.buzz}`}>
+      <Neon text="CATEGORIES" />
+      </div>
       <div className="flex justify-center items-center flex-wrap category-container">
         {categories.map((category) => (
           category.events_count != 0 &&
