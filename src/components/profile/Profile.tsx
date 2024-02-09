@@ -15,6 +15,7 @@ import Loader from "../loader/Loader";
 import ProshowTicket from "./ProshowTicket";
 import EventTicket from "./EventTicket";
 import localFont from 'next/font/local'
+import Neon from "../Text/Neon";
 
 const SketchFont = localFont({ src: '../../../public/fonts/Jura.ttf' });
 
@@ -68,11 +69,12 @@ const Profile: FC<ProfileProps> = ({}) => {
   ) : (
     <div className={`${Style.profileContainer}`}>
       <DesktopProfile profile={profile} setProfile={setProfile}/>
-      <h1 className={`${Style.profileSectionTitle} ${SketchFont.className}`}>
+      {/* <h1 className={`${Style.profileSectionTitle} ${SketchFont.className}`}>
         {
           (profile.proshow_registrations.length == 0) ? "No Proshows Registered" : "Registered Proshows"
         }
-      </h1>
+      </h1> */}
+      <Neon text={(profile.proshow_registrations.length == 0) ? "No Proshows Registered" : "Registered Proshows"} />
       {
         profile.proshow_registrations.map(({proshow}, index) => {
           return (
@@ -88,11 +90,12 @@ const Profile: FC<ProfileProps> = ({}) => {
           })
         }
         <div className={`${Style.glowingLine}`}></div>
-      <h1 className={`${Style.profileSectionTitle} ${SketchFont.className}`}>
+      {/* <h1 className={`${Style.profileSectionTitle} ${SketchFont.className}`}>
         {
           (profile.event_registrations.length == 0) ? "No Events Registered" : "Registered Events"
         }
-      </h1>
+      </h1> */}
+      <Neon text={(profile.event_registrations.length == 0) ? "No Events Registered" : "Registered Events"} />
       <div className="grid md:grid-cols-3 sm:grid-cols-1 gap-8 m-auto mt-8 justify-center">
         {
           profile.event_registrations.map((event, index) =>{

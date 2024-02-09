@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import AboutStyle from "./about.module.css"
 import localFont from 'next/font/local'
 import Link from 'next/link'
+import Neon from '@/components/Text/Neon'
 
 const SketchFont = localFont({ src: '../../../../public/fonts/Jura.ttf' })
 
@@ -33,7 +34,7 @@ const About : FC<AboutProps> = ({ image , content , title , isReverse}) => {
 
       <div id="right" className="basis-1/2 flex flex-col gap-y-5">
         <div className="main text-5xl">
-          <span className={`socod text-left ${SketchFont.className} ${AboutStyle.neon}`}>{title}</span>
+          <Neon text={title} />
         </div>
 
         <p className=" text-lg  shadow-inner leading-loose">

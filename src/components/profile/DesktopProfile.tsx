@@ -27,7 +27,6 @@ const DesktopProfile = ({ profile , setProfile } : { profile : UserProfileSchema
     return (
         <div className={`${Style.profilePersonalDetail}`}>
             <div className={`${Style.container}`}>
-                {/* <div className={`${Style.logo}`}></div> */}
                 <div className={`${Style.description}`}>
                     <div>
                         <div className={`${Style.edit} flex flex-row align-top`}>
