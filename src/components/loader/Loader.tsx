@@ -13,14 +13,14 @@ const Loader = () => {
                     <div className="wave delay"></div>
                 </div>
             </div>
-            <div className="text text-R">R</div>
-            <div className="text text-e1">e</div>
-            <div className="text text-c">c</div>
-            <div className="text text-h">h</div>
-            <div className="text text-a">a</div>
-            <div className="text text-r">r</div>
-            <div className="text text-g">g</div>
-            <div className="text text-e2">e</div>
+            <div className="up-down-anim text-R">R</div>
+            <div className="up-down-anim text-e1">e</div>
+            <div className="up-down-anim text-c">c</div>
+            <div className="up-down-anim text-h">h</div>
+            <div className="up-down-anim text-a">a</div>
+            <div className="up-down-anim text-r">r</div>
+            <div className="up-down-anim text-g">g</div>
+            <div className="up-down-anim text-e2">e</div>
         </div>
     )
 }
