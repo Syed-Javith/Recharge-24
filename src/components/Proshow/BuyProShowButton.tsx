@@ -74,8 +74,9 @@ const BuyProShowButton: FC<BuyProShowButtonProps> = ({
     
       onClick={() => buyProshow({ proshowid })}
       disabled={isPending || disabled}
+      style={{ display: 'flex', alignItems: 'center' }}
     >
-      {(disabled ? is_registered ? "Already Bought " : "Can't Buy " : "Buy ") + label} {isPending && <Loader2 className="animate-spin" />}
+      {(disabled ? is_registered ? "Already Bought " : "Can't Buy " : "Buy ") + label} {isPending && <Loader2 className="animate-spin ml-2" />}
     </Button>
   );
 };
