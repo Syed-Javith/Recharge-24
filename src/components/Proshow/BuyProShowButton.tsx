@@ -46,14 +46,14 @@ const BuyProShowButton: FC<BuyProShowButtonProps> = ({
       console.log(err);
       if (axios.isAxiosError(err)) {
         if (err.response?.status === 400) {
-          toast(`${err.response.data.detail}`);
+          toast.error(`${err.response.data.detail}`);
         } else {
-          toast(`Some error occured`, {
+          toast.error(`Some error occured`, {
             description: `${err.message}`,
           });
         }
       } else {
-        toast(`Some other error occurred`, {
+        toast.error(`Some other error occurred`, {
           description: `Please try again later`,
         });
       }
