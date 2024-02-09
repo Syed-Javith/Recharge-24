@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import AboutStyle from "./about.module.css"
 import localFont from 'next/font/local'
 import Link from 'next/link'
+import Neon from '@/components/Text/Neon'
 
 const SketchFont = localFont({ src: '../../../../public/fonts/Jura.ttf' })
 
@@ -14,7 +15,6 @@ interface AboutProps {
 const About : FC<AboutProps> = ({ image , content , title , isReverse}) => {
   return (
     <div
-      // className={`flex flex-col justify-center lg:flex-row items-center lg:items-center  gap-y-8 stretch-to-screen text-white p-10 lg:gap-x-20 bg-slate-950 ${isReverse && "lg:flex-row-reverse"}`}
       className={`flex flex-col justify-center lg:flex-row items-center lg:items-center  gap-y-8 stretch-to-screen text-white p-10 lg:gap-x-20 bg-[#030711] ${isReverse && "lg:flex-row-reverse"}`}
     >
       <div
@@ -34,7 +34,7 @@ const About : FC<AboutProps> = ({ image , content , title , isReverse}) => {
 
       <div id="right" className="basis-1/2 flex flex-col gap-y-5">
         <div className="main text-5xl">
-          <span className={`socod text-left ${SketchFont.className} ${AboutStyle.neon}`}>{title}</span>
+          <Neon text={title} />
         </div>
 
         <p className=" text-lg  shadow-inner leading-loose">
@@ -44,15 +44,6 @@ const About : FC<AboutProps> = ({ image , content , title , isReverse}) => {
         <Link href={title=="ABOUT REC" ? "/about-rec" : "/about-recharge"}>
           <p className={AboutStyle.pulsate}>SHOW MORE</p>
         </Link>
-
-        {/* <button className='bg-gradient-to-r text-black from-[#ff0055] to-[#ffdd1f] p-2 m-auto rounded-md'>
-          SHOW MORE
-        </button> */}
-        
-        {/* <button className="about max-w-[200px] py-4 px-2 text-black font-md bg-white">
-          Show More
-        </button>
-                 */}
       </div>
     </div>
   )

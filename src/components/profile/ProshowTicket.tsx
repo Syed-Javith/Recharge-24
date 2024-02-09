@@ -20,7 +20,7 @@ const ProshowTicket = ({imgURL, day, show_name, guest_name, time}: ProshowTicket
         <div className={`${Style.ticket}`}>
             <div className={`${Style.left}`}>
                 <div className={`${Style.imageContent}`}>
-                    <img className={`${Style.image}`} src={/*imgURL*/ "https://media.pitchfork.com/photos/60db53e71dfc7ddc9f5086f9/1:1/w_1656,h_1656,c_limit/Olivia-Rodrigo-Sour-Prom.jpg"} alt='proshow image'/>
+                    <img className={`${Style.image}`} src={ imgURL !== null ? imgURL : "https://media.pitchfork.com/photos/60db53e71dfc7ddc9f5086f9/1:1/w_1656,h_1656,c_limit/Olivia-Rodrigo-Sour-Prom.jpg"} />
                     <p className={`${Style.admitOne}`}>
                         <span>ADMIT ONE</span>
                         <span>ADMIT ONE</span>
@@ -31,6 +31,9 @@ const ProshowTicket = ({imgURL, day, show_name, guest_name, time}: ProshowTicket
                              { "#2003022" + day }
                         </p>
                     </div>
+                </div>
+                <div className={`${Style.serations}`}>
+                    <div className={`${Style.circle}`}></div>
                 </div>
                 <div className={`${Style.ticketInfo}`}>
                     <p className={`${Style.date}`}>

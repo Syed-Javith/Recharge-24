@@ -15,13 +15,13 @@ const page = () => {
             
                 </h1>
             <div className={`md:text-[1.25rem] flex flex-col gap-4 text-justify md:px-12 p-4  ${paraFont.className}`}>
-                <p>Rajalakshmi Institutions is proud to present its most prominent and signature Cultural fest - RECHARGE&apos;23, which promotes liberty, energy, and enthusiasm among both participants and spectators while also providing students an opportunity to explore and rediscover themselves.</p>
+                <p>Rajalakshmi Institutions is proud to present its most prominent and signature Cultural fest - RECHARGE&apos;24, which promotes liberty, energy, and enthusiasm among both participants and spectators while also providing students an opportunity to explore and rediscover themselves.</p>
 
                 <p>Recharge is Rajalakshmi Engineering College&apos;s inter-collegiate annual cultural fest. The previous editions of Recharge and other cultural fests at REC featured celebrities from showbiz like Karthi Sivakumar, Santhosh Narayanan, Andrea Jeremiah, and DJ Gowtham. REC has also had the privilege of hosting eminent sports personalities like Kris Srikkanth, T. Natarajan, and Dwayne Bravo at our sport-driven events.</p>
 
-                <p>With over 75+ events ranging from music and dance to sports and other exciting ones, Recharge &apos;23 provides students from across the country a platform to express themselves and showcase their talents. The pro-shows of Recharge &apos;23 will feature an exciting lineup that includes performances from music superstars and international DJs, as well as appearances from sports legends.</p>
+                <p>With over 75+ events ranging from music and dance to sports and other exciting ones, Recharge &apos;24 provides students from across the country a platform to express themselves and showcase their talents. The pro-shows of Recharge &apos;24 will feature an exciting lineup that includes performances from music superstars and international DJs, as well as appearances from sports legends.</p>
 
-                <p>So, what are you waiting for? Buy your passes now! Come feel reignited, rejuvenated, and revivified at Recharge &apos;23. We&apos;ll see you there!</p>
+                <p>So, what are you waiting for? Buy your passes now! Come feel reignited, rejuvenated, and revivified at Recharge &apos;24. We&apos;ll see you there!</p>
             </div>
             </div>
         </div>
