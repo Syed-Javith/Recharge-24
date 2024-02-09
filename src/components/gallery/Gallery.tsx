@@ -45,7 +45,7 @@ const GallerySection = ({ }) => {
     <div className="gallery touch-auto">
     <div className="description bottom-1 pb-11">
       <h1 className="logo">
-        GALLERY. . .
+        .. GALLERY ..
       </h1>
     </div>
       <GallerySlider data={ImageData}/>

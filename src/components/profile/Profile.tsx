@@ -1,9 +1,8 @@
-
 "use client";
 import { UserProfileSchema } from "@/types/models";
 import { FC, useEffect, useState } from "react";
 import { CSRBaseUrl } from "@/lib/utils";
-import "./profile.css";
+import Style from "./profile.module.css"
 import { useMutation } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";
 import { toast } from "sonner";
@@ -15,13 +14,14 @@ import DesktopProfile from "./DesktopProfile";
 import Loader from "../loader/Loader";
 import ProshowTicket from "./ProshowTicket";
 import EventTicket from "./EventTicket";
-// import { useRouter } from "next/router";
+import localFont from 'next/font/local'
+import Neon from "../Text/Neon";
+
+const SketchFont = localFont({ src: '../../../public/fonts/Jura.ttf' });
 
 interface ProfileProps {}
 
 const Profile: FC<ProfileProps> = ({}) => {
-  // window.location.reload();
-  // const router = useRouter();
   const [profile, setProfile] = useState<UserProfileSchema>();
   
   const [error, setError] = useState<boolean>(false);
@@ -32,7 +32,6 @@ const Profile: FC<ProfileProps> = ({}) => {
         const res = await axios.get(CSRBaseUrl + "authenticate/profile/", {
           withCredentials: true,
         });
-        // console.log(res);
         return res;
       } catch (err) {
         console.error("Error during login:", err);
@@ -54,10 +53,7 @@ const Profile: FC<ProfileProps> = ({}) => {
   });
   
   useEffect(() => {
-    // router.reload();
-    // window.location.reload();
     profileDetails();
-    console.log(profile);
   }, []);
 
 
@@ -71,9 +67,14 @@ const Profile: FC<ProfileProps> = ({}) => {
       <h2>Error loading profile </h2>
     </div>
   ) : (
-    <div className="profile-container">
+    <div className={`${Style.profileContainer}`}>
       <DesktopProfile profile={profile} setProfile={setProfile}/>
-      <h1 className="profile-section-title">Registered Proshows</h1>
+      {/* <h1 className={`${Style.profileSectionTitle} ${SketchFont.className}`}>
+        {
+          (profile.proshow_registrations.length == 0) ? "No Proshows Registered" : "Registered Proshows"
+        }
+      </h1> */}
+      <Neon text={(profile.proshow_registrations.length == 0) ? "No Proshows Registered" : "Registered Proshows"} />
       {
         profile.proshow_registrations.map(({proshow}, index) => {
           return (
@@ -88,9 +89,14 @@ const Profile: FC<ProfileProps> = ({}) => {
             );
           })
         }
-        <div className="glowing-line"></div>
-      <h1 className="profile-section-title">Registered Events</h1>
-      <div className="grid md:grid-cols-3 sm:grid-cols-1 gap-8 m-auto justify-center">
+        <div className={`${Style.glowingLine}`}></div>
+      {/* <h1 className={`${Style.profileSectionTitle} ${SketchFont.className}`}>
+        {
+          (profile.event_registrations.length == 0) ? "No Events Registered" : "Registered Events"
+        }
+      </h1> */}
+      <Neon text={(profile.event_registrations.length == 0) ? "No Events Registered" : "Registered Events"} />
+      <div className="grid md:grid-cols-3 sm:grid-cols-1 gap-8 m-auto mt-8 justify-center">
         {
           profile.event_registrations.map((event, index) =>{
             return(

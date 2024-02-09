@@ -1,11 +1,15 @@
 'use client'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { UserJwtPayload } from "@/lib/auth";
 import { usePathname } from "next/navigation"
-import './Navbar.css'
+import NavStyle from './Navbar.module.css'
 import Link from 'next/link';
 import { Menu } from 'lucide-react';
-import LogoutButton from './LogoutButton';
+import LogoutDialog from './LogoutDialog';
+import axios from 'axios';
+import { CSRBaseUrl, inDevEnvironment } from '@/lib/utils';
+import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
 
 type SesstionType =  {
   session: UserJwtPayload | null
@@ -14,58 +18,105 @@ type SesstionType =  {
 const Navbar = ({session} : SesstionType) => {
 
   const pathname = usePathname()
+  const router = useRouter()
 
-  useEffect(() => {
-    document.getElementById('ul')?.classList.remove('dropdown-custom')
-  }, [pathname]);
+  // console.log(pathname)
+
+  // useEffect(() => {
+  //   setMobNavActive(false)
+  // }, [pathname]);
   
   useEffect(() => {
     window.addEventListener('resize', () => {
       if(window.innerWidth>=690) {
-        document.getElementById('ul')?.classList.remove('dropdown-custom')
+        setMobNavActive(false)
       }
     })
     
     window.addEventListener('click', (event) => {
-      if(!document.getElementById('ham')?.contains(event.target as Node)) {
-        document.getElementById('ul')?.classList.remove('dropdown-custom')
+      if(!document.getElementById('ham-menu')?.contains(event.target as Node)) {
+        setMobNavActive(false)
       }
     })
   }, [])
+
+
+  const logoutHandler = async () => {
+    await axios(CSRBaseUrl + "authenticate/logout/", {
+      withCredentials: true,
+      method: "post",
+    });
+
+    toast("Success", {
+      description: "You were logged out successfully.",
+    });
+    console.log("inDevEnv", inDevEnvironment);
+    router.push("/login");
+    router.refresh();
+  };
+
+  const [mobNavActive, setMobNavActive] = useState<boolean>(false);
   
 
   return (
-    <header id='landing-header'>
-        <img src="/Landing/college.webp" id="college" />
-        <nav>
+    <header className={NavStyle.landing_header}>
 
-          <Menu id="ham" onClick={
+        
+        <Link href='/'>
+          <img src="/Landing/college.webp" className={NavStyle.college}/>
+        </Link>
+        <nav className={NavStyle.navbar_nav}>
+
+          <Menu id='ham-menu' className={NavStyle.ham} onClick={
               () => {
-                if(document.getElementsByClassName('dropdown-custom').length==0)
-                    document.getElementById('ul')?.classList.add('dropdown-custom')
-                else
-                    document.getElementById('ul')?.classList.remove('dropdown-custom')
+                setMobNavActive(!mobNavActive)
               }} />
 
 
-            <ul id="ul">
-                <li><Link className={pathname=="/" ? "active" : "disabled"} href="/">Home</Link></li>    
-                <li className={pathname=="/proshow" ? "active" : "disabled"}><Link href="/proshow">Proshows</Link></li>
-                <li className={pathname=="/event" || /\/event\/.*/.test(pathname) ? "active" : "disabled"}><Link href="/event">Events</Link></li>
-                <li className={pathname=="/gallery" ? "active" : "disabled"}>Gallery</li>
+            <ul className={`${NavStyle.navbar_ul} ${mobNavActive ? NavStyle.dropdown_custom : ''}`}>
+                <li className={ `${NavStyle.navbar_li} ${pathname=="/" ? NavStyle.active : NavStyle.disabled}`}>
+                  <Link href="/">
+                    Home
+                  </Link>
+                </li>    
+                <li className={`${NavStyle.navbar_li} ${pathname=="/proshow" ? NavStyle.active : NavStyle.disabled}`}>
+                  <Link href="/proshow">
+                    Proshows
+                  </Link>
+                  </li>
+                <li className={`${NavStyle.navbar_li} ${pathname=="/event" || /\/event\/.*/.test(pathname) ? NavStyle.active : NavStyle.disabled}`}>
+                  <Link href="/event">
+                    Events
+                  </Link>
+                  </li>
+                {/* <li className={`${NavStyle.navbar_li} ${pathname=="/gallery" ? NavStyle.active : NavStyle.disabled}` }>
+                  Gallery
+                  </li> */}
 
                 {session ?
                   (
                    <>
-                     <li className={pathname=="/profile" ? "active" : "disabled"}><a href="/profile">Profile</a></li>
-                    <LogoutButton />
+                     <li className={`${NavStyle.navbar_li} ${pathname=="/profile" ? NavStyle.active : NavStyle.disabled}` }>
+                      <a href="/profile">
+                        Profile
+                      </a>
+                    </li>
+                    <LogoutDialog logoutHandler={logoutHandler}/>
                    </>
 
                   ) :
                   (
                     <>
-                      <li className={pathname=="/login" ? "active" : "disabled"}><Link href='/login'>Login</Link></li>
-                      <li className={pathname=="/register" ? "active" : "disabled"}><Link href="/register">Register</Link></li>
+                      <li className={`${NavStyle.navbar_li} ${pathname=="/login" ? NavStyle.active : NavStyle.disabled}` }>
+                        <Link href='/login'>
+                          Login
+                          </Link>
+                        </li>
+                      <li className={`${NavStyle.navbar_li} ${pathname=="/register" ? NavStyle.active : NavStyle.disabled}`}>
+                        <Link href="/register">
+                          Register
+                        </Link>
+                      </li>
                     </> 
                   )
                 }

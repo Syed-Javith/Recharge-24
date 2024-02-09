@@ -7,13 +7,17 @@ import { toast } from "sonner";
 import axios from "axios";
 import { Loader2 } from "lucide-react";
 import { CSRBaseUrl } from "@/lib/utils";
-
+import ProShowStyle from "./proshow.module.css"
+import localFont from "next/font/local";
 interface BuyProShowButtonProps {
   proshowid: number;
-  label: "standard" | "premium" | "standard combo" | "premium combo";
+  label: "Standard" | "Premium" | "Standard combo" | "Premium combo";
   disabled: boolean;
   is_registered: boolean;
 }
+
+const titleFont = localFont({ src: '../../../public/fonts/Jura.ttf' })
+const subtitleFont = localFont({ src: '../../../public/fonts/chakra.ttf' })
 
 const BuyProShowButton: FC<BuyProShowButtonProps> = ({
   proshowid,
@@ -42,14 +46,14 @@ const BuyProShowButton: FC<BuyProShowButtonProps> = ({
       console.log(err);
       if (axios.isAxiosError(err)) {
         if (err.response?.status === 400) {
-          toast(`${err.response.data.detail}`);
+          toast.error(`${err.response.data.detail}`);
         } else {
-          toast(`Some error occured`, {
+          toast.error(`Some error occured`, {
             description: `${err.message}`,
           });
         }
       } else {
-        toast(`Some other error occurred`, {
+        toast.error(`Some other error occurred`, {
           description: `Please try again later`,
         });
       }
@@ -66,12 +70,13 @@ const BuyProShowButton: FC<BuyProShowButtonProps> = ({
   return (
     <Button
     
-    className={label === "premium" ? "golden-btn" : "silver-btn"}
+    className={label === "Premium" || label === "Premium combo" ? `${ProShowStyle.goldenBtn} ${subtitleFont.className} flex` : `${ProShowStyle.silverBtn} ${subtitleFont.className} flex`}
     
       onClick={() => buyProshow({ proshowid })}
       disabled={isPending || disabled}
+      style={{ display: 'flex', alignItems: 'center' }}
     >
-      {(disabled ? is_registered ? "Already Bought " : "Can't Buy " : "Buy ") + label} {isPending && <Loader2 className="animate-spin" />}
+      {(disabled ? is_registered ? "Already Bought " : "Can't Buy " : "Buy ") + label} {isPending && <Loader2 className="animate-spin ml-2" />}
     </Button>
   );
 };

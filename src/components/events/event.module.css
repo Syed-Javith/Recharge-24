@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Courgette&display=swap");
+.event_details_bg {
+  /* color: rgb(3, 7, 17); */
+  background: linear-gradient(rgba(3, 7, 17, 0.9), rgba(3, 17, 17, 0.7)),
+    url("/event-image-31.jpg");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.end_date span {
+  font-family: Courgette;
+  color: #ffffff;
+  animation: neon 0.18s ease-in-out infinite alternate;
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.92),
+    0 0 8px rgba(202, 228, 225, 0.34), 0 0 6px rgba(255, 255, 255, 0.52),
+    0 0 11px rgba(33, 238, 228, 0.92), 0 0 15px rgba(33, 238, 228, 0.78);
+    /* 0 0 24px rgba(33, 238, 228, 0.92); */
+}
+
+.event_head {
+  font-weight: lighter;
+  text-shadow: 0 0 0 transparent, 0 0 10px #09f, 0 0 20px rgba(38,149,255,.5), 0 0 40px #09f, 0 0 100px #09f;
+  /* text-shadow: 0 0 0 transparent, 0 0 10px rgb(255, 0, 238),
+    0 0 20px rgba(255, 38, 241, 0.5), 0 0 40px rgb(251, 0, 255),
+    0 0 100px rgb(255, 0, 247); */
+  animation: buzz 1s infinite alternate;
+}
+
+@keyframes buzz {
+  70% {
+    opacity: 0.8;
+  }
+}

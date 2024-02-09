@@ -11,6 +11,7 @@ import { getAuthSession } from "@/lib/auth";
 export const metadata: Metadata = {
   title: "Recharge-2k24",
   description: "Presented by REC",
+  icons:["/R24.png"]
 };
 
 export default async function RootLayout({
@@ -25,8 +26,7 @@ export default async function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          // "min-h-screen bg-[#0c0c2d] font-sans antialiased",
-          "min-h-screen bg-[#101520] font-sans antialiased ",
+          "min-h-screen bg-[#030711] font-sans antialiased ",
           GeistSans.variable
         )}
       >

@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Jockey+One&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@300..700&display=swap');
+
+.navbar_nav {
+    position: relative;
+}
+
+.college {
+    width: 129px;
+    margin-left: 30px;
+}
+
+.landing_header {
+    z-index: 49;
+    background: transparent !important;
+    color: white;
+    position: absolute;
+    top: 0;
+    padding: 2rem 30px 2rem 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    filter: brightness(1.5);
+}
+
+.navbar_ul {
+    display: flex;
+    list-style-type: none;
+    font-family:  "Jockey One";
+    font-weight: 100;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+
+.navbar_li {
+    margin: 0 15px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.disabled {
+    opacity: 0.7;
+}
+
+.disabled:hover {
+    opacity: 0.9;
+}
+
+/* responsive */
+
+.ham {
+    z-index: 9999 ;
+    display: none;
+}
+
+.ham:hover {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 690px) {
+    .navbar_ul {
+         display: none;
+    }
+
+    .ham {
+        display: block;
+        color: white;
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .college {
+         width: 100px;
+    }
+}
+
+
+.dropdown_custom{
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 40px;
+    background: black;
+    border: 0.1px solid white;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.dropdown_custom li {
+    padding: 5px 0;
+}
+
+.dropdown_custom .active {
+    font-size: large;
+}
+
+.dropdown_custom .disabled {
+    font-size: medium;
+    opacity: 0.4;
+}

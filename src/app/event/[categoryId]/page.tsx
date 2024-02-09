@@ -3,9 +3,9 @@ import { CategoryEvents } from "@/types/models"
 import Link from "next/link"
 import axios from "axios"
 import localFont from 'next/font/local'
-import './style.css'
+import EventStyle from './Event.module.css'
 
-const AirFillFont = localFont({ src: '../../../../public/fonts/air-fill.ttf' })
+const JuraFont = localFont({ src: '../../../../public/fonts/Jura.ttf' })
 
 const EventList = async ({ params }: { params: { categoryId: number } }) => {
 const {data} = await axios.get(SSRBaseUrl + "event/category/" + params.categoryId + "/events/");
@@ -20,14 +20,14 @@ const dateFormatter = (dateStr: string | undefined) : string => {
 }
 
 return (
-  <div className="">
-    <h1 className={`text-center event-type-heading ${AirFillFont.className}`}>{categoryEvents[0].category_name}</h1>
-    <div className="event-cards mb-12 mt-8">
+  <div >
+    <h1 className={`text-center ${EventStyle.event_type_heading} ${JuraFont.className}`}>{categoryEvents[0].category_name}</h1>
+    <div className={`${EventStyle.event_cards} mb-12 mt-8`}>
         {categoryEvents[0].events.map((event) => (
         <Link href={"/event/" + params.categoryId + "/" + event.id} key={event.id}>
-           <div className="event-card">
-                <div className="event-border"></div>
-                <div className="event-content">
+           <div className={EventStyle.event_card}>
+                <div className={EventStyle.event_border}></div>
+                <div className={EventStyle.event_content}>
                     <img src={event.image} />
                     <h2>{event.name}</h2>
                     <h4><span>Day: </span> <p>{event.day}</p></h4>

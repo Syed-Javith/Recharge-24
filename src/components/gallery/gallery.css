@@ -23,14 +23,23 @@
     writing-mode: vertical-lr;
     font-size: calc(calc(1vw + 1vh) * 3.6);
     transform: rotate(180deg);
-    font-weight: 900;
-    background: linear-gradient(45deg, #f36100, #884985, #7c1212 );
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-weight: 600;
+    /* background: linear-gradient(45deg, #f36100, #884985, #7c1212 ); */
+    /* background-clip: text; */
+    /* -webkit-background-clip: text; */
+    /* -webkit-text-fill-color: transparent; */
     text-transform: uppercase;
     transition: 1s all ease-in-out;
+    font-family: "Jura";
+    text-shadow: 0 0 0 transparent, 0 0 10px #09f, 0 0 20px rgba(38,149,255,.5), 0 0 40px #09f, 0 0 100px #09f;
+    animation: buzz 1s infinite alternate;
 }
+
+@keyframes buzz {
+    70% {
+        opacity: .8;
+    }
+  }
 
 .gallery{
     position: relative;

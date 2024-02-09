@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { UserJwtPayload } from "@/lib/auth";
-import './event.css'
+import styles from './event.module.css'
 import {
   Tooltip,
   TooltipContent,
@@ -20,6 +20,11 @@ import JoinTeam from "./JoinTeam";
 import { Building, CalendarCheckIcon, Clock, Copy, Hourglass, Mail, MapPinIcon, Users } from "lucide-react";
 import { toast } from "sonner";
 import CreateTeamDialog from "./CreateTeamDialog";
+import localFont from 'next/font/local'
+
+
+const ChakraFont = localFont({ src: '../../../public/fonts/chakra.ttf' })
+const JuraFont = localFont({ src: '../../../public/fonts/Jura.ttf' })
 
 interface EventDetailsProps {
   event: EventDetailSchema;
@@ -95,7 +100,7 @@ const EventDetails: FC<EventDetailsProps> = ({
 
   if (event) {
     return (
-      <div className="event-details-bg"><div className="max-w-[1300px] m-auto md:p-4 p-2 pt-10">
+      <div className={styles.event_details_bg}><div className="max-w-[1300px] m-auto md:p-4 p-2 pt-10">
       <div className="grid grid-cols-12 gap-6 justify-between md:p-6 p-4 mt-16 border-b-2 border-white">
         <div className="flex gap-6 md:col-span-6 lg:col-span-8 col-span-12">
           <img
@@ -106,7 +111,7 @@ const EventDetails: FC<EventDetailsProps> = ({
             className="max-w-[340px] flex-1 lg:block hidden object-cover border-[1.5px] rounded-xl"
           />
           <div>
-            <h1 className="text-3xl mb-1">{event.name.toUpperCase()}</h1>
+            <h1 className={`text-[2.5rem] mb-3 ${JuraFont.className} ${styles.event_head}`}>{event.name.toUpperCase()}</h1>
             <div className="flex space-x-3 mb-4">
               {event.team_event ? (
                 <Badge variant="default" className="team mt-2 ">
@@ -124,23 +129,25 @@ const EventDetails: FC<EventDetailsProps> = ({
               )}
             </div>
 
+            <div className={`font-medium text-lg`}>
             {event.pay == 0 ? (
-              <div className="text-yellow-300 font-semibold text-xl">
-                Free Event
-              </div>
-            ) : (
-              <div className="text-yellow-300 font-semibold text-xl">
-                Amount: Rs. {event.pay}
-              </div>
-            )}
+                "- Free Event"
+                ) : (
+                  `- Registration Fee: Rs. ${event.pay}`
+                  )
+                }
+            </div>
 
             {event.prize && (
-              <div className="text-[rgb(234,111,232)] font-semibold text-xl py-1">
-                Prize Amount: Rs. {event.prize}
+              <div className="font-medium text-lg py-1">
+                - Prize Pool:  
+                <span className={`ml-1 font-regular ${ChakraFont.className}`} >
+                  Rs. {event.prize}
+                </span>
               </div>
             )}
 
-            {event.registration_end_date && <div className="end-date text-2xl mt-2">
+            {event.registration_end_date && <div className={`text-2xl mt-2 text-[rgb(237,215,90)] ${styles.end_date}`}>
               <span>Registration End Date:{" "}
               {event.registration_end_date.split("-").reverse().join("-")}</span>
             </div>}
@@ -251,29 +258,68 @@ const EventDetails: FC<EventDetailsProps> = ({
             )}
           </div>
         </div>
-        <div className="grid justify-between col-span-12 md:col-span-6 lg:col-span-4 text-lg p-4 border-white border-[1.25px] rounded-md bg-black">
-          <div className="flex gap-2 items-center"><CalendarCheckIcon /> Day: {event.day}</div>
+        <div className="grid justify-between col-span-12 md:col-span-6 lg:col-span-4 text-lg p-4 border-white border-[1.25px] event-desc rounded-xl bg-gray-950">
+          <div className={`flex gap-2 items-center font-semibold ${JuraFont.className}`}>
+            <CalendarCheckIcon size={15} /> 
+                Day: 
+              <span className={`font-thin ${ChakraFont.className}`}>
+                {event.day}
+              </span>
+          </div>
           {event.team_event && (
-            <div className="flex gap-2 items-center">
-              <Users />Team Size: {event.team_min} - {event.team_max} Members
+            <div className={`flex gap-2 items-center font-semibold ${JuraFont.className}`}>
+              <Users size={15}/>
+                  Team Size: 
+                <span className={`font-thin ${ChakraFont.className}`}>
+                  {event.team_min} - {event.team_max} Members
+                </span>
             </div>
           )}
-          <div className="flex gap-2 items-center"><MapPinIcon />Venue: {event.venue}</div>
-          <div className="flex gap-2 items-center"><Clock />Timings: {event.time_of_event}</div>
-          <div className="flex gap-2 items-center"><Hourglass />Duration: {event.duration} hours</div>
-          <div className="flex gap-2 items-center"><Building /> Club: {event.name_of_hosting_club}</div>
-          <div className="flex gap-2 items-center"><Mail /> {event.contact_mail}</div>
+          <div className={`flex gap-2 items-center font-semibold ${JuraFont.className}`}>
+            <MapPinIcon size={15} />
+              Venue:
+            <span className={`font-thin ${ChakraFont.className}`}>
+              {event.venue}
+            </span>
+          </div>
+          <div className={`flex gap-2 items-center font-semibold ${JuraFont.className}`}>
+            <Clock size={15} />
+              Timings:
+            <span className={`font-thin ${ChakraFont.className}`}>
+              {event.time_of_event}
+            </span>
+          </div>
+          <div className={`flex gap-2 items-center font-semibold ${JuraFont.className}`}>
+            <Hourglass size={15} />
+              Duration: 
+              <span className={`font-thin ${ChakraFont.className}`}>
+                {event.duration} hours
+              </span>
+          </div>
+          <div className={`flex gap-2 items-center font-semibold ${JuraFont.className}`}>
+            <Building size={15} />
+              Club: 
+             <span className={`font-thin ${ChakraFont.className}`}>
+              {event.name_of_hosting_club}
+             </span>
+          </div>
+          <div className={`flex gap-2 items-center font-semibold ${JuraFont.className}`}>
+            <Mail size={15} /> 
+            <span className={`font-thin ${ChakraFont.className}`}>
+              {event.contact_mail}
+            </span>
+          </div>
         </div>
       </div>
       <div className="md:p-6 p-4">
         <div>
-          <h1 className="text-2xl mt-4 mb-4">Description</h1>
+          <h1 className={`text-3xl mt-4 mb-4 font-bold ${ChakraFont.className}`}>Description</h1>
           {event.description &&
             (showDescription
               ? event.description.split("\r\n").map((point, index) => (
                   <p
                     key={index}
-                    className="leading-8 mb-4 text-justify text-md"
+                    className="leading-8 mx-auto text-justify opacity-90 text"
                   >
                     {point}
                   </p>
@@ -284,14 +330,14 @@ const EventDetails: FC<EventDetailsProps> = ({
                   .map((point, index) => (
                     <p
                       key={index}
-                      className="leading-8 mb-4 text-justify text-md"
+                      className="leading-8 mx-auto w-[85vw] text-justify opacity-90 text-md indent-8"
                     >
                       {point}
                     </p>
                   )))}
           <div className="text-right">
             <span
-              className="inline-block text-center text-slate-300 text-lg px-5 py-2 mt-2 rounded-md cursor-pointer border-slate-300 border-[1.5px]"
+              className="inline-block text-center text-slate-300 text-lg px-3 py-1 mt-2 mr-8 rounded-md cursor-pointer border-slate-300 border-[1.5px]"
               onClick={() => setShowDescription(!showDescription)}
             >
               {showDescription ? "Read Less" : "Read More"}
@@ -299,19 +345,19 @@ const EventDetails: FC<EventDetailsProps> = ({
           </div>
         </div>
         <div>
-          <h1 className="text-2xl mt-4 mb-4">Rules and Regulations</h1>
+          <h1 className={`text-3xl mt-4 mb-4 font-bold ${ChakraFont.className}`}>Rules and Regulations</h1>
           {event.rules.split("\r\n").map((point, index) => (
-            <li key={index} className="leading-8 text-justify text-md">
+            <li key={index} className="leading-8 mx-auto w-[85vw] opacity-90 text-justify text-md">
               {point}
             </li>
           ))}
         </div>
         {event.incharges.length > 0 && (
           <div className="mt-8">
-            <h1 className="text-2xl mb-2">Event Incharges</h1>
+            <h1 className={`text-3xl mb-2 font-bold ${ChakraFont.className}`}>Event Incharges</h1>
             {event.incharges.length > 0 &&
               event.incharges.map((incharge) => (
-                <p className="py-2 text-[1.2em]" key={incharge.id}>
+                <p className="py-2 text-[1.2em] mx-auto w-[85vw]" key={incharge.id}>
                   {incharge.name + " - " + incharge.contact_number}
                 </p>
               ))}
