@@ -71,7 +71,9 @@ const Profile: FC<ProfileProps> = ({ }) => {
   ) : (
     <div className={`${Style.profileContainer}`}>
       <DesktopProfile profile={profile} setProfile={setProfile} />
-      <Neon text={(profile.proshow_registrations.length == 0) ? "No Proshows Registered" : "Registered Proshows"} />
+      <div className="text-center m-auto">
+        <Neon text={(profile.proshow_registrations.length == 0) ? "No Proshows Registered" : "Registered Proshows"} />
+      </div>
       {
         profile.proshow_registrations.length == 0 &&
         <Link href={'/proshow'} className="m-auto mt-6" >
@@ -95,15 +97,17 @@ const Profile: FC<ProfileProps> = ({ }) => {
         })
       }
       <div className={`${Style.glowingLine}`}></div>
-      <Neon text={(profile.event_registrations.length == 0) ? "No Events Registered" : "Registered Events"} />
+      <div className="text-center m-auto">
+        <Neon text={(profile.event_registrations.length == 0) ? "No Events Registered" : "Registered Events"} />
+      </div>
       {
-          profile.event_registrations.length == 0 &&
-          <Link href={'/event'} className="m-auto mt-6">
-            <Button>
-              Register events now
-            </Button>
-          </Link>
-        }
+        profile.event_registrations.length == 0 &&
+        <Link href={'/event'} className="m-auto mt-6">
+          <Button>
+            Register events now
+          </Button>
+        </Link>
+      }
       <div className="grid md:grid-cols-3 sm:grid-cols-1 gap-8 m-auto mt-8 justify-center">
         {
           profile.event_registrations.map((event, index) => {
