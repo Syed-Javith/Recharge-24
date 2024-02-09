@@ -384,7 +384,8 @@
 
 .profilePersonalDetail{
   width: 94%;
-  margin: 100px auto 7% 0;
+  /* margin: 100px auto 7% 0; */
+  margin: 6rem;
 }
 .profilePersonalDetail .description {
   display: flex;

@@ -70,7 +70,7 @@ const BuyProShowButton: FC<BuyProShowButtonProps> = ({
   return (
     <Button
     
-    className={label === "Premium" || label === "Premium combo" ? `${ProShowStyle.goldenBtn} ${subtitleFont.className}` : `${ProShowStyle.silverBtn} ${subtitleFont.className}`}
+    className={label === "Premium" || label === "Premium combo" ? `${ProShowStyle.goldenBtn} ${subtitleFont.className} flex` : `${ProShowStyle.silverBtn} ${subtitleFont.className} flex`}
     
       onClick={() => buyProshow({ proshowid })}
       disabled={isPending || disabled}
