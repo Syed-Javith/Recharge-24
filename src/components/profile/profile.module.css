@@ -4,7 +4,6 @@
   display: flex;
   background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #b78b2a 30%, #b58d2f 40%, transparent 80%),
               radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #9c7b2f 62.5%, #98782d 100%);
-  /* box-shadow: rgba(255, 211, 149, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px; */
   border-radius: 10px;
   overflow: hidden;
   
@@ -100,7 +99,7 @@
 }
 
 .showName {
-	font-size: 32px;
+	/* font-size: calc(5vw)px; */
 	/* font-family: "Bonheur Royal", cursive; */
     font-weight: 700;
 	color: #11141f;
@@ -115,7 +114,7 @@
   /* font-family: 'Playfair Display', serif; */
   position: relative;
 	text-transform: uppercase;	
-	font-size: 36px;
+	font-size: calc(10px + 1.8 * 1vw);
 	font-weight: 900;
 	letter-spacing: 0.1em;
 }
@@ -189,7 +188,7 @@
 }
 
 .right .showName h1 {
-	font-size: 18px;
+	font-size: calc(10px + 1.8 * 1vw);;
 }
 
 .barcode {
@@ -366,9 +365,9 @@
 
 .profileSectionTitle {
   font-size: calc(10px + 5vh);
-  /* text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000; */
-    color: #ffffff;
-  font-family: "Sacramento", cursive;
+  text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
+    color: #fff6a9;
+  /* font-family: "Sacramento", cursive; */
   text-align: center;
   animation: blink 12s infinite;
   -webkit-animation: blink 12s infinite;
@@ -384,8 +383,7 @@
 
 .profilePersonalDetail{
   width: 94%;
-  /* margin: 100px auto 7% 0; */
-  margin: 6rem;
+  margin: 100px auto 7% auto;
 }
 .profilePersonalDetail .description {
   display: flex;

@@ -38,13 +38,13 @@ const DesktopProfile = ({ profile , setProfile } : { profile : UserProfileSchema
                                 <EditProfileForm profile={profile} setProfile={setProfile}/>
                             </div>
                         </div>
-                                <h3> {"Rajalakshmi Engineering College"} </h3>
+                                <h3> {profile.college } </h3>
                         <p className={`${Style.bio} flex md:flex-row sm:flex-col flex-wrap gap-4`}>
-                            <div className='w-fit whitespace-nowrap'>{"Email : " + profile.email }</div>
-                            <div className='w-fit whitespace-nowrap'>{" Mobile : " + profile.mobile_number}</div>
-                            <div className='w-fit whitespace-nowrap'>{"Year Of Study : " + formatYear(profile.year) + " year "}</div>
-                            <div className='w-fit whitespace-nowrap'>{"Proshows : " + profile.proshow_registrations.length }</div>
-                            <div className='w-fit whitespace-nowrap'>{ "Events : " + profile.event_registrations.length}</div>
+                            <div className='w-fit whitespace-nowrap'><span className='font-bold'>Email :</span> { profile.email }</div>
+                            <div className='w-fit whitespace-nowrap'> <span className='font-bold'>Mobile : </span>{profile.mobile_number}</div>
+                            <div className='w-fit whitespace-nowrap'><span className='font-bold'>Year Of Study : </span>{ formatYear(profile.year) + " year "}</div>
+                            <div className='w-fit whitespace-nowrap'> <span className='font-bold'>Proshows : </span> {profile.proshow_registrations.length }</div>
+                            <div className='w-fit whitespace-nowrap'><span className='font-bold'>Events : </span>{ profile.event_registrations.length}</div>
                         </p>
                     </div>
                     <img src="https://user-images.githubusercontent.com/9884985/60099529-1fec3200-9758-11e9-99f1-2a1e72c9a3bc.png" alt="QR code"/>

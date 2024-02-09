@@ -68,7 +68,11 @@ const Profile: FC<ProfileProps> = ({}) => {
   ) : (
     <div className={`${Style.profileContainer}`}>
       <DesktopProfile profile={profile} setProfile={setProfile}/>
-      <h1 className={`${Style.profileSectionTitle} ${SketchFont.className}`}>Registered Proshows</h1>
+      <h1 className={`${Style.profileSectionTitle} ${SketchFont.className}`}>
+        {
+          (profile.proshow_registrations.length == 0) ? "No Proshows Registered" : "Registered Proshows"
+        }
+      </h1>
       {
         profile.proshow_registrations.map(({proshow}, index) => {
           return (
@@ -84,7 +88,11 @@ const Profile: FC<ProfileProps> = ({}) => {
           })
         }
         <div className={`${Style.glowingLine}`}></div>
-      <h1 className={`${Style.profileSectionTitle} ${SketchFont.className}`}>Registered Events</h1>
+      <h1 className={`${Style.profileSectionTitle} ${SketchFont.className}`}>
+        {
+          (profile.event_registrations.length == 0) ? "No Events Registered" : "Registered Events"
+        }
+      </h1>
       <div className="grid md:grid-cols-3 sm:grid-cols-1 gap-8 m-auto mt-8 justify-center">
         {
           profile.event_registrations.map((event, index) =>{
