@@ -48,12 +48,8 @@ const registerFormSchema = z
     confirm_password: z.string().min(1).max(128),
     first_name: z.string().min(1),
     last_name: z.string().min(1),
-    mobile_number: z.string().length(10).regex(phoneNumberRegex, {
-      message: "Phone number must contain only numerals",
-    }),
-    confirm_mobile_number: z.string().length(10).regex(phoneNumberRegex, {
-      message: "Phone number must contain only numerals",
-    }),
+    mobile_number: z.string().length(6).min(6).max(128),
+    confirm_mobile_number: z.string().min(6).max(128),
     college: z.string().min(1),
     year: z.number().min(1),
   })
@@ -273,7 +269,7 @@ const RegisterForm: FC<RegisterFormProps> = ({ }) => {
                       <FormLabel className="text-white">Create your own Password</FormLabel>
                       <FormControl>
                         <div className="flex flex-row gap-4">
-                          <Input type={passwordVisible ? "text" : "password"} placeholder="Password Min. 6 alphabets" {...field} />
+                          <Input type={passwordVisible ? "text" : "password"} placeholder="min. 6 characters required" {...field} />
                           <Button className={FormStyle.eye_btn} type="button" onClick={() => setPasswordVisible(!passwordVisible)}>
                             {
                               passwordVisible ? <EyeIcon size={20} /> : <EyeOff size={20} />
