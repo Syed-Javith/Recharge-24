@@ -66,6 +66,10 @@ const UserAccountNav: FC<UserAccountNavProps> = ({ user }) => {
         </DropdownMenuItem>
 
         <DropdownMenuItem asChild>
+          <Link href="/merchandise">Merchandise</Link>
+        </DropdownMenuItem>
+
+        <DropdownMenuItem asChild>
           <Link href="/event">Events</Link>
         </DropdownMenuItem>
 

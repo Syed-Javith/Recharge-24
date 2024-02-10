@@ -11,30 +11,23 @@ import { CSRBaseUrl, inDevEnvironment } from '@/lib/utils';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
 
-type SesstionType =  {
+type SesstionType = {
   session: UserJwtPayload | null
 }
 
-const Navbar = ({session} : SesstionType) => {
+const Navbar = ({ session }: SesstionType) => {
 
   const pathname = usePathname()
   const router = useRouter()
-
-  // console.log(pathname)
-
-  // useEffect(() => {
-  //   setMobNavActive(false)
-  // }, [pathname]);
-  
   useEffect(() => {
     window.addEventListener('resize', () => {
-      if(window.innerWidth>=690) {
+      if (window.innerWidth >= 690) {
         setMobNavActive(false)
       }
     })
-    
+
     window.addEventListener('click', (event) => {
-      if(!document.getElementById('ham-menu')?.contains(event.target as Node)) {
+      if (!document.getElementById('ham-menu')?.contains(event.target as Node)) {
         setMobNavActive(false)
       }
     })
@@ -56,72 +49,77 @@ const Navbar = ({session} : SesstionType) => {
   };
 
   const [mobNavActive, setMobNavActive] = useState<boolean>(false);
-  
+
 
   return (
     <header className={NavStyle.landing_header}>
 
-        
-        <Link href='/'>
-          <img src="/Landing/college.webp" className={NavStyle.college}/>
-        </Link>
-        <nav className={NavStyle.navbar_nav}>
 
-          <Menu id='ham-menu' className={NavStyle.ham} onClick={
-              () => {
-                setMobNavActive(!mobNavActive)
-              }} />
+      <Link href='/'>
+        <img src="/Landing/college.webp" className={NavStyle.college} />
+      </Link>
+      <nav className={NavStyle.navbar_nav}>
+
+        <Menu id='ham-menu' className={NavStyle.ham} onClick={
+          () => {
+            setMobNavActive(!mobNavActive)
+          }} />
 
 
-            <ul className={`${NavStyle.navbar_ul} ${mobNavActive ? NavStyle.dropdown_custom : ''}`}>
-                <li className={ `${NavStyle.navbar_li} ${pathname=="/" ? NavStyle.active : NavStyle.disabled}`}>
-                  <Link href="/">
-                    Home
-                  </Link>
-                </li>    
-                <li className={`${NavStyle.navbar_li} ${pathname=="/proshow" ? NavStyle.active : NavStyle.disabled}`}>
-                  <Link href="/proshow">
-                    Proshows
-                  </Link>
-                  </li>
-                <li className={`${NavStyle.navbar_li} ${pathname=="/event" || /\/event\/.*/.test(pathname) ? NavStyle.active : NavStyle.disabled}`}>
-                  <Link href="/event">
-                    Events
-                  </Link>
-                  </li>
-                {/* <li className={`${NavStyle.navbar_li} ${pathname=="/gallery" ? NavStyle.active : NavStyle.disabled}` }>
+        <ul className={`${NavStyle.navbar_ul} ${mobNavActive ? NavStyle.dropdown_custom : ''}`}>
+          <li className={`${NavStyle.navbar_li} ${pathname == "/" ? NavStyle.active : NavStyle.disabled}`}>
+            <Link href="/">
+              Home
+            </Link>
+          </li>
+          <li className={`${NavStyle.navbar_li} ${pathname == "/proshow" ? NavStyle.active : NavStyle.disabled}`}>
+            <Link href="/proshow">
+              Proshows
+            </Link>
+          </li>
+          <li className={`${NavStyle.navbar_li} ${pathname == "/merchandise" ? NavStyle.active : NavStyle.disabled}`}>
+            <Link href="/merchandise">
+              Merchandise
+            </Link>
+          </li>
+          <li className={`${NavStyle.navbar_li} ${pathname == "/event" || /\/event\/.*/.test(pathname) ? NavStyle.active : NavStyle.disabled}`}>
+            <Link href="/event">
+              Events
+            </Link>
+          </li>
+          {/* <li className={`${NavStyle.navbar_li} ${pathname=="/gallery" ? NavStyle.active : NavStyle.disabled}` }>
                   Gallery
                   </li> */}
 
-                {session ?
-                  (
-                   <>
-                     <li className={`${NavStyle.navbar_li} ${pathname=="/profile" ? NavStyle.active : NavStyle.disabled}` }>
-                      <a href="/profile">
-                        Profile
-                      </a>
-                    </li>
-                    <LogoutDialog logoutHandler={logoutHandler}/>
-                   </>
+          {session ?
+            (
+              <>
+                <li className={`${NavStyle.navbar_li} ${pathname == "/profile" ? NavStyle.active : NavStyle.disabled}`}>
+                  <a href="/profile">
+                    Profile
+                  </a>
+                </li>
+                <LogoutDialog logoutHandler={logoutHandler} />
+              </>
 
-                  ) :
-                  (
-                    <>
-                      <li className={`${NavStyle.navbar_li} ${pathname=="/login" ? NavStyle.active : NavStyle.disabled}` }>
-                        <Link href='/login'>
-                          Login
-                          </Link>
-                        </li>
-                      <li className={`${NavStyle.navbar_li} ${pathname=="/register" ? NavStyle.active : NavStyle.disabled}`}>
-                        <Link href="/register">
-                          Register
-                        </Link>
-                      </li>
-                    </> 
-                  )
-                }
-            </ul>
-        </nav>
+            ) :
+            (
+              <>
+                <li className={`${NavStyle.navbar_li} ${pathname == "/login" ? NavStyle.active : NavStyle.disabled}`}>
+                  <Link href='/login'>
+                    Login
+                  </Link>
+                </li>
+                <li className={`${NavStyle.navbar_li} ${pathname == "/register" ? NavStyle.active : NavStyle.disabled}`}>
+                  <Link href="/register">
+                    Register
+                  </Link>
+                </li>
+              </>
+            )
+          }
+        </ul>
+      </nav>
     </header>
   )
 }
