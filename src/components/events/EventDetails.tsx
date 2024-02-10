@@ -108,7 +108,7 @@ const EventDetails: FC<EventDetailsProps> = ({
             alt="Event Image"
             width={250}
             height={250}
-            className="max-w-[340px] flex-1 lg:block hidden object-cover border-[1.5px] rounded-xl"
+            className="max-w-[340px] flex-1 lg:block hidden object-cover border-[1.5px] rounded-xl  max-h-[290px] min-h-[260px]"
           />
           <div>
             <h1 className={`text-[2.5rem] mb-3 ${JuraFont.className} ${styles.event_head}`}>{event.name.toUpperCase()}</h1>
@@ -319,7 +319,7 @@ const EventDetails: FC<EventDetailsProps> = ({
               ? event.description.split("\r\n").map((point, index) => (
                   <p
                     key={index}
-                    className="leading-8 mx-auto text-justify opacity-90 text"
+                    className="leading-8 mx-auto text-justify opacity-90 text-md px-8"
                   >
                     {point}
                   </p>
@@ -330,7 +330,7 @@ const EventDetails: FC<EventDetailsProps> = ({
                   .map((point, index) => (
                     <p
                       key={index}
-                      className="leading-8 mx-auto w-[85vw] text-justify opacity-90 text-md indent-8"
+                      className="leading-8 mx-auto text-justify opacity-90 text-md px-8"
                     >
                       {point}
                     </p>
@@ -347,7 +347,7 @@ const EventDetails: FC<EventDetailsProps> = ({
         <div>
           <h1 className={`text-3xl mt-4 mb-4 font-bold ${ChakraFont.className}`}>Rules and Regulations</h1>
           {event.rules.split("\r\n").map((point, index) => (
-            <li key={index} className="leading-8 mx-auto w-[85vw] opacity-90 text-justify text-md">
+            <li key={index} className="leading-8 mx-auto opacity-90 text-justify text-md">
               {point}
             </li>
           ))}
@@ -357,7 +357,7 @@ const EventDetails: FC<EventDetailsProps> = ({
             <h1 className={`text-3xl mb-2 font-bold ${ChakraFont.className}`}>Event Incharges</h1>
             {event.incharges.length > 0 &&
               event.incharges.map((incharge) => (
-                <p className="py-2 text-[1.2em] mx-auto w-[85vw]" key={incharge.id}>
+                <p className="py-2 text-[1.2em] mx-auto" key={incharge.id}>
                   {incharge.name + " - " + incharge.contact_number}
                 </p>
               ))}
