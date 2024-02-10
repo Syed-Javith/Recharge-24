@@ -51,13 +51,19 @@ const registerFormSchema = z
     mobile_number: z.string().length(10).regex(phoneNumberRegex, {
       message: "Phone number must contain only numerals",
     }),
+    confirm_mobile_number: z.string().length(10).regex(phoneNumberRegex, {
+      message: "Phone number must contain only numerals",
+    }),
     college: z.string().min(1),
     year: z.number().min(1),
   })
   .refine((data) => data.password === data.confirm_password, {
     message: "Password mismatch.",
     path: ["confirm_password"],
-  });
+  }).refine((data) => data.mobile_number === data.confirm_mobile_number , {
+    message : "Mobile number mismatch",
+    path : ["confirm_mobile_number"]
+  })
 
 const RegisterForm: FC<RegisterFormProps> = ({ }) => {
   const [passwordVisible, setPasswordVisible] = useState(false)
@@ -188,6 +194,21 @@ const RegisterForm: FC<RegisterFormProps> = ({ }) => {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-white">Mobile Number</FormLabel>
+                      <FormControl>
+                        <Input type="password" placeholder="eg: 9876543210" {...field} />
+                      </FormControl>
+                      <FormMessage className="text-red-500" />
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <div className="my-3">
+                <FormField
+                  control={registerForm.control}
+                  name="confirm_mobile_number"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-white">Confirm Mobile Number</FormLabel>
                       <FormControl>
                         <Input type="text" placeholder="eg: 9876543210" {...field} />
                       </FormControl>
