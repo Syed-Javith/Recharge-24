@@ -47,6 +47,7 @@ const Profile: FC<ProfileProps> = ({}) => {
       setError(true);
     },
     onSuccess: async (res) => {
+      console.log(await res.data)
       const tempProfile: UserProfileSchema = await res.data;
       setProfile(tempProfile);
     },

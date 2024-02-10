@@ -51,3 +51,36 @@
       opacity: .8;
   }
 }
+
+.divider {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.first, .second, .third {
+  display: inline-block;
+  height: 2.5px;
+  background-color: white;
+  box-shadow: 0 0 0 transparent, 0 0 10px #09f, 0 0 20px rgba(38,149,255,.5), 0 0 40px #09f, 0 0 100px #09f;
+  animation: pulsate 2s infinite ease-in-out;
+}
+
+.first {
+  /* margin: 0 auto; */
+  width: 75vw;
+}
+
+.second, .third {
+  width: 10vw;
+}
+
+.second {
+  transform-origin: left;
+  transform: rotate(-25deg);
+}
+
+.third {
+  transform-origin: right;
+  transform: rotate(-25deg);
+}
