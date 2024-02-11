@@ -64,7 +64,7 @@ const ProshowList = async ({
       </div>
       <div className={titleFont.className} >
           <h2  className={` ${titleFont.className} ${styles.fastFlicker} flex justify-center items-center mt-6 text-2xl`}>INSTRUCTIONS</h2>
-    <ol className= "ml-20 mt-4">
+    <ol className= "md:ml-20 md:w-[70vw] w-[90vw] ml-auto mt-4">
         <li className="pl-4 sm:pl-0 mb-2 ">1.Participants of Recharge 2024 must carry their institution’s ID along with any of their government issued ID cards on the days of the fest (Aadhaar Card / PAN Card / Driving License, etc.)</li>
         <li className="pl-4 sm:pl-0 mb-2">2.Participants are required to have their registration QR codes with them at all times.</li>
         <li className="pl-4 sm:pl-0 mb-2">3.Participants must wear their wristband at all times during the day and can only take it off after the conclusion of the proshow events.</li>
