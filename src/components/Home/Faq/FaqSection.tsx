@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { BsChevronDown, BsChevronUp } from 'react-icons/bs';
 
 interface FaqSectionProps {
-  question: string;
+  question: string ;
   answer: string;
 }
 

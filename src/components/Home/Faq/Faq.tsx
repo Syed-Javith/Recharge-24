@@ -18,7 +18,7 @@ const FAQ = () => {
       />
       <FaqSection
         question="How do I sign up for events? "
-        answer="All our events are listed on our website. To register, head to https://test.rechargefest.in/event and register for your event of choice. Please note that we will not entertain on-spot registrations."
+        answer= "All our events are listed on our website. To register, head to https://test.rechargefest.in/event and register for your event of choice. Please note that we will not entertain on-spot registrations."
       />
       <FaqSection
         question="Is it possible for me to participate in the events alone and not attend the proshows?"
