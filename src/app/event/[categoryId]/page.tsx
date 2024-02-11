@@ -1,5 +1,5 @@
 import { SSRBaseUrl } from "@/lib/utils"
-import { CategoryEvents } from "@/types/models"
+import { CategoryEvents, EventDetailSchema, EventSchema } from "@/types/models"
 import Link from "next/link"
 import axios from "axios"
 import localFont from 'next/font/local'
@@ -15,11 +15,6 @@ const categoryEvents: CategoryEvents[] = await data
 
 const dateFormatter = (dateStr: string | undefined) : string => {
   if(dateStr==undefined) return '-'
-    // let parts = dateStr.split("-"); 
-    // let rearrangedDateString = parts[2] + "-" + parts[1] + "-" + parts[0];
-    // return rearrangedDateString
-    // Create a new Date object with the specified date
-
   const date = new Date(dateStr);
   const monthNames = [
     "Jan", "Feb", "Mar",
@@ -37,7 +32,7 @@ return (
   <div >
     <h1 className={`text-center ${EventStyle.event_type_heading} ${JuraFont.className}`}>{categoryEvents[0].category_name}</h1>
     <div className={`${EventStyle.event_cards} mb-12 mt-8`}>
-        {categoryEvents[0].events.map((event) => (
+        {categoryEvents[0].events.map((event : EventDetailSchema) => (
         <Link href={"/event/" + params.categoryId + "/" + event.id} key={event.id}>
            <div className={EventStyle.event_card}>
                 <div className={EventStyle.event_border}></div>
@@ -53,7 +48,7 @@ return (
                       <div>  Registration End Date: {dateFormatter(event.registration_end_date)}</div>
                     </div>
                     <p>
-                     {event.short_description.slice(0,80) + ((event.short_description.length>80) ? '...' : '')}
+                     {event?.short_description?.slice(0,80) + ((event.short_description?.length || 0 >80) ? '...' : '')}
                     </p>
                     <button>KNOW MORE</button>
                 </div>
