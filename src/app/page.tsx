@@ -1,6 +1,6 @@
 import Landing from '../components/Home/Landing/Landing'
 import GallerySection from '@/components/gallery/Gallery';
-import FAQ from '@/components/Home/Faq';
+import FAQ from '@/components/Home/Faq/Faq';
 import Footer from '@/components/Home/Footer';
 import AboutSection from '@/components/Home/About/AboutSection';
 import ProshowSection from '@/components/Home/Proshow/ProshowSection';

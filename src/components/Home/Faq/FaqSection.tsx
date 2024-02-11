@@ -8,8 +8,8 @@ interface FaqSectionProps {
   answer: string;
 }
 
-const titleFont = localFont({ src: '../../../public/fonts/Jura.ttf' })
-const subtitleFont = localFont({ src: '../../../public/fonts/chakra.ttf' })
+const titleFont = localFont({ src: '../../../../public/fonts/Jura.ttf' })
+const subtitleFont = localFont({ src: '../../../../public/fonts/Jura.ttf' })
 
 const FaqSection: React.FC<FaqSectionProps> = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);

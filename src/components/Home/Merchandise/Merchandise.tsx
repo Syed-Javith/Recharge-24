@@ -10,7 +10,7 @@ const Merchandise = () => {
         <div className='min-h-screen'>
             <div className="flex md:flex-row flex-col container">
                 <div className='px-4'>
-                    <Neon text='Merchandise' />
+                    <Neon text='MERCHANDISE' />
                     <p className={`${SketchFont.className} text-md`}>
                         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Debitis, mollitia beatae quaerat quisquam officiis voluptates quos id sed facilis vitae totam ut eos exercitationem. Cumque incidunt quas quod placeat non!
                     </p>
