@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/Button'
 const SketchFont = localFont({ src: '../../../../public/fonts/chakra.ttf' })
 const Merchandise = () => {
     return (
-        <div className='w-[50%] m-auto'>
+        <div className='md:w-[50%] w-[80vh] m-auto'>
             <div className="flex md:flex-row flex-col container">
                 <div className='px-4'>
                     <Neon text='MERCHANDISE' />
