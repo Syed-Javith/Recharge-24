@@ -21,7 +21,7 @@ const Merchandise = () => {
                     </Link>
                 </div>
                 <div>
-                    <img src="/shirt.gif" alt="" />
+                    <img src="/shirt-unscreen.gif" alt="" />
                 </div>
             </div>
         </div>
