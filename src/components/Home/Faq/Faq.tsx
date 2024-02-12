@@ -12,10 +12,10 @@ const FAQ = () => {
         question="Can transportation be availed on all three days of Recharge'24?"
         answer="Yes, absolutely! Buses will ply from all main routes to and from the college after the proshows. If you want to know bus route details and get other transport-related information, please visit rectransport.com"
       />
-      <FaqSection
+      {/* <FaqSection
         question="Merch"
         answer="Merch"
-      />
+      /> */}
       <FaqSection
         question="How do I sign up for events? "
         answer= "All our events are listed on our website. To register, head to https://test.rechargefest.in/event and register for your event of choice. Please note that we will not entertain on-spot registrations."
