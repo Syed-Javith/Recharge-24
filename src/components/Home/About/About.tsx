@@ -7,12 +7,13 @@ import Neon from '@/components/Text/Neon'
 const SketchFont = localFont({ src: '../../../../public/fonts/Jura.ttf' })
 
 interface AboutProps {
-    image : string ,
+    image? : string ,
+    video? : string ,
     content : string,
     title : string,
     isReverse : boolean
 }
-const About : FC<AboutProps> = ({ image , content , title , isReverse}) => {
+const About : FC<AboutProps> = ({ image , video , content , title , isReverse}) => {
   return (
     <>
       <div
@@ -23,14 +24,21 @@ const About : FC<AboutProps> = ({ image , content , title , isReverse}) => {
           className="basis-1/2 flex justify-center items-center video-border max-w-fit max-h-fit my-8"
         >
 
+          { 
+          image && 
           <img
             className={`shadow-2xl  rounded-xl  z-10 neon-border ${AboutStyle.cut}`}
             id="about-img"
             src={image}
-            alt=""
             width={3000}
             height={1000}
           />
+           }
+          {
+            video 
+            &&
+            <video muted className={`shadow-2xl  rounded-xl  z-10 neon-border ${AboutStyle.cut}`} loop autoPlay src={video} typeof='video/mp4'></video>
+          }
         </div>
 
         <div id="right" className="basis-1/2 flex flex-col gap-y-5">
