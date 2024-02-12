@@ -33,9 +33,9 @@ const DesktopProfile = ({ profile , setProfile } : { profile : UserProfileSchema
                             <div className={`${Style.eChild} mr-auto`}>
                                 <h1 className={`${SketchFont.className}`}> {profile.first_name + " " + profile.last_name} </h1>
                             </div>
-                            <div className={`${Style.eChild} mr-8`}>
+                            {/* <div className={`${Style.eChild} mr-8`}>
                                 <EditProfileForm profile={profile} setProfile={setProfile}/>
-                            </div>
+                            </div> */}
                         </div>
                                 <h3> {profile.college } </h3>
                         <p className={`${Style.bio} flex md:flex-row sm:flex-col flex-wrap gap-4`}>

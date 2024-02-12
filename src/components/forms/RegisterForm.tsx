@@ -31,10 +31,7 @@ import FormStyle from "./auth.module.css"
 interface RegisterFormProps { }
 
 type registerFormPayload = z.infer<typeof registerFormSchema>;
-
-const passwordRegex = new RegExp("^(?=.*[a-zA-Z]{6,})[a-zA-Z0-9]*$");
-const phoneNumberRegex = new RegExp("^([0-9]{10,})$");
-
+const phoneRegex = RegExp("^[0-9]{10}$")
 const registerFormSchema = z
   .object({
     email: z
@@ -42,14 +39,12 @@ const registerFormSchema = z
       .email({ message: "Your email is not of correct format." })
       .min(1)
       .max(254),
-    password: z.string().min(6).max(128).regex(passwordRegex, {
-      message: "The Password must contain minimum 6 Alphabets",
-    }),
+    password: z.string().min(6).max(128),
     confirm_password: z.string().min(1).max(128),
     first_name: z.string().min(1),
     last_name: z.string().min(1),
-    mobile_number: z.string().length(6).min(6).max(128),
-    confirm_mobile_number: z.string().min(6).max(128),
+    mobile_number: z.string().length(10, { message : "Your phone number must contain 10 digits" }).regex(phoneRegex,{ message : "Phone number must contain only numbers" }),
+    confirm_mobile_number: z.string().length(10, { message : "Your phone number must contain 10 digits" }),
     college: z.string().min(1),
     year: z.number().min(1),
   })
@@ -206,7 +201,7 @@ const RegisterForm: FC<RegisterFormProps> = ({ }) => {
                     <FormItem>
                       <FormLabel className="text-white">Confirm Mobile Number</FormLabel>
                       <FormControl>
-                        <Input type="text" placeholder="eg: 9876543210" {...field} />
+                        <Input type="number" placeholder="eg: 9876543210" {...field} />
                       </FormControl>
                       <FormMessage className="text-red-500" />
                     </FormItem>
