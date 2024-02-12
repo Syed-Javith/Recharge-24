@@ -15,7 +15,7 @@ const page = () => {
             
                 </h1>
             <div className={`md:text-[1.25rem] flex flex-col gap-4 text-justify md:px-12 p-4  ${paraFont.className}`}>
-                <p>Boasting over 100+ events, ranging from music and dance to sports and various other exciting genres, Recharge'24 is set to provide students from across the nation a platform to showcase their talents and express themselves. Recharge&apos;24 will feature an exciting lineup of celebrities, covering electrifying music performances from musical guests and  DJs, as well as iconic personalities with a sports background. </p>
+                <p>Boasting over 100+ events, ranging from music and dance to sports and various other exciting genres, Recharge&pos;24 is set to provide students from across the nation a platform to showcase their talents and express themselves. Recharge&apos;24 will feature an exciting lineup of celebrities, covering electrifying music performances from musical guests and  DJs, as well as iconic personalities with a sports background. </p>
 
                 <p>Boasting over 100+ events, ranging from music and dance to sports and various other exciting genres, Recharge&apos;24 is set to provide students from across the nation a platform to showcase their talents and express themselves. </p>
 
