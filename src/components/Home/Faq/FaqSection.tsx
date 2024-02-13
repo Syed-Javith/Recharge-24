@@ -5,7 +5,7 @@ import { BsChevronDown, BsChevronUp } from 'react-icons/bs';
 
 interface FaqSectionProps {
   question: string ;
-  answer: string;
+  answer: JSX.Element;
 }
 
 const titleFont = localFont({ src: '../../../../public/fonts/Jura.ttf' })
