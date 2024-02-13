@@ -118,6 +118,8 @@ const Profile: FC<ProfileProps> = ({ }) => {
           })
         }
       </div>
+      <div className={`${Style.glowingLine}`}></div>
+
       <div className="text-center m-auto">
         <Neon text={(profile.event_registrations.filter((c) => c.category === 14 ).length == 0) ? "No Merchandise bought" : "Merchandise T-Shirts"} />
       </div>
