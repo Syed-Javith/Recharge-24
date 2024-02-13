@@ -28,6 +28,7 @@ const dateFormatter = (dateStr: string | undefined) : string => {
   return month + " " + day;
 }
 
+
 return (
   <div >
     <h1 className={`text-center ${EventStyle.event_type_heading} ${JuraFont.className}`}>{categoryEvents[0].category_name}</h1>

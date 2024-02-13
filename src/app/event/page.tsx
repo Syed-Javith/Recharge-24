@@ -20,7 +20,7 @@ const page = async () => {
       <Neon text="CATEGORIES" />
       </div>
       <div className="flex justify-center items-center flex-wrap category-container">
-        {categories.map((category) => (
+        {categories.filter((c) => c.id !== 14).map((category) => (
           category.events_count != 0 &&
           <Link key={category.id} href={"/event/" + category.id}>
             <div className={`mb-12 ${CatStyle.category_element}`}>

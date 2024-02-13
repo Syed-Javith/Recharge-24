@@ -40,7 +40,7 @@ const Navbar = ({ session }: SesstionType) => {
       method: "post",
     });
 
-    toast("Success", {
+    toast.success("Success", {
       description: "You were logged out successfully.",
     });
     console.log("inDevEnv", inDevEnvironment);
@@ -87,10 +87,6 @@ const Navbar = ({ session }: SesstionType) => {
               Events
             </Link>
           </li>
-          {/* <li className={`${NavStyle.navbar_li} ${pathname=="/gallery" ? NavStyle.active : NavStyle.disabled}` }>
-                  Gallery
-                  </li> */}
-
           {session ?
             (
               <>

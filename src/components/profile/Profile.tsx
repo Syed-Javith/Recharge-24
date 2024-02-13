@@ -111,7 +111,27 @@ const Profile: FC<ProfileProps> = ({ }) => {
       }
       <div className="grid md:grid-cols-3 sm:grid-cols-1 gap-8 m-auto mt-8 justify-center">
         {
-          profile.event_registrations.map((event, index) => {
+          profile.event_registrations.filter((e) => e.category != 14).map((event, index) => {
+            return (
+              <EventTicket eventDetail={event} key={index} />
+            )
+          })
+        }
+      </div>
+      <div className="text-center m-auto">
+        <Neon text={(profile.event_registrations.filter((c) => c.category === 14 ).length == 0) ? "No Merchandise bought" : "Merchandise T-Shirts"} />
+      </div>
+      {
+        profile.event_registrations.filter((c) => c.category === 14 ).length == 0 &&
+        <Link href={'/merchandise'} className="m-auto mt-6">
+          <Button>
+            Buy Merchandise now
+          </Button>
+        </Link>
+      }
+      <div className="grid md:grid-cols-3 sm:grid-cols-1 gap-8 m-auto mt-8 justify-center">
+        {
+          profile.event_registrations.filter((e) => e.category === 14).map((event, index) => {
             return (
               <EventTicket eventDetail={event} key={index} />
             )

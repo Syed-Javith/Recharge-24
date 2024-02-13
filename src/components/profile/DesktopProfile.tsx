@@ -33,9 +33,6 @@ const DesktopProfile = ({ profile , setProfile } : { profile : UserProfileSchema
                             <div className={`${Style.eChild} mr-auto`}>
                                 <h1 className={`${SketchFont.className}`}> {profile.first_name + " " + profile.last_name} </h1>
                             </div>
-                            {/* <div className={`${Style.eChild} mr-8`}>
-                                <EditProfileForm profile={profile} setProfile={setProfile}/>
-                            </div> */}
                         </div>
                                 <h3> {profile.college } </h3>
                         <p className={`${Style.bio} flex md:flex-row sm:flex-col flex-wrap gap-4`}>
@@ -46,7 +43,7 @@ const DesktopProfile = ({ profile , setProfile } : { profile : UserProfileSchema
                             <div className='w-fit whitespace-nowrap'><span className='font-bold'>Events : </span>{ profile.event_registrations.length}</div>
                         </p>
                     </div>
-                    <img src="https://user-images.githubusercontent.com/9884985/60099529-1fec3200-9758-11e9-99f1-2a1e72c9a3bc.png" alt="QR code"/>
+                    <img src={profile.qr_code ?? "/no-image.jpg"} alt="QR code"/>
                 </div>
             </div>
         </div>

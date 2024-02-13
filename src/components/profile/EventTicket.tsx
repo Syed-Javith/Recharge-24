@@ -4,8 +4,9 @@ import Style from "./profile.module.css";
 import "./profile.module.css";
 
 const EventTicket = ({ eventDetail }: { eventDetail: EventDetailSchema }) => {
+    console.log(eventDetail);
     return(
-        <>
+       <>
             <div className={`${Style.profileEventCard}`}>
             <div className={`${Style.topSection}`}>
                 <div className={`${Style.border}`}></div>
@@ -18,13 +19,6 @@ const EventTicket = ({ eventDetail }: { eventDetail: EventDetailSchema }) => {
                     {
                         eventDetail.team_event ? <UsersRound className="text-white"/> : <UserRound className="text-white"/>
                     }
-                    {/* <p>
-                        {( (eventDetail.event_registration[0].team.length === 0 ) ? 1 : eventDetail?.event_registration[0].team[0].members.length)}
-                    </p>
-                    {
-                        ( (eventDetail != undefined  && eventDetail.event_registration && eventDetail.event_registration.length > 0 && eventDetail?.event_registration[0]?.team[0]?.members?.length == null) ? 1 : eventDetail?.event_registration[0].team[0].members.length) == eventDetail.team_max ?
-                        <CheckCircle2 className={"text-emerald-500"/> : <></>
-                    } */}
                 </div>
                 </div>
             </div>
@@ -47,6 +41,7 @@ const EventTicket = ({ eventDetail }: { eventDetail: EventDetailSchema }) => {
             </div>
             </div>
         </>
+        
     );
 }
 
