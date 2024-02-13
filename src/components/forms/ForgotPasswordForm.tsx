@@ -25,12 +25,9 @@ import FormStyle from "./auth.module.css"
 interface ForgotPasswordFormProps { }
 
 const passwordRegex = new RegExp("^(?=.*[a-zA-Z]{6,})[a-zA-Z0-9]*$");
-const forgotPasswordSchema = z
-  .object({
+const forgotPasswordSchema = z.object({
     email: z.string().email({ message: "Provide valid mail address" }),
-    password: z.string().min(6).max(128).regex(passwordRegex, {
-      message: "Password should contain minimum 6 Alphabets"
-    }),
+    password: z.string().min(6).max(128),
     confirm_password: z.string().min(6).max(128),
   })
   .refine((data) => data.confirm_password === data.password, {
@@ -132,7 +129,7 @@ const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({ }) => {
                         <Input
                           type={passwordVisible ? "text" : "password"}
                           // placeholder="password"
-                          placeholder="min. 6 alphabets"
+                          placeholder="min. 6 characters required"
                           autoComplete="off"
                           {...field}
                         />

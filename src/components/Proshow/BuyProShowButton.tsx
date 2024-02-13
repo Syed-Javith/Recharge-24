@@ -67,6 +67,8 @@ const BuyProShowButton: FC<BuyProShowButtonProps> = ({
     },
   });
 
+  const text = ( label === "Premium" ) ? "Fanpit" : ( label === "Premium combo") ?  "Fanpit Combo" : label
+ 
   return (
     <Button
     
@@ -76,7 +78,7 @@ const BuyProShowButton: FC<BuyProShowButtonProps> = ({
       disabled={isPending || disabled}
       style={{ display: 'flex', alignItems: 'center' }}
     >
-      {(disabled ? is_registered ? "Already Bought " : "Can't Buy " : "Buy ") + label} {isPending && <Loader2 className="animate-spin ml-2" />}
+      {(disabled ? is_registered ? "Already Bought " : "Can't Buy " : "Buy ") + text} {isPending && <Loader2 className="animate-spin ml-2" />}
     </Button>
   );
 };

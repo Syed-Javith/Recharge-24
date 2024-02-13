@@ -171,7 +171,7 @@ div.fin_row_5 h3 {
     height: 650px;
     /* width: 95vh; */
     object-fit: cover;
-    opacity: 0.15;
+    opacity: 0.25;
     animation: rotateClockwise 120s linear infinite;
     align-self: center;
     justify-self: center;
@@ -251,7 +251,7 @@ div.fin_row_5 h3 {
 
     .eye {
         height: auto;
-        opacity: 0.25;
+        opacity: 0.35;
         transform: scale(3);
     }
 

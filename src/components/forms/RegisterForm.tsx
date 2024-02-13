@@ -31,10 +31,7 @@ import FormStyle from "./auth.module.css"
 interface RegisterFormProps { }
 
 type registerFormPayload = z.infer<typeof registerFormSchema>;
-
-const passwordRegex = new RegExp("^(?=.*[a-zA-Z]{6,})[a-zA-Z0-9]*$");
-const phoneNumberRegex = new RegExp("^([0-9]{10,})$");
-
+const phoneRegex = RegExp("^[0-9]{10}$")
 const registerFormSchema = z
   .object({
     email: z
@@ -42,22 +39,22 @@ const registerFormSchema = z
       .email({ message: "Your email is not of correct format." })
       .min(1)
       .max(254),
-    password: z.string().min(6).max(128).regex(passwordRegex, {
-      message: "The Password must contain minimum 6 Alphabets",
-    }),
+    password: z.string().min(6).max(128),
     confirm_password: z.string().min(1).max(128),
     first_name: z.string().min(1),
     last_name: z.string().min(1),
-    mobile_number: z.string().length(10).regex(phoneNumberRegex, {
-      message: "Phone number must contain only numerals",
-    }),
+    mobile_number: z.string().length(10, { message : "Your phone number must contain 10 digits" }).regex(phoneRegex,{ message : "Phone number must contain only numbers" }),
+    confirm_mobile_number: z.string().length(10, { message : "Your phone number must contain 10 digits" }),
     college: z.string().min(1),
     year: z.number().min(1),
   })
   .refine((data) => data.password === data.confirm_password, {
     message: "Password mismatch.",
     path: ["confirm_password"],
-  });
+  }).refine((data) => data.mobile_number === data.confirm_mobile_number , {
+    message : "Mobile number mismatch",
+    path : ["confirm_mobile_number"]
+  })
 
 const RegisterForm: FC<RegisterFormProps> = ({ }) => {
   const [passwordVisible, setPasswordVisible] = useState(false)
@@ -189,7 +186,22 @@ const RegisterForm: FC<RegisterFormProps> = ({ }) => {
                     <FormItem>
                       <FormLabel className="text-white">Mobile Number</FormLabel>
                       <FormControl>
-                        <Input type="text" placeholder="eg: 9876543210" {...field} />
+                        <Input type="password" placeholder="eg: 9876543210" {...field} />
+                      </FormControl>
+                      <FormMessage className="text-red-500" />
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <div className="my-3">
+                <FormField
+                  control={registerForm.control}
+                  name="confirm_mobile_number"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-white">Confirm Mobile Number</FormLabel>
+                      <FormControl>
+                        <Input type="number" placeholder="eg: 9876543210" {...field} />
                       </FormControl>
                       <FormMessage className="text-red-500" />
                     </FormItem>
@@ -252,7 +264,7 @@ const RegisterForm: FC<RegisterFormProps> = ({ }) => {
                       <FormLabel className="text-white">Create your own Password</FormLabel>
                       <FormControl>
                         <div className="flex flex-row gap-4">
-                          <Input type={passwordVisible ? "text" : "password"} placeholder="Password Min. 6 alphabets" {...field} />
+                          <Input type={passwordVisible ? "text" : "password"} placeholder="min. 6 characters required" {...field} />
                           <Button className={FormStyle.eye_btn} type="button" onClick={() => setPasswordVisible(!passwordVisible)}>
                             {
                               passwordVisible ? <EyeIcon size={20} /> : <EyeOff size={20} />

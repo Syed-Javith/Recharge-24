@@ -16,7 +16,7 @@ const GallerySlider = ({ data }: GallerySliderProps) => {
         {
           data?.map((image: any, index: number) => {
             return(
-              <GalleryCard imgURL={image.url} key={index}/>
+              <GalleryCard key={index} imgURL={image.url}/>
             );
           })
         }

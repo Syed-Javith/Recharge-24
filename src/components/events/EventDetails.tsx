@@ -319,7 +319,7 @@ const EventDetails: FC<EventDetailsProps> = ({
               ? event.description.split("\r\n").map((point, index) => (
                   <p
                     key={index}
-                    className="leading-8 mx-auto text-justify opacity-90 text-md"
+                    className="leading-8 mx-auto text-justify opacity-90 text-md px-8"
                   >
                     {point}
                   </p>
@@ -330,7 +330,7 @@ const EventDetails: FC<EventDetailsProps> = ({
                   .map((point, index) => (
                     <p
                       key={index}
-                      className="leading-8 mx-auto text-justify opacity-90 text-md"
+                      className="leading-8 mx-auto text-justify opacity-90 text-md px-8"
                     >
                       {point}
                     </p>
