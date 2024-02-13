@@ -6,7 +6,7 @@ import { cookies } from 'next/headers';
 import React from 'react'
 
 const page = async() => {
-    const { data } = await axios.get(SSRBaseUrl + "event/category/1/events/", {
+    const { data } = await axios.get(SSRBaseUrl + "event/category/7/events/", {
         headers: { Cookie: cookies().toString() },
       });
     const merchandise: CategoryEvents[] = await data;

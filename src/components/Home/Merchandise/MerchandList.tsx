@@ -25,6 +25,8 @@ const MerchandList = ({ merchandise }: MerchandListProps) => {
       });
   };
   console.log(merchandise[0].events);
+  console.log(merchandise);
+  
   return (
     <div>
       <div className="text-center mt-20">
