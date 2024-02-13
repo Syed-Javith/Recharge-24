@@ -21,7 +21,7 @@ export type EventDetailSchema = {
   id: number;
   incharges: EventInchargeSchema[];
   registration_count: number;
-  is_registered: string; 
+  is_registered: boolean; 
   event_registration: array; 
   name: string;
   short_description: string | null;

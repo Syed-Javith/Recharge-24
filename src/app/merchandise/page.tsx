@@ -1,13 +1,18 @@
-import Neon from '@/components/Text/Neon'
+import MerchandList from '@/components/Home/Merchandise/MerchandList';
+import { SSRBaseUrl } from '@/lib/utils';
+import { CategoryEvents } from '@/types/models';
+import axios from 'axios';
+import { cookies } from 'next/headers';
 import React from 'react'
 
-const page = () => {
+const page = async() => {
+    const { data } = await axios.get(SSRBaseUrl + "event/category/14/events/", {
+        headers: { Cookie: cookies().toString() },
+      });
+    const merchandise: CategoryEvents[] = await data;
+
     return (
-        <div>
-            <div className="text-center mt-20">
-                <Neon text='Merchandise' />
-            </div>
-        </div>
+        <MerchandList merchandise={merchandise} />
     )
 }
 
