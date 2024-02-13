@@ -113,8 +113,8 @@ const Profile: FC<ProfileProps> = ({ }) => {
         {
           profile.event_registrations.filter((e) => !e.name.match(/Merchandise/i)).map((event, index) => {
             return (
-              <Link href={`/event/${event.category}/${event.id}`}>
-                <EventTicket eventDetail={event} key={index} />
+              <Link key={index} href={`/event/${event.category}/${event.id}`}>
+                <EventTicket eventDetail={event} />
               </Link>
             )
           })
