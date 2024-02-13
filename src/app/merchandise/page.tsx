@@ -12,7 +12,9 @@ const page = async() => {
     const merchandise: CategoryEvents[] = await data;
 
     return (
-        <MerchandList merchandise={merchandise} />
+        <div className='flex md:flex-row flex-col gap-8'>
+            <MerchandList merchandise={merchandise} />
+        </div>
     )
 }
 
