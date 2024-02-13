@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import DialogBox from "../DialogBox";
 import DesktopProfile from "./DesktopProfile";
+import MerchandiseTicket from "./MerchandiseTicket";
 import Loader from "../loader/Loader";
 import ProshowTicket from "./ProshowTicket";
 import EventTicket from "./EventTicket";
@@ -92,7 +93,7 @@ const Profile: FC<ProfileProps> = ({ }) => {
               day={proshow.day}
               show_name={proshow.name}
               guest_name={proshow.day == 1 ? "Celeb 1" : (proshow.day == 2 ? "celeb 2" : "Celeb 3")}
-              time={"6:00 PM"}
+              premium={proshow.premium}
             />
           );
         })
@@ -133,11 +134,16 @@ const Profile: FC<ProfileProps> = ({ }) => {
           </Button>
         </Link>
       }
-      <div className="grid md:grid-cols-3 sm:grid-cols-1 gap-8 m-auto mt-8 justify-center">
+      <div className="grid md:grid-cols-3 sm:grid-cols-1 gap-8 m-auto mt-8 ml-4 mr-4 justify-center">
         {
           profile.event_registrations.filter((e) =>  e.name.match(/Merchandise/i) ).map((event, index) => {
             return (
-              <EventTicket eventDetail={event} key={index} />
+              <>
+              <MerchandiseTicket merchandiseDetail={event} key={index} />
+              <MerchandiseTicket merchandiseDetail={event} key={index} />
+              <MerchandiseTicket merchandiseDetail={event} key={index} />
+              <MerchandiseTicket merchandiseDetail={event} key={index} />
+              </>
             )
           })
         }

@@ -4,7 +4,6 @@ import Style from "./profile.module.css";
 import "./profile.module.css";
 
 const EventTicket = ({ eventDetail }: { eventDetail: EventDetailSchema }) => {
-    console.log(eventDetail);
     return(
        <>
             <div className={`${Style.profileEventCard}`}>
