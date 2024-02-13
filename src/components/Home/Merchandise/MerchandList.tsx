@@ -38,7 +38,7 @@ const MerchandList = ({ merchandise }: MerchandListProps) => {
             key={merchand.id}
             className="w-[500px] p-4 border-2 border-white rounded-md"
           >
-            <h2>{merchand.name.split("-")[0]}</h2>
+            <h2>{merchand.name.split(" ").slice(0,3).join(" ")}</h2>
             <img src={merchand.image} alt=""/>
             <div className="mt-2">Size: {merchand.short_description}</div>
             <div className="mt-2">Pay: ₹{merchand.pay}</div>

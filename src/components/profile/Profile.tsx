@@ -102,7 +102,7 @@ const Profile: FC<ProfileProps> = ({ }) => {
         <Neon text={(profile.event_registrations.length == 0) ? "No Events Registered" : "Registered Events"} />
       </div>
       {
-        profile.event_registrations.length == 0 &&
+        profile.event_registrations.filter((e) => !e.name.match(/Merchandise/i)).length == 0 &&
         <Link href={'/event'} className="m-auto mt-6">
           <Button>
             Register events now
@@ -111,9 +111,11 @@ const Profile: FC<ProfileProps> = ({ }) => {
       }
       <div className="grid md:grid-cols-3 sm:grid-cols-1 gap-8 m-auto mt-8 justify-center">
         {
-          profile.event_registrations.filter((e) => e.category != 14).map((event, index) => {
+          profile.event_registrations.filter((e) => !e.name.match(/Merchandise/i)).map((event, index) => {
             return (
-              <EventTicket eventDetail={event} key={index} />
+              <Link href={`/event/${event.category}/${event.id}`}>
+                <EventTicket eventDetail={event} key={index} />
+              </Link>
             )
           })
         }
