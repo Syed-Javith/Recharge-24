@@ -4,7 +4,8 @@ import "./gallery.css";
 const ImageData = [
   {
     name: "No Name",
-    url: "jonita.jpeg"
+    // url: "jonita.jpeg"
+    url: "new_jonita.webp"
   },
   {
     name: "No Name",
@@ -20,7 +21,8 @@ const ImageData = [
   },
   {
     name: "No Name",
-    url: "sunburn.jpeg"
+    // url: "sunburn.jpeg"
+    url: "new_sunburn.webp"
   },
   {
     name: "No Name",
@@ -32,7 +34,8 @@ const ImageData = [
   },
   {
     name: "No Name",
-    url: "rugged.webp"
+    // url: "rugged.webp"
+    url: "andrea.webp"
   },
   // {
   //   name: "No Name",
