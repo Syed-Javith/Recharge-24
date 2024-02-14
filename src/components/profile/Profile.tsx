@@ -140,9 +140,6 @@ const Profile: FC<ProfileProps> = ({ }) => {
             return (
               <>
               <MerchandiseTicket merchandiseDetail={event} key={index} />
-              <MerchandiseTicket merchandiseDetail={event} key={index} />
-              <MerchandiseTicket merchandiseDetail={event} key={index} />
-              <MerchandiseTicket merchandiseDetail={event} key={index} />
               </>
             )
           })

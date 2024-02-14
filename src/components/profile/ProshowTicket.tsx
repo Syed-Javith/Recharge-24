@@ -20,7 +20,7 @@ const ProshowTicket = ({imgURL, day, show_name, guest_name, premium}: ProshowTic
         <div className={`${Style.proshowTicket}`}>
             <div className={`${Style.glass}`}></div>
             <div className={`${Style.celebrityImage}`}>
-                <img src="https://media.pitchfork.com/photos/60db53e71dfc7ddc9f5086f9/1:1/w_1656,h_1656,c_limit/Olivia-Rodrigo-Sour-Prom.jpg" alt="image"/>
+                <img src={ imgURL === null ? "https://media.pitchfork.com/photos/60db53e71dfc7ddc9f5086f9/1:1/w_1656,h_1656,c_limit/Olivia-Rodrigo-Sour-Prom.jpg" : imgURL } alt="image"/>
             </div>
             <div className={`${Style.proshowDetails}`}>
                 <div className={`${Style.proshowName}`}>
