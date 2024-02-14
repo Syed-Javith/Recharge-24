@@ -8,9 +8,9 @@ import ProshowList from "@/components/Proshow/ProshowList";
 
 const page = async ({}) => {
   const session = await getAuthSession();
-  if (!session) {
+  // if (!session) {
     return <DialogBox />;
-  }
+  // }
   const is_rec = session?.id.includes("rajalakshmi.edu.in") || session?.id.includes("ritchennai.edu.in") || false;
   const { data: shows } = await axios.get(SSRBaseUrl + "proshow/proshows/", {
     headers: { Cookie: cookies().toString() },

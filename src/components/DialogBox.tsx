@@ -21,15 +21,12 @@ const DialogBox = () => {
         <AlertDialog open={open} onOpenChange={setOpen} >
             <AlertDialogContent>
                 <AlertDialogHeader>
-                    <AlertDialogTitle>Please login to continue</AlertDialogTitle>
-                    {/* <AlertDialogDescription>
-                        You Have not logged in, Please Login and visit back to buy tickets.
-                    </AlertDialogDescription> */}
+                    <AlertDialogTitle>Will be revealed soon !</AlertDialogTitle>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                    <Link href={'/login'}>
+                    <Link href={'/'}>
                         <Button asChild>
-                            <span>Login</span>
+                            <span>Go Back</span>
                         </Button>
                     </Link>
                 </AlertDialogFooter>

@@ -4,11 +4,25 @@ import "./gallery.css";
 const ImageData = [
   {
     name: "No Name",
-    url: "jonita.webp"
+    // url: "jonita.jpeg"
+    url: "new_jonita.webp"
   },
   {
     name: "No Name",
-    url: "gvm.webp"
+    url: "gvm.jpeg"
+  },
+  {
+    name: "No Name",
+    url: "masala_cafe_2.jpeg"
+  },
+  {
+    name: "No Name",
+    url: "raina.jpeg"
+  },
+  {
+    name: "No Name",
+    // url: "sunburn.jpeg"
+    url: "new_sunburn.webp"
   },
   {
     name: "No Name",
@@ -16,23 +30,12 @@ const ImageData = [
   },
   {
     name: "No Name",
-    url: "raina.webp"
+    url: "comedy.jpeg"
   },
   {
     name: "No Name",
-    url: "sunburn_2.webp"
-  },
-  {
-    name: "No Name",
-    url: "masala_cafe_2.webp"
-  },
-  {
-    name: "No Name",
-    url: "show.webp"
-  },
-  {
-    name: "No Name",
-    url: "rugged.webp"
+    // url: "rugged.webp"
+    url: "andrea.webp"
   },
   // {
   //   name: "No Name",

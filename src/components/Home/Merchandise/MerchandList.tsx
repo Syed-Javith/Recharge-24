@@ -32,7 +32,7 @@ const MerchandList = ({ merchandise }: MerchandListProps) => {
       <div className="text-center mt-20">
         <Neon text="Merchandise" />
       </div>
-      <div className="flex m-auto gap-4 max-w-[1000px] mt-5 items-center justify-center">
+      <div className="flex md:flex-row flex-col m-auto gap-4 max-w-[800px] mt-5 items-center justify-center">
         {merchandise[0].events.map((merchand: EventDetailSchema) => (
           <div
             key={merchand.id}

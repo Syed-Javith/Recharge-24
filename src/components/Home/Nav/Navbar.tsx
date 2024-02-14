@@ -77,11 +77,11 @@ const Navbar = ({ session }: SesstionType) => {
               Proshows
             </Link>
           </li>
-          <li className={`${NavStyle.navbar_li} ${pathname == "/merchandise" ? NavStyle.active : NavStyle.disabled}`}>
+          {/* <li className={`${NavStyle.navbar_li} ${pathname == "/merchandise" ? NavStyle.active : NavStyle.disabled}`}>
             <Link href="/merchandise">
               Merchandise
             </Link>
-          </li>
+          </li> */}
           <li className={`${NavStyle.navbar_li} ${pathname == "/event" || /\/event\/.*/.test(pathname) ? NavStyle.active : NavStyle.disabled}`}>
             <Link href="/event">
               Events
