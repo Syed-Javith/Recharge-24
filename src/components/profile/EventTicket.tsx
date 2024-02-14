@@ -33,10 +33,10 @@ const EventTicket = ({ eventDetail }: { eventDetail: EventDetailSchema }) => {
                     <span className={`${Style.bigText}`}>AT</span>
                     <span className={`${Style.regularText}`}>{ eventDetail.venue }</span>
                 </div>
-                <div className={`${Style.item}`}>
+                {/* <div className={`${Style.item}`}>
                     <span className={`${Style.bigText}`}>{ eventDetail.registration_count }</span>
                     <span className={`${Style.regularText}`}>Slots Occupied</span>
-                </div>
+                </div> */}
                 </div>
             </div>
             </div>

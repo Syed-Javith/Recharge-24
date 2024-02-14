@@ -33,7 +33,7 @@ const FAQ = () => {
         question="Is it possible for me to participate in the events alone and not attend the proshows?"
         answer={(
           <span>
-            Although we&apos;d love for you to attend the proshows, it is not mandatory for you to purchase proshow passes to participate in our events. Please remember that you will have to leave the college premises before the proshows begin and you will have to arrange for transport on your own. 
+            Oh yes! Recharge proshows are open to all! Keep an eye on our instagram handle @recharge_fest where we will update you 
           </span>
         )}
       />

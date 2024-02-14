@@ -68,10 +68,10 @@ const Landing = () => {
                     <img src="/Landing/fin1.png" className={`${LandingStyles.fin} ${LandingStyles.fin_5} ${LandingStyles.fin_l}`} />
                     <img src="/Landing/fin2.png" className={`${LandingStyles.fin} ${LandingStyles.fin_5} ${LandingStyles.fin_r}`} />
 
-                    <button className={`${LandingStyles.btn} ${LandingStyles.front_btn}`}>
+                    {/* <button className={`${LandingStyles.btn} ${LandingStyles.front_btn}`}>
                         <Link href={'/proshow'}>BUY PROSHOW TICKETS</Link>
                     </button>
-                    <button className={`${LandingStyles.btn} ${LandingStyles.bg_btn}`}>BUY PROSHOW TICKETS</button>
+                    <button className={`${LandingStyles.btn} ${LandingStyles.bg_btn}`}>BUY PROSHOW TICKETS</button> */}
 
                     <h3 className={LandingStyles.landing_h3}>
                         <Link href='/event'>
