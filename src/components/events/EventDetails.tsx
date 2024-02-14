@@ -108,7 +108,7 @@ const EventDetails: FC<EventDetailsProps> = ({
             alt="Event Image"
             width={250}
             height={250}
-            className="max-w-[340px] flex-1 lg:block hidden object-cover border-[1.5px] rounded-xl  max-h-[290px] min-h-[260px]"
+            className="max-w-[340px] flex-1 lg:block hidden object-cover border-[1.5px] rounded-xl   min-h-[260px]"
           />
           <div>
             <h1 className={`text-[2.5rem] mb-3 ${JuraFont.className} ${styles.event_head}`}>{event.name.toUpperCase()}</h1>
@@ -335,14 +335,14 @@ const EventDetails: FC<EventDetailsProps> = ({
                       {point}
                     </p>
                   )))}
-          <div className="text-right">
+          {(event.description && event.description.split("\r\n").length>1) &&<div className="text-right">
             <span
               className="inline-block text-center text-slate-300 text-lg px-3 py-1 mt-2 mr-8 rounded-md cursor-pointer border-slate-300 border-[1.5px]"
               onClick={() => setShowDescription(!showDescription)}
             >
               {showDescription ? "Read Less" : "Read More"}
             </span>
-          </div>
+          </div>}
         </div>
         <div>
           <h1 className={`text-3xl mt-4 mb-4 font-bold ${ChakraFont.className}`}>Rules and Regulations</h1>
