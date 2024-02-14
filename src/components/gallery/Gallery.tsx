@@ -4,7 +4,7 @@ import "./gallery.css";
 const ImageData = [
   {
     name: "No Name",
-    url: "jonita.webp"
+    url: "jonita.jpeg"
   },
   {
     name: "No Name",
@@ -12,7 +12,7 @@ const ImageData = [
   },
   {
     name: "No Name",
-    url: "masala_cafe.webp"
+    url: "masala_cafe_2.jpg"
   },
   {
     name: "No Name",
@@ -20,15 +20,15 @@ const ImageData = [
   },
   {
     name: "No Name",
-    url: "sunburn_2.webp"
+    url: "sunburn.jpeg"
   },
   {
     name: "No Name",
-    url: "masala_cafe_2.webp"
+    url: "masala_cafe.webp"
   },
   {
     name: "No Name",
-    url: "show.webp"
+    url: "comedy.jpeg"
   },
   {
     name: "No Name",
