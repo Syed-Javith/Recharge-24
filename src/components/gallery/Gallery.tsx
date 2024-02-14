@@ -37,10 +37,6 @@ const ImageData = [
     // url: "rugged.webp"
     url: "andrea.webp"
   },
-  // {
-  //   name: "No Name",
-  //   url: "https://alphatest-recharge23.netlify.app/static/media/andrea1.f4f70c5e592dfb57baca.webp"
-  // },
 ]
 
 const GallerySection = ({ }) => {
