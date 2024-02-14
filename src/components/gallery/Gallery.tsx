@@ -8,15 +8,15 @@ const ImageData = [
   },
   {
     name: "No Name",
-    url: "gvm.webp"
+    url: "gvm.jpeg"
   },
   {
     name: "No Name",
-    url: "masala_cafe_2.jpg"
+    url: "masala_cafe_2.jpeg"
   },
   {
     name: "No Name",
-    url: "raina.webp"
+    url: "raina.jpeg"
   },
   {
     name: "No Name",
