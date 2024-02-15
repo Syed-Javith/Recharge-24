@@ -153,7 +153,7 @@ const EventDetails: FC<EventDetailsProps> = ({
                   <div className="font-medium text-lg py-1">
                     - Prize Pool:
                     <span
-                      className={`ml-1 font-regular ${ChakraFont.className}`}
+                      className={`ml-1 font-regular ${ChakraFont.className} `}
                     >
                       Rs. {event.prize}
                     </span>
@@ -162,7 +162,7 @@ const EventDetails: FC<EventDetailsProps> = ({
 
                 {event.registration_end_date && (
                   <div
-                    className={`text-2xl mt-2 text-[rgb(237,215,90)] ${styles.end_date}`}
+                    className={`text-2xl mt-2 text-[rgb(237,215,90)] ${styles.end_date} ${ChakraFont.className}`}
                   >
                     <span>
                       Registration End Date:{" "}
@@ -285,15 +285,17 @@ const EventDetails: FC<EventDetailsProps> = ({
               </div>
             </div>
             <div className="grid justify-between col-span-12 md:col-span-6 lg:col-span-4 text-lg p-4 border-white border-[1.25px] event-desc rounded-xl bg-gray-950">
-              <div
-                className={`flex gap-2 items-center font-semibold ${JuraFont.className}`}
-              >
-                <CalendarCheckIcon size={15} />
-                Day:
-                <span className={`font-thin ${ChakraFont.className}`}>
-                  {event.day}
-                </span>
-              </div>
+              {event.day != 0 && (
+                <div
+                  className={`flex gap-2 items-center font-semibold ${JuraFont.className}`}
+                >
+                  <CalendarCheckIcon size={15} />
+                  Day:
+                  <span className={`font-thin ${ChakraFont.className}`}>
+                    {event.day}
+                  </span>
+                </div>
+              )}
               {event.team_event && (
                 <div
                   className={`flex gap-2 items-center font-semibold ${JuraFont.className}`}
