@@ -20,9 +20,9 @@ const ProshowSection: FC<ProshowSectionProps> = ({ }) => {
           <div className="flex gap-4">
             <div className={ProshowStyle.sectionfluidmain}>
               <div className={ProshowStyle.sectionrow}>
-                <SpotlightCard num={1} celeb="Revealed soon" image="/revealed.png" />
-                <SpotlightCard num={2} celeb="Revealed soon" image="/revealed.png"/>
-                <SpotlightCard num={3} celeb="Revealed soon" image="/revealed.png"/>
+                <SpotlightCard num={1} celeb="Revealing soon" image="/revealed.png" />
+                <SpotlightCard num={2} celeb="Revealing soon" image="/revealed.png"/>
+                <SpotlightCard num={3} celeb="Revealing soon" image="/revealed.png"/>
               </div>
             </div>
           </div>
@@ -36,9 +36,9 @@ const ProshowSection: FC<ProshowSectionProps> = ({ }) => {
           <div className="flex gap-4">
             <div className={ProshowStyle.sectionfluidmain}>
               <div className={ProshowStyle.sectionrow}>
-                <SpotlightCard num={1} celeb="Revealed soon"  image="/revealed.png"/>
-                <SpotlightCard num={2} celeb="Revealed soon" image="/revealed.png"/>
-                <SpotlightCard num={3} celeb="Revealed soon" image="/revealed.png"/>
+                <SpotlightCard num={1} celeb="Revealing soon"  image="/revealed.png"/>
+                <SpotlightCard num={2} celeb="Revealing soon" image="/revealed.png"/>
+                <SpotlightCard num={3} celeb="Revealing soon" image="/revealed.png"/>
               </div>
             </div>
           </div>

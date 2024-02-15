@@ -62,16 +62,16 @@ const Landing = () => {
                     <img src="/Landing/fin1.png" className={`${LandingStyles.fin} ${LandingStyles.fin_4} ${LandingStyles.fin_l}`} />
                     <img src="/Landing/fin2.png" className={`${LandingStyles.fin} ${LandingStyles.fin_4} ${LandingStyles.fin_r}`} />
                     <h2 className={LandingStyles.caption}>Recharge Your Spirit And Reignite Your Passion!</h2>
-                    <h2 className={LandingStyles.date}>30 | 40 | 41 April</h2>
+                    <h2 className={LandingStyles.date}>Revealing soon !</h2>
                 </div>
                 <div className={LandingStyles.fin_row_5}>
                     <img src="/Landing/fin1.png" className={`${LandingStyles.fin} ${LandingStyles.fin_5} ${LandingStyles.fin_l}`} />
                     <img src="/Landing/fin2.png" className={`${LandingStyles.fin} ${LandingStyles.fin_5} ${LandingStyles.fin_r}`} />
 
-                    <button className={`${LandingStyles.btn} ${LandingStyles.front_btn}`}>
+                    {/* <button className={`${LandingStyles.btn} ${LandingStyles.front_btn}`}>
                         <Link href={'/proshow'}>BUY PROSHOW TICKETS</Link>
                     </button>
-                    <button className={`${LandingStyles.btn} ${LandingStyles.bg_btn}`}>BUY PROSHOW TICKETS</button>
+                    <button className={`${LandingStyles.btn} ${LandingStyles.bg_btn}`}>BUY PROSHOW TICKETS</button> */}
 
                     <h3 className={LandingStyles.landing_h3}>
                         <Link href='/event'>

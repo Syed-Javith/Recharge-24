@@ -24,8 +24,8 @@ const MerchandList = ({ merchandise }: MerchandListProps) => {
         console.log(err);
       });
   };
-  console.log(merchandise[0].events);
-  console.log(merchandise);
+  // console.log(merchandise[0].events);
+  // console.log(merchandise);
   
   return (
     <div>

@@ -48,7 +48,7 @@ const LoginForm: FC<LoginFormProps> = ({ }) => {
         email,
         password,
       };
-      console.log("This is payload\n", payload);
+      // console.log("This is payload\n", payload);
 
       const res = await axios.post(
         CSRBaseUrl + "authenticate/login/",
@@ -58,7 +58,7 @@ const LoginForm: FC<LoginFormProps> = ({ }) => {
       return res;
     },
     onError: (err) => {
-      console.log("This is the error", err);
+      // console.log("This is the error", err);
       if (err instanceof AxiosError) {
         toast.error(err.response?.data.detail ?? 'Invalid Request');
       } else {
@@ -66,7 +66,7 @@ const LoginForm: FC<LoginFormProps> = ({ }) => {
       }
     },
     onSuccess: (res) => {
-      console.log(res);
+      // console.log(res);
       router.back();
       router.refresh();
     },
@@ -142,7 +142,7 @@ const LoginForm: FC<LoginFormProps> = ({ }) => {
             </Button>
             <Link href={'/forgot-password'} className="mx-auto text-gray-50 mb-2 text-[0.85rem] mt-2 hover:text-white">Forgot Password ? Reset</Link>
             <Link href={'/register'} className="mx-auto text-gray-50 text-[0.85rem] mt-2 hover:text-white">New User ? Register</Link>
-            <Link href={'/resend-verification-email'} className="mx-auto text-gray-50 text-[0.85rem] mt-2 hover:text-white">Didn&apos;t Receive Email ? Resend verification</Link>
+            <Link href={'/resend-verification-email'} className="text-center mx-auto text-gray-50 text-[0.85rem] mt-2 hover:text-white">Didn&apos;t Receive Email ? Resend verification</Link>
           </form>
         </Form>
         <RandomBox />

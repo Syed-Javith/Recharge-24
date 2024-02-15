@@ -64,7 +64,7 @@ const EventDetails: FC<EventDetailsProps> = ({
         }
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
         setLoading(false);
       });
   };
@@ -85,7 +85,7 @@ const EventDetails: FC<EventDetailsProps> = ({
         }
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
         setLoading(false);
       });
   };
@@ -103,7 +103,7 @@ const EventDetails: FC<EventDetailsProps> = ({
         router.refresh();
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
   };
 

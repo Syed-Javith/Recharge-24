@@ -50,7 +50,7 @@ const Profile: FC<ProfileProps> = ({ }) => {
       setError(true);
     },
     onSuccess: async (res) => {
-      console.log(await res.data)
+      // console.log(await res.data)
       const tempProfile: UserProfileSchema = await res.data;
       setProfile(tempProfile);
     },
@@ -139,9 +139,6 @@ const Profile: FC<ProfileProps> = ({ }) => {
           profile.event_registrations.filter((e) =>  e.name.match(/Merchandise/i) ).map((event, index) => {
             return (
               <>
-              <MerchandiseTicket merchandiseDetail={event} key={index} />
-              <MerchandiseTicket merchandiseDetail={event} key={index} />
-              <MerchandiseTicket merchandiseDetail={event} key={index} />
               <MerchandiseTicket merchandiseDetail={event} key={index} />
               </>
             )

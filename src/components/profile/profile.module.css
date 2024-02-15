@@ -405,9 +405,6 @@ pointer-events: none;
   .celebrityNameShadow {
       font-size: 46px;
   }
-  .proshowName {
-      /* font-size: 38px; */
-  }
   .date {
       font-size: 20px;
   }
@@ -571,7 +568,7 @@ pointer-events: none;
 
 .profileEventCard .bottomSection .row .item:nth-child(2) {
   border-left: 1px solid rgba(255, 255, 255, 0.126);
-  border-right: 1px solid rgba(255, 255, 255, 0.126);
+  /* border-right: 1px solid rgba(255, 255, 255, 0.126); */
 }
 
 .profileSectionTitle {
