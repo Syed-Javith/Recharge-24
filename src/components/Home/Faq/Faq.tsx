@@ -43,8 +43,7 @@ const FAQ = () => {
       />
       <FaqSection
         question="Can individuals who are not currently enrolled in college or school, and who are not alumni of REC or RSA, still attend the Recharge proshows?"
-        answer={(<span>Oh yes! Recharge proshows are open to all! To purchase your tickets, please head to 
-          {" "}<a href="https://in.bookmyshow.com/" className='underline text-blue-500'>https://in.bookmyshow.com/</a>{" "}
+        answer={(<span>Oh yes! Recharge proshows are open to all! Keep an eye on our instagram handle <a href='https://www.instagram.com/recharge_fest/'>@recharge_fest</a> where we will update you
         </span>)}
       />
       <FaqSection
