@@ -24,7 +24,7 @@ const Verify: FC = () => {
       return res;
     },
     onError: (err) => {
-      console.log(err);
+      // console.log(err);
       if (err instanceof AxiosError) {
         toast(err.response?.data.detail ?? "Invalid Request");
       } else {
@@ -32,7 +32,7 @@ const Verify: FC = () => {
       }
     },
     onSuccess: (res: any) => {
-      console.log(res);
+      // console.log(res);
       toast.success("Thank you for registering !")
       toast.success("Explore the events of Recharge")
       router.push("/");
@@ -45,7 +45,7 @@ const Verify: FC = () => {
       email: searchParams.get("email") as string,
       token: searchParams.get("token") as string,
     };
-    console.log(typeof window);
+    // console.log(typeof window);
     if (typeof window !== "undefined") {
       verify(verificationDetails);
     }
