@@ -33,7 +33,7 @@ const Page: FC<pageProps> = ({ }) => {
     },
     onError: (err) => {
       setError(true);
-      console.log("error : ", err);
+      // console.log("error : ", err);
 
       if (err instanceof AxiosError) {
         toast.error(err.response?.data.detail ?? 'Invalid Request')

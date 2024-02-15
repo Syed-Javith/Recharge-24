@@ -30,7 +30,7 @@ const BuyProShowButton: FC<BuyProShowButtonProps> = ({
     mutationFn: async ({ proshowid }: { proshowid: number }) => {
       if (proshowid) {
         const payload: { proshow_id: number } = { proshow_id: proshowid };
-        console.log(payload);
+        // console.log(payload);
         const { data } = await axios.post(
           CSRBaseUrl + "proshow/proshow-register/",
           payload,
@@ -43,7 +43,7 @@ const BuyProShowButton: FC<BuyProShowButtonProps> = ({
     },
 
     onError: (err) => {
-      console.log(err);
+      // console.log(err);
       if (axios.isAxiosError(err)) {
         if (err.response?.status === 400) {
           toast.error(`${err.response.data.detail}`);
@@ -61,7 +61,7 @@ const BuyProShowButton: FC<BuyProShowButtonProps> = ({
 
     onSuccess: (data) => {
       const { payment_link } = data;
-      console.log(payment_link);
+      // console.log(payment_link);
       router.push(payment_link)
       router.refresh();
     },
