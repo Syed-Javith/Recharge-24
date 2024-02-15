@@ -6,7 +6,7 @@ const ImageData = [
     name: "No Name",
     // url: "jonita.jpeg"
     // url: "new_jonita.webp"
-    url: "new_jonita_crop.JPG"
+    url: "jonita_final.jpg"
   },
   {
     name: "No Name",
@@ -24,7 +24,7 @@ const ImageData = [
     name: "No Name",
     // url: "sunburn.jpeg"
     // url: "new_sunburn.webp"
-    url: "new_sunburn_crop.JPG"
+    url: "sun.jpg"
   },
   {
     name: "No Name",
