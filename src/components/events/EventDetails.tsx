@@ -156,11 +156,11 @@ const EventDetails: FC<EventDetailsProps> = ({
                       className={`ml-1 font-regular ${ChakraFont.className} `}
                     >
                       {/* Rs. {event.prize} */}
-                      {
+                      {/* {
                         event.prize.split('\n').map((prize) => {
                           return <p>{prize}</p>
                         })
-                      }
+                      } */}
                     </span>
                   </div>
                 )}
