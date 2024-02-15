@@ -121,20 +121,20 @@ const Profile: FC<ProfileProps> = ({ }) => {
           })
         }
       </div>
-      <div className={`${Style.glowingLine}`}></div>
+      {/* <div className={`${Style.glowingLine}`}></div> */}
 
-      <div className="text-center m-auto">
+      {/* <div className="text-center m-auto">
         <Neon text={(profile.event_registrations.filter((e) =>  e.name.match(/Merchandise/i)  ).length == 0) ? "No Merchandise bought" : "Merchandise T-Shirts"} />
-      </div>
-      {
+      </div> */}
+      {/* {
         profile.event_registrations.filter((e) =>  e.name.match(/Merchandise/i)  ).length == 0 &&
         <Link href={'/merchandise'} className="m-auto mt-6">
           <Button>
             Buy Merchandise now
           </Button>
         </Link>
-      }
-      <div className="grid md:grid-cols-3 sm:grid-cols-1 gap-8 m-auto mt-8 ml-4 mr-4 justify-center">
+      } */}
+      {/* <div className="grid md:grid-cols-3 sm:grid-cols-1 gap-8 m-auto mt-8 ml-4 mr-4 justify-center">
         {
           profile.event_registrations.filter((e) =>  e.name.match(/Merchandise/i) ).map((event, index) => {
             return (
@@ -144,7 +144,7 @@ const Profile: FC<ProfileProps> = ({ }) => {
             )
           })
         }
-      </div>
+      </div> */}
     </div>
   );
 };
