@@ -48,7 +48,7 @@ const LoginForm: FC<LoginFormProps> = ({ }) => {
         email,
         password,
       };
-      console.log("This is payload\n", payload);
+      // console.log("This is payload\n", payload);
 
       const res = await axios.post(
         CSRBaseUrl + "authenticate/login/",
@@ -58,7 +58,7 @@ const LoginForm: FC<LoginFormProps> = ({ }) => {
       return res;
     },
     onError: (err) => {
-      console.log("This is the error", err);
+      // console.log("This is the error", err);
       if (err instanceof AxiosError) {
         toast.error(err.response?.data.detail ?? 'Invalid Request');
       } else {
@@ -66,7 +66,7 @@ const LoginForm: FC<LoginFormProps> = ({ }) => {
       }
     },
     onSuccess: (res) => {
-      console.log(res);
+      // console.log(res);
       router.back();
       router.refresh();
     },

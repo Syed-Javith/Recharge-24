@@ -57,7 +57,7 @@ const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({ }) => {
         confirm_password,
       };
 
-      console.log("payload \n", payload);
+      // console.log("payload \n", payload);
       const res = await axios.post(
         CSRBaseUrl + "authenticate/forgot_password/",
         payload,
@@ -69,7 +69,7 @@ const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({ }) => {
       return res;
     },
     onError: (err) => {
-      console.log("Something went wrong \n", err);
+      // console.log("Something went wrong \n", err);
       if (err instanceof AxiosError) {
         toast.error(err.response?.data.detail ?? 'Invalid Request');
       } else {
@@ -77,7 +77,7 @@ const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({ }) => {
       }
     },
     onSuccess: (res) => {
-      console.log(res);
+      // console.log(res);
       toast.success('Password Reset Link sent to your Registered mail')
     },
   });

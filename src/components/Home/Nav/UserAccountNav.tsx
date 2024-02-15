@@ -31,7 +31,7 @@ const UserAccountNav: FC<UserAccountNavProps> = ({ user }) => {
     toast("Success", {
       description: "You were logged out successfully.",
     });
-    console.log("inDevEnv", inDevEnvironment);
+    // console.log("inDevEnv", inDevEnvironment);
     router.push("/login");
     router.refresh();
   };

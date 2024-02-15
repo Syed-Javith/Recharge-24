@@ -21,14 +21,14 @@ export const getAuthSessionHelper = async (cookie?: RequestCookie) => {
     if (cookie) {
       const session_data = await verifyAuth(cookie?.value);
       if (session_data) {
-        console.log(session_data);
+        // console.log(session_data);
         return session_data;
       }
       return null;
     }
     return null;
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     return null;
   }
 };

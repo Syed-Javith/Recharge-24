@@ -78,7 +78,7 @@ const RegisterForm: FC<RegisterFormProps> = ({ }) => {
   const { mutate: registerUser, isPending } = useMutation({
     mutationFn: async (data: registerFormPayload) => {
       const payload: registerFormPayload = { ...data };
-      console.log("This is payload\n", payload);
+      // console.log("This is payload\n", payload);
 
       try {
         const res = await axios.post(
@@ -86,7 +86,7 @@ const RegisterForm: FC<RegisterFormProps> = ({ }) => {
           payload,
           { withCredentials: true }
         );
-        console.log(res);
+        // console.log(res);
         return res;
       } catch (err) {
         console.error("Error during login:", err);

@@ -40,9 +40,9 @@ const ResendVerificationForm: FC<pageProps> = ({ }) => {
       )
     },
     onError: (err) => {
-      console.log("error ", err);
+      // console.log("error ", err);
       if (err instanceof AxiosError) {
-        console.log(err)
+        // console.log(err)
         toast.error(err.response?.data.detail)
       } else {
         toast.error("Something went wrong please try again later.")
@@ -50,7 +50,7 @@ const ResendVerificationForm: FC<pageProps> = ({ }) => {
 
     },
     onSuccess: (data) => {
-      console.log(data);
+      // console.log(data);
       toast.success("Verification Email sent")
     }
   })

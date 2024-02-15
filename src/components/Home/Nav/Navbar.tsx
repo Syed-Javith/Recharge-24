@@ -43,7 +43,7 @@ const Navbar = ({ session }: SesstionType) => {
     toast.success("Success", {
       description: "You were logged out successfully.",
     });
-    console.log("inDevEnv", inDevEnvironment);
+    // console.log("inDevEnv", inDevEnvironment);
     router.push("/login");
     router.refresh();
   };
