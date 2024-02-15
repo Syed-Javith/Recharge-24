@@ -5,7 +5,8 @@ const ImageData = [
   {
     name: "No Name",
     // url: "jonita.jpeg"
-    url: "new_jonita.webp"
+    // url: "new_jonita.webp"
+    url: "new_jonita_crop.jpg"
   },
   {
     name: "No Name",
@@ -22,11 +23,12 @@ const ImageData = [
   {
     name: "No Name",
     // url: "sunburn.jpeg"
-    url: "new_sunburn.webp"
+    // url: "new_sunburn.webp"
+    url: "new_sunburn_crop.jpg"
   },
   {
     name: "No Name",
-    url: "masala_cafe.webp"
+    url: "karthi.webp"
   },
   {
     name: "No Name",
@@ -35,7 +37,8 @@ const ImageData = [
   {
     name: "No Name",
     // url: "rugged.webp"
-    url: "andrea.webp"
+    // url: "andrea.webp"
+    url: "andrea_crop.webp"
   },
 ]
 
