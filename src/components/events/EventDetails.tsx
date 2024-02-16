@@ -363,10 +363,10 @@ const EventDetails: FC<EventDetailsProps> = ({
           >
             {event.prize?.split(",").map((prize, index) => {
               return (
-                <div className="flex gap-4">
+                <div className="flex gap-4" key={index}>
                   <div className="flex">
                   <img src={`/prize/${index+1}.png`} alt="" className="w-[40px] py-2"/>
-                  <p key={prize} className="p-4 text-lg text-nowrap">
+                  <p className="p-4 text-lg text-nowrap">
                     ₹ {prize}
                   </p>{" "}
                   </div>
