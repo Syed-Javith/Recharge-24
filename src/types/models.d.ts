@@ -41,7 +41,8 @@ export type EventDetailSchema = {
   max_reg:	number;
   day:	number;
   category:	number;
-  registration_end_date: string
+  registration_end_date: string,
+  event_date: string
 }
 
 export type Category = {
