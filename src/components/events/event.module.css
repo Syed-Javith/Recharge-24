@@ -24,3 +24,34 @@
     opacity: 0.8;
   }
 }
+
+.prize_pool{
+  /* border: 2px solid rgba(255, 255, 255, 0.498); */
+  max-width: 80vw;
+  margin: 2em auto;
+  margin-bottom: 0;
+}
+
+.shine_box {
+  box-shadow: 0 0 0 transparent, 0 0 5px white, 0 0 6px rgba(38,149,255,.5), 0 0 8px #09f, 0 0 15px rgba(0, 153, 255, 0.779);
+}
+
+.shine_text{
+  text-shadow: 0 0 0 transparent, 0 0 5px #09f, 0 0 6px rgba(38,149,255,.5), 0 0 8px #09f, 0 0 15px rgba(0, 153, 255, 0.779);
+}
+
+@media screen and (max-width:800px) {
+  .prize_pool{
+    max-width: 90vw;
+  }
+}
+
+@media screen and (max-width:630px) {
+  .prize_pool{
+    display: block;
+    max-width: 60vw;
+  }
+  .prize_length{
+    display: none;
+  }
+}
