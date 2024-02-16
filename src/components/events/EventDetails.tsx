@@ -395,7 +395,7 @@ const EventDetails: FC<EventDetailsProps> = ({
                   ? event.description.split("\r\n").map((point, index) => (
                       <p
                         key={index}
-                        className="leading-8 mx-auto min-[700px]:text-justify text-left opacity-90 text-md px-8"
+                        className="leading-8 mx-auto min-[700px]:text-justify text-left opacity-90 text-md md:px-8 px-0"
                       >
                         {point}
                       </p>
@@ -406,7 +406,7 @@ const EventDetails: FC<EventDetailsProps> = ({
                       .map((point, index) => (
                         <p
                           key={index}
-                          className="leading-8 mx-auto min-[700px]:text-justify text-left opacity-90 text-md px-8"
+                          className="leading-8 mx-auto min-[700px]:text-justify text-left opacity-90 text-md md:px-8 px-0"
                         >
                           {point}
                         </p>
