@@ -119,7 +119,7 @@ const EventDetails: FC<EventDetailsProps> = ({
                 alt="Event Image"
                 width={250}
                 height={250}
-                className="min-w-[340px] flex-1 lg:block hidden object-cover border-[1.5px] rounded-xl   min-h-[260px]"
+                className="min-w-[340px] flex-1 lg:block hidden object-cover border-[1.5px] rounded-xl min-h-[260px] max-h-[320px]"
               />
               <div>
                 <h1
