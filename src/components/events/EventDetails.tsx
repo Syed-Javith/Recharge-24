@@ -432,7 +432,7 @@ const EventDetails: FC<EventDetailsProps> = ({
               {event.rules.split("\r\n").map((point, index) => (
                 <li
                   key={index}
-                  className="leading-8 mx-auto opacity-90 text-justify text-md"
+                  className="leading-8 mx-auto opacity-90 text-left text-md"
                 >
                   {point}
                 </li>
