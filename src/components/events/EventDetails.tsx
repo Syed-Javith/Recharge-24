@@ -340,7 +340,7 @@ const EventDetails: FC<EventDetailsProps> = ({
                 className={`flex gap-2 items-center font-semibold ${JuraFont.className}`}
               >
                 <Building size={15} />
-                Club:
+                Host:
                 <span className={`font-thin ${ChakraFont.className}`}>
                   {event.name_of_hosting_club}
                 </span>
@@ -395,7 +395,7 @@ const EventDetails: FC<EventDetailsProps> = ({
                   ? event.description.split("\r\n").map((point, index) => (
                       <p
                         key={index}
-                        className="leading-8 mx-auto text-justify opacity-90 text-md px-8"
+                        className="leading-8 mx-auto min-[700px]:text-justify text-left opacity-90 text-md px-8"
                       >
                         {point}
                       </p>
@@ -406,7 +406,7 @@ const EventDetails: FC<EventDetailsProps> = ({
                       .map((point, index) => (
                         <p
                           key={index}
-                          className="leading-8 mx-auto text-justify opacity-90 text-md px-8"
+                          className="leading-8 mx-auto min-[700px]:text-justify text-left opacity-90 text-md px-8"
                         >
                           {point}
                         </p>
