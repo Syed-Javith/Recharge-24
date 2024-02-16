@@ -27,7 +27,7 @@ const FAQ = () => {
         question="How do I sign up for events? "
         answer={(
           <span>
-            All our events are listed on our website. To register, head to <a href="https://test.rechargefest.in/event" className="underline">https://test.rechargefest.in/event</a> and register for your event of choice. Please note that we will not entertain on-spot registrations.
+            All our events are listed on our website. To register, head to <a href="https://rechargefest.in/event" className="underline">https://rechargefest.in/event</a> and register for your event of choice. Please note that we will not entertain on-spot registrations.
           </span>
         )}
       />
