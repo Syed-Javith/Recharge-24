@@ -17,7 +17,7 @@ const Landing = () => {
         }
 
         function hoverRotate() {
-            const rotateButton = document.getElementsByClassName(LandingStyles.front_btn);
+            const rotateButton = document.getElementsByClassName(LandingStyles.landing_h3);
             const leftElements = document.querySelectorAll('.'+LandingStyles.fin_l);
             const rightElements = document.querySelectorAll('.'+LandingStyles.fin_r);
             rotateButton[0]?.addEventListener('mouseenter', function () {
@@ -62,7 +62,7 @@ const Landing = () => {
                     <img src="/Landing/fin1.png" className={`${LandingStyles.fin} ${LandingStyles.fin_4} ${LandingStyles.fin_l}`} />
                     <img src="/Landing/fin2.png" className={`${LandingStyles.fin} ${LandingStyles.fin_4} ${LandingStyles.fin_r}`} />
                     <h2 className={LandingStyles.caption}>Recharge Your Spirit And Reignite Your Passion!</h2>
-                    <h2 className={LandingStyles.date}>Revealing soon !</h2>
+                    <h2 className={LandingStyles.date}>March 21 | 22 | 23</h2>
                 </div>
                 <div className={LandingStyles.fin_row_5}>
                     <img src="/Landing/fin1.png" className={`${LandingStyles.fin} ${LandingStyles.fin_5} ${LandingStyles.fin_l}`} />
