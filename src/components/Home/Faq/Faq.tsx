@@ -43,7 +43,7 @@ const FAQ = () => {
       />
       <FaqSection
         question="Can individuals who are not currently enrolled in college or school, and who are not alumni of REC or RSA, still attend the Recharge proshows?"
-        answer={(<span>Oh yes! Recharge proshows are open to all! Keep an eye on our instagram handle <a href='https://www.instagram.com/recharge_fest/'>@recharge_fest</a> where we will update you
+        answer={(<span>Oh yes! Recharge proshows are open to all! Keep an eye on our instagram handle <a className="underline" href='https://www.instagram.com/recharge_fest/'>@recharge_fest</a> where we will update you
         </span>)}
       />
       <FaqSection
@@ -61,6 +61,15 @@ const FAQ = () => {
     <FaqSection
         question="I am a school student. Can I participate in the events?"
         answer={(<span>School students can only attend the proshows. They cannot register nor participate in events.</span>)}
+      />
+
+<FaqSection
+        question="Where to reach if I need support?"
+        answer={(
+          <span>
+            For any queries related to proshow and event registration mail to <a className="underline">tickets.recharge@rajalakshmi.edu.in </a>
+          </span>
+        )}
       />
       
     </div>

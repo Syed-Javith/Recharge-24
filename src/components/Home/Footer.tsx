@@ -57,7 +57,7 @@ const Footer = () => {
                                     <div className="pb-2 inline-flex items-center">
                                     {/* <MailIcon className="inline-block pl-0"></MailIcon> */}
                                     <img src="/mail.png" alt="" className="h-5 w-5 inline-block opacity-75"/>
-                                    <Link className={`${subtitleFont.className} text-sm pl-2 md:text-lg`} href="mailto:support.recharge@rajalakshmi.edu.in">support.recharge@rajalakshmi.edu.in</Link>
+                                    <Link className={`${subtitleFont.className} text-sm pl-2 md:text-lg`} href="mailto:tickets.recharge@rajalakshmi.edu.in">tickets.recharge@rajalakshmi.edu.in</Link>
                                     </div>
                                     <div className="pr-2 ">
                                     {/* <InstagramIcon className="inline-block"></InstagramIcon> */}
