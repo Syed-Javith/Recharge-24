@@ -304,9 +304,12 @@ const EventDetails: FC<EventDetailsProps> = ({
                 >
                   <Users size={15} />
                   Team Size:
-                  <span className={`font-thin ${ChakraFont.className}`}>
+                  {event.team_min!=event.team_max ? <span className={`font-thin ${ChakraFont.className}`}>
                     {event.team_min} - {event.team_max} Members
-                  </span>
+                  </span>:
+                  <span className={`font-thin ${ChakraFont.className}`}>
+                    {event.team_min} Members
+                  </span>}
                 </div>
               )}
               <div
