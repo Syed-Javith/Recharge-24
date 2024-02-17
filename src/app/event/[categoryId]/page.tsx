@@ -41,7 +41,7 @@ return (
                     <img src={event.image} />
                     <h2>{event.name}</h2>
                     <div className={EventStyle.event_short_info}>
-                      <div> {"Day " + event.day}</div>
+                      {event.day!=0 ? <div> {"Day " + event.day}</div> : <div>Pre-Event</div>}
                       <div> <Users size={12} style={{marginRight: "4px"}}/> {event.team_event==true ? "Team" : "Solo"}</div>
                       <div> {'₹ ' + event.pay}</div>
                     </div>
