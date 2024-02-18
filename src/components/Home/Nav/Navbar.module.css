@@ -30,7 +30,6 @@
     font-family:  "Jockey One";
     font-weight: 100;
     letter-spacing: 1px;
-    font-size: 0.9rem;
 }
 
 .navbar_li {
@@ -93,10 +92,10 @@
 }
 
 .dropdown_custom .active {
-    font-size: large;
+    font-size: larger;
 }
 
 .dropdown_custom .disabled {
-    font-size: medium;
+    font-size: large;
     opacity: 0.4;
 }

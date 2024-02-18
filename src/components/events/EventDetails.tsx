@@ -47,6 +47,7 @@ const EventDetails: FC<EventDetailsProps> = ({
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
   const [showDescription, setShowDescription] = useState<boolean>(false);
+  const prizeLength = event.prize?.split(",").length;
 
   const register = () => {
     setLoading(true);
@@ -111,18 +112,18 @@ const EventDetails: FC<EventDetailsProps> = ({
     return (
       <div className={styles.event_details_bg}>
         <div className="max-w-[1300px] m-auto md:p-4 p-2 pt-10">
-          <div className="grid grid-cols-12 gap-6 justify-between md:p-6 p-4 mt-16 border-b-2 border-white">
+          <div className="grid grid-cols-12 gap-6 justify-between md:p-6 p-4 mt-16">
             <div className="flex gap-6 md:col-span-6 lg:col-span-8 col-span-12">
               <img
                 src={event.image}
                 alt="Event Image"
                 width={250}
                 height={250}
-                className="max-w-[340px] flex-1 lg:block hidden object-cover border-[1.5px] rounded-xl   min-h-[260px]"
+                className="min-w-[300px] flex-1 lg:block hidden object-cover border-[1.5px] rounded-xl min-h-[260px] max-h-[320px] max-w-[340px]"
               />
               <div>
                 <h1
-                  className={`text-[2.5rem] mb-3 ${JuraFont.className} ${styles.event_head}`}
+                  className={`text-[2rem] mb-3 ${JuraFont.className} ${styles.event_head}`}
                 >
                   {event.name.toUpperCase()}
                 </h1>
@@ -149,25 +150,9 @@ const EventDetails: FC<EventDetailsProps> = ({
                     : `- Registration Fee: Rs. ${event.pay}`}
                 </div>
 
-                {event.prize && (
-                  <div className="font-medium text-lg py-1">
-                    - Prize Pool:
-                    <span
-                      className={`ml-1 font-regular ${ChakraFont.className} `}
-                    >
-                      {/* Rs. {event.prize} */}
-                      {/* {
-                        event.prize.split('\n').map((prize) => {
-                          return <p>{prize}</p>
-                        })
-                      } */}
-                    </span>
-                  </div>
-                )}
-
-                {event.registration_end_date && (
+                {(event.registration_end_date && new Date(event.registration_end_date) >= new Date()) && (
                   <div
-                    className={`text-2xl mt-2 text-[rgb(237,215,90)] ${styles.end_date} ${ChakraFont.className}`}
+                    className={`text-2xl mt-2 ${styles.end_date} ${ChakraFont.className}`}
                   >
                     <span>
                       Registration End Date:{" "}
@@ -282,15 +267,15 @@ const EventDetails: FC<EventDetailsProps> = ({
                   <p className="text-xl font-semibold text-[#e6d62b] mt-4">
                     Registration Limit Exceeded!
                   </p>
-                ) : (
-                  <p className="text-xl font-semibold text-[#e6d62b] mt-4">
-                    Registration Closed!
+                ) : new Date(event.registration_end_date) <= new Date() ? (
+                  <p className={`text-2xl font-semibold ${styles.end_date} mt-4`}>
+                    <span>Registration Closed!</span>
                   </p>
-                )}
+                ): <></>}
               </div>
             </div>
             <div className="grid justify-between col-span-12 md:col-span-6 lg:col-span-4 text-lg p-4 border-white border-[1.25px] event-desc rounded-xl bg-gray-950">
-              {event.day != 0 && (
+              {event.day != 0 ? (
                 <div
                   className={`flex gap-2 items-center font-semibold ${JuraFont.className}`}
                 >
@@ -300,6 +285,18 @@ const EventDetails: FC<EventDetailsProps> = ({
                     {event.day}
                   </span>
                 </div>
+              ) : event.event_date ? (
+                <div
+                  className={`flex gap-2 items-center font-semibold ${JuraFont.className}`}
+                >
+                  <CalendarCheckIcon size={15} />
+                  Event Date:
+                  <span className={`font-thin ${ChakraFont.className}`}>
+                    {event.event_date.split("-").reverse().join("-")}
+                  </span>
+                </div>
+              ) : (
+                <></>
               )}
               {event.team_event && (
                 <div
@@ -307,9 +304,12 @@ const EventDetails: FC<EventDetailsProps> = ({
                 >
                   <Users size={15} />
                   Team Size:
-                  <span className={`font-thin ${ChakraFont.className}`}>
+                  {event.team_min!=event.team_max ? <span className={`font-thin ${ChakraFont.className}`}>
                     {event.team_min} - {event.team_max} Members
-                  </span>
+                  </span>:
+                  <span className={`font-thin ${ChakraFont.className}`}>
+                    {event.team_min} Members
+                  </span>}
                 </div>
               )}
               <div
@@ -330,7 +330,7 @@ const EventDetails: FC<EventDetailsProps> = ({
                   {event.time_of_event}
                 </span>
               </div>
-              <div
+             {event.day!=0 &&  <div
                 className={`flex gap-2 items-center font-semibold ${JuraFont.className}`}
               >
                 <Hourglass size={15} />
@@ -338,12 +338,12 @@ const EventDetails: FC<EventDetailsProps> = ({
                 <span className={`font-thin ${ChakraFont.className}`}>
                   {event.duration} hours
                 </span>
-              </div>
+              </div>}
               <div
                 className={`flex gap-2 items-center font-semibold ${JuraFont.className}`}
               >
                 <Building size={15} />
-                Club:
+                Host:
                 <span className={`font-thin ${ChakraFont.className}`}>
                   {event.name_of_hosting_club}
                 </span>
@@ -361,6 +361,31 @@ const EventDetails: FC<EventDetailsProps> = ({
               )}
             </div>
           </div>
+          <div
+            className={`rounded-lg text-center ${styles.prize_pool} flex gap-4 justify-evenly px-4 w-fit  bg-gray-950  md:px-6 sm:py-0 py-4 mt-16 ${styles.shine_box}`}
+          >
+            {event.prize?.split(",").map((prize, index) => {
+              return (
+                <div className="flex gap-4" key={index}>
+                  <div className="flex">
+                  <img src={`/prize/${index+1}.png`} alt="" className="w-[40px] py-2"/>
+                  <p className="p-4 text-lg text-nowrap">
+                    ₹ {prize}
+                  </p>{" "}
+                  </div>
+                  <span
+                    className={`mx-8 text-4xl text-center p-2 ${styles.shine_text} rotate-45 ${
+                      prizeLength && index == prizeLength - 1
+                        ? "hidden"
+                        : "block"
+                    } ${styles.prize_length}`}
+                  >
+                    |
+                  </span>
+                </div>
+              );
+            })}
+          </div>
           <div className="md:p-6 p-4">
             <div>
               <h1
@@ -373,7 +398,7 @@ const EventDetails: FC<EventDetailsProps> = ({
                   ? event.description.split("\r\n").map((point, index) => (
                       <p
                         key={index}
-                        className="leading-8 mx-auto text-justify opacity-90 text-md px-8"
+                        className="leading-8 mx-auto min-[700px]:text-justify text-left opacity-90 text-md md:px-8 px-0"
                       >
                         {point}
                       </p>
@@ -384,7 +409,7 @@ const EventDetails: FC<EventDetailsProps> = ({
                       .map((point, index) => (
                         <p
                           key={index}
-                          className="leading-8 mx-auto text-justify opacity-90 text-md px-8"
+                          className="leading-8 mx-auto min-[700px]:text-justify text-left opacity-90 text-md md:px-8 px-0"
                         >
                           {point}
                         </p>
@@ -410,7 +435,7 @@ const EventDetails: FC<EventDetailsProps> = ({
               {event.rules.split("\r\n").map((point, index) => (
                 <li
                   key={index}
-                  className="leading-8 mx-auto opacity-90 text-justify text-md"
+                  className="leading-8 mx-auto opacity-90 text-left text-md"
                 >
                   {point}
                 </li>
@@ -421,7 +446,7 @@ const EventDetails: FC<EventDetailsProps> = ({
                 <h1
                   className={`text-3xl mb-2 font-bold ${ChakraFont.className}`}
                 >
-                  Event Incharges
+                  Event Incharge
                 </h1>
                 {event.incharges.length > 0 &&
                   event.incharges.map((incharge) => (

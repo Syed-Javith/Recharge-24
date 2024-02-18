@@ -3,6 +3,7 @@ import React, { Dispatch, SetStateAction } from 'react'
 import EditProfileForm from '../forms/EditProfileForm';
 import Style from "./profile.module.css"
 import localFont from 'next/font/local'
+import { Mail } from 'lucide-react';
 
 const SketchFont = localFont({ src: '../../../public/fonts/chakra.ttf' });
 
@@ -36,7 +37,11 @@ const DesktopProfile = ({ profile , setProfile } : { profile : UserProfileSchema
                         </div>
                                 <h3> {profile.college } </h3>
                         <p className={`${Style.bio} flex md:flex-row sm:flex-col flex-wrap gap-4`}>
-                            <div className='w-fit whitespace-nowrap'><span className='font-bold'>Email :</span> { profile.email }</div>
+                            <div className='w-fit whitespace-nowrap'>
+                                <span className='font-bold'>
+                                    <Mail style={{display: "inline", margin: "0 4px 0 0"}} size={16} strokeWidth={3}/>
+                                </span> 
+                                { profile.email }</div>
                             <div className='w-fit whitespace-nowrap'> <span className='font-bold'>Mobile : </span>{profile.mobile_number}</div>
                             <div className='w-fit whitespace-nowrap'><span className='font-bold'>Year Of Study : </span>{ formatYear(profile.year) + " year "}</div>
                             <div className='w-fit whitespace-nowrap'> <span className='font-bold'>Proshows : </span> {profile.proshow_registrations.length }</div>

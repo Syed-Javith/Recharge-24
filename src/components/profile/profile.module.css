@@ -609,6 +609,7 @@ pointer-events: none;
 .profilePersonalDetail .container {
   top: 20%;
   left: 30%;
+  margin: 0 auto;
   /* transform: translate((-50%, -50%)); */
   width: fit-content;
   height: fit-content;
@@ -858,11 +859,6 @@ pointer-events: none;
 }
 
   
-@media (max-width: 768px) {
-  .location, .time, .imageContent{
-      display: none;
-  }  
-}
 @media (max-width: 1000px) {
   .profilePersonalDetail .logo {
     display: none;
@@ -897,3 +893,11 @@ pointer-events: none;
   }
 }
 
+@media (max-width: 768px) {
+  .location, .time, .imageContent{
+      display: none;
+  }  
+  .profilePersonalDetail .container {
+    padding: 30px 1rem;
+  }
+}

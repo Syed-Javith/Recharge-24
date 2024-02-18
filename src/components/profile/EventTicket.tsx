@@ -39,7 +39,7 @@ const EventTicket = ({ eventDetail }: { eventDetail: EventDetailSchema }) => {
                 <div className={`${Style.row} ${Style.row1}`}>
                 <div className={`${Style.item}`}>
                     <span className={`${Style.bigText}`}>ON</span>
-                    <span className={`${Style.regularText}`}>{ "Day: " + eventDetail.day + " " +  convertTo12HourFormat(eventDetail.time_of_event as string) }</span>
+                    <span className={`${Style.regularText}`}>{ eventDetail.day !== 0 && "Day: " + eventDetail.day + " " }  {convertTo12HourFormat(eventDetail.time_of_event as string) }</span>
                 </div>
                 <div className={`${Style.item}`}>
                     <span className={`${Style.bigText}`}>AT</span>

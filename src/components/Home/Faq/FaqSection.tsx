@@ -27,7 +27,7 @@ const FaqSection: React.FC<FaqSectionProps> = ({ question, answer }) => {
         </div>
       </div>
       <div className={`transition-all duration-300 ${isOpen ? 'max-h-96' : 'max-h-0'} overflow-hidden`}>
-        <div className={`${titleFont.className} bg-gray-900 p-4`}>{answer}</div>
+        <div className={`${titleFont.className} bg-gray-800 p-4`}>{answer}</div>
       </div>
     </div>
   );
