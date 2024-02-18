@@ -49,7 +49,11 @@ return (
                       <div>  Registration End Date: {dateFormatter(event.registration_end_date)}</div>
                     </div>
                     <p>
-                     {event?.short_description?.slice(0,80) + ((event.short_description?.length || 0 >80) ? '...' : '')}
+                     {event?.short_description?.slice(0,80) + (
+                        ((event.short_description?.length || 0) >80) 
+                          ? '...' 
+                          : ''
+                        )}
                     </p>
                     <button>KNOW MORE</button>
                 </div>

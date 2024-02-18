@@ -859,11 +859,6 @@ pointer-events: none;
 }
 
   
-@media (max-width: 768px) {
-  .location, .time, .imageContent{
-      display: none;
-  }  
-}
 @media (max-width: 1000px) {
   .profilePersonalDetail .logo {
     display: none;
@@ -898,3 +893,11 @@ pointer-events: none;
   }
 }
 
+@media (max-width: 768px) {
+  .location, .time, .imageContent{
+      display: none;
+  }  
+  .profilePersonalDetail .container {
+    padding: 30px 1rem;
+  }
+}
