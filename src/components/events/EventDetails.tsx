@@ -446,7 +446,7 @@ const EventDetails: FC<EventDetailsProps> = ({
                 <h1
                   className={`text-3xl mb-2 font-bold ${ChakraFont.className}`}
                 >
-                  Event Incharges
+                  Event Incharge
                 </h1>
                 {event.incharges.length > 0 &&
                   event.incharges.map((incharge) => (
