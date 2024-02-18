@@ -38,7 +38,6 @@ export default async function RootLayout({
           <Providers >{children}</Providers>
           <Toaster richColors visibleToasts={2}/>
         </ThemeProvider>
-
       </body>
     </html>
   );
