@@ -4,12 +4,16 @@ import { UserJwtPayload } from "@/lib/auth";
 import { usePathname } from "next/navigation"
 import NavStyle from './Navbar.module.css'
 import Link from 'next/link';
-import { Menu } from 'lucide-react';
+import { Menu, Search } from 'lucide-react';
 import LogoutDialog from './LogoutDialog';
 import axios, { AxiosError } from 'axios';
 import { CSRBaseUrl, inDevEnvironment } from '@/lib/utils';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
+import { Dialog } from '@radix-ui/react-dialog';
+import { DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Button } from '@/components/ui/Button';
+import { Input } from '@/components/ui/Input';
 
 type SesstionType = {
   session: UserJwtPayload | null
@@ -34,16 +38,11 @@ const Navbar = ({ session }: SesstionType) => {
   }, [])
 
   const [isPending, setIsPending]= useState<boolean> (false);
-
-  async function delay(milliseconds: number) {
-    await new Promise(resolve => setTimeout(resolve, milliseconds));
-  }
-
+  const [open, setOpen] = useState<boolean>(false);
 
   const logoutHandler = async () => {
     try {
       setIsPending(true)
-      await delay(5000)
       await axios(CSRBaseUrl + "authenticate/logout/", {
         method: "POST",
         withCredentials: true,
@@ -131,6 +130,18 @@ const Navbar = ({ session }: SesstionType) => {
               </>
             )
           }
+          {/* <Search onClick={() => {setOpen(true)}}/>
+          <Dialog open={open}>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle className='mb-4'>Search for an Event</DialogTitle>
+                <Input placeholder='Enter event name'/>
+              </DialogHeader>
+              <DialogFooter>
+                <Button type="submit" variant="secondary" onClick={() => {setOpen(false)}}>Close</Button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog> */}
         </ul>
       </nav>
     </header>
