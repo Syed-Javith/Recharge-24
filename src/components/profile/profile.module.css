@@ -609,6 +609,7 @@ pointer-events: none;
 .profilePersonalDetail .container {
   top: 20%;
   left: 30%;
+  margin: 0 auto;
   /* transform: translate((-50%, -50%)); */
   width: fit-content;
   height: fit-content;

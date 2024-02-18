@@ -6,7 +6,7 @@ import NavStyle from './Navbar.module.css'
 import Link from 'next/link';
 import { Menu } from 'lucide-react';
 import LogoutDialog from './LogoutDialog';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { CSRBaseUrl, inDevEnvironment } from '@/lib/utils';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
@@ -33,19 +33,36 @@ const Navbar = ({ session }: SesstionType) => {
     })
   }, [])
 
+  const [isPending, setIsPending]= useState<boolean> (false);
+
+  async function delay(milliseconds: number) {
+    await new Promise(resolve => setTimeout(resolve, milliseconds));
+  }
+
 
   const logoutHandler = async () => {
-    await axios(CSRBaseUrl + "authenticate/logout/", {
-      withCredentials: true,
-      method: "post",
-    });
-
-    toast.success("Success", {
-      description: "You were logged out successfully.",
-    });
-    // console.log("inDevEnv", inDevEnvironment);
-    router.push("/login");
-    router.refresh();
+    try {
+      setIsPending(true)
+      await delay(5000)
+      await axios(CSRBaseUrl + "authenticate/logout/", {
+        method: "POST",
+        withCredentials: true,
+      }
+      )
+      setIsPending(false)
+      toast.success("Success", {
+        description: "You were logged out successfully.",
+      });
+      router.push("/login");
+      router.refresh();
+    } catch(err) {
+        setIsPending(false)
+        if (err instanceof AxiosError) {
+          toast.error(err.response?.data.detail ?? 'Invalid Request');
+        } else {
+          toast.error("Some error occurred. Please try again later.");
+        }
+    }
   };
 
   const [mobNavActive, setMobNavActive] = useState<boolean>(false);
@@ -67,50 +84,50 @@ const Navbar = ({ session }: SesstionType) => {
 
 
         <ul className={`${NavStyle.navbar_ul} ${mobNavActive ? NavStyle.dropdown_custom : ''}`}>
-          <li className={`${NavStyle.navbar_li} ${pathname == "/" ? NavStyle.active : NavStyle.disabled}`}>
-            <Link href="/">
-              Home
-            </Link>
-          </li>
-          <li className={`${NavStyle.navbar_li} ${pathname == "/proshow" ? NavStyle.active : NavStyle.disabled}`}>
-            <Link href="/proshow">
+          <Link href="/">
+            <li className={`${NavStyle.navbar_li} ${pathname == "/" ? NavStyle.active : NavStyle.disabled}`}>
+                Home
+            </li>
+          </Link>
+          <Link href="/proshow">
+            <li className={`${NavStyle.navbar_li} ${pathname == "/proshow" ? NavStyle.active : NavStyle.disabled}`}>
               Proshows
-            </Link>
-          </li>
+            </li>
+          </Link>
           {/* <li className={`${NavStyle.navbar_li} ${pathname == "/merchandise" ? NavStyle.active : NavStyle.disabled}`}>
             <Link href="/merchandise">
               Merchandise
             </Link>
           </li> */}
-          <li className={`${NavStyle.navbar_li} ${pathname == "/event" || /\/event\/.*/.test(pathname) ? NavStyle.active : NavStyle.disabled}`}>
-            <Link href="/event">
+          <Link href="/event">
+            <li className={`${NavStyle.navbar_li} ${pathname == "/event" || /\/event\/.*/.test(pathname) ? NavStyle.active : NavStyle.disabled}`}>
               Events
-            </Link>
-          </li>
+            </li>
+          </Link>
           {session ?
             (
               <>
-                <li className={`${NavStyle.navbar_li} ${pathname == "/profile" ? NavStyle.active : NavStyle.disabled}`}>
-                  <a href="/profile">
+                <Link href="/profile">
+                  <li className={`${NavStyle.navbar_li} ${pathname == "/profile" ? NavStyle.active : NavStyle.disabled}`}>
                     Profile
-                  </a>
-                </li>
-                <LogoutDialog logoutHandler={logoutHandler} />
+                  </li>
+                </Link>
+                <LogoutDialog logoutHandler={logoutHandler} isPending={isPending}/>
               </>
 
             ) :
             (
               <>
-                <li className={`${NavStyle.navbar_li} ${pathname == "/login" ? NavStyle.active : NavStyle.disabled}`}>
-                  <Link href='/login'>
+                <Link href='/login'>
+                  <li className={`${NavStyle.navbar_li} ${pathname == "/login" ? NavStyle.active : NavStyle.disabled}`}>
                     Login
-                  </Link>
-                </li>
-                <li className={`${NavStyle.navbar_li} ${pathname == "/register" ? NavStyle.active : NavStyle.disabled}`}>
-                  <Link href="/register">
+                  </li>
+                </Link>
+                <Link href="/register">
+                  <li className={`${NavStyle.navbar_li} ${pathname == "/register" ? NavStyle.active : NavStyle.disabled}`}>
                     Register
-                  </Link>
-                </li>
+                  </li>
+                </Link>
               </>
             )
           }

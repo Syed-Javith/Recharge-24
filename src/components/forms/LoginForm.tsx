@@ -67,6 +67,7 @@ const LoginForm: FC<LoginFormProps> = ({ }) => {
     },
     onSuccess: (res) => {
       // console.log(res);
+      toast.success("Successfully Logged in!")
       router.push("/");
       router.refresh();
     },

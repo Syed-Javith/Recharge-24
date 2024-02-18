@@ -35,8 +35,8 @@ export default async function RootLayout({
             defaultTheme="dark"
         >
           <Navbar session={session}/>
-          <Providers>{children}</Providers>
-          <Toaster richColors/>
+          <Providers >{children}</Providers>
+          <Toaster richColors visibleToasts={2}/>
         </ThemeProvider>
 
       </body>

@@ -8,16 +8,17 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
   } from "@/components/ui/alert-dialog";
-import { LogOut } from "lucide-react";
+import { Loader2, LogOut } from "lucide-react";
   import Link from "next/link";
   import { useState } from "react";
   import NavStyle from './Navbar.module.css'
   
   interface LogoutDialogProps {
-    logoutHandler:Function
+    logoutHandler:Function,
+    isPending: boolean, 
   }
   
-  const LogoutDialog = ({ logoutHandler }: LogoutDialogProps) => {
+  const LogoutDialog = ({ logoutHandler, isPending }: LogoutDialogProps) => {
     const [open,setOpen] = useState<boolean>(false)
   
     return (
@@ -34,15 +35,16 @@ import { LogOut } from "lucide-react";
             <div className="flex gap-4 items-center">
               <Link href="/login">
                 <Button
+                  disabled={isPending}
                   variant="outline"
                   className="border-2 border-white text-md bg-black px-4"
                   asChild
                   onClick={(event) => {
                     event.preventDefault();
-                    logoutHandler();
+                    if(!isPending) logoutHandler();
                   }}
                 >
-                  <span className="cursor-pointer">Logout</span>
+                  <span className="cursor-pointer">Logout {isPending && <Loader2 className="animate-spin ml-2" />}</span>
                 </Button>
               </Link>
               <Button asChild onClick={()=>setOpen(false)}>
